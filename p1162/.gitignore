@@ -1,0 +1,21 @@
+# Fetched primary sources. The preprint is copyright its authors and the OEIS
+# pages carry their own terms, so nothing retrieved is redistributed here.
+# `sh refs/fetch.sh` repopulates the directory; see refs/README.md.
+refs/*
+!refs/README.md
+!refs/fetch.sh
+
+# Log written by the fetch stage of scripts/reproduce.sh.
+results/fetch.log
+
+# Built from src/subgroups.c by scripts/reproduce.sh.
+src/subgroups
+
+__pycache__/
+
+# Local environment files can hold credentials; committed templates stay tracked.
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample

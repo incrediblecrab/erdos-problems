@@ -1,0 +1,38 @@
+n= 0  OK   [1]  (0.0s)
+n= 1  OK   [1]  (0.0s)
+  rank 1: 1
+n= 2  OK   [1, 1]  (0.0s)
+  rank 1: 3
+n= 3  OK   [1, 3]  (0.0s)
+  rank 1: 9
+  rank 2: 4
+n= 4  OK   [1, 9, 4]  (0.0s)
+  rank 1: 25
+  rank 2: 20
+n= 5  OK   [1, 25, 20]  (0.0s)
+  rank 1: 75
+  rank 2: 165
+  rank 3: 30
+n= 6  OK   [1, 75, 165, 30]  (0.0s)
+  rank 1: 231
+  rank 2: 875
+  rank 3: 210
+n= 7  OK   [1, 231, 875, 210]  (0.1s)
+  rank 1: 763
+  rank 2: 6685
+  rank 3: 4440
+  rank 4: 350
+n= 8  OK   [1, 763, 6685, 4440, 350]  (1.2s)
+  rank 1: 2619
+  rank 2: 40509
+  rank 3: 34920
+  rank 4: 3150
+n= 9  OK   [1, 2619, 40509, 34920, 3150]  (14.2s)
+  rank 1: 9495
+  rank 2: 330015
+  rank 3: 620325
+  rank 4: 158220
+  rank 5: 5670
+n=10  OK   [1, 9495, 330015, 620325, 158220, 5670]  (439.8s)
+wrote results/verify_elemab.json
+ALL MATCH

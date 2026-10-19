@@ -1,0 +1,9 @@
+{
+ "n": 1,
+ "total_subgroups": 1,
+ "total_classes": 1,
+ "order_histogram": {"1": 1},
+ "abelian_order_histogram": {"1": 1},
+ "class_order_histogram": {"1": 1},
+ "elementary_abelian_rank": [1]
+}

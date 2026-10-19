@@ -1,0 +1,38 @@
+== Prediction C: exact orbit profile at the dominant rank k = n/4 ==
+n=  64 k=  16  |orb|=1: 0.000004  |orb|=2: 0.264883  |orb|=4: 0.735008  |orb|=8: 0.000105   [check sum m*E = 64.000000, err 3.41e-13]
+n= 128 k=  32  |orb|=2: 0.195086  |orb|=4: 0.804914  |orb|=8: 0.000000   [check sum m*E = 128.000000, err 4.18e-12]
+n= 256 k=  64  |orb|=2: 0.142098  |orb|=4: 0.857902   [check sum m*E = 256.000000, err 1.85e-10]
+n= 512 k= 128  |orb|=2: 0.102652  |orb|=4: 0.897348   [check sum m*E = 512.000000, err 1.40e-09]
+
+== Model check: pure orbit types, best rank and excess ==
+n=  64 orbits of size  2: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.38574 (pred 0.50000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n=  64 orbits of size  4: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.46921 (pred 0.75000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n=  64 orbits of size  8: best k/n=0.18750 (pred 0.18750)  excess/(n log2 n)=+0.22742 (pred 0.87500 if n^2 coef is 1/16; pred n^2 coef 0.035156)
+n=  64 orbits of size 16: best k/n=0.12500 (pred 0.12500)  excess/(n log2 n)=+0.07203 (pred 0.93750 if n^2 coef is 1/16; pred n^2 coef 0.015625)
+n= 128 orbits of size  2: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.39951 (pred 0.50000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n= 128 orbits of size  4: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.50622 (pred 0.75000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n= 128 orbits of size  8: best k/n=0.18750 (pred 0.18750)  excess/(n log2 n)=+0.06632 (pred 0.87500 if n^2 coef is 1/16; pred n^2 coef 0.035156)
+n= 128 orbits of size 16: best k/n=0.12500 (pred 0.12500)  excess/(n log2 n)=-0.23632 (pred 0.93750 if n^2 coef is 1/16; pred n^2 coef 0.015625)
+n= 256 orbits of size  2: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.41095 (pred 0.50000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n= 256 orbits of size  4: best k/n=0.25000 (pred 0.25000)  excess/(n log2 n)=+0.53533 (pred 0.75000 if n^2 coef is 1/16; pred n^2 coef 0.062500)
+n= 256 orbits of size  8: best k/n=0.18750 (pred 0.18750)  excess/(n log2 n)=-0.27169 (pred 0.87500 if n^2 coef is 1/16; pred n^2 coef 0.035156)
+n= 256 orbits of size 16: best k/n=0.12500 (pred 0.12500)  excess/(n log2 n)=-0.84143 (pred 0.93750 if n^2 coef is 1/16; pred n^2 coef 0.015625)
+
+== Prediction B: local A from second differences ==
+  h=  8  A_local: n=10 -> 0.67808   n=504 -> 0.73642
+  h= 16  A_local: n=18 -> 0.63103   n=496 -> 0.73631
+  h= 32  A_local: n=40 -> 0.65667   n=480 -> 0.73608
+
+== Extrapolating A_local to n -> infinity, scored out of sample ==
+  fit on n in [96,296] (26 pts); scored on n in [400,496] (13 pts never fitted)
+    basis                A_inf      train   HELD-OUT
+    n^-1/2             0.74962   3.27e-05   6.75e-05
+    1/log2^2 n         0.75598   1.74e-04   2.92e-04
+    1/log2 n           0.78532   1.13e-04   5.02e-04
+    n^-1/4             0.77239   3.28e-04   1.05e-03
+    log2 n / n         0.74102   3.85e-04   1.12e-03
+    n^-1/2 log2 n      0.76416   4.46e-04   1.25e-03
+    n^-1               0.73823   7.28e-04   1.89e-03
+  free exponent selected by held-out error: p=0.48  A_inf=0.75057  (predicted 0.75, error 0.00057, held-out maxres 1.64e-05)
+
+wrote data/orbit_model.json

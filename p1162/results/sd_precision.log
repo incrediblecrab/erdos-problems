@@ -1,0 +1,11 @@
+closed form (30 dp): 0.849305961022908280743697585694
+
+  n=  64  sd=0.849353184003557440709767984982    |err|=   4.72e-5   4 dp  log10 ratio   --
+  n= 128  sd=0.849305968979801981623012967979    |err|=   7.96e-9   7 dp  log10 ratio 1.87
+  n= 256  sd=0.849305961022908291216526916756    |err|=  1.05e-17  16 dp  log10 ratio 2.10
+  n= 512  sd=0.849305961022908280743697585694    |err|=  2.71e-36  35 dp  log10 ratio 2.09
+
+The log10 ratio settling near 2 means the error squares at each
+doubling of n, i.e. it decays like 2^(-cn), not polynomially.
+
+wrote data/sd_precision.json

@@ -1,0 +1,154 @@
+density-1/2 block types (d = b/2), conjugates per b-set: {2: 1, 4: 4, 8: 105}; their mean log2|Phi| at b=8: 1.0
+EGF of the Frattini-closed family, n <= 512: 1.2s
+
+== gate 0: block weights and subspace identities ==
+  [pass] w_4(z) = (z-1)(z-2)(z-4)(z-8) = z^4 - 15z^3 + 70z^2 - 120z + 64
+  [pass] L(w_4) = 1: the only subspace of F_2^4 onto F_2^4 is F_2^4
+  [pass] L(w_4^2) = 2^16: subspaces of F_2^4 x F_2^4 onto both factors = 4x4 matrices (Goursat)
+  [pass] L(w_2^2) = 16 = 6 + 9 + 1 (Goursat on F_2^2 x F_2^2)
+
+== gate 1: formula vs brute force on permutations (census8.json), n <= 8 ==
+  [pass] n=1: 1 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=2: 2 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=3: 4 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=4: 20 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=5: 76 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=6: 631 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=7: 3417 subgroups; order histogram and first two moments of log2|H| equal the brute force
+  [pass] n=8: 61904 subgroups; order histogram and first two moments of log2|H| equal the brute force
+
+== gate 2: moments by u-derivatives vs the exact order distribution, n <= 64 ==
+  [pass] count, sum and sum of squares of log2|H| agree exactly for all n <= 64
+
+== gate 3: elementary abelian block types reproduce elemab.py ==
+  [pass] n=0: 1 = e(n) (every orbit of an elementary abelian subgroup of S_0 has size <= 8)
+  [pass] n=1: 1 = e(n) (every orbit of an elementary abelian subgroup of S_1 has size <= 8)
+  [pass] n=2: 2 = e(n) (every orbit of an elementary abelian subgroup of S_2 has size <= 8)
+  [pass] n=3: 4 = e(n) (every orbit of an elementary abelian subgroup of S_3 has size <= 8)
+  [pass] n=4: 14 = e(n) (every orbit of an elementary abelian subgroup of S_4 has size <= 8)
+  [pass] n=5: 46 = e(n) (every orbit of an elementary abelian subgroup of S_5 has size <= 8)
+  [pass] n=6: 271 = e(n) (every orbit of an elementary abelian subgroup of S_6 has size <= 8)
+  [pass] n=7: 1317 = e(n) (every orbit of an elementary abelian subgroup of S_7 has size <= 8)
+  [pass] n=8: 12239 = e(n) (every orbit of an elementary abelian subgroup of S_8 has size <= 8)
+  [pass] n=9: 81199 = e(n) (every orbit of an elementary abelian subgroup of S_9 has size <= 8)
+  [pass] n=10: 1123726 = e(n) (every orbit of an elementary abelian subgroup of S_10 has size <= 8)
+  [pass] n=11: 9587876 = e(n) (every orbit of an elementary abelian subgroup of S_11 has size <= 8)
+  [pass] n=12: 191828242 = e(n) (every orbit of an elementary abelian subgroup of S_12 has size <= 8)
+  [pass] n=13: 2023147634 = e(n) (every orbit of an elementary abelian subgroup of S_13 has size <= 8)
+  [pass] n=14: 57363853639 = e(n) (every orbit of an elementary abelian subgroup of S_14 has size <= 8)
+  [pass] n=15: 725261369341 = e(n) (every orbit of an elementary abelian subgroup of S_15 has size <= 8)
+  [pass] n=16: e(n) exceeds the orbits-<=8 count by 64864800 (regular (Z/2)^4 on 16 points)
+  [pass] n=17: e(n) exceeds the orbits-<=8 count by 1102701600 (regular (Z/2)^4 on 16 points)
+  [pass] n=18: e(n) exceeds the orbits-<=8 count by 168713344800 (regular (Z/2)^4 on 16 points)
+  [pass] n=19: e(n) exceeds the orbits-<=8 count by 3079845568800 (regular (Z/2)^4 on 16 points)
+  [pass] n=20: e(n) exceeds the orbits-<=8 count by 367381578564000 (regular (Z/2)^4 on 16 points)
+
+== gate 4: explicit disjoint families never exceed f(n) = A005432(n) ==
+  [pass] n= 0: |B(n)| + |S3(n)| = 1 <= f(n)   (share of f: B 1.000, S3 0.000)
+  [pass] n= 1: |B(n)| + |S3(n)| = 1 <= f(n)   (share of f: B 1.000, S3 0.000)
+  [pass] n= 2: |B(n)| + |S3(n)| = 2 <= f(n)   (share of f: B 1.000, S3 0.000)
+  [pass] n= 3: |B(n)| + |S3(n)| = 6 <= f(n)   (share of f: B 0.667, S3 0.333)
+  [pass] n= 4: |B(n)| + |S3(n)| = 28 <= f(n)   (share of f: B 0.667, S3 0.267)
+  [pass] n= 5: |B(n)| + |S3(n)| = 126 <= f(n)   (share of f: B 0.487, S3 0.321)
+  [pass] n= 6: |B(n)| + |S3(n)| = 851 <= f(n)   (share of f: B 0.434, S3 0.151)
+  [pass] n= 7: |B(n)| + |S3(n)| = 5972 <= f(n)   (share of f: B 0.302, S3 0.226)
+  [pass] n= 8: |B(n)| + |S3(n)| = 78536 <= f(n)   (share of f: B 0.409, S3 0.110)
+  [pass] n= 9: |B(n)| + |S3(n)| = 742048 <= f(n)   (share of f: B 0.283, S3 0.155)
+  [pass] n=10: |B(n)| + |S3(n)| = 13018261 <= f(n)   (share of f: B 0.367, S3 0.073)
+  [pass] n=11: |B(n)| + |S3(n)| = 169440536 <= f(n)   (share of f: B 0.254, S3 0.165)
+  [pass] n=12: |B(n)| + |S3(n)| = 4545146277 <= f(n)   (share of f: B 0.362, S3 0.067)
+  [pass] n=13: |B(n)| + |S3(n)| = 71217199561 <= f(n)   (share of f: B 0.255, S3 0.151)
+  [pass] n=14: |B(n)| + |S3(n)| = 2465492938728 <= f(n)   (share of f: B 0.378, S3 0.058)
+  [pass] n=15: |B(n)| + |S3(n)| = 48808788685256 <= f(n)   (share of f: B 0.248, S3 0.169)
+  [pass] n=16: |B(n)| + |S3(n)| = 2484076555277531 <= f(n)   (share of f: B 0.412, S3 0.055)
+  [pass] n=17: |B(n)| + |S3(n)| = 56844759114738467 <= f(n)   (share of f: B 0.276, S3 0.176)
+  [pass] n=18: |B(n)| + |S3(n)| = 3822124046791319356 <= f(n)   (share of f: B 0.454, S3 0.049)
+
+== Finding A: e(n) against G_{floor(n/2)} M(n), M = set partitions into blocks of size 2 and 4 ==
+  [pass] data/elemab_stats.json log2 e(n) equals elemab.py to 1e-9 for n = 2..40
+  n=   8  log2 e(n) - log2 G - log2 M = -9.381e-01
+  n=   9  log2 e(n) - log2 G - log2 M = -1.378e+00
+  n=  16  log2 e(n) - log2 G - log2 M = -5.655e-01
+  n=  17  log2 e(n) - log2 G - log2 M = -7.650e-01
+  n=  32  log2 e(n) - log2 G - log2 M = -4.124e-02
+  n=  33  log2 e(n) - log2 G - log2 M = -6.567e-02
+  n=  64  log2 e(n) - log2 G - log2 M =  5.162e-04
+  n= 128  log2 e(n) - log2 G - log2 M =  7.878e-08
+  n= 256  log2 e(n) - log2 G - log2 M = -9.095e-13
+  n= 512  log2 e(n) - log2 G - log2 M =  0.000e+00
+  [pass] |log2 e(n) - log2 G - log2 M| < 1e-4 for all 49 stored n >= 128 (max 7.9e-08)
+  [pass] A_local(n) of data/orbit_model.json equals the G*M prediction to 1.8e-07 for n = 128..504
+     n=  64  stored A_local 0.712739   from G*M 0.712610   3/4 - (sqrt6/8)/sqrt(n) = 0.711727   (stored - that) * n^1.5 = 0.518
+     n= 128  stored A_local 0.723322   from G*M 0.723322   3/4 - (sqrt6/8)/sqrt(n) = 0.722937   (stored - that) * n^1.5 = 0.558
+     n= 256  stored A_local 0.731010   from G*M 0.731010   3/4 - (sqrt6/8)/sqrt(n) = 0.730863   (stored - that) * n^1.5 = 0.600
+     n= 504  stored A_local 0.736417   from G*M 0.736417   3/4 - (sqrt6/8)/sqrt(n) = 0.736361   (stored - that) * n^1.5 = 0.627
+  from exact M(n): (A_local - 3/4 + (sqrt6/8) n^-1/2) n^1.5 = 512: 0.62799  1024: 0.64695  2048: 0.65982  4096: 0.66864  8192: 0.67473  16384: 0.67897  32768: 0.68192
+  [pass] its Richardson limit 0.68905 equals the saddle-point coefficient 9 sqrt6/32 = 0.68892: A_local = 3/4 - (sqrt6/8) n^-1/2 + (9 sqrt6/32) n^-3/2 + O(n^-2), no n^-1 term
+
+== Finding B: the rank of a random elementary abelian subgroup is the dimension of a random subspace of F_2^{floor(n/2)} ==
+  n=  16  TV(a(n,.)/e(n), [m,.]_2/G_m) = 9.971e-02   log2(TV 2^(n/4) / n^2) =  -7.33
+  n=  32  TV(a(n,.)/e(n), [m,.]_2/G_m) = 7.124e-03   log2(TV 2^(n/4) / n^2) =  -9.13
+  n=  64  TV(a(n,.)/e(n), [m,.]_2/G_m) = 8.398e-05   log2(TV 2^(n/4) / n^2) =  -9.54
+  n= 128  TV(a(n,.)/e(n), [m,.]_2/G_m) = 1.282e-08   log2(TV 2^(n/4) / n^2) =  -8.22
+  n= 256  TV(a(n,.)/e(n), [m,.]_2/G_m) = 1.674e-17   log2(TV 2^(n/4) / n^2) =  -7.73
+  [pass] the total variation distance decreases strictly along n = 16, 32, 64, 128, 256
+  [pass] TV = n^2 2^(-n/4) 2^c with c in [-12, -5] for n = 64..256: the rate of the 8-block correction s0^8 2^(-n/4)/1344
+  data/sd_precision.json, |sd(n) - theta-law sd| at the same scale: n=64: -10.37  n=128: -8.91  n=256: -8.41  n=512: -8.15
+
+== second-order constant alpha(X) = (log2 X(n) - n^2/16) / (n log2 n) ==
+  n=  16  e(n): 0.4487   B(n): 0.5463   pure 8-blocks: 0.4075   log2(B/e) =      6.2   log2(pure8/e) =     -2.6
+  n=  32  e(n): 0.4790   B(n): 0.5711   pure 8-blocks: 0.5076   log2(B/e) =     14.7   log2(pure8/e) =      4.6
+  n=  64  e(n): 0.5039   B(n): 0.5972   pure 8-blocks: 0.5596   log2(B/e) =     35.8   log2(pure8/e) =     21.4
+  n= 128  e(n): 0.5275   B(n): 0.6232   pure 8-blocks: 0.5998   log2(B/e) =     85.7   log2(pure8/e) =     64.8
+  n= 256  e(n): 0.5487   B(n): 0.6467   pure 8-blocks: 0.6321   log2(B/e) =    200.8   log2(pure8/e) =    170.8
+  n= 512  e(n): 0.5671   B(n): 0.6673   pure 8-blocks: 0.6581   log2(B/e) =    462.1   log2(pure8/e) =    419.6
+  smallest stored n where the pure 8-block family alone exceeds e(n): 24
+
+== pure 8-block family: (log2 F8(n) - n^2/16 - (7/8) n log2 n) / n ==
+  n=  64  -1.89226
+  n= 128  -1.92630
+  n= 256  -1.94337
+  n= 512  -1.95192
+  Stirling: -(7/8) log2 e + 3/8 - (1/8) log2(8!/105) = -1.96048
+  [pass] n=512 value is within 0.02 of the Stirling limit (O(1)/n remainder): +0.0086
+  n=  64  log2 F8(n) - [n^2/16 + (7/8) n log2 n + cn + 3/2 + log2(theta/eta) - 7 log2(e)/(12n)] = -3.185e-03   next Stirling term log2(e)(1 - 8^-3)/(360 m^3) = 7.812e-06   log2(L(w_4^m)/G_4m) = -3.140e-03
+  n= 128  log2 F8(n) - [n^2/16 + (7/8) n log2 n + cn + 3/2 + log2(theta/eta) - 7 log2(e)/(12n)] =  8.787e-07   next Stirling term log2(e)(1 - 8^-3)/(360 m^3) = 9.765e-07   log2(L(w_4^m)/G_4m) = -9.587e-08
+  n= 256  log2 F8(n) - [n^2/16 + (7/8) n log2 n + cn + 3/2 + log2(theta/eta) - 7 log2(e)/(12n)] =  1.220e-07   next Stirling term log2(e)(1 - 8^-3)/(360 m^3) = 1.221e-07   log2(L(w_4^m)/G_4m) = -4.464e-17
+  n= 512  log2 F8(n) - [n^2/16 + (7/8) n log2 n + cn + 3/2 + log2(theta/eta) - 7 log2(e)/(12n)] =  1.525e-08   next Stirling term log2(e)(1 - 8^-3)/(360 m^3) = 1.526e-08   log2(L(w_4^m)/G_4m) = -4.840e-36
+
+== B(n) against G_{n/2} Bstar(n), Bstar = set partitions into blocks of density 1/2 ==
+  n=  16  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) = -9.929e-02  (from the exact integers)
+  n=  32  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) =  7.475e-02  (from the exact integers)
+  n=  64  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) =  1.176e-03  (from the exact integers)
+  n= 128  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) =  5.078e-08  (from the exact integers)
+  n= 256  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) =  2.931e-17  (from the exact integers)
+  n= 512  log2 B(n) - log2 G_(n/2) - log2 Bstar(n) =  3.654e-36  (from the exact integers)
+  [pass] |log2 B - log2 G - log2 Bstar| < 1e-3 for n >= 128 (max 5.1e-08)
+
+== order statistics inside B(n) ==
+  mean log2|Phi| of the dense types: b=2: 0, b=4: 3/4, b=8: 1
+  n=   8  E[log2|H|]/n = 0.4388  sd(log2|H|) =  1.050  sd/n^(1/4) = 0.625   points in blocks of size 1: 0.055  2: 0.282  4: 0.454  8: 0.209   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 7.76e-02 (exact)
+  n=  16  E[log2|H|]/n = 0.4162  sd(log2|H|) =  1.293  sd/n^(1/4) = 0.646   points in blocks of size 1: 0.013  2: 0.208  4: 0.473  8: 0.306   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 3.93e-02 (exact)
+  n=  32  E[log2|H|]/n = 0.3918  sd(log2|H|) =  1.413  sd/n^(1/4) = 0.594   points in blocks of size 1: 0.001  2: 0.152  4: 0.491  8: 0.357   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 5.19e-03 (exact)
+  n=  64  E[log2|H|]/n = 0.3885  sd(log2|H|) =  1.584  sd/n^(1/4) = 0.560   points in blocks of size 1: 0.000  2: 0.099  4: 0.413  8: 0.489   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 2.80e-05 (exact)
+  n= 128  E[log2|H|]/n = 0.3875  sd(log2|H|) =  1.863  sd/n^(1/4) = 0.554   points in blocks of size 1: 0.000  2: 0.062  4: 0.323  8: 0.615   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 5.20e-10 (exact)
+  n= 256  E[log2|H|]/n = 0.3856  sd(log2|H|) =  2.203  sd/n^(1/4) = 0.551   points in blocks of size 1: 0.000  2: 0.038  4: 0.245  8: 0.717   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 1.38e-19 (exact)
+  n= 512  E[log2|H|]/n = 0.3835  sd(log2|H|) =  2.610  sd/n^(1/4) = 0.549   points in blocks of size 1: 0.000  2: 0.023  4: 0.182  8: 0.795   E[log2|H|]/n - 1/4 - sum_b f_b phibar_b/b = 8.22e-39 (exact)
+  all points in 8-blocks: 1/4 + (1/8)(mean log2|Phi| = 1.0) = 0.3750
+  [pass] every variance of log2|H| is nonnegative
+
+== odd n: S3(n) = {H : A_3 on some 3-set is normal in H, H/A_3 in the Frattini-closed family} ==
+  n=   9  log2(|S3(n)| / |B(n)|) = -0.872
+  n=  17  log2(|S3(n)| / |B(n)|) = -0.648
+  n=  33  log2(|S3(n)| / |B(n)|) = -0.288
+  n=  65  log2(|S3(n)| / |B(n)|) =  0.072
+  n= 129  log2(|S3(n)| / |B(n)|) =  0.396
+  n= 257  log2(|S3(n)| / |B(n)|) =  0.696
+  n= 511  log2(|S3(n)| / |B(n)|) =  0.979
+  even n, where S3 needs a fixed point: n=8: -1.896 (-0.948 per n/4)  n=16: -2.911 (-0.728 per n/4)  n=32: -5.762 (-0.720 per n/4)  n=64: -13.027 (-0.814 per n/4)  n=128: -28.379 (-0.887 per n/4)  n=256: -59.776 (-0.934 per n/4)  n=512: -123.205 (-0.963 per n/4)
+
+== conjectured formula vs A005432, n <= 18 (pre-asymptotic; information only) ==
+  f(n) / conjecture: 2:1.00  3:0.75  4:0.86  5:0.69  6:1.21  7:0.92  8:1.40  9:1.22  10:1.82  11:1.45  12:2.10  13:1.74  14:2.24  15:1.90  16:2.27  17:1.95  18:2.19
+
+wrote data/block_families.json  (5.3s)
+all gates passed

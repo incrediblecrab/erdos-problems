@@ -1,0 +1,455 @@
+final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
+
+== closed forms quoted in NOTES.md ==
+  ok    Galois constant log2(theta/(1/2;1/2)_inf) = 2.882049965   [2.8820499654]
+  ok    theta-law standard deviation = 0.849305961   [0.8493059610]
+  ok    RoTr25 Lemma 2.4 constant zeta_2 < 4   [zeta_2=3.462747]
+
+== elemab.py against the independent permutation brute force ==
+  ok    brute force agrees with the formula for n <= 10   [11 values of n]
+  ok    stored formula rows still reproduce from current elemab.py
+
+== a(n,1) against OEIS A000085 (an independent recurrence) ==
+  ok    a(n,1) = A000085(n) - 1 for 2 <= n <= 30   [a(30,1)=606917269909048575]
+
+== structural identity a(n, floor(n/2)+1) = 0 ==
+  ok    rank_counts(n) has top rank exactly floor(n/2) for n <= 40
+
+== full subgroup lattice against OEIS A005432 / A000638 ==
+  ok    n=1: total subgroups = A005432(1) = 1   [got 1]
+  ok    n=1: conjugacy classes = A000638(1) = 1   [got 1]
+  ok    n=1: lattice elementary abelian ranks = elemab.py   [lattice [1] vs formula [1]]
+  ok    n=2: total subgroups = A005432(2) = 2   [got 2]
+  ok    n=2: conjugacy classes = A000638(2) = 2   [got 2]
+  ok    n=2: lattice elementary abelian ranks = elemab.py   [lattice [1, 1] vs formula [1, 1]]
+  ok    n=3: total subgroups = A005432(3) = 6   [got 6]
+  ok    n=3: conjugacy classes = A000638(3) = 4   [got 4]
+  ok    n=3: lattice elementary abelian ranks = elemab.py   [lattice [1, 3] vs formula [1, 3]]
+  ok    n=4: total subgroups = A005432(4) = 30   [got 30]
+  ok    n=4: conjugacy classes = A000638(4) = 11   [got 11]
+  ok    n=4: lattice elementary abelian ranks = elemab.py   [lattice [1, 9, 4] vs formula [1, 9, 4]]
+  ok    n=5: total subgroups = A005432(5) = 156   [got 156]
+  ok    n=5: conjugacy classes = A000638(5) = 19   [got 19]
+  ok    n=5: lattice elementary abelian ranks = elemab.py   [lattice [1, 25, 20] vs formula [1, 25, 20]]
+  ok    n=6: total subgroups = A005432(6) = 1455   [got 1455]
+  ok    n=6: conjugacy classes = A000638(6) = 56   [got 56]
+  ok    n=6: lattice elementary abelian ranks = elemab.py   [lattice [1, 75, 165, 30] vs formula [1, 75, 165, 30]]
+  ok    n=7: total subgroups = A005432(7) = 11300   [got 11300]
+  ok    n=7: conjugacy classes = A000638(7) = 96   [got 96]
+  ok    n=7: lattice elementary abelian ranks = elemab.py   [lattice [1, 231, 875, 210] vs formula [1, 231, 875, 210]]
+  ok    n=8: total subgroups = A005432(8) = 151221   [got 151221]
+  ok    n=8: conjugacy classes = A000638(8) = 296   [got 296]
+  ok    n=8: lattice elementary abelian ranks = elemab.py   [lattice [1, 763, 6685, 4440, 350] vs formula [1, 763, 6685, 4440, 350]]
+
+== pure orbit-type closed form against brute-forced hom counts ==
+  ok    15 brute-forced hom counts match pure_type_log2
+
+== orbit model: optimal rank of each pure type is j/2^(j+1) ==
+  ok    n=64: orbit sizes 2^j for j = 1..4 scanned
+  ok    n=64 orbit size 2: best k/n = 0.25   [got 0.25]
+  ok    n=64 orbit size 4: best k/n = 0.25   [got 0.25]
+  ok    n=64 orbit size 8: best k/n = 0.1875   [got 0.1875]
+  ok    n=64 orbit size 16: best k/n = 0.125   [got 0.125]
+  ok    n=128: orbit sizes 2^j for j = 1..4 scanned
+  ok    n=128 orbit size 2: best k/n = 0.25   [got 0.25]
+  ok    n=128 orbit size 4: best k/n = 0.25   [got 0.25]
+  ok    n=128 orbit size 8: best k/n = 0.1875   [got 0.1875]
+  ok    n=128 orbit size 16: best k/n = 0.125   [got 0.125]
+  ok    n=256: orbit sizes 2^j for j = 1..4 scanned
+  ok    n=256 orbit size 2: best k/n = 0.25   [got 0.25]
+  ok    n=256 orbit size 4: best k/n = 0.25   [got 0.25]
+  ok    n=256 orbit size 8: best k/n = 0.1875   [got 0.1875]
+  ok    n=256 orbit size 16: best k/n = 0.125   [got 0.125]
+  ok    n=128 orbit size 2 reaches n^2/16 up to O(n log n)   [excess +358.0 vs n log2 n = 896]
+  ok    n=128 orbit size 2: excess/(n log2 n) below its limit 0.5   [0.39951]
+  ok    n=128 orbit size 4 reaches n^2/16 up to O(n log n)   [excess +453.6 vs n log2 n = 896]
+  ok    n=128 orbit size 4: excess/(n log2 n) below its limit 0.75   [0.50622]
+  ok    n=128: orbit size 4 beats orbit size 2 at order n log n   [0.50622 vs 0.39951]
+  ok    n=128: orbit size 8 falls behind orbit size 4 at order n^2   [gap 394.1, gap/n^2 = 0.02406, limit 7/256 = 0.02734]
+  ok    n=256 orbit size 2 reaches n^2/16 up to O(n log n)   [excess +841.6 vs n log2 n = 2048]
+  ok    n=256 orbit size 2: excess/(n log2 n) below its limit 0.5   [0.41095]
+  ok    n=256 orbit size 4 reaches n^2/16 up to O(n log n)   [excess +1096.4 vs n log2 n = 2048]
+  ok    n=256 orbit size 4: excess/(n log2 n) below its limit 0.75   [0.53533]
+  ok    n=256: orbit size 4 beats orbit size 2 at order n log n   [0.53533 vs 0.41095]
+  ok    n=256: orbit size 8 falls behind orbit size 4 at order n^2   [gap 1652.8, gap/n^2 = 0.02522, limit 7/256 = 0.02734]
+
+== pointwise theta law  a(n, n/4+j)/a(n, n/4) -> 2^(-j^2) ==
+  ok    ratios match 2^(-j^2) for |j| <= 3 at n = 64 and 128   [max deviation 1.47e-04]
+  ok    n=128: mode of the rank distribution is exactly n/4 = 32   [got 32]
+  ok    n=128: mean rank / n = 0.25 to 6 dp   [0.25000000]
+  ok    n=128: sd of the rank equals the theta constant to 6 dp   [measured 0.84930597 vs 0.84930596]
+  ok    n=128: >= 1-1e-6 of the mass lies within 4 of the mode   [window 4]
+  ok    n=256: mode of the rank distribution is exactly n/4 = 64   [got 64]
+  ok    n=256: mean rank / n = 0.25 to 6 dp   [0.25000000]
+  ok    n=256: sd of the rank equals the theta constant to 6 dp   [measured 0.84930596 vs 0.84930596]
+  ok    n=256: >= 1-1e-6 of the mass lies within 4 of the mode   [window 4]
+  ok    n=512: mode of the rank distribution is exactly n/4 = 128   [got 128]
+  ok    n=512: mean rank / n = 0.25 to 6 dp   [0.25000000]
+  ok    n=512: sd of the rank equals the theta constant to 6 dp   [measured 0.84930596 vs 0.84930596]
+  ok    n=512: >= 1-1e-6 of the mass lies within 4 of the mode   [window 4]
+
+== data/elemab_stats.json: the stored rows and fits, recomputed ==
+  ok    88 of 119 stored rows equal a fresh rank_stats to 1e-6 relative   [n <= 256 and 512; bit-identical here]
+  ok    the other 31 rows, n = 264..504: excess, mode/n, mean/n, max_rank consistent
+  ok    the other 31 rows: mode n/4, window 4, mean/n within 1e-8 of 1/4, sd within 1e-7 of the closed form   [largest sd deviation 2.0e-08]
+  ok    the other 31 rows: log2_e within 1e-9 of log2 G_(n/2) M(n) (§9.2), e_bits consistent   [largest 1.4e-12]
+  ok    the 4 stored fits equal a fresh least squares on the stored rows to 1e-6 relative
+
+== Galois numbers  log2 G_r - r^2/4 -> the same constant ==
+  ok    r=32: deviation from the constant is below 2^(3-r/2)   [dev 5.236e-05 < 1.221e-04]
+  ok    r=64: deviation from the constant is below 2^(3-r/2)   [dev 7.990e-10 < 1.863e-09]
+  ok    r=128 (even): excess = 2.882049965   [2.882049965425]
+  ok    r=256 (even): excess = 2.882049965   [2.882049965425]
+  ok    r=512 (even): excess = 2.882049965   [2.882049965425]
+  ok    r=63 (odd): deviation from the odd constant is below 2^(3-r/2)   [dev 1.130e-09 < 2.634e-09]
+  ok    r=127 (odd): excess = log2(theta'/eta) = 2.882046186   [2.882046186314]
+  ok    r=255 (odd): excess = log2(theta'/eta) = 2.882046186   [2.882046186314]
+  ok    r=511 (odd): excess = log2(theta'/eta) = 2.882046186   [2.882046186314]
+  ok    fresh galois_number(256) reproduces the constant   [2.882049965425]
+  ok    G_0..G_8 = OEIS A006116
+  ok    n=256: one maximal elementary abelian gives n^2/16 + O(1)   [excess 2.882049965425]
+  ok    n=512: one maximal elementary abelian gives n^2/16 + O(1)   [excess 2.882049965425]
+
+== second-order term: A_local -> 3/4, scored out of sample ==
+  ok    n^-1/2 is the best extrapolation basis on held-out n   [won: n^-1/2 (held-out maxres 6.75e-05)]
+  ok    free exponent selected out of sample is near 1/2   [p=0.48]
+  ok    extrapolated A_inf = 3/4 to within 0.002   [A_inf=0.75057, error 0.00057]
+  ok    the rejected 1/log2 n model extrapolates to the wrong limit   [A_inf=0.78532]
+
+== orbit profile at the dominant rank k = n/4 ==
+  ok    n=64: sum_m m*E[#orbits_m] = n to 2e-09   [error 3.4e-13]
+  ok    n=64: orbits of size 4 hold the majority of points   [fraction 0.735008]
+  ok    n=64: orbits of size >= 8 are negligible   [1.05e-04]
+  ok    n=128: sum_m m*E[#orbits_m] = n to 2e-09   [error 4.2e-12]
+  ok    n=128: orbits of size 4 hold the majority of points   [fraction 0.804914]
+  ok    n=128: orbits of size >= 8 are negligible   [3.99e-09]
+  ok    n=128: the size-4 fraction increased   [0.7350 -> 0.8049]
+  ok    n=256: sum_m m*E[#orbits_m] = n to 2e-09   [error 1.9e-10]
+  ok    n=256: orbits of size 4 hold the majority of points   [fraction 0.857902]
+  ok    n=256: orbits of size >= 8 are negligible   [2.15e-18]
+  ok    n=256: the size-4 fraction increased   [0.8049 -> 0.8579]
+  ok    n=512: sum_m m*E[#orbits_m] = n to 2e-09   [error 1.4e-09]
+  ok    n=512: orbits of size 4 hold the majority of points   [fraction 0.897348]
+  ok    n=512: orbits of size >= 8 are negligible   [2.57e-37]
+  ok    n=512: the size-4 fraction increased   [0.8579 -> 0.8973]
+
+== rank sd vs closed form, exact arithmetic at 60 dp ==
+  ok    closed form printed to 30 dp is 0.849305961022908280743697585694   [0.849305961022908280743697585694]
+  ok    n=64: exact sd agrees with the closed form to >= 4 dp   [4 dp, |err| 4.72e-5]
+  ok    n=128: exact sd agrees with the closed form to >= 7 dp   [7 dp, |err| 7.96e-9]
+  ok    n=256: exact sd agrees with the closed form to >= 15 dp   [16 dp, |err| 1.05e-17]
+  ok    n=512: exact sd agrees with the closed form to >= 30 dp   [35 dp, |err| 2.71e-36]
+  ok    n=512: all 30 printed digits of the sd match the closed form   [0.849305961022908280743697585694]
+  ok    log10(error) roughly doubles per doubling of n (error ~ 2^-cn)   [ratios [1.87, 2.1, 2.09]]
+
+== RoTr25 Theorem 6 threshold algebra ==
+  ok    nu(1-nu) = 1/16 has smaller root 1/2 - sqrt(3)/4 = 0.0669872981   [0.0669872981078]
+  ok    that root is the constant printed in Theorem 6
+  ok    nu(1/2 - nu) = 1/16 has discriminant exactly 0   [0.0]
+  ok    its double root is 1/4   [0.25]
+  ok    improvement factors are 4.000 and 3.732   [4.000 and 3.732]
+
+== verbatim quotations from the primary source ==
+  ok    quote present: "our logarithms are to the base 2"
+  ok    quote present: "settling a conjecture of Pyber from 1993"
+  ok    quote present: "A random nilpotent subgroup of Sn is a 2-group"
+  ok    quote present: "Let n be congruent to 3 modulo 4"
+  ok    quote present: "the probability that a random subgroup of Sn is nilpoten"
+  ok    quote present: "an elementary abelian 2-section of order at least 2"
+  ok    quote present: "Since ν(1 − ν) < 1/16, the result follows"
+  ok    quote present: "Since µ < 1/16 the result follows from the lower bound i"
+  ok    quote present: "P has at most ζppk(ℓ−k) subgroups of order pk"
+  ok    quote present: "We shall prove that this holds with α0 = 448/453"
+  ok    quote present: "If no Gi, for i ≤ r, has excess 2 and degree 8"
+  ok    quote present: "The group G has excess 2 and degree 8"
+  ok    quote present: "that no group has excess more than 2"
+  ok    quote present: "If G is excessive then G has excess i ∈ {1,2} and n ≤ 32"
+  ok    quote present: "Firstly, does there in fact exist an absolute constant γ"
+  ok    quote present: "Secondly, is it possible that the probability that a ran"
+  ok    quote present: "Thirdly, does there exist an absolute constant C such th"
+  ok    quote present: "we present evidence in Section 6 that it may have a posi"
+  ok    quote present: "The lower bound is Proposition 7.3"
+  ok    quote present: "generated by m disjoint p-cycles"
+  ok    quote present: "for all integers n > 1"
+  ok    quote present: "There exist constants βp > αp > 0 such that for all inte"
+  ok    quote present: "Write ln for natural logarithms"
+  ok    quote present: "Pyber conjectured, however, that"
+  ok    quote present: "0.08, (1 − (2p − 1)2/(4p2)) 2plog(2p) ,αR,(1 − α0)(1 − 1"
+  ok    absent from the paper: '7/8'
+  ok    absent from the paper: '0.875'
+  ok    absent from the paper: 'extra.{0,3}special'
+
+== the §9 programs, rerun into a temporary directory ==
+  ok    census8.py exits 0   [exit 0]
+  ok    census8.py passes all 33 of its checks   [33 passed]
+  ok    census8.py: a fresh run reproduces data/census8.json
+  ok    block_families.py exits 0   [exit 0]
+  ok    block_families.py passes all 62 of its checks   [62 passed]
+  ok    block_families.py: a fresh run reproduces data/block_families.json
+
+== NOTES.md §2: exact counts ==
+  ok    NOTES: §2.1 lattice, n = 1..7   [| 1–7 | 1, 2, 6, 30, 156, 1455, 11300 | 1, 2, 4, 11, 19, 56, 96 |]
+  ok    NOTES: §2.1 lattice, n = 8   [| 8 | 151221 | 296 |]
+  ok    NOTES: §2.1 the wrong enumerator's shortfall at n = 7, in percent   [43]
+  ok    NOTES: §2.2 rank_counts(8)   [`rank_counts(8) = [1, 763, 6685, 4440, 350]`]
+  ok    NOTES: §2.2 bit length of e(512)   [18 997]
+  ok    NOTES: §2.3 rank counts at n = 10   [`[1, 9495, 330015, 620325, 158220, 5670]`]
+
+== NOTES.md §3: the rank distribution ==
+  ok    NOTES: §3 table, n = 64   [16, 0.249997, 0.849353, 4]
+  ok    NOTES: §3 table, n = 128   [32, 0.250000, 0.849306, 4]
+  ok    NOTES: §3 table, n = 256   [64, 0.250000, 0.849306, 4]
+  ok    NOTES: §3 table, n = 512   [128, 0.250000, 0.849306, 4]
+  ok    NOTES: §3 the mode is n/4 for every stored n = 0 mod 4 from 32 up   [65 values of n]
+  ok    NOTES: §3 theta table, n = 512   [0.001953, 0.062500, 0.500000, 1, 0.500000, 0.062500, 0.001953]
+  ok    NOTES: §3 theta table, 2^-j^2   [0.001953, 0.062500, 0.500000, 1, 0.500000, 0.062500, 0.001953]
+  ok    NOTES: §3 the theta law holds to better than 1e-6 at n = 128   [2.3e-08]
+  ok    NOTES: §3 sd of the theta law   [0.8493059610]
+  ok    NOTES: §3 measured sd at n = 512   [0.849305961022908]
+  ok    NOTES: §3 |sd(n) - closed form|   [4.7e−5, 8.0e−9, 1.0e−17, 2.7e−36]
+  ok    NOTES: §3 decimal places   [4, 7, 16, 35]
+  ok    NOTES: §3 the n = 256 error to three digits   [1.05e−17]
+  ok    NOTES: §3 the n = 256 error   [1.047\times10^{-17}]
+  ok    NOTES: §3 closed form to 30 digits   [agrees with $0.849305961022908280743697585694$ in all 30 digits]
+  ok    NOTES: §3 the exact sd at n = 512 agrees in all 30 digits   [0.849305961022908280743697585694]
+  ok    NOTES: §3 log10 errors and their ratios   [-4.3, -8.1, -17.0, -35.6, 1.87, 2.10, 2.09]
+  ok    NOTES: §3 the last ratio   [2.0947]
+  ok    NOTES: §3 c between n = 128 and 256   [0.23]
+  ok    NOTES: §3 1/4 - 2/n   [0.219, 0.234, 0.242]
+  ok    NOTES: §3 measured c   [0.196, 0.230, 0.241]
+  ok    NOTES: §3 deviations of the stored doubles   [2.8e−10, 1.2e−9]
+  ok    NOTES: §3 the stored-double deviations are non-monotone   [4.7e-5, 8.0e-9, 2.8e-10, 1.2e-9]
+
+== NOTES.md §4: Galois numbers ==
+  ok    NOTES: §4 log2(theta/eta)   [2.8820499654]
+  ok    NOTES: §4 log2(theta'/eta)   [2.8820461863]
+  ok    NOTES: §4 theta'   [2.1289312505]
+  ok    NOTES: §4 theta   [2.1289368272]
+  ok    NOTES: §4 eta   [0.2887880951]
+  ok    NOTES: §4 theta/eta   [7.372]
+  ok    NOTES: §4 measured excess, even and odd r   [2.882049965, 2.882046186]
+  ok    NOTES: §4 deviation at r = 32 and 64   [5.2\times10^{-5}, 8.0\times10^{-10}]
+  ok    NOTES: §4 difference of the two limits   [3.8\times10^{-6}]
+  ok    NOTES: §4 1/eta   [3.46275]
+
+== NOTES.md §5: lower bounds for alpha ==
+  ok    NOTES: §5 alpha from e(n)   [0.4487, 0.4790, 0.5039, 0.5275, 0.5487, 0.5671]
+  ok    NOTES: §5 alpha from F_8(n)   [0.4075, 0.5076, 0.5596, 0.5998, 0.6321, 0.6581]
+  ok    NOTES: §5 alpha from B(n)   [0.5463, 0.5711, 0.5972, 0.6232, 0.6467, 0.6673]
+  ok    NOTES: §5 alpha from e(128) to 7 dp   [0.527548]
+  ok    NOTES: §5 alpha from B(512)   [0.667]
+  ok    NOTES: §5 n = 2 forces alpha <= 3/8   [3/8]
+  ok    NOTES: §5 the e(n) row is still rising at the last n   [0.44866410, 0.47901611, 0.50385095, 0.52754815, 0.54868907, 0.56705032]
+  ok    NOTES: §5 the F_8(n) row is still rising at the last n   [0.40750337, 0.50763073, 0.55962264, 0.59981499, 0.63207826, 0.65811967]
+  ok    NOTES: §5 the B(n) row is still rising at the last n   [0.54627414, 0.57107027, 0.59715050, 0.62318360, 0.64671198, 0.66733728]
+
+== NOTES.md §6: the second-order term ==
+  ok    NOTES: §6 pure orbit type j = 1   [printed ['2', '1/4', '1/16', '1/2']]
+  ok    NOTES: §6 pure orbit type j = 2   [printed ['4', '1/4', '1/16', '3/4']]
+  ok    NOTES: §6 pure orbit type j = 3   [printed ['8', '3/16', '9/256', '7/8']]
+  ok    NOTES: §6 pure orbit type j = 4   [printed ['16', '1/8', '1/64', '15/16']]
+  ok    NOTES: §6 Check 1 describes the brute-forced (n, k, j) exactly   [15 triples]
+  ok    NOTES: §6 Check 1 number of brute-forced counts   [15]
+  ok    NOTES: §6 Check 1 O(n) corrections   [0.686, 0.703, 0.712, 1.685, 1.706, 1.717]
+  ok    NOTES: §6 Check 1 corrections for j = 1, to 5 dp   [0.68558, 0.71240]
+  ok    NOTES: §6 Check 2 size 4   [0.735008, 0.804914, 0.857902, 0.897348]
+  ok    NOTES: §6 Check 2 size 2   [0.264883, 0.195086, 0.142098, 0.102652]
+  ok    NOTES: §6 Check 2 size >= 8   [1.0\times10^{-4}, 4.0\times10^{-9}, 2.2\times10^{-18}, 2.6\times10^{-37}]
+  ok    NOTES: §6 Check 2 tolerance and largest error   [2\times10^{-9}, 1.4\times10^{-9}]
+  ok    NOTES: §6 Check 2 where the largest error occurs   [1.4\times10^{-9}, 512]
+  ok    NOTES: §6 Check 2 size >= 8 at n = 64   [1.049\times10^{-4}]
+  ok    NOTES: §6 Check 3 train and test ranges   [96, 296, 400, 496]
+  ok    NOTES: §6 Check 3 basis n^-1/2   [0.74962, 3.3e−5, 6.7e−5]
+  ok    NOTES: §6 Check 3 basis 1/log2^2 n   [0.75598, 1.7e−4, 2.9e−4]
+  ok    NOTES: §6 Check 3 basis 1/log2 n   [0.78532, 1.1e−4, 5.0e−4]
+  ok    NOTES: §6 Check 3 basis n^-1/4   [0.77239, 3.3e−4, 1.1e−3]
+  ok    NOTES: §6 Check 3 basis log2 n / n   [0.74102, 3.9e−4, 1.1e−3]
+  ok    NOTES: §6 Check 3 basis n^-1/2 log2 n   [0.76416, 4.5e−4, 1.2e−3]
+  ok    NOTES: §6 Check 3 basis n^-1   [0.73823, 7.3e−4, 1.9e−3]
+  ok    NOTES: §6 Check 3 rows are in held-out order   [n^-1/2, 1/log2^2 n, 1/log2 n, n^-1/4, log2 n / n, n^-1/2 log2 n, n^-1]
+  ok    NOTES: §6 Check 3 free exponent   [0.48, 0.75057, 5.7\times10^{-4}, 1.6\times10^{-5}]
+  ok    NOTES: §6 Check 3 held-out residuals, 4 digits   [6.749\times10^{-5}, 1.248\times10^{-3}]
+  ok    NOTES: §6 the rejected 1/log2 n basis   [0.785, 0.035]
+  ok    NOTES: §6 epsilon log2 n and epsilon sqrt n   [1.589, 0.924, 2.119, 2.323]
+  ok    NOTES: §6 the off-4 fraction at n = 64   [1.590, 2.120]
+  ok    NOTES: §6 the off-4 fraction gives the same values at 512   [0.9239, 2.3228]
+  ok    NOTES: §6 sqrt 6   [2.449]
+
+== NOTES.md §7: the constants of [RoTr25] Theorem 6 ==
+  ok    NOTES: §7 nu = 1/2 - sqrt3/4   [0.06698729810778]
+  ok    NOTES: §7 that nu solves nu(1 - nu) = 1/16   [residual < 1e-95]
+  ok    NOTES: §7 nu(1/2 - nu) = 1/16 has discriminant 0 and double root 1/4   [discriminant 0, root 1/4]
+  ok    NOTES: §7 improvement factors   [4.000, 3.732]
+
+== NOTES.md §8: small-n data ==
+  ok    NOTES: §8 the strings searched for in [RoTr25]   [the strings "7/8", "0.875" and "extraspecial" do not occur in its text]
+  ok    NOTES: §8 e(n)/f(n)   [0.4667, 0.2949, 0.1863, 0.1165, 0.0809]
+  ok    NOTES: §8 median |H|   [4, 6, 8, 12, 16]
+  ok    NOTES: §8 mean log2|H| / n   [0.474, 0.491, 0.507, 0.500, 0.4999]
+  ok    NOTES: §8 the elementary abelian fraction falls at every n = 4..8
+  ok    NOTES: §8 the Frattini-closed family at n = 8   [40.9, 8.1, 0.4388, 0.2947, 0.4999]
+  ok    NOTES: §8/§9.8 2-subgroups that are not FC, after 'negligible? At $n = 8$'   [3150, 65 054, 4.8]
+  ok    NOTES: §8/§9.8 2-subgroups that are not FC, after 'not FC are negligible;'   [3150, 65 054, 4.8]
+
+== NOTES.md §9.1: the census ==
+  ok    NOTES: §9 census8.py check count   [33]
+  ok    NOTES: §9 block_families.py gate count   [62]
+  ok    NOTES: §9.1 2-subgroups of S_8   [65 054 of them, of which 61 904 are FC. The 3150 that are not have orders 4 (630 of them) ]
+  ok    NOTES: §9.1 FC counts for n <= 7   [(1, 2, 4, 20, 76, 631 and 3417 of them for $n = 1, \dots, 7$)]
+  ok    NOTES: §9.1 every 2-subgroup is FC for n <= 7
+  ok    NOTES: §9.1 census counts by order equal the lattices at every 2-power order, n <= 8
+  ok    NOTES: §9.1 transitive 2-subgroups of S_b   [number 1, 1, 7 and 12 945 for $b = 1, 2, 4, 8$]
+  ok    NOTES: §9.1 classes in degree 8 by order   [The 26 conjugacy classes in degree 8 have orders 8 (5 classes), 16 (6), 32 (8), 64 (6) and]
+  ok    NOTES: §9.1 the [GN] order profile   [8T1–8T5, 8T6–8T11, 8T15–8T22, 8T26–8T31 and 8T35 in [GN]]
+  ok    NOTES: §9.1 [GN] has the census order profile   [[(8, 5), (16, 6), (32, 8), (64, 6), (128, 1)]]
+  ok    NOTES: §9.1 [GN] lists 8T22 as extraspecial, SmallGroup(32,49)
+  ok    NOTES: §9.1 every transitive 2-group of degree b <= 8 has d <= b/2
+  ok    NOTES: §9.1 dense types   [There are 1, 4 and 105 of them in degrees 2, 4 and 8]
+  ok    NOTES: §9.1 the dense 4-types are the regular V4 and three D4
+  ok    NOTES: §9.1 one dense 8-type: order 32, d = 4, |Phi| = 2, |Z| = 2, 19 involutions, 105 conjugates   [(32, 4, 1, 2, 19, 105)]
+  ok    NOTES: §9.1 2^(1+4)_+ has 19 involutions and 2^(1+4)_- has 11
+  ok    NOTES: §9.1 EGF of the dense types   [$\exp(x^2/2 + x^4/6 + x^8/384)$]
+  ok    NOTES: §9.1 block_families.py finds the same dense types
+
+== NOTES.md §9.2: e(n) against G M(n) ==
+  ok    NOTES: §9.2 residuals from the exact integers   [−0.938, −0.566, −0.0412, 5.2e−4, 7.9e−8, 1.0e−16, 2.7e−35]
+  ok    NOTES: §9.2 the odd model   [−1.378, −0.765, −0.0657]
+  ok    NOTES: §9.2 number of stored n >= 128   [49]
+  ok    NOTES: §9.2 largest residual of the stored doubles   [7.9\times10^{-8}, 128]
+  ok    NOTES: §9.2 saddle-point 2-orbit fraction, and the exact one   [0.26288, 0.19433, 0.14182, 0.10255, 0.264883, 0.195086, 0.142098, 0.102652]
+  ok    NOTES: §9.2 sqrt 6 and epsilon sqrt n at 512   [2.449, 2.323]
+  ok    NOTES: §9.2 the §6 fit's n^-1/2 coefficient, and -sqrt6/8   [-0.298, -0.306]
+  ok    NOTES: §9.2 A_local from G M against the stored values   [1.8\times10^{-7}]
+  ok    NOTES: §9.2 the n^-3/2 coefficient from exact M   [0.62799, 0.64695, 0.65982, 0.66864, 0.67473, 0.67897, 0.68192, 0.68905, 0.68892]
+
+== NOTES.md §9.3: the rank law against a random subspace ==
+  ok    NOTES: §9.3 total variation   [9.97e−2, 7.12e−3, 8.40e−5, 1.28e−8, 1.67e−17]
+  ok    NOTES: §9.3 TV 2^(n/4)/n^2   [−7.33, −9.13, −9.54, −8.22, −7.73]
+  ok    NOTES: §9.3 range of the last row   [−9.54, −7.33]
+  ok    NOTES: §9.3 the TV falls by more than 15 orders of magnitude   [5.96e+15]
+  ok    NOTES: §9.3 8 * 168 = |AGL(3,2)| divides 8!
+  ok    NOTES: §9.3 regular (Z/2)^3 embeddings   [$8!/(8\cdot168) = 30$]
+  ok    NOTES: §9.3 weight of one 8-orbit   [$30x^8/8! = x^8/1344$]
+  ok    NOTES: §9.3 the census has 30 regular (Z/2)^3 in S_8   [30]
+  ok    NOTES: §9.3 log2(36/1344)   [-5.2]
+  ok    NOTES: §9.3 the same row for the sd error   [−10.37, −8.91, −8.41, −8.15]
+
+== NOTES.md §9.4: Theorem 9.1 ==
+  ok    NOTES: §9.4 8!/105 = 384
+  ok    NOTES: §9.4 the constant c   [-1.96048]
+  ok    NOTES: §9.4 the bracket is positive exactly from m = 3 (m <= 64)
+  ok    NOTES: §9.4 L(w_4^m) >= G_4m - 15m G_(4m-1), m <= 8
+  ok    NOTES: §9.4 G_r^2 >= 2^(r-1) G_(r-1)^2 for r <= 512
+  ok    NOTES: §9.4 G_4m >= [4m, 2m]_2 >= 2^(4m^2), m <= 32
+  ok    NOTES: §9.4 the bracket and L(w_4^m)/G_4m   [0.00563, 0.669, 0.896, 0.469, 0.765, 0.918]
+  ok    NOTES: §9.4 Stirling remainders of log2 F_8(n)   [-3.2\times10^{-3}, 8.8\times10^{-7}, 1.2\times10^{-7}, 1.5\times10^{-8}]
+  ok    NOTES: §9.4 at n = 256, 512 the remainder is the next Stirling term to three digits   [1.220e-7/1.221e-7, 1.526e-8/1.526e-8]
+  ok    NOTES: §9.4 at n = 64 the remainder is dominated by log2(L/G)   [-3.185e-3 vs -3.140e-3]
+  ok    NOTES: §9.4 where F_8 first exceeds e   [first exceeds $e(n)$ at $n = 24$]
+  ok    NOTES: §9.4 log2(F_8/e)   [4.6, 21.4, 64.8, 170.8, 419.6]
+  ok    NOTES: §9.4 alpha of F_8 at 512, c and c/9   [0.658, 1.96, 0.218]
+  ok    NOTES: §9.4 (1 - 448/453)(1 - 1/2) = 5/906
+  ok    NOTES: §9.4 (1 - 3^2/(4*2^2))/(2*2*log2 4) = 7/128
+  ok    NOTES: §9.4 5/906 is below the printed bound   [5/906 < 0.0056]
+
+== NOTES.md §9.5: Proposition 9.2 ==
+  ok    NOTES: §9.5 7/8 - 3/4 = 1/8
+  ok    NOTES: §9.5 j/2^j is 1/2 for j = 1, 2 and at most 3/8 for 3 <= j <= 256
+  ok    NOTES: §9.5 D^2/4 <= n^2/16 - n delta/8 for D = n/2 - delta, 0 <= delta <= n/2 (n <= 64, delta in Z/8)
+  ok    NOTES: §9.5 [D, k]_2 <= 2^(k(D-k))/eta, D <= 64
+  ok    NOTES: §9.5 the odd-D theta sum is below theta   [theta - theta_odd = 5.58e-6]
+  ok    NOTES: §9.5 theta/eta < 8   [7.3720]
+  ok    NOTES: §9.5 G_D <= (theta/eta) 2^(D^2/4), D <= 512   [max log2 G_D - D^2/4 = 2.882050 < 2.882050]
+  ok    NOTES: §9.5 n_+! 2^(n_+) <= n^(2 n_+) for n_+ <= n <= 64
+  ok    NOTES: §9.5 n^2 <= 2^(n/64) for 2^11 <= n <= 2^13, and not at n = 2^10
+  ok    NOTES: §9.5 n - 128 log2 n is increasing from n = 2^11
+  ok    NOTES: §9.5 Cauchy's bound M(n') <= n'! e^(x^2/2 + x^4/24) x^(-n') at x = n'^(1/4), even n' <= 512
+  ok    NOTES: §9.5 the displayed bound on e(n) holds at n = 8, 16, ..., 512   [7 values of n]
+  ok    NOTES: §9.5 S_4 has exactly one regular V_4   [[1]]
+  ok    NOTES: §9.5 F_2^2 has 3 hyperplanes and F_2^4 has 15
+  ok    NOTES: §9.5 L(w_2^t) >= G_2t - 3t G_(2t-1), t <= 16
+  ok    NOTES: §9.5 the bracket is negative for t <= 4 and positive for 5 <= t <= 64
+  ok    NOTES: §9.5 G_2t >= 2^(t^2), t <= 64
+  ok    NOTES: §9.5 the bracket and L(w_2^t)/G_2t   [−0.061, 0.337, 0.602, 0.459, 0.601, 0.729]
+  ok    NOTES: §9.5 log2(B/e)   [6.2, 14.7, 35.8, 85.7, 200.8, 462.1]
+
+== NOTES.md §9.6: order statistics in the family ==
+  ok    NOTES: §9.6 order statistics, n = 8   [0.4388, 1.050, 0.625, 0.055, 0.282, 0.454, 0.209]
+  ok    NOTES: §9.6 order statistics, n = 16   [0.4162, 1.293, 0.646, 0.013, 0.208, 0.473, 0.306]
+  ok    NOTES: §9.6 order statistics, n = 32   [0.3918, 1.413, 0.594, 7.1e−4, 0.152, 0.491, 0.357]
+  ok    NOTES: §9.6 order statistics, n = 64   [0.3885, 1.584, 0.560, 1.8e−6, 0.099, 0.413, 0.489]
+  ok    NOTES: §9.6 order statistics, n = 128   [0.3875, 1.863, 0.554, 1.7e−11, 0.062, 0.323, 0.615]
+  ok    NOTES: §9.6 order statistics, n = 256   [0.3856, 2.203, 0.551, 2.4e−21, 0.038, 0.245, 0.717]
+  ok    NOTES: §9.6 order statistics, n = 512   [0.3835, 2.610, 0.549, 8.1e−41, 0.023, 0.182, 0.795]
+  ok    NOTES: §9.6 the mean of log2|H|/n falls   [-0.43884079, -0.41618590, -0.39181409, -0.38849450, -0.38750065, -0.38559738, -0.38350604]
+  ok    NOTES: §9.6 the identity's coefficients phibar_b/b are 0, 3/16, 1/8
+  ok    NOTES: §9.6 3/8 = 1/4 + (1/8) log2|Phi(8T22)|
+  ok    NOTES: §9.6 the saddle equation y + 2y^2/3 + y^4/48 = n, from the dense EGF
+  ok    NOTES: §9.6 block_families.py: mean log2|Phi| of the dense 8-types is 1
+  ok    NOTES: §9.6 the dense-identity gap   [0.078, 0.0052, 5.2\times10^{-10}, 1.4\times10^{-19}, 8.2\times10^{-39}]
+  ok    NOTES: §9.6 log2 B - log2 G - log2 B*   [5.1\times10^{-8}, 2.9\times10^{-17}, 3.7\times10^{-36}]
+  ok    NOTES: §9.6 the saddle point at n = 512 and its orbit fractions   [11.8225, 0.0231, 0.1820, 0.7949, 0.0231, 0.1823, 0.7945]
+  ok    NOTES: §9.6 E log2|H| - 3n/8: y^2/24 - y/8, then exact   [0.845, 1.586, 2.701, 4.346, 0.864, 1.600, 2.713, 4.355]
+  ok    NOTES: §9.6 sd: the §3 variance, the heuristic, exact, and the shortfall   [0.7213, 1.541, 1.835, 2.184, 2.598, 1.584, 1.863, 2.203, 2.610, 0.042, 0.012]
+  ok    NOTES: §9.6 the shortfall falls along n = 64..512   [0.0421, 0.0279, 0.0187, 0.0125]
+  ok    NOTES: §9.6 sqrt(48)/24 = 1/sqrt(12)
+  ok    NOTES: §9.6 the sd constant 48^(1/4) 24^(-1/2)   [0.5373]
+  ok    NOTES: §9.6 the mean's excess over 3n/8 per n, n = 512   [0.0085]
+
+== NOTES.md §9.7: odd n ==
+  ok    NOTES: §9.7 log2(S3/B), odd n   [−0.872, −0.648, −0.288, 0.072, 0.396, 0.696, 0.979]
+  ok    NOTES: §9.7 log2(y/6)   [−1.124, −0.687, −0.291, 0.066, 0.391, 0.693, 0.978]
+  ok    NOTES: §9.7 S3 gains on B along odd n   [-0.87150139, -0.64804628, -0.28813655, 0.072118755, 0.39563324, 0.69587358, 0.97913334]
+  ok    NOTES: §9.7 w_1(z) = z - 1
+  ok    NOTES: §9.7 log2(S3/B), even n, and per n/4   [−1.896, −2.911, −5.762, −13.027, −28.379, −59.776, −123.205, −0.948, −0.728, −0.720, −0.814, −0.887, −0.934, −0.963]
+  ok    NOTES: §9.7 b/4 + 2 <= 3b/8 exactly when b >= 16 (b = 2..2^20)
+
+== NOTES.md §9.8: Conjecture 9.3 ==
+  ok    NOTES: §9.8 one transitive 2-group of degree 1 and one of degree 2
+  ok    NOTES: §9.8 the EGF of the orbit data   [\exp(x + x^2/2 + 7x^4/24 + 12945x^8/8!)]
+  ok    NOTES: §9.8 Cauchy's bound on T(n) at x = n^(1/8), n <= 512
+  ok    NOTES: §9.8 B(n) > F_8(n) for n = 8, 16, ..., 512
+  ok    NOTES: §9.8 |B(n)| + |S3(n)| <= f(n) = A005432(n) for n <= 18
+  ok    NOTES: §9.8 log2 B(n) equals block_families.py to 1e-9, n <= 18
+  ok    NOTES: §9.8 shares of f, n = 6   [0.1863, 0.4337, 0.1512, 0.4151, 0.5324]
+  ok    NOTES: §9.8 shares of f, n = 7   [0.1165, 0.3024, 0.2261, 0.4715, 0.5293]
+  ok    NOTES: §9.8 shares of f, n = 8   [0.0809, 0.4094, 0.1100, 0.4807, 0.5503]
+  ok    NOTES: §9.8 shares of f, n = 9   [0.0479, 0.2831, 0.1547, 0.5621, 0.5479]
+  ok    NOTES: §9.8 shares of f, n = 10   [0.0380, 0.3674, 0.0725, 0.5601, 0.5590]
+  ok    NOTES: §9.8 shares of f, n = 11   [0.0237, 0.2538, 0.1655, 0.5807, 0.5526]
+  ok    NOTES: §9.8 shares of f, n = 12   [0.0181, 0.3618, 0.0672, 0.5710, 0.5649]
+  ok    NOTES: §9.8 shares of f, n = 13   [0.0115, 0.2549, 0.1515, 0.5936, 0.5569]
+  ok    NOTES: §9.8 shares of f, n = 14   [0.0101, 0.3779, 0.0583, 0.5638, 0.5649]
+  ok    NOTES: §9.8 shares of f, n = 15   [0.0062, 0.2476, 0.1694, 0.5830, 0.5575]
+  ok    NOTES: §9.8 shares of f, n = 16   [0.0054, 0.4121, 0.0548, 0.5331, 0.5663]
+  ok    NOTES: §9.8 shares of f, n = 17   [0.0034, 0.2756, 0.1759, 0.5485, 0.5576]
+  ok    NOTES: §9.8 shares of f, n = 18   [0.0031, 0.4544, 0.0486, 0.4970, 0.5658]
+  ok    NOTES: §9.8 the share outside B and S3, in percent   [41.5, 59.4, 49.7]
+  ok    NOTES: §9.8 B/f at n = 12 and 18   [0.362, 0.454]
+  ok    NOTES: §9.8 B/f rises along n = 12, 14, 16, 18   [3832862617/10594925360, 427190905760/1130354938719, 2192570799003771/5320744503742316, 3452746368480422284/7598016157515302757]
+  ok    NOTES: §9.8 B/f along odd n = 7..17   [0.248, 0.302]
+  ok    NOTES: §9.8 f(n) over the recorded formula, even then odd n   [1.21, 1.40, 1.82, 2.10, 2.24, 2.27, 2.19, 0.75, 0.69, 0.92, 1.22, 1.45, 1.74, 1.90, 1.95]
+  ok    NOTES: §9.8 the same ratios as block_families.py
+  ok    NOTES: §9.8 alpha_f for 12 <= n <= 18   [0.557, 0.566]
+  ok    NOTES: §9.8 the linear coefficient of §9.4   [-1.96]
+
+== NOTES.md §9.9: the double root, redone ==
+  ok    NOTES: §9.9 order of the ambient group and of its Frattini subgroup   [which has order $2^{5n/8}$ and a Frattini subgroup of order $2^{n/8}$]
+  ok    NOTES: §9.9 the count of FC subgroups of order 2^(nu n)   [$2^{n^2(\nu - 1/8)(5/8 - \nu)}$]
+  ok    NOTES: §9.9 the quadratic, its discriminant and its root   [$(\nu - \tfrac18)(\tfrac58 - \nu) = \tfrac1{16}$ is $\nu^2 - \tfrac34\nu + \tfrac9{64} = 0]
+
+== NOTES.md §10 and the opening paragraphs ==
+  ok    NOTES: opening: alpha from e(128), as the correction quotes it   [0.5275]
+  ok    NOTES: §10 9!   [$9! = 362880$]
+  ok    NOTES: §10 the class-count ratio of n = 9 to n = 8   [1.87]
+  ok    NOTES: §10 the expected n = 9 values   [1694723, 554]
+  ok    NOTES: §10 the stored rows recomputed   [for $n \le 256$ and $n = 512$, 88 of the 119; recomputing the other 31]
+
+== NOTES.md: which decimal numbers were compared ==
+  446 of 465 decimal numbers compared; 9 quoted from first versions, 10 timings, 0 not compared
+  ok    NOTES: every decimal number is compared, or marked as a timing or a first-version value   [465 numbers]
+  ok    NOTES: §10 the number of checks   [381]
+
+381 checks run, 0 failed, 0 skipped
+
+Every check that ran passed.

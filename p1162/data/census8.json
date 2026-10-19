@@ -1,0 +1,638 @@
+{
+ "description": "Brute-force census of 2-subgroups of S_n, n <= 8 (src/census8.py)",
+ "sylow_subgroups": 576,
+ "two_subgroups_by_order": {
+  "1": {
+   "1": 1
+  },
+  "2": {
+   "1": 1,
+   "2": 1
+  },
+  "3": {
+   "1": 1,
+   "2": 3
+  },
+  "4": {
+   "1": 1,
+   "2": 9,
+   "4": 7,
+   "8": 3
+  },
+  "5": {
+   "1": 1,
+   "2": 25,
+   "4": 35,
+   "8": 15
+  },
+  "6": {
+   "1": 1,
+   "2": 75,
+   "4": 255,
+   "8": 255,
+   "16": 45
+  },
+  "7": {
+   "1": 1,
+   "2": 231,
+   "4": 1295,
+   "8": 1575,
+   "16": 315
+  },
+  "8": {
+   "1": 1,
+   "2": 763,
+   "4": 9415,
+   "8": 25335,
+   "16": 19775,
+   "32": 7455,
+   "64": 1995,
+   "128": 315
+  }
+ },
+ "transitive": {
+  "1": {
+   "transitive_total": 1,
+   "classes": [
+    {
+     "order": 1,
+     "d": 0,
+     "log2_phi": 0,
+     "class_size": 1,
+     "centre": 1,
+     "involutions": 0,
+     "exponent": 1,
+     "element_orders": {
+      "1": 1
+     }
+    }
+   ],
+   "count_by_d_log2phi": {
+    "0,0": 1
+   }
+  },
+  "2": {
+   "transitive_total": 1,
+   "classes": [
+    {
+     "order": 2,
+     "d": 1,
+     "log2_phi": 0,
+     "class_size": 1,
+     "centre": 2,
+     "involutions": 1,
+     "exponent": 2,
+     "element_orders": {
+      "1": 1,
+      "2": 1
+     }
+    }
+   ],
+   "count_by_d_log2phi": {
+    "1,0": 1
+   }
+  },
+  "4": {
+   "transitive_total": 7,
+   "classes": [
+    {
+     "order": 4,
+     "d": 1,
+     "log2_phi": 1,
+     "class_size": 3,
+     "centre": 4,
+     "involutions": 1,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 1,
+      "4": 2
+     }
+    },
+    {
+     "order": 4,
+     "d": 2,
+     "log2_phi": 0,
+     "class_size": 1,
+     "centre": 4,
+     "involutions": 3,
+     "exponent": 2,
+     "element_orders": {
+      "1": 1,
+      "2": 3
+     }
+    },
+    {
+     "order": 8,
+     "d": 2,
+     "log2_phi": 1,
+     "class_size": 3,
+     "centre": 2,
+     "involutions": 5,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 5,
+      "4": 2
+     }
+    }
+   ],
+   "count_by_d_log2phi": {
+    "1,1": 3,
+    "2,0": 1,
+    "2,1": 3
+   }
+  },
+  "8": {
+   "transitive_total": 12945,
+   "classes": [
+    {
+     "order": 8,
+     "d": 1,
+     "log2_phi": 2,
+     "class_size": 1260,
+     "centre": 8,
+     "involutions": 1,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 1,
+      "4": 2,
+      "8": 4
+     }
+    },
+    {
+     "order": 8,
+     "d": 2,
+     "log2_phi": 1,
+     "class_size": 210,
+     "centre": 2,
+     "involutions": 1,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 1,
+      "4": 6
+     }
+    },
+    {
+     "order": 8,
+     "d": 2,
+     "log2_phi": 1,
+     "class_size": 630,
+     "centre": 2,
+     "involutions": 5,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 5,
+      "4": 2
+     }
+    },
+    {
+     "order": 8,
+     "d": 2,
+     "log2_phi": 1,
+     "class_size": 630,
+     "centre": 8,
+     "involutions": 3,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 3,
+      "4": 4
+     }
+    },
+    {
+     "order": 8,
+     "d": 3,
+     "log2_phi": 0,
+     "class_size": 30,
+     "centre": 8,
+     "involutions": 7,
+     "exponent": 2,
+     "element_orders": {
+      "1": 1,
+      "2": 7
+     }
+    },
+    {
+     "order": 16,
+     "d": 2,
+     "log2_phi": 2,
+     "class_size": 1260,
+     "centre": 2,
+     "involutions": 5,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 5,
+      "4": 6,
+      "8": 4
+     }
+    },
+    {
+     "order": 16,
+     "d": 2,
+     "log2_phi": 2,
+     "class_size": 1260,
+     "centre": 2,
+     "involutions": 9,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 9,
+      "4": 2,
+      "8": 4
+     }
+    },
+    {
+     "order": 16,
+     "d": 2,
+     "log2_phi": 2,
+     "class_size": 630,
+     "centre": 4,
+     "involutions": 3,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 3,
+      "4": 4,
+      "8": 8
+     }
+    },
+    {
+     "order": 16,
+     "d": 2,
+     "log2_phi": 2,
+     "class_size": 630,
+     "centre": 4,
+     "involutions": 7,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 7,
+      "4": 8
+     }
+    },
+    {
+     "order": 16,
+     "d": 3,
+     "log2_phi": 1,
+     "class_size": 630,
+     "centre": 4,
+     "involutions": 7,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 7,
+      "4": 8
+     }
+    },
+    {
+     "order": 16,
+     "d": 3,
+     "log2_phi": 1,
+     "class_size": 630,
+     "centre": 4,
+     "involutions": 11,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 11,
+      "4": 4
+     }
+    },
+    {
+     "order": 32,
+     "d": 2,
+     "log2_phi": 3,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 11,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 11,
+      "4": 20
+     }
+    },
+    {
+     "order": 32,
+     "d": 2,
+     "log2_phi": 3,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 11,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 11,
+      "4": 20
+     }
+    },
+    {
+     "order": 32,
+     "d": 2,
+     "log2_phi": 3,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 11,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 11,
+      "4": 4,
+      "8": 16
+     }
+    },
+    {
+     "order": 32,
+     "d": 2,
+     "log2_phi": 3,
+     "class_size": 630,
+     "centre": 2,
+     "involutions": 11,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 11,
+      "4": 20
+     }
+    },
+    {
+     "order": 32,
+     "d": 2,
+     "log2_phi": 3,
+     "class_size": 630,
+     "centre": 4,
+     "involutions": 7,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 7,
+      "4": 16,
+      "8": 8
+     }
+    },
+    {
+     "order": 32,
+     "d": 3,
+     "log2_phi": 2,
+     "class_size": 630,
+     "centre": 2,
+     "involutions": 15,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 15,
+      "4": 8,
+      "8": 8
+     }
+    },
+    {
+     "order": 32,
+     "d": 3,
+     "log2_phi": 2,
+     "class_size": 210,
+     "centre": 4,
+     "involutions": 19,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 19,
+      "4": 12
+     }
+    },
+    {
+     "order": 32,
+     "d": 4,
+     "log2_phi": 1,
+     "class_size": 105,
+     "centre": 2,
+     "involutions": 19,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 19,
+      "4": 12
+     }
+    },
+    {
+     "order": 64,
+     "d": 2,
+     "log2_phi": 4,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 19,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 19,
+      "4": 44
+     }
+    },
+    {
+     "order": 64,
+     "d": 2,
+     "log2_phi": 4,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 19,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 19,
+      "4": 28,
+      "8": 16
+     }
+    },
+    {
+     "order": 64,
+     "d": 2,
+     "log2_phi": 4,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 19,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 19,
+      "4": 28,
+      "8": 16
+     }
+    },
+    {
+     "order": 64,
+     "d": 3,
+     "log2_phi": 3,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 27,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 27,
+      "4": 20,
+      "8": 16
+     }
+    },
+    {
+     "order": 64,
+     "d": 3,
+     "log2_phi": 3,
+     "class_size": 105,
+     "centre": 2,
+     "involutions": 27,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 27,
+      "4": 36
+     }
+    },
+    {
+     "order": 64,
+     "d": 3,
+     "log2_phi": 3,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 27,
+     "exponent": 4,
+     "element_orders": {
+      "1": 1,
+      "2": 27,
+      "4": 36
+     }
+    },
+    {
+     "order": 128,
+     "d": 3,
+     "log2_phi": 4,
+     "class_size": 315,
+     "centre": 2,
+     "involutions": 43,
+     "exponent": 8,
+     "element_orders": {
+      "1": 1,
+      "2": 43,
+      "4": 68,
+      "8": 16
+     }
+    }
+   ],
+   "count_by_d_log2phi": {
+    "1,2": 1260,
+    "2,1": 1470,
+    "2,2": 3780,
+    "2,3": 2205,
+    "2,4": 945,
+    "3,0": 30,
+    "3,1": 1260,
+    "3,2": 840,
+    "3,3": 735,
+    "3,4": 315,
+    "4,1": 105
+   }
+  }
+ },
+ "frattini_closed": {
+  "1": {
+   "count": 1,
+   "order_histogram": {
+    "1": 1
+   },
+   "sum_log2_order": 0,
+   "two_subgroups": 1,
+   "elementary_abelian": 1
+  },
+  "2": {
+   "count": 2,
+   "order_histogram": {
+    "1": 1,
+    "2": 1
+   },
+   "sum_log2_order": 1,
+   "two_subgroups": 2,
+   "elementary_abelian": 2
+  },
+  "3": {
+   "count": 4,
+   "order_histogram": {
+    "1": 1,
+    "2": 3
+   },
+   "sum_log2_order": 3,
+   "two_subgroups": 4,
+   "elementary_abelian": 4
+  },
+  "4": {
+   "count": 20,
+   "order_histogram": {
+    "1": 1,
+    "2": 9,
+    "4": 7,
+    "8": 3
+   },
+   "sum_log2_order": 32,
+   "two_subgroups": 20,
+   "elementary_abelian": 14
+  },
+  "5": {
+   "count": 76,
+   "order_histogram": {
+    "1": 1,
+    "2": 25,
+    "4": 35,
+    "8": 15
+   },
+   "sum_log2_order": 140,
+   "two_subgroups": 76,
+   "elementary_abelian": 46
+  },
+  "6": {
+   "count": 631,
+   "order_histogram": {
+    "1": 1,
+    "2": 75,
+    "4": 255,
+    "8": 255,
+    "16": 45
+   },
+   "sum_log2_order": 1530,
+   "two_subgroups": 631,
+   "elementary_abelian": 271
+  },
+  "7": {
+   "count": 3417,
+   "order_histogram": {
+    "1": 1,
+    "2": 231,
+    "4": 1295,
+    "8": 1575,
+    "16": 315
+   },
+   "sum_log2_order": 8806,
+   "two_subgroups": 3417,
+   "elementary_abelian": 1317
+  },
+  "8": {
+   "count": 61904,
+   "order_histogram": {
+    "1": 1,
+    "2": 763,
+    "4": 8785,
+    "8": 22815,
+    "16": 19775,
+    "32": 7455,
+    "64": 1995,
+    "128": 315
+   },
+   "sum_log2_order": 217328,
+   "two_subgroups": 65054,
+   "elementary_abelian": 12239
+  }
+ },
+ "checks_failed": [],
+ "seconds": 7.2
+}

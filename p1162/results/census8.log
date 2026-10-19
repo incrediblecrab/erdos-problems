@@ -1,0 +1,94 @@
+Sylow 2-subgroup of S_8: order 128
+  [pass] Sylow 2-subgroup of S_8 has order 2^7
+subgroups of the Sylow 2-subgroup: 576  (0.0s)
+  [pass] left transversal of S in S_8 has 8!/128 = 315 elements
+2-subgroups of S_8: 65054  (0.5s)
+per-subgroup analysis done (1.1s)
+
+== 2-subgroup totals vs data/lattice_n{n}.json (src/subgroups.c) ==
+  [pass] n=1: 2-subgroups by order {1: 1} match the lattice
+  [pass] n=2: 2-subgroups by order {1: 1, 2: 1} match the lattice
+  [pass] n=3: 2-subgroups by order {1: 1, 2: 3} match the lattice
+  [pass] n=4: 2-subgroups by order {1: 1, 2: 9, 4: 7, 8: 3} match the lattice
+  [pass] n=5: 2-subgroups by order {1: 1, 2: 25, 4: 35, 8: 15} match the lattice
+  [pass] n=6: 2-subgroups by order {1: 1, 2: 75, 4: 255, 8: 255, 16: 45} match the lattice
+  [pass] n=7: 2-subgroups by order {1: 1, 2: 231, 4: 1295, 8: 1575, 16: 315} match the lattice
+  [pass] n=8: 2-subgroups by order {1: 1, 2: 763, 4: 9415, 8: 25335, 16: 19775, 32: 7455, 64: 1995, 128: 315} match the lattice
+
+== conjugacy classes of 2-subgroups vs class_order_histogram in the lattice ==
+  [pass] n=1: 1 S_1-classes of 2-subgroups, by order {1: 1}, match the lattice
+  [pass] n=2: 2 S_2-classes of 2-subgroups, by order {1: 1, 2: 1}, match the lattice
+  [pass] n=3: 2 S_3-classes of 2-subgroups, by order {1: 1, 2: 1}, match the lattice
+  [pass] n=4: 7 S_4-classes of 2-subgroups, by order {1: 1, 2: 2, 4: 3, 8: 1}, match the lattice
+  [pass] n=5: 7 S_5-classes of 2-subgroups, by order {1: 1, 2: 2, 4: 3, 8: 1}, match the lattice
+  [pass] n=6: 19 S_6-classes of 2-subgroups, by order {1: 1, 2: 3, 4: 7, 8: 7, 16: 1}, match the lattice
+  [pass] n=7: 19 S_7-classes of 2-subgroups, by order {1: 1, 2: 3, 4: 7, 8: 7, 16: 1}, match the lattice
+  [pass] n=8: 109 S_8-classes of 2-subgroups, by order {1: 1, 2: 4, 4: 15, 8: 33, 16: 31, 32: 17, 64: 7, 128: 1}, match the lattice
+  (5.6s)
+
+== elementary abelian totals ==
+  [pass] n=1: elementary abelian ranks [1] match elemab.rank_counts
+  [pass] n=2: elementary abelian ranks [1, 1] match elemab.rank_counts
+  [pass] n=3: elementary abelian ranks [1, 3] match elemab.rank_counts
+  [pass] n=4: elementary abelian ranks [1, 9, 4] match elemab.rank_counts
+  [pass] n=5: elementary abelian ranks [1, 25, 20] match elemab.rank_counts
+  [pass] n=6: elementary abelian ranks [1, 75, 165, 30] match elemab.rank_counts
+  [pass] n=7: elementary abelian ranks [1, 231, 875, 210] match elemab.rank_counts
+  [pass] n=8: elementary abelian ranks [1, 763, 6685, 4440, 350] match elemab.rank_counts
+  [pass] n=8 ranks equal NOTES.md [1, 763, 6685, 4440, 350]
+
+== transitive 2-subgroups of S_b ==
+  b=1: 1 transitive 2-subgroups in 1 classes
+     order   1  d=0  |Phi|=2^0  |Z|= 1  involutions=  0  exponent=1  class size 1
+  b=2: 1 transitive 2-subgroups in 1 classes
+     order   2  d=1  |Phi|=2^0  |Z|= 2  involutions=  1  exponent=2  class size 1
+  b=4: 7 transitive 2-subgroups in 3 classes
+     order   4  d=1  |Phi|=2^1  |Z|= 4  involutions=  1  exponent=4  class size 3
+     order   4  d=2  |Phi|=2^0  |Z|= 4  involutions=  3  exponent=2  class size 1
+     order   8  d=2  |Phi|=2^1  |Z|= 2  involutions=  5  exponent=4  class size 3
+  b=8: 12945 transitive 2-subgroups in 26 classes
+     order   8  d=1  |Phi|=2^2  |Z|= 8  involutions=  1  exponent=8  class size 1260
+     order   8  d=2  |Phi|=2^1  |Z|= 2  involutions=  1  exponent=4  class size 210
+     order   8  d=2  |Phi|=2^1  |Z|= 2  involutions=  5  exponent=4  class size 630
+     order   8  d=2  |Phi|=2^1  |Z|= 8  involutions=  3  exponent=4  class size 630
+     order   8  d=3  |Phi|=2^0  |Z|= 8  involutions=  7  exponent=2  class size 30
+     order  16  d=2  |Phi|=2^2  |Z|= 2  involutions=  5  exponent=8  class size 1260
+     order  16  d=2  |Phi|=2^2  |Z|= 2  involutions=  9  exponent=8  class size 1260
+     order  16  d=2  |Phi|=2^2  |Z|= 4  involutions=  3  exponent=8  class size 630
+     order  16  d=2  |Phi|=2^2  |Z|= 4  involutions=  7  exponent=4  class size 630
+     order  16  d=3  |Phi|=2^1  |Z|= 4  involutions=  7  exponent=4  class size 630
+     order  16  d=3  |Phi|=2^1  |Z|= 4  involutions= 11  exponent=4  class size 630
+     order  32  d=2  |Phi|=2^3  |Z|= 2  involutions= 11  exponent=4  class size 315
+     order  32  d=2  |Phi|=2^3  |Z|= 2  involutions= 11  exponent=4  class size 315
+     order  32  d=2  |Phi|=2^3  |Z|= 2  involutions= 11  exponent=8  class size 315
+     order  32  d=2  |Phi|=2^3  |Z|= 2  involutions= 11  exponent=4  class size 630
+     order  32  d=2  |Phi|=2^3  |Z|= 4  involutions=  7  exponent=8  class size 630
+     order  32  d=3  |Phi|=2^2  |Z|= 2  involutions= 15  exponent=8  class size 630
+     order  32  d=3  |Phi|=2^2  |Z|= 4  involutions= 19  exponent=4  class size 210
+     order  32  d=4  |Phi|=2^1  |Z|= 2  involutions= 19  exponent=4  class size 105
+     order  64  d=2  |Phi|=2^4  |Z|= 2  involutions= 19  exponent=4  class size 315
+     order  64  d=2  |Phi|=2^4  |Z|= 2  involutions= 19  exponent=8  class size 315
+     order  64  d=2  |Phi|=2^4  |Z|= 2  involutions= 19  exponent=8  class size 315
+     order  64  d=3  |Phi|=2^3  |Z|= 2  involutions= 27  exponent=8  class size 315
+     order  64  d=3  |Phi|=2^3  |Z|= 2  involutions= 27  exponent=4  class size 105
+     order  64  d=3  |Phi|=2^3  |Z|= 2  involutions= 27  exponent=4  class size 315
+     order 128  d=3  |Phi|=2^4  |Z|= 2  involutions= 43  exponent=8  class size 315
+  [pass] b=4: regular V4 x1 (d=2), C4 x3 (d=1), D8 x3 (d=2)
+  [pass] b=2: C2 x1 (d=1)
+  [pass] every transitive 2-subgroup of S_b has d <= b/2 (McIver-Neumann)
+  [pass] b=8: classes by order 8:5 16:6 32:8 64:6 128:1, as in the TransitiveGroups library
+  [pass] b=8: one class has d = 4, of order 32 with |Z| = 2 and 19 involutions: 8T22 = 2^(1+4)_+
+
+== Frattini-closed 2-subgroups of S_n ==
+  n=1:      1 of      1 2-subgroups are Frattini-closed; orders {1: 1}
+  n=2:      2 of      2 2-subgroups are Frattini-closed; orders {1: 1, 2: 1}
+  n=3:      4 of      4 2-subgroups are Frattini-closed; orders {1: 1, 2: 3}
+  n=4:     20 of     20 2-subgroups are Frattini-closed; orders {1: 1, 2: 9, 4: 7, 8: 3}
+  n=5:     76 of     76 2-subgroups are Frattini-closed; orders {1: 1, 2: 25, 4: 35, 8: 15}
+  n=6:    631 of    631 2-subgroups are Frattini-closed; orders {1: 1, 2: 75, 4: 255, 8: 255, 16: 45}
+  n=7:   3417 of   3417 2-subgroups are Frattini-closed; orders {1: 1, 2: 231, 4: 1295, 8: 1575, 16: 315}
+  n=8:  61904 of  65054 2-subgroups are Frattini-closed; orders {1: 1, 2: 763, 4: 8785, 8: 22815, 16: 19775, 32: 7455, 64: 1995, 128: 315}
+  [pass] every elementary abelian 2-subgroup is Frattini-closed (Phi = 1 on each orbit)
+
+wrote data/census8.json  (7.2s)
+all checks passed
