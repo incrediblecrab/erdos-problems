@@ -1,0 +1,16 @@
+One-off runs of src/brute_count (triple enumeration) against the stored grid_count histograms. Not gate-checked.
+Run September 23, 2026 on an Apple M3 Pro, macOS 27.0, Apple clang 21.0.0 (-O2 -Wall -Wextra), 8 threads, under a perl alarm cap.
+
+command: src/brute_count 200 200 8
+time: real 1682.04 s, user 12016.13 s (load average about 13 on 11 cores)
+brute_count output sha256: 1ccf2fbdf97d41dde8a692221143eec130f2d5e83d38ddba7e93455034172e69
+results/raw/grid_200x200.txt sha256: 1ccf2fbdf97d41dde8a692221143eec130f2d5e83d38ddba7e93455034172e69
+results/lattice.json sha256 for 200x200: 1ccf2fbdf97d41dde8a692221143eec130f2d5e83d38ddba7e93455034172e69
+byte-identical: True; bins: 39601
+
+command: src/brute_count 3 3333 8
+time: real 31.01 s, user 221.84 s
+brute_count output sha256: 0d4d5094318d953ff90a13658c87e813c54035db6614c6c9c7c51f17231adf39
+results/raw/grid_3x3333.txt sha256: 0d4d5094318d953ff90a13658c87e813c54035db6614c6c9c7c51f17231adf39
+results/lattice.json sha256 for 3x3333: 0d4d5094318d953ff90a13658c87e813c54035db6614c6c9c7c51f17231adf39
+byte-identical: True; bins: 6664

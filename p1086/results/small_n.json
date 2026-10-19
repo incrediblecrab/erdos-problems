@@ -1,0 +1,811 @@
+{
+ "exhaustive": [
+  "n=4 box 5x5",
+  "n=5 box 5x5",
+  "n=6 box 5x5",
+  "n=7 box 5x5",
+  "n=8 box 5x5",
+  "n=9 box 5x5",
+  "n=10 box 5x5",
+  "n=4 box 6x6",
+  "n=5 box 6x6",
+  "n=6 box 6x6",
+  "n=7 box 6x6",
+  "n=8 box 6x6",
+  "n=9 box 6x6",
+  "n=10 box 6x6",
+  "n=11 box 6x6",
+  "n=12 box 6x6"
+ ],
+ "anneal": {
+  "runs": 399,
+  "restarts_per_run": 4,
+  "targets": [
+   1,
+   2,
+   3,
+   4,
+   6,
+   8,
+   12
+  ],
+  "passes": [
+   "n=4..16, box 10x10, 1M iterations, seeds 1-3",
+   "n=11..16, box 12x12, 4M iterations, seeds 4-6"
+  ]
+ },
+ "best": [
+  {
+   "n": 4,
+   "method": "exhaustive 5x5",
+   "count": 4,
+   "D": 1,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "upper": 4,
+   "exact": true,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 4,
+    "exhaustive 5x5": 4,
+    "exhaustive 6x6": 4
+   }
+  },
+  {
+   "n": 5,
+   "method": "exhaustive 5x5",
+   "count": 7,
+   "D": 1,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "upper": 7,
+   "exact": true,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 7,
+    "exhaustive 5x5": 7,
+    "exhaustive 6x6": 7
+   }
+  },
+  {
+   "n": 6,
+   "method": "exhaustive 5x5",
+   "count": 12,
+   "D": 1,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "upper": 12,
+   "exact": true,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 12,
+    "exhaustive 5x5": 12,
+    "exhaustive 6x6": 12
+   }
+  },
+  {
+   "n": 7,
+   "method": "exhaustive 5x5",
+   "count": 18,
+   "D": 1,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "upper": 18,
+   "exact": true,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 18,
+    "exhaustive 5x5": 18,
+    "exhaustive 6x6": 18
+   }
+  },
+  {
+   "n": 8,
+   "method": "exhaustive 5x5",
+   "count": 28,
+   "D": 2,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "upper": 28,
+   "exact": true,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 28,
+    "exhaustive 5x5": 28,
+    "exhaustive 6x6": 28
+   }
+  },
+  {
+   "n": 9,
+   "method": "exhaustive 5x5",
+   "count": 36,
+   "D": 2,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ],
+   "upper": 42,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 36,
+    "exhaustive 5x5": 36,
+    "exhaustive 6x6": 36
+   }
+  },
+  {
+   "n": 10,
+   "method": "exhaustive 5x5",
+   "count": 48,
+   "D": 2,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "upper": 60,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "exhaustive 5x5",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 48,
+    "exhaustive 5x5": 48,
+    "exhaustive 6x6": 48
+   }
+  },
+  {
+   "n": 11,
+   "method": "exhaustive 6x6",
+   "count": 60,
+   "D": 2,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "upper": 82,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 60,
+    "anneal 12x12 4M": 60,
+    "exhaustive 6x6": 60
+   }
+  },
+  {
+   "n": 12,
+   "method": "exhaustive 6x6",
+   "count": 74,
+   "D": 2,
+   "points": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     2
+    ]
+   ],
+   "upper": 109,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M",
+    "exhaustive 6x6"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 74,
+    "anneal 12x12 4M": 74,
+    "exhaustive 6x6": 74
+   }
+  },
+  {
+   "n": 13,
+   "method": "anneal 10x10 1M D=2 seed=1",
+   "count": 91,
+   "D": 2,
+   "points": [
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "upper": 141,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 91,
+    "anneal 12x12 4M": 91
+   }
+  },
+  {
+   "n": 14,
+   "method": "anneal 10x10 1M D=2 seed=1",
+   "count": 108,
+   "D": 2,
+   "points": [
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "upper": 179,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 108,
+    "anneal 12x12 4M": 108
+   }
+  },
+  {
+   "n": 15,
+   "method": "anneal 10x10 1M D=2 seed=1",
+   "count": 128,
+   "D": 2,
+   "points": [
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     7,
+     1
+    ]
+   ],
+   "upper": 223,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 128,
+    "anneal 12x12 4M": 128
+   }
+  },
+  {
+   "n": 16,
+   "method": "anneal 10x10 1M D=2 seed=1",
+   "count": 148,
+   "D": 2,
+   "points": [
+    [
+     2,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     5,
+     6
+    ]
+   ],
+   "upper": 274,
+   "exact": false,
+   "methods_reaching_best": [
+    "anneal 10x10 1M",
+    "anneal 12x12 4M"
+   ],
+   "best_by_method": {
+    "anneal 10x10 1M": 148,
+    "anneal 12x12 4M": 148
+   }
+  }
+ ]
+}

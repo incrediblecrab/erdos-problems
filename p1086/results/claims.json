@@ -1,0 +1,125 @@
+{
+ "problem": "Erd\u0151s #1086: g(n) is the largest number of triangles of one nonzero area spanned by n points of the plane",
+ "status": "open: n^2 log log n << g(n) << n^(20/9) [ErPu71, RaSh17]; not solved here",
+ "exact": [
+  {
+   "n": 3,
+   "g": 1,
+   "evidence": "trivial"
+  },
+  {
+   "n": 4,
+   "g": 4,
+   "evidence": "4 triples; a parallelogram attains 4"
+  },
+  {
+   "n": 5,
+   "g": 7,
+   "evidence": "upper: src/g5_certificate.py 8, hand proof NOTES.md section 4; lower: stored configuration"
+  },
+  {
+   "n": 6,
+   "g": 12,
+   "evidence": "upper: src/g6_exact.py with src/g6_brute.py, using g(5) = 7; lower: the 2 x 3 grid"
+  },
+  {
+   "n": 7,
+   "g": 18,
+   "evidence": "upper: src/g7_exact.py with src/g7_box_check.py, NOTES.md section 4; lower: the 2 x 3 grid plus (1,2)"
+  },
+  {
+   "n": 8,
+   "g": 28,
+   "evidence": "upper: averaging from g(7) = 18, floor(8*18/5) = 28; lower: the 3 x 3 grid minus its centre"
+  }
+ ],
+ "small_n": [
+  {
+   "n": 9,
+   "lower": 36,
+   "upper": 42
+  },
+  {
+   "n": 10,
+   "lower": 48,
+   "upper": 60
+  },
+  {
+   "n": 11,
+   "lower": 60,
+   "upper": 82
+  },
+  {
+   "n": 12,
+   "lower": 74,
+   "upper": 109
+  },
+  {
+   "n": 13,
+   "lower": 91,
+   "upper": 141
+  },
+  {
+   "n": 14,
+   "lower": 108,
+   "upper": 179
+  },
+  {
+   "n": 15,
+   "lower": 128,
+   "upper": 223
+  },
+  {
+   "n": 16,
+   "lower": 148,
+   "upper": 274
+  }
+ ],
+ "lattice": [
+  {
+   "a": 100,
+   "b": 100,
+   "n": 10000,
+   "D": 120,
+   "count": 171104688
+  },
+  {
+   "a": 200,
+   "b": 200,
+   "n": 40000,
+   "D": 360,
+   "count": 3007465808
+  },
+  {
+   "a": 400,
+   "b": 400,
+   "n": 160000,
+   "D": 2520,
+   "count": 52665219156
+  },
+  {
+   "a": 800,
+   "b": 800,
+   "n": 640000,
+   "D": 5040,
+   "count": 911639642036
+  }
+ ],
+ "reproduced": {
+  "DST09_T1": {
+   "m": 800,
+   "T1": 249006655884
+  }
+ },
+ "informal": [
+  "Theorem A: for fixed N, T_N(m)/m^4 -> (6/pi^2) sigma(N)/N as m -> infinity (NOTES.md section 3)",
+  "Theorem B: max_N T_N(m) = (6 e^gamma/pi^2 + o(1)) n^2 log log n with n = m^2, so g(n) >= (1.08276... - o(1)) n^2 log log n (NOTES.md section 3)"
+ ],
+ "classification": {
+  "six_points_with_12": [
+   "the 2 x 3 grid",
+   "the affine regular hexagon {+-u, +-v, +-(u-v)}"
+  ],
+  "evidence": "src/g7_exact.py step 2, results/g7_classes.json; cross-checked by src/g7_box_check.py"
+ }
+}
