@@ -1,0 +1,67 @@
+# tracker-and-solver/ and formal/ are local working folders, kept out of this public
+# repository: the tracker carries a private notes layer, and formal/ clones third-party
+# Lean corpora. Their own ignore rules below still apply if they are ever added.
+/tracker-and-solver/
+/formal/
+.erdos-heavy.lock
+*.bak-*
+
+# Regenerable caches produced by tracker-and-solver/scripts/.
+# tracker-and-solver/data/erdos.db is the artifact worth keeping and is committed.
+tracker-and-solver/data/raw/
+tracker-and-solver/data/batches/
+
+# Third-party papers are kept locally, never redistributed -- same rule as
+# p200/refs/ and p1162/refs/. See tracker-and-solver/data/papers/README.md for
+# what they are and where they came from; nothing regenerates them, so do not
+# delete your local copies.
+tracker-and-solver/data/papers/*
+!tracker-and-solver/data/papers/README.md
+
+__pycache__/
+*.pyc
+*.db-wal
+*.db-shm
+
+# p200: third-party sources are fetched, never redistributed (see p200/refs/README.md).
+p200/refs/*
+!p200/refs/README.md
+!p200/refs/fetch.sh
+p200/src/apsearch
+
+# p200/lean: Lake build outputs and the ~7.7 GB Mathlib/formal-conjectures checkout.
+# lake-manifest.json IS committed -- it pins the exact revisions.
+p200/lean/.lake/
+p200/lean-pnt/.lake/
+
+# p200/lean-pnt: Lake build outputs, plus the three modules generated from p200/lean
+# by scripts/sync.sh.  lake-manifest.json IS committed.
+p200/lean-pnt/.lake/
+p200/lean-pnt/Erdos200/Structure.lean
+p200/lean-pnt/Erdos200/Bound.lean
+p200/lean-pnt/Erdos200/Asymptotic.lean
+p200/lean-pnt/*.log
+p200/lean-pnt/run_full.sh
+
+# p1162: third-party sources are fetched, never redistributed (see p1162/refs/README.md).
+p1162/refs/*
+!p1162/refs/README.md
+!p1162/refs/fetch.sh
+p1162/src/subgroups
+
+# p1186: third-party sources are fetched, never redistributed (see p1186/refs/README.md).
+p1186/refs/*
+!p1186/refs/README.md
+!p1186/refs/fetch.sh
+p1186/src/search
+p1186/src/verify_zp
+p1186/src/verify_n
+p1186/src/verify_two
+p1186/src/verify_zm
+p1186/src/__pycache__/
+
+# formal/corpus: third-party Lean corpora are cloned, never redistributed, and
+# _build/ holds the .olean files compiled from them (see formal/corpus/README.md).
+formal/corpus/*
+!formal/corpus/README.md
+!formal/corpus/fetch.sh
