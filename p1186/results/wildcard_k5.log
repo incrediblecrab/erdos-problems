@@ -1,0 +1,4 @@
+re-derived from the stored optima:
+  base  100?0111010001?1101111011?1000101110?0010000
+  free  [3, 14, 25, 36]   (differences [11, 11, 11])
+  agrees with the hard-coded base and free set: True

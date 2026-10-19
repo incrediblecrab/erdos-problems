@@ -1,0 +1,425 @@
+b= 12 f=  2  UNSAT
+b= 12 f=  4  UNSAT
+b= 12 f=  6  UNSAT
+b= 13 f=  1  UNSAT
+b= 14 f=  2  UNSAT
+b= 15 f=  1  UNSAT
+b= 15 f=  3  UNSAT
+b= 15 f=  5  UNSAT
+b= 16 f=  2  UNSAT
+b= 16 f=  4  UNSAT
+b= 16 f=  8  UNSAT
+b= 17 f=  1  UNSAT
+b= 18 f=  2  UNSAT
+b= 18 f=  6  UNSAT
+b= 19 f=  1  UNSAT
+b= 20 f=  2  UNSAT
+b= 20 f=  4  UNSAT
+b= 20 f= 10  UNSAT
+b= 21 f=  1  UNSAT
+b= 21 f=  3  UNSAT
+b= 21 f=  7  UNSAT
+b= 22 f=  2  UNSAT
+b= 23 f=  1  UNSAT
+b= 24 f=  2  UNSAT
+b= 24 f=  4  UNSAT
+b= 24 f=  6  UNSAT
+b= 24 f=  8  UNSAT
+b= 24 f= 12  UNSAT
+b= 25 f=  1  UNSAT
+b= 25 f=  5  UNSAT
+b= 26 f=  2  UNSAT
+b= 27 f=  1  UNSAT
+b= 27 f=  3  UNSAT
+b= 27 f=  9  UNSAT
+b= 28 f=  2  UNSAT
+b= 28 f=  4  UNSAT
+b= 28 f= 14  UNSAT
+b= 29 f=  1  UNSAT
+b= 30 f=  2  UNSAT
+b= 30 f=  6  UNSAT
+b= 30 f= 10  UNSAT
+b= 31 f=  1  UNSAT
+b= 32 f=  2  UNSAT
+b= 32 f=  4  UNSAT
+b= 32 f=  8  UNSAT
+b= 32 f= 16  UNSAT
+b= 33 f=  1  UNSAT
+b= 33 f=  3  UNSAT
+b= 33 f= 11  UNSAT
+b= 34 f=  2  UNSAT
+b= 35 f=  1  UNSAT
+b= 35 f=  5  UNSAT
+b= 35 f=  7  UNSAT
+b= 36 f=  2  UNSAT
+b= 36 f=  4  UNSAT
+b= 36 f=  6  UNSAT
+b= 36 f= 12  UNSAT
+b= 36 f= 18  UNSAT
+b= 37 f=  1  UNSAT
+b= 38 f=  2  UNSAT
+b= 39 f=  1  UNSAT
+b= 39 f=  3  UNSAT
+b= 39 f= 13  UNSAT
+b= 40 f=  2  UNSAT
+b= 40 f=  4  UNSAT
+b= 40 f=  8  UNSAT
+b= 40 f= 10  UNSAT
+b= 40 f= 20  UNSAT
+b= 41 f=  1  UNSAT
+b= 42 f=  2  UNSAT
+b= 42 f=  6  UNSAT
+b= 42 f= 14  UNSAT
+b= 43 f=  1  UNSAT
+b= 44 f=  2  UNSAT
+b= 44 f=  4  UNSAT
+b= 44 f= 22  UNSAT
+b= 45 f=  1  UNSAT
+b= 45 f=  3  UNSAT
+b= 45 f=  5  UNSAT
+b= 45 f=  9  UNSAT
+b= 45 f= 15  UNSAT
+b= 46 f=  2  UNSAT
+b= 47 f=  1  UNSAT
+b= 48 f=  2  UNSAT
+b= 48 f=  4  UNSAT
+b= 48 f=  6  UNSAT
+b= 48 f=  8  UNSAT
+b= 48 f= 12  UNSAT
+b= 48 f= 16  UNSAT
+b= 48 f= 24  UNSAT
+b= 49 f=  1  UNSAT
+b= 49 f=  7  UNSAT
+b= 50 f=  2  UNSAT
+b= 50 f= 10  UNSAT
+b= 51 f=  1  UNSAT
+b= 51 f=  3  UNSAT
+b= 51 f= 17  UNSAT
+b= 52 f=  2  UNSAT
+b= 52 f=  4  UNSAT
+b= 52 f= 26  UNSAT
+b= 53 f=  1  UNSAT
+b= 54 f=  2  UNSAT
+b= 54 f=  6  UNSAT
+b= 54 f= 18  UNSAT
+b= 55 f=  1  UNSAT
+b= 55 f=  5  UNSAT
+b= 55 f= 11  UNSAT
+b= 56 f=  2  UNSAT
+b= 56 f=  4  UNSAT
+b= 56 f=  8  UNSAT
+b= 56 f= 14  UNSAT
+b= 56 f= 28  UNSAT
+b= 57 f=  1  UNSAT
+b= 57 f=  3  UNSAT
+b= 57 f= 19  UNSAT
+b= 58 f=  2  UNSAT
+b= 59 f=  1  UNSAT
+b= 60 f=  2  UNSAT
+b= 60 f=  4  UNSAT
+b= 60 f=  6  UNSAT
+b= 60 f= 10  UNSAT
+b= 60 f= 12  UNSAT
+b= 60 f= 20  UNSAT
+b= 60 f= 30  UNSAT
+b= 61 f=  1  UNSAT
+b= 62 f=  2  UNSAT
+b= 63 f=  1  UNSAT
+b= 63 f=  3  UNSAT
+b= 63 f=  7  UNSAT
+b= 63 f=  9  UNSAT
+b= 63 f= 21  UNSAT
+b= 64 f=  2  UNSAT
+b= 64 f=  4  UNSAT
+b= 64 f=  8  UNSAT
+b= 64 f= 16  UNSAT
+b= 64 f= 32  UNSAT
+b= 65 f=  1  UNSAT
+b= 65 f=  5  UNSAT
+b= 65 f= 13  UNSAT
+b= 66 f=  2  UNSAT
+b= 66 f=  6  UNSAT
+b= 66 f= 22  UNSAT
+b= 67 f=  1  UNSAT
+b= 68 f=  2  UNSAT
+b= 68 f=  4  UNSAT
+b= 68 f= 34  UNSAT
+b= 69 f=  1  UNSAT
+b= 69 f=  3  UNSAT
+b= 69 f= 23  UNSAT
+b= 70 f=  2  UNSAT
+b= 70 f= 10  UNSAT
+b= 70 f= 14  UNSAT
+b= 71 f=  1  UNSAT
+b= 72 f=  2  UNSAT
+b= 72 f=  4  UNSAT
+b= 72 f=  6  UNSAT
+b= 72 f=  8  UNSAT
+b= 72 f= 12  UNSAT
+b= 72 f= 18  UNSAT
+b= 72 f= 24  UNSAT
+b= 72 f= 36  UNSAT
+b= 73 f=  1  UNSAT
+b= 74 f=  2  UNSAT
+b= 75 f=  1  UNSAT
+b= 75 f=  3  UNSAT
+b= 75 f=  5  UNSAT
+b= 75 f= 15  UNSAT
+b= 75 f= 25  UNSAT
+b= 76 f=  2  UNSAT
+b= 76 f=  4  UNSAT
+b= 76 f= 38  UNSAT
+b= 77 f=  1  UNSAT
+b= 77 f=  7  UNSAT
+b= 77 f= 11  UNSAT
+b= 78 f=  2  UNSAT
+b= 78 f=  6  UNSAT
+b= 78 f= 26  UNSAT
+b= 79 f=  1  UNSAT
+b= 80 f=  2  UNSAT
+b= 80 f=  4  UNSAT
+b= 80 f=  8  UNSAT
+b= 80 f= 10  UNSAT
+b= 80 f= 16  UNSAT
+b= 80 f= 20  UNSAT
+b= 80 f= 40  UNSAT
+b= 81 f=  1  UNSAT
+b= 81 f=  3  UNSAT
+b= 81 f=  9  UNSAT
+b= 81 f= 27  UNSAT
+b= 82 f=  2  UNSAT
+b= 83 f=  1  UNSAT
+b= 84 f=  2  UNSAT
+b= 84 f=  4  UNSAT
+b= 84 f=  6  UNSAT
+b= 84 f= 12  UNSAT
+b= 84 f= 14  UNSAT
+b= 84 f= 28  UNSAT
+b= 84 f= 42  UNSAT
+b= 85 f=  1  UNSAT
+b= 85 f=  5  UNSAT
+b= 85 f= 17  UNSAT
+b= 86 f=  2  UNSAT
+b= 87 f=  1  UNSAT
+b= 87 f=  3  UNSAT
+b= 87 f= 29  UNSAT
+b= 88 f=  2  UNSAT
+b= 88 f=  4  UNSAT
+b= 88 f=  8  UNSAT
+b= 88 f= 22  UNSAT
+b= 88 f= 44  UNSAT
+b= 89 f=  1  UNSAT
+b= 90 f=  2  UNSAT
+b= 90 f=  6  UNSAT
+b= 90 f= 10  UNSAT
+b= 90 f= 18  UNSAT
+b= 90 f= 30  UNSAT
+b= 91 f=  1  UNSAT
+b= 91 f=  7  UNSAT
+b= 91 f= 13  UNSAT
+b= 92 f=  2  UNSAT
+b= 92 f=  4  UNSAT
+b= 92 f= 46  UNSAT
+b= 93 f=  1  UNSAT
+b= 93 f=  3  UNSAT
+b= 93 f= 31  UNSAT
+b= 94 f=  2  UNSAT
+b= 95 f=  1  UNSAT
+b= 95 f=  5  UNSAT
+b= 95 f= 19  UNSAT
+b= 96 f=  2  UNSAT
+b= 96 f=  4  UNSAT
+b= 96 f=  6  UNSAT
+b= 96 f=  8  UNSAT
+b= 96 f= 12  UNSAT
+b= 96 f= 16  UNSAT
+b= 96 f= 24  UNSAT
+b= 96 f= 32  UNSAT
+b= 96 f= 48  UNSAT
+b= 97 f=  1  UNSAT
+b= 98 f=  2  UNSAT
+b= 98 f= 14  UNSAT
+b= 99 f=  1  UNSAT
+b= 99 f=  3  UNSAT
+b= 99 f=  9  UNSAT
+b= 99 f= 11  UNSAT
+b= 99 f= 33  UNSAT
+b=100 f=  2  UNSAT
+b=100 f=  4  UNSAT
+b=100 f= 10  UNSAT
+b=100 f= 20  UNSAT
+b=100 f= 50  UNSAT
+b=101 f=  1  UNSAT
+b=102 f=  2  UNSAT
+b=102 f=  6  UNSAT
+b=102 f= 34  UNSAT
+b=103 f=  1  UNSAT
+b=104 f=  2  UNSAT
+b=104 f=  4  UNSAT
+b=104 f=  8  UNSAT
+b=104 f= 26  UNSAT
+b=104 f= 52  UNSAT
+b=105 f=  1  UNSAT
+b=105 f=  3  UNSAT
+b=105 f=  5  UNSAT
+b=105 f=  7  UNSAT
+b=105 f= 15  UNSAT
+b=105 f= 21  UNSAT
+b=105 f= 35  UNSAT
+b=106 f=  2  UNSAT
+b=107 f=  1  UNSAT
+b=108 f=  2  UNSAT
+b=108 f=  4  UNSAT
+b=108 f=  6  UNSAT
+b=108 f= 12  UNSAT
+b=108 f= 18  UNSAT
+b=108 f= 36  UNSAT
+b=108 f= 54  UNSAT
+b=109 f=  1  UNSAT
+b=110 f=  2  UNSAT
+b=110 f= 10  UNSAT
+b=110 f= 22  UNSAT
+b=111 f=  1  UNSAT
+b=111 f=  3  UNSAT
+b=111 f= 37  UNSAT
+b=112 f=  2  UNSAT
+b=112 f=  4  UNSAT
+b=112 f=  8  UNSAT
+b=112 f= 14  UNSAT
+b=112 f= 16  UNSAT
+b=112 f= 28  UNSAT
+b=112 f= 56  UNSAT
+b=113 f=  1  UNSAT
+b=114 f=  2  UNSAT
+b=114 f=  6  UNSAT
+b=114 f= 38  UNSAT
+b=115 f=  1  UNSAT
+b=115 f=  5  UNSAT
+b=115 f= 23  UNSAT
+b=116 f=  2  UNSAT
+b=116 f=  4  UNSAT
+b=116 f= 58  UNSAT
+b=117 f=  1  UNSAT
+b=117 f=  3  UNSAT
+b=117 f=  9  UNSAT
+b=117 f= 13  UNSAT
+b=117 f= 39  UNSAT
+b=118 f=  2  UNSAT
+b=119 f=  1  UNSAT
+b=119 f=  7  UNSAT
+b=119 f= 17  UNSAT
+b=120 f=  2  UNSAT
+b=120 f=  4  UNSAT
+b=120 f=  6  UNSAT
+b=120 f=  8  UNSAT
+b=120 f= 10  UNSAT
+b=120 f= 12  UNSAT
+b=120 f= 20  UNSAT
+b=120 f= 24  UNSAT
+b=120 f= 30  UNSAT
+b=120 f= 40  UNSAT
+b=120 f= 60  UNSAT
+b=121 f=  1  UNSAT
+b=121 f= 11  UNSAT
+b=122 f=  2  UNSAT
+b=123 f=  1  UNSAT
+b=123 f=  3  UNSAT
+b=123 f= 41  UNSAT
+b=124 f=  2  UNSAT
+b=124 f=  4  UNSAT
+b=124 f= 62  UNSAT
+b=125 f=  1  UNSAT
+b=125 f=  5  UNSAT
+b=125 f= 25  UNSAT
+b=126 f=  2  UNSAT
+b=126 f=  6  UNSAT
+b=126 f= 14  UNSAT
+b=126 f= 18  UNSAT
+b=126 f= 42  UNSAT
+b=127 f=  1  UNSAT
+b=128 f=  2  UNSAT
+b=128 f=  4  UNSAT
+b=128 f=  8  UNSAT
+b=128 f= 16  UNSAT
+b=128 f= 32  UNSAT
+b=128 f= 64  UNSAT
+b=129 f=  1  UNSAT
+b=129 f=  3  UNSAT
+b=129 f= 43  UNSAT
+b=130 f=  2  UNSAT
+b=130 f= 10  UNSAT
+b=130 f= 26  UNSAT
+b=131 f=  1  UNSAT
+b=132 f=  2  UNSAT
+b=132 f=  4  UNSAT
+b=132 f=  6  UNSAT
+b=132 f= 12  UNSAT
+b=132 f= 22  UNSAT
+b=132 f= 44  UNSAT
+b=132 f= 66  UNSAT
+b=133 f=  1  UNSAT
+b=133 f=  7  UNSAT
+b=133 f= 19  UNSAT
+b=134 f=  2  UNSAT
+b=135 f=  1  UNSAT
+b=135 f=  3  UNSAT
+b=135 f=  5  UNSAT
+b=135 f=  9  UNSAT
+b=135 f= 15  UNSAT
+b=135 f= 27  UNSAT
+b=135 f= 45  UNSAT
+b=136 f=  2  UNSAT
+b=136 f=  4  UNSAT
+b=136 f=  8  UNSAT
+b=136 f= 34  UNSAT
+b=136 f= 68  UNSAT
+b=137 f=  1  UNSAT
+b=138 f=  2  UNSAT
+b=138 f=  6  UNSAT
+b=138 f= 46  UNSAT
+b=139 f=  1  UNSAT
+b=140 f=  2  UNSAT
+b=140 f=  4  UNSAT
+b=140 f= 10  UNSAT
+b=140 f= 14  UNSAT
+b=140 f= 20  UNSAT
+b=140 f= 28  UNSAT
+b=140 f= 70  UNSAT
+b=141 f=  1  UNSAT
+b=141 f=  3  UNSAT
+b=141 f= 47  UNSAT
+b=142 f=  2  UNSAT
+b=143 f=  1  UNSAT
+b=143 f= 11  UNSAT
+b=143 f= 13  UNSAT
+b=144 f=  2  UNSAT
+b=144 f=  4  UNSAT
+b=144 f=  6  UNSAT
+b=144 f=  8  UNSAT
+b=144 f= 12  UNSAT
+b=144 f= 16  UNSAT
+b=144 f= 18  UNSAT
+b=144 f= 24  UNSAT
+b=144 f= 36  UNSAT
+b=144 f= 48  UNSAT
+b=144 f= 72  UNSAT
+b=145 f=  1  UNSAT
+b=145 f=  5  UNSAT
+b=145 f= 29  UNSAT
+b=146 f=  2  UNSAT
+b=147 f=  1  UNSAT
+b=147 f=  3  UNSAT
+b=147 f=  7  UNSAT
+b=147 f= 21  UNSAT
+b=147 f= 49  UNSAT
+b=148 f=  2  UNSAT
+b=148 f=  4  UNSAT
+b=148 f= 74  UNSAT
+b=149 f=  1  UNSAT
+b=150 f=  2  UNSAT
+b=150 f=  6  UNSAT
+b=150 f= 10  UNSAT
+b=150 f= 30  UNSAT
+b=150 f= 50  UNSAT
+k=4  b in 2-150  b+f > 12:  FORCED=190  UNSAT=423
+no base found above b+f=12

@@ -1,0 +1,432 @@
+{
+ "100": {
+  "k": 5,
+  "m": 100,
+  "status": "UNSAT"
+ },
+ "101": {
+  "k": 5,
+  "m": 101,
+  "status": "UNSAT"
+ },
+ "102": {
+  "k": 5,
+  "m": 102,
+  "status": "UNSAT"
+ },
+ "103": {
+  "k": 5,
+  "m": 103,
+  "status": "UNSAT"
+ },
+ "104": {
+  "k": 5,
+  "m": 104,
+  "status": "UNSAT"
+ },
+ "105": {
+  "k": 5,
+  "m": 105,
+  "status": "UNSAT"
+ },
+ "106": {
+  "k": 5,
+  "m": 106,
+  "status": "UNSAT"
+ },
+ "107": {
+  "k": 5,
+  "m": 107,
+  "status": "UNSAT"
+ },
+ "108": {
+  "k": 5,
+  "m": 108,
+  "status": "UNSAT"
+ },
+ "109": {
+  "k": 5,
+  "m": 109,
+  "status": "UNSAT"
+ },
+ "110": {
+  "k": 5,
+  "m": 110,
+  "status": "UNSAT"
+ },
+ "111": {
+  "k": 5,
+  "m": 111,
+  "status": "UNSAT"
+ },
+ "112": {
+  "k": 5,
+  "m": 112,
+  "status": "UNSAT"
+ },
+ "113": {
+  "k": 5,
+  "m": 113,
+  "status": "UNSAT"
+ },
+ "114": {
+  "k": 5,
+  "m": 114,
+  "status": "UNSAT"
+ },
+ "115": {
+  "k": 5,
+  "m": 115,
+  "status": "UNSAT"
+ },
+ "116": {
+  "k": 5,
+  "m": 116,
+  "status": "UNSAT"
+ },
+ "117": {
+  "k": 5,
+  "m": 117,
+  "status": "UNSAT"
+ },
+ "118": {
+  "k": 5,
+  "m": 118,
+  "status": "UNSAT"
+ },
+ "119": {
+  "k": 5,
+  "m": 119,
+  "status": "UNSAT"
+ },
+ "120": {
+  "k": 5,
+  "m": 120,
+  "status": "UNSAT"
+ },
+ "121": {
+  "k": 5,
+  "m": 121,
+  "status": "UNSAT"
+ },
+ "122": {
+  "k": 5,
+  "m": 122,
+  "status": "UNSAT"
+ },
+ "123": {
+  "k": 5,
+  "m": 123,
+  "status": "UNSAT"
+ },
+ "124": {
+  "k": 5,
+  "m": 124,
+  "status": "UNSAT"
+ },
+ "125": {
+  "k": 5,
+  "m": 125,
+  "status": "UNSAT"
+ },
+ "126": {
+  "k": 5,
+  "m": 126,
+  "status": "UNSAT"
+ },
+ "127": {
+  "k": 5,
+  "m": 127,
+  "status": "UNSAT"
+ },
+ "128": {
+  "k": 5,
+  "m": 128,
+  "status": "UNSAT"
+ },
+ "129": {
+  "k": 5,
+  "m": 129,
+  "status": "UNSAT"
+ },
+ "130": {
+  "k": 5,
+  "m": 130,
+  "status": "UNSAT"
+ },
+ "45": {
+  "k": 5,
+  "m": 45,
+  "status": "UNSAT"
+ },
+ "46": {
+  "k": 5,
+  "m": 46,
+  "status": "UNSAT"
+ },
+ "47": {
+  "k": 5,
+  "m": 47,
+  "status": "UNSAT"
+ },
+ "48": {
+  "k": 5,
+  "m": 48,
+  "status": "UNSAT"
+ },
+ "49": {
+  "k": 5,
+  "m": 49,
+  "status": "UNSAT"
+ },
+ "50": {
+  "k": 5,
+  "m": 50,
+  "status": "UNSAT"
+ },
+ "51": {
+  "k": 5,
+  "m": 51,
+  "status": "UNSAT"
+ },
+ "52": {
+  "k": 5,
+  "m": 52,
+  "status": "UNSAT"
+ },
+ "53": {
+  "k": 5,
+  "m": 53,
+  "status": "UNSAT"
+ },
+ "54": {
+  "k": 5,
+  "m": 54,
+  "status": "UNSAT"
+ },
+ "55": {
+  "k": 5,
+  "m": 55,
+  "status": "UNSAT"
+ },
+ "56": {
+  "k": 5,
+  "m": 56,
+  "status": "UNSAT"
+ },
+ "57": {
+  "k": 5,
+  "m": 57,
+  "status": "UNSAT"
+ },
+ "58": {
+  "k": 5,
+  "m": 58,
+  "status": "UNSAT"
+ },
+ "59": {
+  "k": 5,
+  "m": 59,
+  "status": "UNSAT"
+ },
+ "60": {
+  "k": 5,
+  "m": 60,
+  "status": "UNSAT"
+ },
+ "61": {
+  "k": 5,
+  "m": 61,
+  "status": "UNSAT"
+ },
+ "62": {
+  "k": 5,
+  "m": 62,
+  "status": "UNSAT"
+ },
+ "63": {
+  "k": 5,
+  "m": 63,
+  "status": "UNSAT"
+ },
+ "64": {
+  "k": 5,
+  "m": 64,
+  "status": "UNSAT"
+ },
+ "65": {
+  "k": 5,
+  "m": 65,
+  "status": "UNSAT"
+ },
+ "66": {
+  "k": 5,
+  "m": 66,
+  "status": "UNSAT"
+ },
+ "67": {
+  "k": 5,
+  "m": 67,
+  "status": "UNSAT"
+ },
+ "68": {
+  "k": 5,
+  "m": 68,
+  "status": "UNSAT"
+ },
+ "69": {
+  "k": 5,
+  "m": 69,
+  "status": "UNSAT"
+ },
+ "70": {
+  "k": 5,
+  "m": 70,
+  "status": "UNSAT"
+ },
+ "71": {
+  "k": 5,
+  "m": 71,
+  "status": "UNSAT"
+ },
+ "72": {
+  "k": 5,
+  "m": 72,
+  "status": "UNSAT"
+ },
+ "73": {
+  "k": 5,
+  "m": 73,
+  "status": "UNSAT"
+ },
+ "74": {
+  "k": 5,
+  "m": 74,
+  "status": "UNSAT"
+ },
+ "75": {
+  "k": 5,
+  "m": 75,
+  "status": "UNSAT"
+ },
+ "76": {
+  "k": 5,
+  "m": 76,
+  "status": "UNSAT"
+ },
+ "77": {
+  "k": 5,
+  "m": 77,
+  "status": "UNSAT"
+ },
+ "78": {
+  "k": 5,
+  "m": 78,
+  "status": "UNSAT"
+ },
+ "79": {
+  "k": 5,
+  "m": 79,
+  "status": "UNSAT"
+ },
+ "80": {
+  "k": 5,
+  "m": 80,
+  "status": "UNSAT"
+ },
+ "81": {
+  "k": 5,
+  "m": 81,
+  "status": "UNSAT"
+ },
+ "82": {
+  "k": 5,
+  "m": 82,
+  "status": "UNSAT"
+ },
+ "83": {
+  "k": 5,
+  "m": 83,
+  "status": "UNSAT"
+ },
+ "84": {
+  "k": 5,
+  "m": 84,
+  "status": "UNSAT"
+ },
+ "85": {
+  "k": 5,
+  "m": 85,
+  "status": "UNSAT"
+ },
+ "86": {
+  "k": 5,
+  "m": 86,
+  "status": "UNSAT"
+ },
+ "87": {
+  "k": 5,
+  "m": 87,
+  "status": "UNSAT"
+ },
+ "88": {
+  "k": 5,
+  "m": 88,
+  "status": "UNSAT"
+ },
+ "89": {
+  "k": 5,
+  "m": 89,
+  "status": "UNSAT"
+ },
+ "90": {
+  "k": 5,
+  "m": 90,
+  "status": "UNSAT"
+ },
+ "91": {
+  "k": 5,
+  "m": 91,
+  "status": "UNSAT"
+ },
+ "92": {
+  "k": 5,
+  "m": 92,
+  "status": "UNSAT"
+ },
+ "93": {
+  "k": 5,
+  "m": 93,
+  "status": "UNSAT"
+ },
+ "94": {
+  "k": 5,
+  "m": 94,
+  "status": "UNSAT"
+ },
+ "95": {
+  "k": 5,
+  "m": 95,
+  "status": "UNSAT"
+ },
+ "96": {
+  "k": 5,
+  "m": 96,
+  "status": "UNSAT"
+ },
+ "97": {
+  "k": 5,
+  "m": 97,
+  "status": "UNSAT"
+ },
+ "98": {
+  "k": 5,
+  "m": 98,
+  "status": "UNSAT"
+ },
+ "99": {
+  "k": 5,
+  "m": 99,
+  "status": "UNSAT"
+ }
+}

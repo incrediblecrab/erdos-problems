@@ -1,0 +1,28 @@
+# safesat.py --self-test, then the planted defect: symmetry_maps() replaced by random permutations of the free positions, as many as the real group has; the self-test must then fail
+$ python src/safesat.py --self-test
+self-test: 588 instances (24 SAT); symmetry breaking agrees on 588
+self-test: planted non-symmetries turn 13 of 24 SAT instances UNSAT
+real 7.03
+user 6.95
+sys 0.05
+exit=0
+$ python -  # import safesat; safesat.symmetry_maps = <random permutations fixing F, same count, seed 1186>; safesat.self_test()
+self-test: 588 instances (24 SAT); symmetry breaking agrees on 578
+self-test: planted non-symmetries turn 13 of 24 SAT instances UNSAT
+self-test failed
+real 7.24
+user 7.18
+sys 0.05
+exit=1
+# the (k, b, f) of every stored base with k <= 6 must stay SAT under symmetry breaking, with both solvers; decide() re-checks each model with violations() and cosetprobe.safe_coset
+$ python -  # import safesat; safesat.decide(k, b, f, symbreak=24, solver=s) for s in cadical153, kissat404
+k=4 b= 11 f=1  --symbreak 24 --solver cadical153  SAT  (0.0 s)
+k=4 b= 11 f=1  --symbreak 24 --solver kissat404   SAT  (0.0 s)
+k=5 b= 37 f=1  --symbreak 24 --solver cadical153  SAT  (0.0 s)
+k=5 b= 37 f=1  --symbreak 24 --solver kissat404   SAT  (0.0 s)
+k=5 b= 44 f=4  --symbreak 24 --solver cadical153  SAT  (0.0 s)
+k=5 b= 44 f=4  --symbreak 24 --solver kissat404   SAT  (0.0 s)
+k=6 b= 86 f=2  --symbreak 24 --solver cadical153  SAT  (0.0 s)
+k=6 b= 86 f=2  --symbreak 24 --solver kissat404   SAT  (0.0 s)
+k=6 b=226 f=2  --symbreak 24 --solver cadical153  SAT  (0.2 s)
+k=6 b=226 f=2  --symbreak 24 --solver kissat404   SAT  (0.2 s)

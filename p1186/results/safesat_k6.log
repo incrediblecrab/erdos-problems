@@ -1,0 +1,86 @@
+# merged from 7 shards; lines below are rendered from results/safesat_k6.json in safesat.py's output format
+$ python src/safesat.py 6 150-226 --above 228 --store safesat_k6.json   # stopped by hand during 221/13 after 70 min; 150-220 decided
+$ python src/safesat.py 6 222 --above 228 --budget 20000000 --store safesat_k6_b222.json
+$ python src/safesat.py 6 224 --above 228 --budget 20000000 --store safesat_k6_b224.json
+$ python src/safesat.py 6 225 --above 228 --budget 20000000 --store safesat_k6_b225.json
+$ python src/safesat.py 6 226 --above 228 --store safesat_k6_b226.json   # b=223 is prime, so it has no candidate
+$ python src/safesat.py 6 221 --above 228 --f 13 --symbreak 24 --solver cadical195   # 1763 s
+$ python src/safesat.py 6 221 --above 228 --f 17 --symbreak 24 --solver kissat404   # 2356 s
+# also run, not merged into results/safesat_k6.json:
+# $ python src/safesat.py 6 221 --above 228 --budget 20000000   # 221/13 UNKNOWN at the conflict budget; stopped by hand during 221/17
+# $ python src/safesat.py 6 221 --above 228 --f 17 --symbreak 24 --solver cadical195   # UNSAT, 2593 s; second solver for 221/17
+# $ python src/safesat.py 6 221 --above 228 --f 13 --symbreak 24 --solver kissat404   # stopped by hand after 72 min without an answer, so 221/13 rests on cadical195 alone
+b=156 f= 78  UNSAT
+b=160 f= 80  UNSAT
+b=164 f= 82  UNSAT
+b=168 f= 84  UNSAT
+b=172 f= 86  UNSAT
+b=174 f= 58  UNSAT
+b=176 f= 88  UNSAT
+b=177 f= 59  UNSAT
+b=180 f= 60  UNSAT
+b=180 f= 90  UNSAT
+b=183 f= 61  UNSAT
+b=184 f= 46  UNSAT
+b=184 f= 92  UNSAT
+b=186 f= 62  UNSAT
+b=188 f= 94  UNSAT
+b=189 f= 63  UNSAT
+b=192 f= 48  UNSAT
+b=192 f= 64  UNSAT
+b=192 f= 96  UNSAT
+b=195 f= 39  UNSAT
+b=195 f= 65  UNSAT
+b=196 f= 98  UNSAT
+b=198 f= 66  UNSAT
+b=200 f= 40  UNSAT
+b=200 f= 50  UNSAT
+b=200 f=100  UNSAT
+b=201 f= 67  UNSAT
+b=203 f= 29  UNSAT
+b=204 f= 34  UNSAT
+b=204 f= 68  UNSAT
+b=204 f=102  UNSAT
+b=205 f= 41  UNSAT
+b=207 f= 23  UNSAT
+b=207 f= 69  UNSAT
+b=208 f= 26  UNSAT
+b=208 f= 52  UNSAT
+b=208 f=104  UNSAT
+b=210 f= 30  UNSAT
+b=210 f= 42  UNSAT
+b=210 f= 70  UNSAT
+b=212 f=106  UNSAT
+b=213 f= 71  UNSAT
+b=215 f= 43  UNSAT
+b=216 f= 18  UNSAT
+b=216 f= 24  UNSAT
+b=216 f= 36  UNSAT
+b=216 f= 54  UNSAT
+b=216 f= 72  UNSAT
+b=216 f=108  UNSAT
+b=217 f= 31  UNSAT
+b=219 f= 73  UNSAT
+b=220 f= 10  UNSAT
+b=220 f= 20  UNSAT
+b=220 f= 22  UNSAT
+b=220 f= 44  UNSAT
+b=220 f=110  UNSAT
+b=221 f= 13  UNSAT   (symbreak 24, cadical195)
+b=221 f= 17  UNSAT   (symbreak 24, kissat404)
+b=222 f= 74  UNSAT
+b=224 f=  8  UNSAT
+b=224 f= 14  UNSAT
+b=224 f= 16  UNSAT
+b=224 f= 28  UNSAT
+b=224 f= 32  UNSAT
+b=224 f= 56  UNSAT
+b=224 f=112  UNSAT
+b=225 f=  5  UNSAT
+b=225 f=  9  UNSAT
+b=225 f= 15  UNSAT
+b=225 f= 25  UNSAT
+b=225 f= 45  UNSAT
+b=225 f= 75  UNSAT
+k=6  b in 150-226  b+f > 228:  FORCED=31  UNSAT=72
+no base found above b+f=228

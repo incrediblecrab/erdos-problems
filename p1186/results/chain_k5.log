@@ -1,0 +1,6 @@
+  + src/chain.py --k 5 --b 44 --f 4 --r 3
+base   m=44  Phi=1/44=0.0227272727   coset f=4 r=3  safe=True (0 dangerous APs)
+chain  m=484  Phi=111/5324=0.0208489857
+       recursion predicts 111/5324=0.0208489857   MATCH
+       delta_5 <= 111/42592 = 0.0026061232
+       chain fixed point 1/(b+f) = 1/48 -> delta_5 <= 1/384 = 0.0026041667 (limit, NOTES.md section 3.1)

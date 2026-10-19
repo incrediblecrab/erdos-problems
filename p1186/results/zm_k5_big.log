@@ -1,0 +1,15 @@
+seed  m=44  Phi=1/44 = 0.022727272727
+      seed re-certified exactly
+
+m=88  tiled seed Phi=1/44 = 0.022727272727  (tiling must preserve Phi: yes)
+    start 0: Phi=21/968 = 0.021694214876  *
+  m=88    BEST Phi=21/968           = 0.021694214876   delta_5 <= 21/7744 = 0.002711776860   [127s]
+    IMPROVES on the m=44 seed
+
+m=132  tiled seed Phi=1/44 = 0.022727272727  (tiling must preserve Phi: yes)
+    start 0: Phi=31/1452 = 0.021349862259  *
+  m=132   BEST Phi=31/1452          = 0.021349862259   delta_5 <= 31/11616 = 0.002668732782   [276s]
+    IMPROVES on the m=44 seed
+
+m=176  tiled seed Phi=1/44 = 0.022727272727  (tiling must preserve Phi: yes)
+    start 0: Phi=15/704 = 0.021306818182  *

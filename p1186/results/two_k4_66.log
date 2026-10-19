@@ -1,0 +1,3 @@
+NEW m=66 B=  2 vars= 132 terms=   17105  365/26136          0.013965412  0.6703x random 1.0055x published  [409s]
+NEW m=66 B=  3 vars= 198 terms=   44913  547/39204          0.013952658  0.6697x random 1.0046x published  [716s]
+NEW m=66 B=  4 vars= 264 terms=   77077  2917/209088        0.013951064  0.6697x random 1.0045x published  [1339s]

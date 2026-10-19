@@ -1,0 +1,11 @@
+# one level of the recursion on the k=6 base Z_226 (f=2, r=0, results/safebase_k6.json): t = 113, lifted to Z_25538 by src/chain.py:build. The theorem (NOTES.md section 3.1) predicts #mono = (b-f) t^2 + #mono(Z_226, h) = 224*113^2 + #mono(Z_226, h).
+# h = the stored base word (cyclic 6-AP-free, so #mono(Z_226, h) = 226): predicted 2860482
+$ verify_zm 6 <lift, h = the stored base word>
+k=6 m=25538  mono=2860482  m^2=652189444  Phi = 12657/2885794 = 0.004385967951974
+  b=0 contributes 25538, b!=0 contributes 2834944
+exit=0  (1 s)  measured 2860482, predicted 2860482: MATCH
+# control: h = all zeros (#mono(Z_226, h) = 226^2 = 51076): predicted 2911332
+$ verify_zm 6 <lift, control: h = all zeros>
+k=6 m=25538  mono=2911332  m^2=652189444  Phi = 57/12769 = 0.004463936095231
+  b=0 contributes 25538, b!=0 contributes 2885794
+exit=0  (1 s)  measured 2911332, predicted 2911332: MATCH

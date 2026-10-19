@@ -1,0 +1,283 @@
+{
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026/build/sections/07-transfers.tex",
+  "scope": "Exact finite checks of the periodic and digit-product interfaces. The separate periodic-lean.json records the formal bridge. The superexponential consequence is conditional on the cited OpenAI cyclic-coloring theorem, which was not independently verified here. No small-k record improved.",
+  "plant": null,
+  "base": [
+    0,
+    0,
+    1,
+    1
+  ],
+  "k": 3,
+  "cyclic": {
+    "progressions_tested": 12,
+    "monochromatic": 0
+  },
+  "proper_cosets": [
+    {
+      "free_coset": [
+        0
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    },
+    {
+      "free_coset": [
+        1
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    },
+    {
+      "free_coset": [
+        2
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    },
+    {
+      "free_coset": [
+        3
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    },
+    {
+      "free_coset": [
+        0,
+        2
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    },
+    {
+      "free_coset": [
+        1,
+        3
+      ],
+      "safe": false,
+      "dangerous_progressions": 4
+    }
+  ],
+  "digit_products": [
+    {
+      "digits": 1,
+      "length": 4,
+      "colors": 2,
+      "progressions_tested": 2,
+      "monochromatic": 0
+    },
+    {
+      "digits": 2,
+      "length": 16,
+      "colors": 4,
+      "progressions_tested": 56,
+      "monochromatic": 0
+    },
+    {
+      "digits": 3,
+      "length": 64,
+      "colors": 8,
+      "progressions_tested": 992,
+      "monochromatic": 0
+    }
+  ],
+  "positive_control": {
+    "base": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "k": 4,
+    "free_coset": [
+      0
+    ],
+    "cyclic": {
+      "progressions_tested": 110,
+      "monochromatic": 0
+    },
+    "safe": true,
+    "dangerous_progressions": 0
+  },
+  "direct_periodic_transfer": [
+    {
+      "word": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "k": 3,
+      "modulus": 4,
+      "spacing": 8,
+      "limiting_density": "1/16",
+      "existing_evaluator_density": "1/16",
+      "tested_interval_lengths": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        79,
+        80,
+        81
+      ],
+      "formula": "n*(floor(n/D)+1) - D*floor(n/D)*(floor(n/D)+1)/2; D=(k-1)*m",
+      "error_identity": "M(n)/n^2 = 1/(2D) + 1/(2n) + r*(D-r)/(2D*n^2), r=n mod D, n>0",
+      "counts_include_zero_difference": true,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "word": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "k": 4,
+      "modulus": 11,
+      "spacing": 33,
+      "limiting_density": "1/66",
+      "existing_evaluator_density": "1/66",
+      "tested_interval_lengths": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        329,
+        330,
+        331
+      ],
+      "formula": "n*(floor(n/D)+1) - D*floor(n/D)*(floor(n/D)+1)/2; D=(k-1)*m",
+      "error_identity": "M(n)/n^2 = 1/(2D) + 1/(2n) + r*(D-r)/(2D*n^2), r=n mod D, n>0",
+      "counts_include_zero_difference": true,
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "conditional_consequence": {
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026/build/sections/06-perturbation.tex",
+    "source_statement_label": "perturb:cyclic",
+    "source_exponent": "1/100000",
+    "premise": "For every sufficiently large k, a cyclic AP-free two-coloring exists with modulus m >= k^(c*k).",
+    "conclusion": "delta_k <= 1/(2*(k-1)*k^(c*k)); hence delta_k^(1/k) tends to 0.",
+    "status": "Conditional on the imported cyclic-coloring theorem; not inferred from the interval-only Comparator challenge.",
+    "effective_small_k_threshold_obtained": false
+  },
+  "checks": [
+    {
+      "name": "small base is cyclic AP-free",
+      "passed": true
+    },
+    {
+      "name": "digit products are interval AP-free",
+      "passed": true
+    },
+    {
+      "name": "cyclic AP-freeness does not imply a safe proper wildcard coset",
+      "passed": true
+    },
+    {
+      "name": "known quadratic-residue wildcard base still passes",
+      "passed": true
+    },
+    {
+      "name": "direct periodic counts and normalization need no safe coset",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

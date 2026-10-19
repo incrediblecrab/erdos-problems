@@ -1,0 +1,3 @@
+NEW m=44 B=  1 vars=  44 terms=     957  1/352              0.002840909  0.3636x random 0.8636x published  [62s]
+NEW m=44 B=  2 vars=  88 terms=    9372  21/7744            0.002711777  0.3471x random 0.8244x published  [253s]
+NEW m=44 B=  3 vars= 132 terms=   25355  283/104544         0.002706994  0.3465x random 0.8229x published  [714s]

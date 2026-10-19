@@ -1,0 +1,45 @@
+{
+  "checker_sha256": "fddac4e82e1aae44f33c3a4ad0df1a8b5fb79ab2e7ca06c0337beef93d71ee71",
+  "declarations": {
+    "PeriodicTransfer.CyclicAPFree": {
+      "axioms": [],
+      "verdict": "verified"
+    },
+    "PeriodicTransfer.Mono": {
+      "axioms": [],
+      "verdict": "verified"
+    },
+    "PeriodicTransfer.fourColor": {
+      "axioms": [],
+      "verdict": "verified"
+    },
+    "PeriodicTransfer.fourColor_ap_free": {
+      "axioms": [],
+      "verdict": "verified"
+    },
+    "PeriodicTransfer.fourColor_mono_iff": {
+      "axioms": [
+        "propext"
+      ],
+      "verdict": "verified"
+    },
+    "PeriodicTransfer.mono_iff_period_dvd": {
+      "axioms": [
+        "propext"
+      ],
+      "verdict": "verified"
+    }
+  },
+  "kernel_replay_exit": 0,
+  "passed": true,
+  "plant": null,
+  "required_declarations_present": true,
+  "scope": "Own declarations compiled, runtime axiom-probed, and independently kernel-replayed; imported Std is trusted. Unisolated honest-source check. No Mathlib build or library installation.",
+  "shared_gate": {
+    "path": "formal/scripts/verify_lean.py",
+    "sha256": "912f619e32caa4cc30bbce9835c1decd0254ec7a0657f5a621805fc8fbf76a56"
+  },
+  "source_sha256": "23a9b228b86c7ea40a5e59fe778470d7293647046d7eeafc2acb3970f58374b5",
+  "status": "verified",
+  "toolchain": "leanprover/lean4:v4.33.1"
+}

@@ -1,0 +1,40 @@
+# k=9: rabung word 2579 zip -> m=5158, base (b, f, r) = (5158, 2, 0), b+f=5160, delta_9 <= 1/82560
+$ verify_base 9 2 0 <rabung word 2579 zip>
+k=9 b=5158 f=2 r=0  h1=0 h2=0
+exit=0  (0 s)
+$ verify_zm 9 <rabung word 2579 zip>
+k=9 m=5158  mono=5158  m^2=26604964  Phi = 1/5158 = 0.000193873594416
+  b=0 contributes 5158, b!=0 contributes 0
+exit=0  (0 s)
+# k=10: rabung word 11497 -> m=11497, base (b, f, r) = (11497, 1, 0), b+f=11498, delta_10 <= 1/206964
+$ verify_base 10 1 0 <rabung word 11497>
+k=10 b=11497 f=1 r=0  h1=0 h2=0
+exit=0  (2 s)
+$ verify_zm 10 <rabung word 11497>
+k=10 m=11497  mono=11497  m^2=132181009  Phi = 1/11497 = 0.000086979211968
+  b=0 contributes 11497, b!=0 contributes 0
+exit=0  (1 s)
+# k=11: rabung word 9697 zip -> m=19394, base (b, f, r) = (19394, 2, 0), b+f=19396, delta_11 <= 1/387920
+$ verify_base 11 2 0 <rabung word 9697 zip>
+k=11 b=19394 f=2 r=0  h1=0 h2=0
+exit=0  (4 s)
+$ verify_zm 11 <rabung word 9697 zip>
+k=11 m=19394  mono=19394  m^2=376127236  Phi = 1/19394 = 0.000051562338868
+  b=0 contributes 19394, b!=0 contributes 0
+exit=0  (2 s)
+# k=12: rabung word 29033 zip -> m=58066, base (b, f, r) = (58066, 2, 0), b+f=58068, delta_12 <= 1/1277496
+$ verify_base 12 2 0 <rabung word 29033 zip>
+k=12 b=58066 f=2 r=0  h1=0 h2=0
+exit=0  (43 s)
+$ verify_zm 12 <rabung word 29033 zip>
+k=12 m=58066  mono=58066  m^2=3371660356  Phi = 1/58066 = 0.000017221782110
+  b=0 contributes 58066, b!=0 contributes 0
+exit=0  (24 s)
+# control: the k=6 base on Z_226 (f=2) checked against the wrong coset r=1
+$ verify_base 6 2 1 <safebase_k6 226 word>
+k=6 b=226 f=2 r=1  h1=0 h2=112
+exit=1  (0 s)
+# control: the k=9 zip word with bit 1000 flipped
+$ verify_base 9 2 0 <rabung word 2579 zip, bit 1000 flipped>
+k=9 b=5158 f=2 r=0  h1=188 h2=2
+exit=1  (0 s)

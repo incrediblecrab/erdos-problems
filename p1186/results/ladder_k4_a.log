@@ -1,0 +1,6 @@
+m=  27 k=4 sets=   2142 Phi=                19/162 = 0.1172839506  delta~<= 0.0586419753  [exhaustive/exh] 5.1s
+m=  28 k=4 sets=   2331 Phi=                17/147 = 0.1156462585  delta~<= 0.0578231293  [exhaustive/exh] 10.3s
+m=  29 k=4 sets=   2523 Phi=              293/2523 = 0.1161315894  delta~<= 0.0580657947  [exhaustive/exh] 20.8s
+m=  30 k=4 sets=   2755 Phi=              157/1350 = 0.1162962963  delta~<= 0.0581481481  [exhaustive/exh] 41.9s
+m=  31 k=4 sets=   2914 Phi=              219/1922 = 0.1139438085  delta~<= 0.0569719043  [exhaustive/exh] 90.5s
+m=  32 k=4 sets=   3112 Phi=                59/512 = 0.1152343750  delta~<= 0.0576171875  [exhaustive/exh] 182.0s

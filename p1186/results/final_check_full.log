@@ -1,0 +1,171 @@
+
+A. evaluator self-consistency
+  [PASS] carry-region areas sum to 1 (k=2)   2 cells
+  [PASS] carry-region areas sum to 1 (k=3)   4 cells
+  [PASS] carry-region areas sum to 1 (k=4)   8 cells
+  [PASS] carry-region areas sum to 1 (k=5)   14 cells
+  [PASS] carry-region areas sum to 1 (k=6)   24 cells
+  [PASS] carry-region areas sum to 1 (k=7)   36 cells
+  [PASS] all-ones gives Phi_3 = 1
+  [PASS] all-ones gives Psi_3 = 1/(2(k-1))
+  [PASS] all-ones gives Phi_4 = 1
+  [PASS] all-ones gives Psi_4 = 1/(2(k-1))
+  [PASS] all-ones gives Phi_5 = 1
+  [PASS] all-ones gives Psi_5 = 1/(2(k-1))
+  [PASS] all-ones gives Phi_6 = 1
+  [PASS] all-ones gives Psi_6 = 1/(2(k-1))
+  [PASS] all-ones gives Phi_7 = 1
+  [PASS] all-ones gives Psi_7 = 1/(2(k-1))
+  [PASS] identity Phi_3 = (1+3mu^2)/4 holds exhaustively   m in 2..9
+  [PASS] identity Phi_4 = (1+6mu^2+Lambda_4)/8 holds exhaustively   m in 2..7
+  [PASS] stretch invariance: Phi and Psi unchanged by subdivision
+  [PASS] repeat invariance: Phi unchanged by tiling (Psi is not)
+
+B. reproduction of published constructions
+  [PASS] Lu-Peng B_20 gives Phi_4 = 17/150 exactly   got 17/150
+  [PASS]   hence delta~_4 <= 17/300, the published bound
+  [PASS] PRS08 block lengths sum to 548
+  [PASS] PRS08 12-block word gives Psi_3 = 117/2192 exactly   got 117/2192
+  [PASS]   B_20 is balanced with Lambda_4 = -7/75
+
+C. exact re-certification of every stored word
+  [PASS] base k=4: 1 words re-certify
+  [PASS] base k=5: 2 words re-certify
+  [PASS] base k=6: 2 words re-certify
+  [PASS] base k=7: 1 words re-certify
+  [PASS] base k=8: 1 words re-certify
+  [PASS] n    k=3: 94 words re-certify
+  [PASS] n    k=4: 76 words re-certify
+  [PASS] n    k=5: 65 words re-certify
+  [PASS] two  k=3: 43 words re-certify
+  [PASS] two  k=4: 79 words re-certify
+  [PASS] two  k=5: 3 words re-certify
+  [PASS] zm   k=3: 19 words re-certify
+  [PASS] zm   k=4: 97 words re-certify
+  [PASS] zm   k=5: 87 words re-certify
+  [PASS] zm   k=6: 105 words re-certify
+  [PASS] zp   k=4: 118 words re-certify
+  [PASS] zp   k=5: 80 words re-certify
+  [PASS] zp   k=6: 36 words re-certify
+  [PASS] zp   k=7: 30 words re-certify
+      (939 words re-evaluated in exact rational arithmetic)
+
+F. second, independent evaluator (src/blocks.py)
+  [PASS] blocks.py reproduces PRS08 from continuous block lengths   117/2192 vs 117/2192
+  [PASS] blocks.py: constant colouring gives the triangle area for k=3   1/4
+  [PASS] blocks.py: constant colouring gives the triangle area for k=4   1/6
+  [PASS] blocks.py: constant colouring gives the triangle area for k=5   1/8
+  [PASS] blocks.py: constant colouring gives the triangle area for k=6   1/10
+  [PASS] blocks.py agrees with exact.py on 75 stored block words
+
+G. AP-free certificates re-checked by direct enumeration
+  [PASS] k=5: 0 AP-free colourings verified (0 monochromatic k-APs, Psi = 1/(2(k-1)m))
+  [PASS] k=6: 3 AP-free colourings verified (0 monochromatic k-APs, Psi = 1/(2(k-1)m))
+
+H. wildcard recursion bases: coset safety and the recursion identity
+  [PASS] k=4 b=11 f=1 r=0: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=4 b=11 f=1: stored word is cyclic 4-AP-free   11 monochromatic pairs; the 11 with d=0 are unavoidable
+  [PASS] k=4 b=11 f=1: identity at t=2, h=zeros   44 == 10*2^2 + 4
+  [PASS] k=4 b=11 f=1: identity at t=3, h=random   93 == 10*3^2 + 3
+  [PASS] k=5 b=37 f=1 r=0: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=5 b=37 f=1: stored word is cyclic 5-AP-free   37 monochromatic pairs; the 37 with d=0 are unavoidable
+  [PASS] k=5 b=37 f=1: identity at t=2, h=zeros   148 == 36*2^2 + 4
+  [PASS] k=5 b=37 f=1: identity at t=3, h=random   327 == 36*3^2 + 3
+  [PASS] k=5 b=44 f=4 r=3: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=5 b=44 f=4: stored word is cyclic 5-AP-free   44 monochromatic pairs; the 44 with d=0 are unavoidable
+  [PASS] k=5 b=44 f=4: identity at t=2, h=zeros   224 == 40*2^2 + 64
+  [PASS] k=5 b=44 f=4: identity at t=3, h=random   382 == 40*3^2 + 22
+  [PASS] k=6 b=86 f=2 r=33: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=6 b=86 f=2: stored word is cyclic 6-AP-free   86 monochromatic pairs; the 86 with d=0 are unavoidable
+  [PASS] k=6 b=86 f=2: identity at t=2, h=zeros   352 == 84*2^2 + 16
+  [PASS] k=6 b=86 f=2: identity at t=3, h=random   772 == 84*3^2 + 16
+  [PASS] k=6 b=226 f=2 r=0: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=6 b=226 f=2: stored word is cyclic 6-AP-free   226 monochromatic pairs; the 226 with d=0 are unavoidable
+  [PASS] k=6 b=226 f=2: identity at t=2, h=zeros   912 == 224*2^2 + 16
+  [PASS] k=6 b=226 f=2: identity at t=3, h=random   2028 == 224*3^2 + 12
+  [PASS] k=7 b=617 f=1 r=0: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=7 b=617 f=1: stored word is cyclic 7-AP-free   617 monochromatic pairs; the 617 with d=0 are unavoidable
+  [PASS] k=7 b=617 f=1: identity at t=2, h=zeros   2468 == 616*2^2 + 4
+  [PASS] k=7 b=617 f=1: identity at t=3, h=random   5547 == 616*3^2 + 3
+  [PASS] k=8 b=1642 f=2 r=0: cosetprobe.safe_coset accepts F   0 dangerous progressions
+  [PASS] k=8 b=1642 f=2: stored word is cyclic 8-AP-free   1642 monochromatic pairs; the 1642 with d=0 are unavoidable
+  [PASS] k=8 b=1642 f=2: identity at t=2, h=zeros   6576 == 1640*2^2 + 16
+  [PASS] k=8 b=1642 f=2: identity at t=3, h=random   14772 == 1640*3^2 + 12
+
+D. independent brute force (no code shared with exact.py)
+  [PASS] n   k=3 m=548: Psi 0.053371746 vs exact 0.053375912   |diff| = 4.17e-06 < 1.00e-04
+  [PASS] n   k=4 m=76: Psi 0.017784813 vs exact 0.017789127   |diff| = 4.31e-06 < 1.00e-04
+  [PASS] n   k=5 m=66: Psi 0.006835060 vs exact 0.006839226   |diff| = 4.17e-06 < 1.00e-04
+  [PASS] two k=3 m=2 B=18: Psi 0.054016590 vs exact 0.054012346   |diff| = 4.24e-06 < 1.00e-04
+  [PASS] two k=4 m=66 B=4: Psi 0.013955213 vs exact 0.013951064   |diff| = 4.15e-06 < 1.00e-04
+  [PASS] two k=5 m=44 B=3: Psi 0.002711168 vs exact 0.002706994   |diff| = 4.17e-06 < 1.00e-04
+  [PASS] zm  k=3 m=12: Psi 0.062504167 vs exact 0.062500000   |diff| = 4.17e-06 < 1.00e-04
+  [PASS] zm  k=4 m=99: Psi 0.013965369 vs exact 0.013961160   |diff| = 4.21e-06 < 1.00e-04
+  [PASS] zm  k=5 m=5324: Psi 0.002608355 vs exact 0.002604183   |diff| = 4.17e-06 < 1.00e-04
+  [PASS] zm  k=6 m=3698: Psi 0.001140563 vs exact 0.001136378   |diff| = 4.18e-06 < 1.00e-04
+  [PASS] zp  k=4 m=152: Phi 0.110111370 vs exact 0.110110803   |diff| = 5.66e-07 < 2.00e-04
+  [PASS] zp  k=5 m=114: Phi 0.049360331 vs exact 0.049361342   |diff| = 1.01e-06 < 2.00e-04
+  [PASS] zp  k=6 m=60: Phi 0.026120556 vs exact 0.026120370   |diff| = 1.86e-07 < 2.00e-04
+  [PASS] zp  k=7 m=62: Phi 0.013153447 vs exact 0.013154700   |diff| = 1.25e-06 < 2.00e-04
+
+E. certified records vs published values and vs random
+  per family:
+    wildcard chain limit         k=4  b=11 f=1                       1/72 = 0.0138888889  0.6667x random
+    wildcard chain limit         k=5  b=44 f=4                      1/384 = 0.0026041667  0.3333x random
+    wildcard chain limit         k=6  b=226 f=2                    1/2280 = 0.0004385965  0.1404x random
+    wildcard chain limit         k=7  b=617 f=1                    1/7416 = 0.0001348436  0.1036x random
+    wildcard chain limit         k=8  b=1642 f=2                  1/23016 = 0.0000434480  0.0779x random
+    block colouring of {1..n}    k=3  m=548                      117/2192 = 0.0533759124  0.8540x random
+    block colouring of {1..n}    k=4  m=76                      411/23104 = 0.0177891274  0.8539x random
+    block colouring of {1..n}    k=5  m=66                        65/9504 = 0.0068392256  0.8754x random
+    two-scale colouring          k=3  m=2 B=18                     35/648 = 0.0540123457  0.8642x random
+    two-scale colouring          k=4  m=66 B=4                2917/209088 = 0.0139510637  0.6697x random
+    two-scale colouring          k=5  m=44 B=3                 283/104544 = 0.0027069942  0.3465x random
+    periodic colouring mod m     k=3  m=12                           1/16 = 0.0625000000  1.0000x random
+    periodic colouring mod m     k=4  m=99                      821/58806 = 0.0139611604  0.6701x random
+    periodic colouring mod m     k=5  m=5324                13421/5153632 = 0.0026041828  0.3333x random
+    periodic colouring mod m     k=6  m=3698                 1807/1590140 = 0.0011363779  0.3636x random
+    block colouring of F_p       k=4  m=152                      159/2888 = 0.0550554017  0.8809x random
+    block colouring of F_p       k=5  m=114                    1283/51984 = 0.0246806710  0.7898x random
+    block colouring of F_p       k=6  m=60                    2821/216000 = 0.0130601852  0.8359x random
+    block colouring of F_p       k=7  m=62                    1517/230640 = 0.0065773500  0.8419x random
+
+  best certified bound per problem:
+           k  family                where                        bound                 /random  status
+    delta_3   block colouring of {1..n}m=548                     117/2192  0.0533759124   0.8540x  beats random; does NOT beat published <= 117/2192 [PRS08 Thm 5]
+    delta_4   wildcard chain limit  b=11 f=1                      1/72  0.0138888889   0.6667x  beats random; does NOT beat published <= 1/72 [LuPe12]
+    delta_5   wildcard chain limit  b=44 f=4                     1/384  0.0026041667   0.3333x  beats random; beats published <= 1/304 [LuPe12]
+    delta_6   wildcard chain limit  b=226 f=2                   1/2280  0.0004385965   0.1404x  beats random; no published bound found
+    delta_7   wildcard chain limit  b=617 f=1                   1/7416  0.0001348436   0.1036x  beats random; no published bound found
+    delta_8   wildcard chain limit  b=1642 f=2                 1/23016  0.0000434480   0.0779x  beats random; no published bound found
+    delta~_4   block colouring of F_pm=152                     159/2888  0.0550554017   0.8809x  beats random; beats published <= 17/300 [LuPe12 Thm 1, prime p]
+    delta~_5   block colouring of F_pm=114                   1283/51984  0.0246806710   0.7898x  beats random; beats published <= 3629/131424 [LuPe12 Thm 4, odd n]
+    delta~_6   block colouring of F_pm=60                   2821/216000  0.0130601852   0.8359x  beats random; no published bound found
+    delta~_7   block colouring of F_pm=62                   1517/230640  0.0065773500   0.8419x  beats random; no published bound found
+
+  assertions on the claims made in README.md / NOTES.md:
+  [PASS] delta_3: certified 117/2192 <= claimed 117/2192
+  [PASS] delta_3: claim beats the random colouring   0.0533759124 < 0.0625000000
+  [PASS] delta_4: certified 1/72 <= claimed 1/72
+  [PASS] delta_4: claim beats the random colouring   0.0138888889 < 0.0208333333
+  [PASS] delta_5: certified 1/384 <= claimed 1/384
+  [PASS] delta_5: claim strictly improves on 1/304   0.0026041667 < 0.0032894737 (20.83% better)
+  [PASS] delta_5: claim beats the random colouring   0.0026041667 < 0.0078125000
+  [PASS] delta_6: certified 1/2280 <= claimed 1/2280
+  [PASS] delta_6: claim beats the random colouring   0.0004385965 < 0.0031250000
+  [PASS] delta_7: certified 1/7416 <= claimed 1/7416
+  [PASS] delta_7: claim beats the random colouring   0.0001348436 < 0.0013020833
+  [PASS] delta_8: certified 1/23016 <= claimed 1/23016
+  [PASS] delta_8: claim beats the random colouring   0.0000434480 < 0.0005580357
+  [PASS] delta~_4: certified 159/2888 <= claimed 159/2888
+  [PASS] delta~_4: claim strictly improves on 17/300   0.0550554017 < 0.0566666667 (2.84% better)
+  [PASS] delta~_4: claim beats the random colouring   0.0550554017 < 0.0625000000
+  [PASS] delta~_5: certified 1283/51984 <= claimed 1283/51984
+  [PASS] delta~_5: claim strictly improves on 3629/131424   0.0246806710 < 0.0276129170 (10.62% better)
+  [PASS] delta~_5: claim beats the random colouring   0.0246806710 < 0.0312500000
+  [PASS] delta~_6: certified 2821/216000 <= claimed 2821/216000
+  [PASS] delta~_6: claim beats the random colouring   0.0130601852 < 0.0156250000
+  [PASS] delta~_7: certified 1517/230640 <= claimed 1517/230640
+  [PASS] delta~_7: claim beats the random colouring   0.0065773500 < 0.0078125000
+
+117 passed, 0 failed

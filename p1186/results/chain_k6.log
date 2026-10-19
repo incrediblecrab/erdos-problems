@@ -1,0 +1,7 @@
+  + src/chain.py --k 6 --b 86 --f 2 --r 33 --store results/wildcard_k6_deep.json
+base   m=86  Phi=1/86=0.0116279070   coset f=2 r=33  safe=True (0 dangerous APs)
+chain  m=3698  Phi=1807/159014=0.0113637793
+       recursion predicts 1807/159014=0.0113637793   MATCH
+       delta_6 <= 1807/1590140 = 0.0011363779
+       chain fixed point 1/(b+f) = 1/88 -> delta_6 <= 1/880 = 0.0011363636 (limit, NOTES.md section 3.1)
+stored -> results/wildcard_k6_deep.json

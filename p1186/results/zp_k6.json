@@ -1,0 +1,326 @@
+{
+ "10": {
+  "bound": "43/2000",
+  "bound_float": 0.0215,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "43/1000",
+  "value_float": 0.043,
+  "word": "1001010101"
+ },
+ "11": {
+  "bound": "19/726",
+  "bound_float": 0.026170798898071626,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "19/363",
+  "value_float": 0.05234159779614325,
+  "word": "11001101010"
+ },
+ "12": {
+  "bound": "97/4320",
+  "bound_float": 0.022453703703703705,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "97/2160",
+  "value_float": 0.04490740740740741,
+  "word": "101101001010"
+ },
+ "13": {
+  "bound": "439/20280",
+  "bound_float": 0.021646942800788955,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "439/10140",
+  "value_float": 0.04329388560157791,
+  "word": "0101100100101"
+ },
+ "14": {
+  "bound": "39/1960",
+  "bound_float": 0.01989795918367347,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "39/980",
+  "value_float": 0.03979591836734694,
+  "word": "10101101101000"
+ },
+ "15": {
+  "bound": "527/27000",
+  "bound_float": 0.01951851851851852,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "527/13500",
+  "value_float": 0.03903703703703704,
+  "word": "101010001001011"
+ },
+ "16": {
+  "bound": "99/5120",
+  "bound_float": 0.0193359375,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "99/2560",
+  "value_float": 0.038671875,
+  "word": "1010010100011011"
+ },
+ "17": {
+  "bound": "67/3468",
+  "bound_float": 0.019319492502883506,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "67/1734",
+  "value_float": 0.03863898500576701,
+  "word": "01010101101001001"
+ },
+ "18": {
+  "bound": "359/19440",
+  "bound_float": 0.01846707818930041,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "359/9720",
+  "value_float": 0.03693415637860082,
+  "word": "100010010010111101"
+ },
+ "19": {
+  "bound": "101/5415",
+  "bound_float": 0.018651892890120036,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "202/5415",
+  "value_float": 0.03730378578024007,
+  "word": "0110010011010100101"
+ },
+ "2": {
+  "bound": "1/20",
+  "bound_float": 0.05,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "1/10",
+  "value_float": 0.1,
+  "word": "01"
+ },
+ "20": {
+  "bound": "211/12000",
+  "bound_float": 0.017583333333333333,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "211/6000",
+  "value_float": 0.035166666666666666,
+  "word": "01011001101010011001"
+ },
+ "21": {
+  "bound": "157/8820",
+  "bound_float": 0.017800453514739228,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "157/4410",
+  "value_float": 0.035600907029478455,
+  "word": "001101011011001000101"
+ },
+ "22": {
+  "bound": "23/1452",
+  "bound_float": 0.01584022038567493,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "23/726",
+  "value_float": 0.03168044077134986,
+  "word": "0100010100110101110110"
+ },
+ "23": {
+  "bound": "37/2116",
+  "bound_float": 0.017485822306238186,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "37/1058",
+  "value_float": 0.03497164461247637,
+  "word": "01010011101011101100100"
+ },
+ "24": {
+  "bound": "37/2304",
+  "bound_float": 0.016059027777777776,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "37/1152",
+  "value_float": 0.03211805555555555,
+  "word": "011010111011001100010100"
+ },
+ "25": {
+  "bound": "1261/75000",
+  "bound_float": 0.016813333333333333,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "1261/37500",
+  "value_float": 0.033626666666666666,
+  "word": "0001101011110110011000101"
+ },
+ "26": {
+  "bound": "443/27040",
+  "bound_float": 0.016383136094674556,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "443/13520",
+  "value_float": 0.03276627218934911,
+  "word": "01011100011001000101110011"
+ },
+ "27": {
+  "bound": "1417/87480",
+  "bound_float": 0.01619798811156836,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "1417/43740",
+  "value_float": 0.03239597622313672,
+  "word": "100110000101000110010111101"
+ },
+ "28": {
+  "bound": "509/31360",
+  "bound_float": 0.016230867346938776,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "509/15680",
+  "value_float": 0.03246173469387755,
+  "word": "0001101101110111001100001010"
+ },
+ "29": {
+  "bound": "267/16820",
+  "bound_float": 0.01587395957193817,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "267/8410",
+  "value_float": 0.03174791914387634,
+  "word": "10011000100001011000111010111"
+ },
+ "3": {
+  "bound": "17/270",
+  "bound_float": 0.06296296296296296,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "17/135",
+  "value_float": 0.1259259259259259,
+  "word": "001"
+ },
+ "30": {
+  "bound": "283/18000",
+  "bound_float": 0.01572222222222222,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "283/9000",
+  "value_float": 0.03144444444444444,
+  "word": "011101111010011100010100100100"
+ },
+ "4": {
+  "bound": "1/20",
+  "bound_float": 0.05,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "1/10",
+  "value_float": 0.1,
+  "word": "0101"
+ },
+ "5": {
+  "bound": "7/150",
+  "bound_float": 0.04666666666666667,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "7/75",
+  "value_float": 0.09333333333333334,
+  "word": "10110"
+ },
+ "6": {
+  "bound": "29/720",
+  "bound_float": 0.04027777777777778,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "29/360",
+  "value_float": 0.08055555555555556,
+  "word": "101001"
+ },
+ "60": {
+  "bound": "2821/216000",
+  "bound_float": 0.013060185185185185,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "2821/108000",
+  "value_float": 0.02612037037037037,
+  "word": "100001111011101110001011011110001010101110000100101110001000"
+ },
+ "61": {
+  "bound": "6107/446520",
+  "bound_float": 0.013676878975185882,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "6107/223260",
+  "value_float": 0.027353757950371763,
+  "word": "0100000101111010001110000100010001111100010110111101111000111"
+ },
+ "62": {
+  "bound": "761/57660",
+  "bound_float": 0.013198057578910856,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "761/28830",
+  "value_float": 0.026396115157821712,
+  "word": "10101010010010100011000100100110101010110110101110011101101100"
+ },
+ "63": {
+  "bound": "6437/476280",
+  "bound_float": 0.013515159150079784,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "6437/238140",
+  "value_float": 0.02703031830015957,
+  "word": "110000011101001000011000011000010110111010001011111001111011101"
+ },
+ "64": {
+  "bound": "6599/491520",
+  "bound_float": 0.013425699869791667,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "6599/245760",
+  "value_float": 0.026851399739583334,
+  "word": "0100000010111010000011100001000010010111110001011111001111101111"
+ },
+ "65": {
+  "bound": "1379/101400",
+  "bound_float": 0.013599605522682445,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "1379/50700",
+  "value_float": 0.02719921104536489,
+  "word": "10001000111101001000111111001110001111011010000111101001011100000"
+ },
+ "66": {
+  "bound": "97/7260",
+  "bound_float": 0.013360881542699725,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "97/3630",
+  "value_float": 0.02672176308539945,
+  "word": "010000011000010100010111101000001101111100111101011101000010111110"
+ },
+ "7": {
+  "bound": "23/588",
+  "bound_float": 0.0391156462585034,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "23/294",
+  "value_float": 0.0782312925170068,
+  "word": "1010010"
+ },
+ "8": {
+  "bound": "39/1280",
+  "bound_float": 0.03046875,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "39/640",
+  "value_float": 0.0609375,
+  "word": "10010101"
+ },
+ "9": {
+  "bound": "49/1620",
+  "bound_float": 0.030246913580246913,
+  "exhaustive": false,
+  "found_by": "relax",
+  "value": "49/810",
+  "value_float": 0.06049382716049383,
+  "word": "111001010"
+ }
+}

@@ -1,0 +1,29 @@
+  + src/cosetprobe.py --k 6 --b 86 --t 2 --self-test
+=== positive control: k=5, b=44 (expect f=4, r=3 to win) ===
+base m=44  Phi=1/44=0.0227272727   tiled to m=88: 1/44 (preserved)
+  f= 1 r= 3  Phi=87/3872=0.0224690083  BEATS tiled  limit 1/(b+f)=1/45
+  f= 1 r=14  Phi=87/3872=0.0224690083  BEATS tiled  limit 1/(b+f)=1/45
+  f= 1 r=25  Phi=87/3872=0.0224690083  BEATS tiled  limit 1/(b+f)=1/45
+  f= 1 r=36  Phi=87/3872=0.0224690083  BEATS tiled  limit 1/(b+f)=1/45
+  f= 2 r= 3  Phi=43/1936=0.0222107438  BEATS tiled  limit 1/(b+f)=1/46
+  f= 2 r=14  Phi=43/1936=0.0222107438  BEATS tiled  limit 1/(b+f)=1/46
+  f= 4 r= 3  Phi=21/968=0.0216942149  BEATS tiled  limit 1/(b+f)=1/48
+control PASSED
+--- structural test on the same base (must agree: best f=4) ---
+base m=44  Phi=1/44=0.0227272727
+  f= 2 r= 3  SAFE    -> limit 1/(b+f) = 1/46, delta_5 <= 1/368
+  f= 2 r=14  SAFE    -> limit 1/(b+f) = 1/46, delta_5 <= 1/368
+  f= 4 r= 3  SAFE    -> limit 1/(b+f) = 1/48, delta_5 <= 1/384
+  best safe coset size f=4  ->  delta_5 <= 1/384 (chain limit)
+structural control PASSED
+
+=== k=6, b=86: structural scan over every coset ===
+base m=86  Phi=1/86=0.0116279070
+  f= 2 r=33  SAFE    -> limit 1/(b+f) = 1/88, delta_6 <= 1/880
+  best safe coset size f=2  ->  delta_6 <= 1/880 (chain limit)
+
+=== k=6, b=86, t=2: enumerated search (cross-check) ===
+base m=86  Phi=1/86=0.0116279070   tiled to m=172: 1/86 (preserved)
+  f= 1 r=33  Phi=171/14792=0.0115603029  BEATS tiled  limit 1/(b+f)=1/87
+  f= 1 r=76  Phi=171/14792=0.0115603029  BEATS tiled  limit 1/(b+f)=1/87
+  f= 2 r=33  Phi=85/7396=0.0114926988  BEATS tiled  limit 1/(b+f)=1/88

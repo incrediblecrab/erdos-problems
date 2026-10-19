@@ -1,0 +1,5 @@
+# {1..n} brute force on the stored k=6 base word, the zipped quadratic-residue colouring of Z_226 (results/safebase_k6.json, key "226/2"), which is cyclic 6-AP-free; the claim is delta_6 <= 1/2260, so (count/n^2 - 1/2260) * n should stay near 0.5
+$ verify_two 6 226 1 <safebase_k6 226/2 word> 20000 60000 120000   # 3 s
+k=6 m=226 B=1 n=20000  mono=187110  count/n^2 = 0.000467775000
+k=6 m=226 B=1 n=60000  mono=1622970  count/n^2 = 0.000450825000
+k=6 m=226 B=1 n=120000  mono=6431770  count/n^2 = 0.000446650694
