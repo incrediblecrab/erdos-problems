@@ -1,0 +1,19 @@
+name = "erdos200"
+defaultTargets = ["Erdos200"]
+
+# Pinned to the formal-conjectures commit whose `FormalConjectures/ErdosProblems/200.lean`
+# states Erdos #200.  We prove theorems about *their* definition, not a paraphrase of it.
+# That pin also fixes Mathlib at leanprover-community/mathlib4 v4.33.1 (0df444a360ea),
+# which is the revision that contains `Chebyshev.theta_ge`.
+[[require]]
+name = "formal_conjectures"
+git = "https://github.com/google-deepmind/formal-conjectures"
+rev = "e5f428182a3ee32dde401eceb4a94ba0382e8434"
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[lean_lib]]
+name = "Erdos200"

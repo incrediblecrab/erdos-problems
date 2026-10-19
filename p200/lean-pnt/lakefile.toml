@@ -1,0 +1,14 @@
+name = "erdos200pnt"
+defaultTargets = ["Erdos200"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "PrimeNumberTheoremAnd"
+git = "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git"
+rev = "a5154676af9aa3095150ee410cdda80555aa0642"
+
+[[lean_lib]]
+name = "Erdos200"

@@ -1,0 +1,33 @@
+# Lake build outputs: ~7.7 GB under lean/ and ~7.4 GB under lean-pnt/, being the
+# Mathlib, formal-conjectures and PrimeNumberTheoremAnd .olean trees. All regenerable
+# by `lake build`. lake-manifest.json and lean-toolchain ARE committed -- they pin the
+# exact revisions, so the build is reproducible without shipping its output.
+lean/.lake/
+lean-pnt/.lake/
+
+# Generated from lean/ by lean-pnt/scripts/sync.sh, which lean-pnt/verify.sh runs as its
+# first stage. lean/ is the single source of truth for these three modules; committing a
+# second copy would let the two drift silently. See lean-pnt/README.md.
+lean-pnt/Erdos200/Structure.lean
+lean-pnt/Erdos200/Bound.lean
+lean-pnt/Erdos200/Asymptotic.lean
+
+# Primary sources are fetched by refs/fetch.sh and never redistributed here: refs/ holds
+# copyrighted papers (Granville, Amer. Math. Monthly; the Green-Tao note) alongside OEIS
+# b-files and a scraped records page. Only the fetch script and its README are committed.
+refs/*
+!refs/README.md
+!refs/fetch.sh
+
+# Compiled enumerator. Build it with the cc invocation in NOTES.md section 10.
+src/apsearch
+
+__pycache__/
+*.pyc
+
+# Local environment files can hold credentials; committed templates stay tracked.
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample

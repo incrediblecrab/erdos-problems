@@ -1,0 +1,366 @@
+[
+ {
+  "k": 1,
+  "a_k": 2,
+  "first": 2,
+  "diff": 0,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": null
+  },
+  "ok": true
+ },
+ {
+  "k": 2,
+  "a_k": 3,
+  "first": 2,
+  "diff": 1,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": null
+  },
+  "ok": true
+ },
+ {
+  "k": 3,
+  "a_k": 7,
+  "first": 3,
+  "diff": 2,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 4,
+  "a_k": 23,
+  "first": 5,
+  "diff": 6,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 5,
+  "a_k": 29,
+  "first": 5,
+  "diff": 6,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 6,
+  "a_k": 157,
+  "first": 7,
+  "diff": 30,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 7,
+  "a_k": 907,
+  "first": 7,
+  "diff": 150,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 8,
+  "a_k": 1669,
+  "first": 199,
+  "diff": 210,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 9,
+  "a_k": 1879,
+  "first": 199,
+  "diff": 210,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 10,
+  "a_k": 2089,
+  "first": 199,
+  "diff": 210,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 11,
+  "a_k": 249037,
+  "first": 110437,
+  "diff": 13860,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 12,
+  "a_k": 262897,
+  "first": 110437,
+  "diff": 13860,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 13,
+  "a_k": 725663,
+  "first": 4943,
+  "diff": 60060,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 14,
+  "a_k": 36850999,
+  "first": 31385539,
+  "diff": 420420,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 15,
+  "a_k": 173471351,
+  "first": 115453391,
+  "diff": 4144140,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 16,
+  "a_k": 198793279,
+  "first": 53297929,
+  "diff": 9699690,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 17,
+  "a_k": 4827507229,
+  "first": 3430751869,
+  "diff": 87297210,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 18,
+  "a_k": 17010526363,
+  "first": 4808316343,
+  "diff": 717777060,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 19,
+  "a_k": 83547839407,
+  "first": 8297644387,
+  "diff": 4180566390,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 20,
+  "a_k": 572945039351,
+  "first": 214861583621,
+  "diff": 18846497670,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 21,
+  "a_k": 6269243827111,
+  "first": 5749146449311,
+  "diff": 26004868890,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 22,
+  "a_k": 35742689530423,
+  "first": 19261849254523,
+  "diff": 784801917900,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 23,
+  "a_k": 449924511422857,
+  "first": 403185216600637,
+  "diff": 2124513401010,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 24,
+  "a_k": 1217585417914253,
+  "first": 515486946529943,
+  "diff": 30526020494970,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 25,
+  "a_k": 5773236905395679,
+  "first": 563684643962159,
+  "diff": 217064677559730,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ },
+ {
+  "k": 26,
+  "a_k": 12783396861134173,
+  "first": 3486107472997423,
+  "diff": 371891575525470,
+  "checks": {
+   "arith": true,
+   "sympy_prime": true,
+   "millerrabin": true,
+   "distinct": true,
+   "luhn_agrees": true
+  },
+  "ok": true
+ }
+]
