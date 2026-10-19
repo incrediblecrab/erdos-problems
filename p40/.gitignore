@@ -1,0 +1,19 @@
+# Fetched sources. The site pages belong to erdosproblems.com, the papers are copyright their authors, OEIS content is CC BY-SA 4.0 and the formal-conjectures files are Apache-2.0, so nothing retrieved is redistributed here. `sh refs/fetch.sh` repopulates the directory; see refs/README.md.
+refs/*
+!refs/README.md
+!refs/fetch.sh
+
+# Lean build outputs and the fetched Lean packages (Mathlib, formal-conjectures and their dependencies); `lake build` in lean/ recreates them.
+lean/.lake/
+
+# Log written by the fetch stage of scripts/reproduce.sh.
+results/fetch.log
+
+__pycache__/
+
+# Local environment files can hold credentials; committed templates stay tracked.
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample

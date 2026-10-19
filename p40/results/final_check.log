@@ -1,0 +1,22 @@
+PASS  statement_docs (0.0 s)
+PASS  statement_site (0.0 s)
+PASS  excerpts (0.0 s)
+PASS  quotes (0.4 s)
+PASS  quote_coverage (0.0 s)
+PASS  facts (0.1 s)
+PASS  numbers (0.0 s)
+PASS  hex_versions (0.0 s)
+PASS  generated (0.0 s)
+PASS  claims (0.0 s)
+PASS  greedy_hash (0.0 s)
+PASS  greedy_b2 (1.7 s)
+PASS  greedy_rule (1.7 s)
+PASS  greedy_numbers (0.0 s)
+PASS  claimed_numbers_source (0.0 s)
+PASS  theorem_b (2.9 s)
+PASS  lean_plants (0.0 s)
+PASS  lean_verify (0.0 s)
+PASS  hygiene (0.0 s)
+not checked by any script, printed as written: Claude Opus 5.5; Copilot CLI 1.0.88; September 23, 2026
+statement_docs also compared the tracker database
+19 checks passed, 0 failed, 0 skipped; 28 of 28 plants caught, 0 skipped; 14 s; PASS

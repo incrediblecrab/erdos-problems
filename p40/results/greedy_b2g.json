@@ -1,0 +1,181 @@
+{
+  "description": "Greedy B2[2] set a_1 = 1, a_{k+1} = least m > a_k keeping at most 2 representations a + b (a <= b) of every n. Illustrative only: no finite computation decides a liminf.",
+  "thread_claim": {
+    "source": "https://www.erdosproblems.com/forum/thread/158, comment of February 1, 2026",
+    "k": 2000,
+    "a_k_claimed": 7445662,
+    "a_k_computed": 7445662,
+    "ratio_claimed": 0.733,
+    "ratio_computed": 0.732957,
+    "reproduced": true
+  },
+  "note_table": {
+    "source": "R. Zeraoulia, Zenodo, DOI 10.5281/zenodo.18452185, file erdos_problem_158_greedy_computation_note_v7.pdf, Table 1",
+    "rows": [
+      {
+        "N": 10,
+        "count_claimed": 6,
+        "count_computed": 6,
+        "ratio_claimed": 1.8974,
+        "ratio_computed": 1.897367
+      },
+      {
+        "N": 100,
+        "count_claimed": 17,
+        "count_computed": 17,
+        "ratio_claimed": 1.7,
+        "ratio_computed": 1.7
+      },
+      {
+        "N": 1000,
+        "count_claimed": 48,
+        "count_computed": 48,
+        "ratio_claimed": 1.5179,
+        "ratio_computed": 1.517893
+      },
+      {
+        "N": 10000,
+        "count_claimed": 127,
+        "count_computed": 127,
+        "ratio_claimed": 1.27,
+        "ratio_computed": 1.27
+      },
+      {
+        "N": 100000,
+        "count_claimed": 332,
+        "count_computed": 332,
+        "ratio_claimed": 1.0499,
+        "ratio_computed": 1.049876
+      },
+      {
+        "N": 1000000,
+        "count_claimed": 870,
+        "count_computed": 870,
+        "ratio_claimed": 0.87,
+        "ratio_computed": 0.87
+      },
+      {
+        "N": 7445662,
+        "count_claimed": 2000,
+        "count_computed": 2000,
+        "ratio_claimed": 0.733,
+        "ratio_computed": 0.732957
+      }
+    ],
+    "reproduced": true
+  },
+  "g2": {
+    "terms": 10000,
+    "last": 376437170,
+    "vmax": 400000000,
+    "seconds": 37.33,
+    "list": "results/greedy_b2g_g2.txt",
+    "list_sha256": "72ac94c682669923b43a49a1315503944c86eb06ee7ce753f22b31c62caf172e",
+    "checkpoints": [
+      {
+        "k": 100,
+        "a_k": 5743,
+        "ratio_at_a_k": 1.319564,
+        "window": [
+          1096,
+          5743
+        ],
+        "min_ratio_in_window": 1.289257
+      },
+      {
+        "k": 200,
+        "a_k": 29272,
+        "ratio_at_a_k": 1.168971,
+        "window": [
+          5743,
+          29272
+        ],
+        "min_ratio_in_window": 1.152403,
+        "exponent_from_previous": 2.3496
+      },
+      {
+        "k": 500,
+        "a_k": 263671,
+        "ratio_at_a_k": 0.973731,
+        "window": [
+          50287,
+          263671
+        ],
+        "min_ratio_in_window": 0.970637,
+        "exponent_from_previous": 2.3989
+      },
+      {
+        "k": 1000,
+        "a_k": 1397299,
+        "ratio_at_a_k": 0.845971,
+        "window": [
+          263671,
+          1397299
+        ],
+        "min_ratio_in_window": 0.844418,
+        "exponent_from_previous": 2.4058
+      },
+      {
+        "k": 2000,
+        "a_k": 7445662,
+        "ratio_at_a_k": 0.732957,
+        "window": [
+          1397299,
+          7445662
+        ],
+        "min_ratio_in_window": 0.73259,
+        "exponent_from_previous": 2.4138
+      },
+      {
+        "k": 5000,
+        "a_k": 69376857,
+        "ratio_at_a_k": 0.600292,
+        "window": [
+          12910949,
+          69376857
+        ],
+        "min_ratio_in_window": 0.599985,
+        "exponent_from_previous": 2.4358
+      },
+      {
+        "k": 10000,
+        "a_k": 376437170,
+        "ratio_at_a_k": 0.515411,
+        "window": [
+          69376857,
+          376437170
+        ],
+        "min_ratio_in_window": 0.514957,
+        "exponent_from_previous": 2.4399
+      }
+    ]
+  },
+  "checks": {
+    "g1_matches_oeis_A005282": {
+      "terms": 2000,
+      "a_last": 96592680,
+      "seconds": 3.7,
+      "ok": true
+    },
+    "python_reimplementation": {
+      "terms": 500,
+      "seconds": 3.21,
+      "ok": true
+    },
+    "b2_property": {
+      "max_representations": 2,
+      "seconds": 2.89,
+      "ok": true
+    },
+    "cpu_limit": {
+      "limit_s": 900,
+      "trip_limit_s": 1,
+      "trip_exit": -24,
+      "trip_seconds": 1.06,
+      "ok": true
+    },
+    "peak_rss_children_bytes": 439468032
+  },
+  "source_sha256": "2a31a208b94e3742eb5a9c9712de999b417090a1417da5c0ad1eaf14e510087a",
+  "script_sha256": "91c483a8a57a8a852d22b39e31a2c91efd07514fb3f8220f584b29f0b2adea22"
+}

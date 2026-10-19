@@ -1,0 +1,16 @@
+name = "erdos40"
+defaultTargets = ["Erdos40"]
+
+# Pinned to the formal-conjectures commit whose `FormalConjectures/ErdosProblems/40.lean` states Erdős #40. The theorems here are about that file's `Erdos40.Erdos40For` and `sumRep`, imported rather than restated. The pin also fixes Mathlib at leanprover-community/mathlib4 v4.33.1 (0df444a360ea).
+[[require]]
+name = "formal_conjectures"
+git = "https://github.com/google-deepmind/formal-conjectures"
+rev = "e5f428182a3ee32dde401eceb4a94ba0382e8434"
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[lean_lib]]
+name = "Erdos40"
