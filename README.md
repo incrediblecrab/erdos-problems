@@ -53,7 +53,7 @@ python3 -B -m unittest discover -s src -p 'test_openai_transfer.py' -v
 python3 -B src/check_periodic_lean.py --check
 ```
 
-The Lean checker reuses `../formal/scripts/verify_lean.py` and its toolchain pin, whose hashes are recorded; it refuses to install a missing toolchain. Its `--plant sorry`, `--plant axiom`, and `--plant claim` cases must fail. The numerical transfer's additional `--plant degenerate` and `--plant normalization` cases exercise the zero-difference convention and the factor of two.
+The Lean checker reuses `../formal/scripts/verify_lean.py` and its toolchain pin, whose hashes are recorded; it refuses to install a missing toolchain. That verifier lives in a sibling `formal/` checkout that is not part of this repository, so on a clone without it, or without `elan`, `src/final_check.py` reports the Lean check as skipped and its summary line says the run is incomplete; the stored `results/periodic-lean.json` is then not re-verified. Its `--plant sorry`, `--plant axiom`, and `--plant claim` cases must fail. The numerical transfer's additional `--plant degenerate` and `--plant normalization` cases exercise the zero-difference convention and the factor of two.
 
 ## Findings
 

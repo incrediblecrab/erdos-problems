@@ -40,6 +40,7 @@ import argparse
 import glob
 import json
 import os
+import shutil
 import subprocess
 import sys
 from fractions import Fraction
@@ -124,6 +125,7 @@ class Checker:
     def __init__(self):
         self.failed = 0
         self.passed = 0
+        self.skipped = 0
 
     def check(self, ok, label, detail=""):
         self.passed += bool(ok)
@@ -131,6 +133,11 @@ class Checker:
         mark = "PASS" if ok else "FAIL"
         print(f"  [{mark}] {label}" + (f"   {detail}" if detail else ""), flush=True)
         return ok
+
+    def skip(self, label, detail=""):
+        """A check that cannot run here. It is neither a pass nor a failure, and the summary says so."""
+        self.skipped += 1
+        print(f"  [SKIP] {label}" + (f"   {detail}" if detail else ""), flush=True)
 
 
 def bits(word):
@@ -699,12 +706,20 @@ def check_openai_transfer(ck):
     ck.check(current == stored, "stored transfer artifact matches a fresh exact run")
     for item in current["checks"]:
         ck.check(item["passed"], item["name"])
-    proof = subprocess.run(
-        [sys.executable, "-B", os.path.join(HERE, "check_periodic_lean.py"), "--check"],
-        capture_output=True, text=True, timeout=480,
-    )
-    ck.check(proof.returncode == 0, "core-only Lean transfer replays and matches its recorded result",
-             "" if proof.returncode == 0 else proof.stdout + proof.stderr)
+    shared_gate = os.path.join(os.path.dirname(ROOT), "formal", "scripts", "verify_lean.py")
+    if not os.path.exists(shared_gate):
+        ck.skip("core-only Lean transfer replays and matches its recorded result",
+                f"{shared_gate} is missing; the Lean check needs the sibling formal/ checkout, see README.md")
+    elif shutil.which("elan") is None:
+        ck.skip("core-only Lean transfer replays and matches its recorded result",
+                "elan is not installed; the checker does not install toolchains")
+    else:
+        proof = subprocess.run(
+            [sys.executable, "-B", os.path.join(HERE, "check_periodic_lean.py"), "--check"],
+            capture_output=True, text=True, timeout=480,
+        )
+        ck.check(proof.returncode == 0, "core-only Lean transfer replays and matches its recorded result",
+                 "" if proof.returncode == 0 else proof.stdout + proof.stderr)
     print("      The superexponential consequence remains conditional on the cited upstream cyclic theorem.")
 
 
@@ -733,7 +748,8 @@ def main():
     check_lrat(ck)
     check_openai_transfer(ck)
 
-    print(f"\n{ck.passed} passed, {ck.failed} failed")
+    tail = f", {ck.skipped} skipped (incomplete)" if ck.skipped else ""
+    print(f"\n{ck.passed} passed, {ck.failed} failed{tail}")
     return 1 if ck.failed else 0
 
 

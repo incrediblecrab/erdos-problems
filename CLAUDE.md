@@ -10,7 +10,7 @@ This repository studies Erdős problem 1186, monochromatic $k$-term arithmetic p
 python src/final_check.py         # re-derives every claim; exit 0 = pass, about 2.5 minutes
 FAST=1 bash scripts/reproduce.sh  # full pipeline without the long searches
 bash scripts/reproduce.sh         # everything, including the long searches
-python src/check_periodic_lean.py # checks src/PeriodicTransfer.lean (core Lean, no Mathlib) with the shared axiom probe
+python src/check_periodic_lean.py # checks src/PeriodicTransfer.lean (core Lean, no Mathlib) with the shared axiom probe in ../formal, a sibling checkout; without it the gate skips this check and says so
 bash refs/fetch.sh                # download sources; nothing is redistributed
 ```
 
