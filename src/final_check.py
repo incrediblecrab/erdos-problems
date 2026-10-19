@@ -92,7 +92,7 @@ def main():
         check("planted: verify_lattice rejects 6 extra triangles at D=12 in the 25x25 grid, hash updated",
               r.returncode == 1)
 
-        # 3. g(5) = 7 and g(6) = 12
+        # 3. g(5) = 7, g(6) = 12 and g(7) = 18
         r = run([PY, SRC / "g5_certificate.py", 8])
         check("g5_certificate 8: no 5-point system with 8 equal areas is consistent over C",
               r.returncode == 0 and ", 0 consistent" in r.stdout, last(r))
@@ -111,6 +111,26 @@ def main():
         r = run([PY, SRC / "g7_no21.py"])
         check("g7_no21: no 7-point system has 21 triangles of one nonzero area",
               r.returncode == 0 and "g(7) <= 20" in r.stdout, last(r))
+        r = run([PY, SRC / "g7_exact.py", "--write-to", tmp / "g7_classes.json"])
+        g7_ok = r.returncode == 0 and "g(7) = 18" in r.stdout
+        check("g7_exact: no 7-point set has 19 triangles of one nonzero area, so g(7) = 18", g7_ok, last(r))
+        stored_classes = (ROOT / "results" / "g7_classes.json").read_text()
+        check("g7_exact: results/g7_classes.json is what the enumeration writes",
+              g7_ok and (tmp / "g7_classes.json").read_text() == stored_classes)
+        r = run([PY, SRC / "g7_box_check.py"])
+        check("g7_box_check: the 6x6 box scan finds only listed configurations, and the four-point lemma holds "
+              "on the 7x7 box", r.returncode == 0, last(r))
+        wrong = tmp / "g7_wrong_centroid.py"
+        wrong.write_text((SRC / "g7_exact.py").read_text().replace(
+            "(Fr(1, 3), Fr(1)))", "(Fr(1, 3), Fr(2)))", 1))
+        r = run([PY, wrong])
+        check("planted: g7_exact rejects a wrong centroid base", r.returncode == 1)
+        doctored = json.loads(stored_classes)
+        doctored["six_points_at_least_11"] = doctored["six_points_at_least_11"][1:]
+        (tmp / "g7_classes_short.json").write_text(json.dumps(doctored))
+        r = run([PY, SRC / "g7_box_check.py", tmp / "g7_classes_short.json"])
+        check("planted: g7_box_check rejects a classification with one 6-point configuration dropped",
+              r.returncode == 1)
 
         # 4. small-n configurations
         small = json.loads((ROOT / "results" / "small_n.json").read_text())
@@ -125,13 +145,15 @@ def main():
         # 5. claims.json against what was just recomputed
         from recount import classes
         best = {e["n"]: e for e in small["best"]}
+        upper = {6: 12, 7: 18 if g7_ok else 20}
+        for n in range(8, 17):
+            upper[n] = upper[n - 1] * n // (n - 3)
         for e in claims["exact"]:
             n, g = e["n"], e["g"]
             ok = best[n]["count"] == g if n in best else (n, g) == (3, 1)
             check(f"claim g({n}) = {g}: lower bound attained by a stored configuration", ok)
-        upper = {6: 12, 7: 20}
-        for n in range(8, 17):
-            upper[n] = upper[n - 1] * n // (n - 3)
+            if n >= 7:
+                check(f"claim g({n}) = {g}: upper bound {upper[n]} from g(7) = 18 and averaging", upper[n] == g)
         for e in claims["small_n"]:
             n = e["n"]
             recounted = max(classes([tuple(p) for p in best[n]["points"]]).values())

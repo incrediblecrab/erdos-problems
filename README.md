@@ -26,7 +26,7 @@ This repository studies Erdős problem 1086, "many triangles of one area," by re
 Proofs and caveats are in [`NOTES.md`](NOTES.md).
 
 - The square grid gives $g(n)\ge(6e^\gamma/\pi^2-o(1))\,n^2\log\log n$, where $6e^\gamma/\pi^2=1.08276\ldots$, and no area does asymptotically better there. The proof is informal and unreviewed, and no novelty is claimed.
-- $g(5)=7$ by hand and by certificate, $g(6)=12$ computer-assisted, $18\le g(7)\le20$.
+- $g(5)=7$ by hand and by certificate; $g(6)=12$, $g(7)=18$ and $g(8)=28$ computer-assisted. Exactly two six-point sets span 12 triangles of one area, the $2\times3$ grid and the affine regular hexagon, and no seven-point set spans 19.
 - Exact grid counts up to $800\times800$ give $g(640{,}000)\ge911{,}639{,}642{,}036$.
 - The problem page disagrees with its sources in three places.
 

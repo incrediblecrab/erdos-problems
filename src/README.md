@@ -17,6 +17,8 @@ cd src && for p in grid_count brute_count small_search; do clang -O2 -Wall -Wext
 | `g5_certificate.py` | Gröbner certificate that no 5 points span 8 triangles of one area |
 | `g6_exact.py`, `g6_brute.py` | $g(6)=12$: exact classification, and a scan sharing no code with it |
 | `g7_no21.py` | rules out 21 equal-area triangles on 7 points by enumerating the surviving triple systems and checking their polynomial systems |
+| `g7_exact.py` | $g(7)=18$: classifies the 5-point sets with $\ge6$ and the 6-point sets with $\ge11$ equal-area triangles by a finite enumeration, then shows no 7-point set has 19; `--write` stores the classes in `results/g7_classes.json` |
+| `g7_box_check.py` | cross-checks that classification against an exhaustive scan of the $6\times6$ box, sharing no code with it |
 | `small_search.c`, `small_table.py` | exhaustive and annealing search for $n\le16$ (about 2 min), writing `results/small_n.json` |
 | `recount.py` | recounts every stored small-$n$ configuration |
 | `final_check.py` | re-derives every claim, planted defects included; exit 0 = pass (about 2 min) |

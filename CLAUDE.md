@@ -12,7 +12,7 @@ python3 src/brute_check.py      # brute-force cross-check of the fast counters
 bash refs/fetch.sh              # download sources; nothing is redistributed
 ```
 
-Python is the shared `~/.venvs/main` interpreter. The counting kernels are C (`src/grid_count.c`, `src/brute_count.c`, `src/small_search.c`) and need a C compiler; `src/README.md` says how each is built and run. The exact small-$n$ results are `src/g5_certificate.py` (a Gröbner certificate that no 5 points span 8 triangles of one area), `src/g6_exact.py` with `src/g6_brute.py` ($g(6)=12$, by an exact classification and a scan sharing no code with it), and `src/g7_no21.py` (no 7 points span 21 equal-area triangles).
+Python is the shared `~/.venvs/main` interpreter. The counting kernels are C (`src/grid_count.c`, `src/brute_count.c`, `src/small_search.c`) and need a C compiler; `src/README.md` says how each is built and run. The exact small-$n$ results are `src/g5_certificate.py` (a Gröbner certificate that no 5 points span 8 triangles of one area), `src/g6_exact.py` with `src/g6_brute.py` ($g(6)=12$, by an exact classification and a scan sharing no code with it), `src/g7_no21.py` (no 7 points span 21 equal-area triangles), and `src/g7_exact.py` with `src/g7_box_check.py` ($g(7)=18$ and hence $g(8)=28$, by a finite classification of the extremal 5- and 6-point sets and a box scan sharing no code with it).
 
 ## Rules
 
