@@ -1,6 +1,6 @@
 # A direct periodic transfer from cyclic colorings
 
-**October 7, 2026.** The safe-coset obstruction in the initial OpenAI transfer study does not obstruct the direct periodic construction. That construction already appears in this repository and in [Lu and Peng, Lemma 1 and equation (10)](https://arxiv.org/abs/1107.2888). The follow-up formalizes its divisibility bridge, derives an exact finite count, and applies it to OpenAI's stated cyclic-coloring growth theorem. The resulting asymptotic statement is conditional on that upstream theorem, not a new unconditional resolution of problem 1186.
+**October 7, 2026.** The safe-coset obstruction in the initial OpenAI transfer study does not obstruct the direct periodic construction. That construction already appears in this repository and in [Lu and Peng, Lemma 1 and equation (10)](https://arxiv.org/abs/1107.2888), and the count below is the first case of [Butler, Graham and Lu, Theorem 6](https://arxiv.org/abs/1209.2687) (Math. Mag. 87 (2014) 83–94): a colouring of $\mathbb Z_m$ avoiding nontrivial $k$-APs gives $\frac1{2m(k-1)}n^2+O(n)$ monochromatic $k$-APs. That citation was added on November 2, 2026. The follow-up formalizes its divisibility bridge, derives an exact finite count, and applies it to OpenAI's stated cyclic-coloring growth theorem. The resulting asymptotic statement is conditional on that upstream theorem, not a new unconditional resolution of problem 1186.
 
 ## Statement and count
 
@@ -28,7 +28,7 @@ If only increasing progressions are counted, subtract the $N$ zero-difference pr
 
 $$\delta_k\le\frac1{2(k-1)m}.$$
 
-This is an upper bound from a construction, not equality with the optimum. The former normalization wording in `NOTES.md` is corrected accordingly.
+This is [Butler, Graham and Lu, Theorem 6], first case. It is an upper bound from a construction, not equality with the optimum. The former normalization wording in `NOTES.md` is corrected accordingly.
 
 The interval limit is taken at fixed $k$ and $m$. Only afterward does the conditional corollary let $k$ grow. The error depends on $D=(k-1)m$, so this is not a uniform finite-interval estimate for a progression length growing with $N$.
 

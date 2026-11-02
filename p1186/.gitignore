@@ -20,6 +20,10 @@ src/verify_zm
 src/verify_zp
 src/verify_zpx
 
+# Search-only shared libraries, built on first use by src/circleopt.py and src/twofree.py.
+src/libcirclef.so
+src/libtwof.so
+
 __pycache__/
 
 # Local environment files can hold credentials; committed templates stay tracked.

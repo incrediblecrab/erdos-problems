@@ -1,0 +1,14 @@
+$ python src/circlestat.py 5 --workers 4
+start: results/zp_k5_c.json m=2969, Phi = 1267880/26444883 = 0.047944246908
+floating-point local minimum: Phi = 0.047942290966661, 30 arcs
+29 free breakpoints; exact derivatives need 1683 exact evaluations per step
+  step 2^-34: done (66s)
+  step 2^-35: gradient and Hessian IDENTICAL (128s)
+Hessian positive definite: True; breakpoints increasing: True
+common denominator D of a*: 8781342627648330799028764768123763884025140841076593335609225642 (64 digits)
+Phi(a*) by circle.phi_circle = 0.0479422909665957
+Phi(a*) by circle.phi_sweep  equal: True
+quadratic prediction equals exact value: True
+Phi(a*) = 5051972199985035774465237875787081693084875438043196086896322913/105376111531779969588345177217485166608301690092919120027310707704
+Phi(a*) = 0.047942290966596; certified word 0.047944246907804; gap 1.956e-06
+total 140s

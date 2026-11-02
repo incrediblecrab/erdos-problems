@@ -1,0 +1,37 @@
+$ bash: verify_zpx (bitset, this commit) vs verify_zpx (plain loop, commit 26818ce) on stored F_p words (the three best with m <= 130, and the best of all; for the k = 6, 7 best words the plain loop checks 2 of the 60 residues, its pre-November-2 setting); then two planted defects
+# the plain-loop binary was built from 'git show 26818ce:p1186/src/verify_zpx.c'
+k=4 m= 114: bitset 359/3249 (6/6 residues, exit 0, 0.0s)  plain 359/3249 (6/6 residues, exit 0, 0.0s)  stored 359/3249  AGREE
+k=4 m=  88: bitset 1285/11616 (6/6 residues, exit 0, 0.0s)  plain 1285/11616 (6/6 residues, exit 0, 0.0s)  stored 1285/11616  AGREE
+k=4 m= 108: bitset 242/2187 (6/6 residues, exit 0, 0.0s)  plain 242/2187 (6/6 residues, exit 0, 0.0s)  stored 242/2187  AGREE
+k=4 m=2998: bitset 1478233/13482006 (6/6 residues, exit 0, 0.4s)  plain 1478233/13482006 (6/6 residues, exit 0, 10.5s)  stored 1478233/13482006  AGREE
+k=5 m= 114: bitset 1283/25992 (12/12 residues, exit 0, 0.0s)  plain 1283/25992 (12/12 residues, exit 0, 0.3s)  stored 1283/25992  AGREE
+k=5 m= 113: bitset 7619/153228 (12/12 residues, exit 0, 0.0s)  plain 7619/153228 (12/12 residues, exit 0, 0.3s)  stored 7619/153228  AGREE
+k=5 m= 111: bitset 614/12321 (12/12 residues, exit 0, 0.0s)  plain 614/12321 (12/12 residues, exit 0, 0.3s)  stored 614/12321  AGREE
+k=5 m=2969: bitset 1267880/26444883 (12/12 residues, exit 0, 3.3s)  plain 1267880/26444883 (12/12 residues, exit 0, 82.2s)  stored 1267880/26444883  AGREE
+k=6 m=  60: bitset 2821/108000 (60/60 residues, exit 0, 0.4s)  plain 2821/108000 (60/60 residues, exit 0, 5.7s)  stored 2821/108000  AGREE
+k=6 m=  62: bitset 761/28830 (60/60 residues, exit 0, 0.4s)  plain 761/28830 (60/60 residues, exit 0, 6.2s)  stored 761/28830  AGREE
+k=6 m=  66: bitset 97/3630 (60/60 residues, exit 0, 0.4s)  plain 97/3630 (60/60 residues, exit 0, 6.8s)  stored 97/3630  AGREE
+k=6 m= 974: bitset 81632/3557535 (60/60 residues, exit 0, 54.3s)  plain 81632/3557535 (2/60 residues, exit 0, 25.6s)  stored 81632/3557535  AGREE
+k=7 m=  62: bitset 1517/115320 (60/60 residues, exit 0, 0.3s)  plain 1517/115320 (60/60 residues, exit 0, 6.0s)  stored 1517/115320  AGREE
+k=7 m=  60: bitset 2941/216000 (60/60 residues, exit 0, 0.3s)  plain 2941/216000 (60/60 residues, exit 0, 5.6s)  stored 2941/216000  AGREE
+k=7 m=  61: bitset 163/11163 (60/60 residues, exit 0, 0.3s)  plain 163/11163 (60/60 residues, exit 0, 5.8s)  stored 163/11163  AGREE
+k=7 m= 973: bitset 615023/56803740 (60/60 residues, exit 0, 51.9s)  plain 615023/56803740 (2/60 residues, exit 0, 27.2s)  stored 615023/56803740  AGREE
+plant 1: d = N/2 counted twice instead of once (k=5, m=600 word, not antipodal)
+bitset count 17336 != plain count 17290 at t=1
+bitset count 69210 != plain count 69118 at t=2
+{"m": 600, "k": 5, "period": 12, "residues_checked": 12, "phi": "20741/432000", "phi_float": 0.048011574074, "plain_loop_agrees": false, "structure_ok": false}
+exit 1
+plant 2: aligned rotations read the next word (k=4, m=496 word)
+bitset count 26748 != plain count 26964 at t=1
+quasi-polynomial check failed at t0=1: d2=1939016 (ref 1939016) d3=2640
+bitset count 107868 != plain count 107892 at t=2
+quasi-polynomial check failed at t0=2: d2=1938592 (ref 1939016) d3=4208
+quasi-polynomial check failed at t0=3: d2=1937716 (ref 1939016) d3=4900
+quasi-polynomial check failed at t0=4: d2=1942080 (ref 1939016) d3=-2616
+quasi-polynomial check failed at t0=5: d2=1941228 (ref 1939016) d3=-20
+quasi-polynomial check failed at t0=6: d2=1944224 (ref 1939016) d3=-5008
+{"m": 496, "k": 4, "period": 6, "residues_checked": 6, "phi": "242377/2214144", "phi_float": 0.109467586571, "plain_loop_agrees": false, "structure_ok": false}
+exit 1
+control: plant 1 on the antipodal k=4 m=496 word; its d = N/2 count is 0, so the plant is invisible there
+{"m": 496, "k": 4, "period": 6, "residues_checked": 6, "phi": "20237/184512", "phi_float": 0.109678503295, "plain_loop_agrees": true, "structure_ok": true}
+exit 0

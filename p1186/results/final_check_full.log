@@ -19,6 +19,7 @@ A. evaluator self-consistency
   [PASS] identity Phi_3 = (1+3mu^2)/4 holds exhaustively   m in 2..9
   [PASS] identity Phi_4 = (1+6mu^2+Lambda_4)/8 holds exhaustively   m in 2..7
   [PASS] stretch invariance: Phi and Psi unchanged by subdivision
+  [PASS] exact.phi_bits equals exact.phi exhaustively   5110 (word, k) pairs, m < 10, k = 3..7
   [PASS] repeat invariance: Phi unchanged by tiling (Psi is not)
 
 B. reproduction of published constructions
@@ -27,6 +28,13 @@ B. reproduction of published constructions
   [PASS] PRS08 block lengths sum to 548
   [PASS] PRS08 12-block word gives Psi_3 = 117/2192 exactly   got 117/2192
   [PASS]   B_20 is balanced with Lambda_4 = -7/75
+  [PASS] BGL14 k=4: QR colouring of Z_11 avoids nontrivial 4-APs with 0 either colour   monochromatic (a, d != 0) pairs: [0, 0]; delta_4 <= 1/72
+  [PASS] BGL14 k=5: QR colouring of Z_37 avoids nontrivial 5-APs with 0 either colour   monochromatic (a, d != 0) pairs: [0, 0]; delta_5 <= 1/304
+  [PASS] BGL14 k=6: QR colouring of Z_139 avoids nontrivial 6-APs with 0 either colour   monochromatic (a, d != 0) pairs: [0, 0]; delta_6 <= 1/1400
+  [PASS] BGL14 k=7: QR colouring of Z_617 avoids nontrivial 7-APs with 0 either colour   monochromatic (a, d != 0) pairs: [0, 0]; delta_7 <= 1/7416
+  [PASS] BGL14 k=8: QR colouring of Z_1069 avoids nontrivial 8-APs with 0 either colour   monochromatic (a, d != 0) pairs: [0, 0]; delta_8 <= 1/14980
+  [PASS] BGL14 Theorem 6 on m = 11, 37 gives Lu-Peng's 1/72 and 1/304
+  [PASS] BGL14 Table 1 rows k = 6, 7, 8 (r = 2) read as quoted from refs/bgl14.pdf   k=6: 139(22.85%), k=7: 617(10.36%), k=8: 1069(11.96%)
 
 C. exact re-certification of every stored word
   [PASS] base k=4: 1 words re-certify
@@ -44,11 +52,12 @@ C. exact re-certification of every stored word
   [PASS] zm   k=4: 97 words re-certify
   [PASS] zm   k=5: 87 words re-certify
   [PASS] zm   k=6: 105 words re-certify
-  [PASS] zp   k=4: 119 words re-certify
-  [PASS] zp   k=5: 81 words re-certify
-  [PASS] zp   k=6: 36 words re-certify
-  [PASS] zp   k=7: 30 words re-certify
-      (941 words re-evaluated in exact rational arithmetic)
+  [PASS] zp   k=4: 120 words re-certify
+  [PASS] zp   k=5: 82 words re-certify
+  [PASS] zp   k=6: 37 words re-certify
+  [PASS] zp   k=7: 31 words re-certify
+      (945 words re-evaluated in exact rational arithmetic)
+  [PASS] exact.phi_bits reproduces all 270 stored F_p values   266 also by exact.phi, 4 above the table cap (phi_bits is their certificate)
 
 F. second, independent evaluator (src/blocks.py)
   [PASS] blocks.py reproduces PRS08 from continuous block lengths   117/2192 vs 117/2192
@@ -105,17 +114,17 @@ D. independent brute force (no code shared with exact.py)
   [PASS] zm  k=4 m=99: Psi 0.013965369 vs exact 0.013961160   |diff| = 4.21e-06 < 1.00e-04
   [PASS] zm  k=5 m=5324: Psi 0.002608355 vs exact 0.002604183   |diff| = 4.17e-06 < 1.00e-04
   [PASS] zm  k=6 m=3698: Psi 0.001140563 vs exact 0.001136378   |diff| = 4.18e-06 < 1.00e-04
-  [PASS] zp  k=4 m=496: Phi 0.109678228 vs exact 0.109678503   |diff| = 2.75e-07 < 2.00e-04
-  [PASS] zp  k=5 m=600: Phi 0.048011555 vs exact 0.048011574   |diff| = 1.94e-08 < 2.00e-04
-  [PASS] zp  k=6 m=60: Phi 0.026120556 vs exact 0.026120370   |diff| = 1.86e-07 < 2.00e-04
-  [PASS] zp  k=7 m=62: Phi 0.013153447 vs exact 0.013154700   |diff| = 1.25e-06 < 2.00e-04
+  [PASS] zp  k=4 m=2998: Phi 0.109644916 vs exact 0.109644885   |diff| = 3.05e-08 < 2.00e-04
+  [PASS] zp  k=5 m=2969: Phi 0.047944205 vs exact 0.047944247   |diff| = 4.19e-08 < 2.00e-04
+  [PASS] zp  k=6 m=974: Phi 0.022946347 vs exact 0.022946225   |diff| = 1.22e-07 < 2.00e-04
+  [PASS] zp  k=7 m=973: Phi 0.010827381 vs exact 0.010827157   |diff| = 2.24e-07 < 2.00e-04
 
 D'. exact value by brute-force counting (src/verify_zpx)
   [PASS] zp  k=4 Lu-Peng B_20: verify_zpx Phi = 17/150 equals exact.py   exact.py 17/150; 6 of 6 residues checked
-  [PASS] zp  k=4 m=496: verify_zpx Phi = 20237/184512 equals exact.py   exact.py 20237/184512; 6 of 6 residues checked
-  [PASS] zp  k=5 m=600: verify_zpx Phi = 20741/432000 equals exact.py   exact.py 20741/432000; 12 of 12 residues checked
-  [PASS] zp  k=6 m=60: verify_zpx Phi = 2821/108000 equals exact.py   exact.py 2821/108000; 2 of 60 residues checked
-  [PASS] zp  k=7 m=62: verify_zpx Phi = 1517/115320 equals exact.py   exact.py 1517/115320; 2 of 60 residues checked
+  [PASS] zp  k=4 m=2998: verify_zpx Phi = 1478233/13482006 equals exact.py   exact.py 1478233/13482006; 6 of 6 residues checked
+  [PASS] zp  k=5 m=2969: verify_zpx Phi = 1267880/26444883 equals exact.py   exact.py 1267880/26444883; 12 of 12 residues checked
+  [PASS] zp  k=6 m=974: verify_zpx Phi = 81632/3557535 equals exact.py   exact.py 81632/3557535; 60 of 60 residues checked
+  [PASS] zp  k=7 m=973: verify_zpx Phi = 615023/56803740 equals exact.py   exact.py 615023/56803740; 60 of 60 residues checked
 
 E. certified records vs published values and vs random
   per family:
@@ -134,23 +143,23 @@ E. certified records vs published values and vs random
     periodic colouring mod m     k=4  m=99                      821/58806 = 0.0139611604  0.6701x random
     periodic colouring mod m     k=5  m=5324                13421/5153632 = 0.0026041828  0.3333x random
     periodic colouring mod m     k=6  m=3698                 1807/1590140 = 0.0011363779  0.3636x random
-    block colouring of F_p       k=4  m=496                  20237/369024 = 0.0548392516  0.8774x random
-    block colouring of F_p       k=5  m=600                  20741/864000 = 0.0240057870  0.7682x random
-    block colouring of F_p       k=6  m=60                    2821/216000 = 0.0130601852  0.8359x random
-    block colouring of F_p       k=7  m=62                    1517/230640 = 0.0065773500  0.8419x random
+    block colouring of F_p       k=4  m=2998             1478233/26964012 = 0.0548224426  0.8772x random
+    block colouring of F_p       k=5  m=2969              633940/26444883 = 0.0239721235  0.7671x random
+    block colouring of F_p       k=6  m=974                 40816/3557535 = 0.0114731127  0.7343x random
+    block colouring of F_p       k=7  m=973              615023/113607480 = 0.0054135784  0.6929x random
 
   best certified bound per problem:
            k  family                where                        bound                 /random  status
     delta_3   block colouring of {1..n}m=548                     117/2192  0.0533759124   0.8540x  beats random; does NOT beat published <= 117/2192 [PRS08 Thm 5]
     delta_4   wildcard chain limit  b=11 f=1                      1/72  0.0138888889   0.6667x  beats random; does NOT beat published <= 1/72 [LuPe12]
     delta_5   wildcard chain limit  b=44 f=4                     1/384  0.0026041667   0.3333x  beats random; beats published <= 1/304 [LuPe12]
-    delta_6   wildcard chain limit  b=226 f=2                   1/2280  0.0004385965   0.1404x  beats random; no published bound found
-    delta_7   wildcard chain limit  b=617 f=1                   1/7416  0.0001348436   0.1036x  beats random; no published bound found
-    delta_8   wildcard chain limit  b=1642 f=2                 1/23016  0.0000434480   0.0779x  beats random; no published bound found
-    delta~_4   block colouring of F_pm=496                 20237/369024  0.0548392516   0.8774x  beats random; beats published <= 17/300 [LuPe12 Thm 1, prime p]
-    delta~_5   block colouring of F_pm=600                 20741/864000  0.0240057870   0.7682x  beats random; beats published <= 3629/131424 [LuPe12 Thm 4, odd n]
-    delta~_6   block colouring of F_pm=60                   2821/216000  0.0130601852   0.8359x  beats random; no published bound found
-    delta~_7   block colouring of F_pm=62                   1517/230640  0.0065773500   0.8419x  beats random; no published bound found
+    delta_6   wildcard chain limit  b=226 f=2                   1/2280  0.0004385965   0.1404x  beats random; beats published <= 1/1400 [BGL14 Thm 6, Table 1 m = 139]
+    delta_7   wildcard chain limit  b=617 f=1                   1/7416  0.0001348436   0.1036x  beats random; does NOT beat published <= 1/7416 [BGL14 Thm 6, Table 1 m = 617]
+    delta_8   wildcard chain limit  b=1642 f=2                 1/23016  0.0000434480   0.0779x  beats random; beats published <= 1/14980 [BGL14 Thm 6, Table 1 m = 1069]
+    delta~_4   block colouring of F_pm=2998            1478233/26964012  0.0548224426   0.8772x  beats random; beats published <= 17/300 [LuPe12 Thm 1, prime p]
+    delta~_5   block colouring of F_pm=2969             633940/26444883  0.0239721235   0.7671x  beats random; beats published <= 3629/131424 [LuPe12 Thm 4, odd n]
+    delta~_6   block colouring of F_pm=974                40816/3557535  0.0114731127   0.7343x  beats random; no published bound found
+    delta~_7   block colouring of F_pm=973             615023/113607480  0.0054135784   0.6929x  beats random; no published bound found
 
   assertions on the claims made in README.md / NOTES.md:
   [PASS] delta_3: certified 117/2192 <= claimed 117/2192
@@ -159,23 +168,30 @@ E. certified records vs published values and vs random
   [PASS] delta_4: claim beats the random colouring   0.0138888889 < 0.0208333333
   [PASS] delta_5: certified 1/384 <= claimed 1/384
   [PASS] delta_5: claim strictly improves on 1/304   0.0026041667 < 0.0032894737 (20.83% better)
+  [PASS] delta_5: quoted improvement 20.83 % equals the exact 20.83 %   100 (1 - 1/384 / 1/304), rounded to 2 places
   [PASS] delta_5: claim beats the random colouring   0.0026041667 < 0.0078125000
   [PASS] delta_6: certified 1/2280 <= claimed 1/2280
+  [PASS] delta_6: claim strictly improves on 1/1400   0.0004385965 < 0.0007142857 (38.60% better)
+  [PASS] delta_6: quoted improvement 38.60 % equals the exact 38.60 %   100 (1 - 1/2280 / 1/1400), rounded to 2 places
   [PASS] delta_6: claim beats the random colouring   0.0004385965 < 0.0031250000
   [PASS] delta_7: certified 1/7416 <= claimed 1/7416
   [PASS] delta_7: claim beats the random colouring   0.0001348436 < 0.0013020833
   [PASS] delta_8: certified 1/23016 <= claimed 1/23016
+  [PASS] delta_8: claim strictly improves on 1/14980   0.0000434480 < 0.0000667557 (34.91% better)
+  [PASS] delta_8: quoted improvement 34.91 % equals the exact 34.91 %   100 (1 - 1/23016 / 1/14980), rounded to 2 places
   [PASS] delta_8: claim beats the random colouring   0.0000434480 < 0.0005580357
-  [PASS] delta~_4: certified 20237/369024 <= claimed 20237/369024
-  [PASS] delta~_4: claim strictly improves on 17/300   0.0548392516 < 0.0566666667 (3.22% better)
-  [PASS] delta~_4: claim beats the random colouring   0.0548392516 < 0.0625000000
-  [PASS] delta~_5: certified 20741/864000 <= claimed 20741/864000
-  [PASS] delta~_5: claim strictly improves on 3629/131424   0.0240057870 < 0.0276129170 (13.06% better)
-  [PASS] delta~_5: claim beats the random colouring   0.0240057870 < 0.0312500000
-  [PASS] delta~_6: certified 2821/216000 <= claimed 2821/216000
-  [PASS] delta~_6: claim beats the random colouring   0.0130601852 < 0.0156250000
-  [PASS] delta~_7: certified 1517/230640 <= claimed 1517/230640
-  [PASS] delta~_7: claim beats the random colouring   0.0065773500 < 0.0078125000
+  [PASS] delta~_4: certified 1478233/26964012 <= claimed 1478233/26964012
+  [PASS] delta~_4: claim strictly improves on 17/300   0.0548224426 < 0.0566666667 (3.25% better)
+  [PASS] delta~_4: quoted improvement 3.25 % equals the exact 3.25 %   100 (1 - 1478233/26964012 / 17/300), rounded to 2 places
+  [PASS] delta~_4: claim beats the random colouring   0.0548224426 < 0.0625000000
+  [PASS] delta~_5: certified 633940/26444883 <= claimed 633940/26444883
+  [PASS] delta~_5: claim strictly improves on 3629/131424   0.0239721235 < 0.0276129170 (13.19% better)
+  [PASS] delta~_5: quoted improvement 13.19 % equals the exact 13.19 %   100 (1 - 633940/26444883 / 3629/131424), rounded to 2 places
+  [PASS] delta~_5: claim beats the random colouring   0.0239721235 < 0.0312500000
+  [PASS] delta~_6: certified 40816/3557535 <= claimed 40816/3557535
+  [PASS] delta~_6: claim beats the random colouring   0.0114731127 < 0.0156250000
+  [PASS] delta~_7: certified 615023/113607480 <= claimed 615023/113607480
+  [PASS] delta~_7: claim beats the random colouring   0.0054135784 < 0.0078125000
 
 I. LRAT-checked UNSAT ledger
   [PASS] lrat-check accepts the validation proof
@@ -197,4 +213,4 @@ J. cyclic-to-periodic transfer
   [PASS] core-only Lean transfer replays and matches its recorded result
       The superexponential consequence remains conditional on the cited upstream cyclic theorem.
 
-139 passed, 0 failed
+155 passed, 0 failed

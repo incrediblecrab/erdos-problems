@@ -438,6 +438,54 @@ def phi(c, k, weights=None, mult=1):
     return tot
 
 
+# phi() tabulates about m^2 * len(carry_regions(k)) weights; measured on
+# November 2, 2026: 2.9 GB and 19 s at m = 1200, k = 4; 3.8 GB and 29 s at
+# m = 1000, k = 5; 4.7 GB and 28 s at m = 1500, k = 4.  Above this many cells
+# certification uses phi_bits(), the same formula without the table.
+PHI_TABLE_CELLS = 10_000_000
+
+
+def phi_table_fits(m, k):
+    return m * m * len(carry_regions(k)) <= PHI_TABLE_CELLS
+
+
+def phi_bits(c, k):
+    """Exact Phi_k of the block colouring c, streamed instead of tabulated.
+
+    The same formula as phi() -- carry regions with exact areas, scaled to
+    integer weights -- but summed over (b, e) without building the weight
+    table, whose O(m^2) memory caps phi() at m of about 1000 (see
+    PHI_TABLE_CELLS).  For fixed b and carry vector e the k indices are
+    a + o_j mod m with o_j = j*b + e_j, so the number of a for which c is
+    constant on them is a popcount of an AND of k rotations of c, held as one
+    Python integer.  Integer arithmetic throughout; agreement with phi() on
+    every word both can evaluate is checked by src/final_check.py.
+    """
+    m = len(c)
+    regs = carry_regions(k)
+    cell_den = 1
+    for _, a in regs:
+        cell_den = cell_den * a.denominator // gcd(cell_den, a.denominator)
+    cells = [(e, int(a * cell_den)) for e, a in regs]
+    assert sum(w for _, w in cells) == cell_den
+    mask = (1 << m) - 1
+    word = 0
+    for i, ci in enumerate(c):
+        if ci:
+            word |= 1 << i
+    doubled = word | (word << m)              # bit a of (doubled >> s) is c[(a+s) % m]
+    tot = 0
+    for b in range(m):
+        for e, w in cells:
+            one, zero = mask, mask
+            for j in range(k):
+                r = (doubled >> ((j * b + e[j]) % m)) & mask
+                one &= r
+                zero &= ~r
+            tot += w * (one.bit_count() + (zero & mask).bit_count())
+    return Fraction(tot, cell_den * m * m)
+
+
 def delta_tilde_bound(c, k, weights=None):
     """The upper bound on delta~_k certified by the block colouring c: Phi_k(c)/2."""
     return phi(c, k, weights) / 2

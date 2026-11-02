@@ -1,0 +1,33 @@
+$ python plant.py ...   (scratch harness: plant one defect, run the gate, restore from a byte copy, compare sha256); November 2, 2026
+PLANT: bit 100 of the m=974 word in results/zp_k6_c.json flipped, its recorded value left intact
+  gate: final_check.py --fast --threads 4; exit 1; 4 FAIL lines:
+    [FAIL] zp   k=6: 12 words re-certify   1 bad: [('974', '43609/1897352 != 81632/3557535')]
+    [FAIL] exact.phi_bits reproduces all 270 stored F_p values   [(6, '974', '43609/1897352', '81632/3557535')]
+    [FAIL] circle.py agrees with exact.py on 12 stored F_p words   [(6, '974', '81632/3557535', '43609/1897352')]
+    [FAIL] zp  k=6 m=974: verify_zpx Phi = 43609/1897352 equals exact.py   exact.py 81632/3557535; 60 of 60 residues checked
+  148 passed, 4 failed
+  restored byte-identical: True (sha256 35196f794c81ea54)
+PLANT: bit 1000 of the m=2998 word in results/zp_k4_c.json flipped, its recorded value left intact
+  gate: final_check.py --fast --threads 4; exit 1; 4 FAIL lines:
+    [FAIL] zp   k=4: 12 words re-certify   1 bad: [('2998', '246457/2247001 != 1478233/13482006')]
+    [FAIL] exact.phi_bits reproduces all 270 stored F_p values   [(4, '2998', '246457/2247001', '1478233/13482006')]
+    [FAIL] circle.py agrees with exact.py on 12 stored F_p words   [(4, '2998', '1478233/13482006', '246457/2247001')]
+    [FAIL] zp  k=4 m=2998: verify_zpx Phi = 246457/2247001 equals exact.py   exact.py 1478233/13482006; 6 of 6 residues checked
+  148 passed, 4 failed
+  restored byte-identical: True (sha256 614d9250f1fd10fd)
+PLANT: claims.json (zp, k=6) field bound set to 40816/3557536
+  gate: final_check.py --fast --threads 4 --no-brute; exit 1; 1 FAIL lines:
+    [FAIL] delta~_6: certified 40816/3557535 <= claimed 2551/222346
+  132 passed, 1 failed
+  restored byte-identical: True (sha256 79ce89868f51eb17)
+PLANT: src/final_check.py: 'BGL14_TABLE1 = {4: 11, 5: 37, 6: 139,' replaced by 'BGL14_TABLE1 = {4: 11, 5: 37, 6: 138,'
+  gate: final_check.py --fast --threads 4 --no-brute; exit 1; 2 FAIL lines:
+    [FAIL] BGL14 k=6: QR colouring of Z_138 avoids nontrivial 6-APs with 0 either colour   monochromatic (a, d != 0) pairs: [2602, 2688]; delta_6 <= 1/1390
+    [FAIL] BGL14 Table 1 rows k = 6, 7, 8 (r = 2) read as quoted from refs/bgl14.pdf   missing or inconsistent: [6]
+  131 passed, 2 failed
+  restored byte-identical: True (sha256 f0165dffb2d504f3)
+PLANT: claims.json (n, k=6) field percent set to 38.61
+  gate: final_check.py --fast --threads 4 --no-brute; exit 1; 1 FAIL lines:
+    [FAIL] delta_6: quoted improvement 38.61 % equals the exact 38.60 %   100 (1 - 1/2280 / 1/1400), rounded to 2 places
+  132 passed, 1 failed
+  restored byte-identical: True (sha256 79ce89868f51eb17)

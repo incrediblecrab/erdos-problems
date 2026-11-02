@@ -14,12 +14,21 @@ Checks, in order:
   B  literature reproduction     -- Lu-Peng's B_20 must give Phi_4 = 17/150 and
                                     PRS08's 12-block word must give Psi_3 =
                                     117/2192, both exactly
+                                    and each [BGL14] Table 1 quadratic-residue
+                                    colouring (k = 4..8) must avoid nontrivial
+                                    k-APs with 0 coloured either way; Table 1 is
+                                    quoted from refs/bgl14.pdf when present
   C  certification               -- every word in results/*.json re-certifies to
                                     its stored value
+  C' streamed F_p evaluator       -- exact.phi_bits (the same formula without the
+                                    O(m^2) weight table) reproduces every stored
+                                    F_p value; above exact.PHI_TABLE_CELLS it is
+                                    the certificate, since exact.phi does not fit
   D  independent cross-check     -- the record words re-measured by brute force
                                     over Z_p and over {1,...,n}
   D' exact brute-force value     -- src/verify_zpx counts Z_{mt} directly at
-                                    several block sizes t and recovers the
+                                    block sizes t in every residue class mod
+                                    lcm(1..k-1) and recovers the
                                     exact Phi_k of each best zp word (and of
                                     Lu-Peng's B_20) by Ehrhart interpolation;
                                     it must equal exact.py's value exactly
@@ -39,7 +48,7 @@ Checks, in order:
                                     explicit lifts by src/verify_zm
   J  OpenAI transfer             -- exact periodic counts, stored transfer data, and the core-only Lean bridge; not OpenAI's upstream theorem
 
-Usage:  python src/final_check.py [--fast] [--no-brute]
+Usage:  python src/final_check.py [--fast] [--no-brute] [--threads N]
 """
 
 import argparse
@@ -88,6 +97,26 @@ PUBLISHED = {
     ("n", 4): (Fraction(1, 72), "<= 1/72 [LuPe12]"),
     ("n", 5): (Fraction(1, 304), "<= 1/304 [LuPe12]"),
 }
+
+# [BGL14] Butler, Graham, Lu, "Unrolling residues to avoid progressions",
+# arXiv:1209.2687, Table 1, column r = 2: for each k the largest m found with a
+# 2-colouring of Z_m, 0 coloured arbitrarily, containing no nontrivial k-AP.
+# Their Theorem 6 (second case) turns each into delta_k <= 1/(2(m+1)(k-1)).
+# For k = 4, 5 these are Lu-Peng's 1/72 and 1/304; for k = 6, 7, 8 they are the
+# published values this project compares with.  Check B rebuilds each colouring
+# (quadratic residues mod the prime m, Theorem 7) and re-tests the hypothesis.
+BGL14_TABLE1 = {4: 11, 5: 37, 6: 139, 7: 617, 8: 1069}
+BGL14_ROWS = {6: "139(22.85%)", 7: "617(10.36%)", 8: "1069(11.96%)"}   # as printed
+
+
+def bgl14_bound(k):
+    return Fraction(1, 2 * (BGL14_TABLE1[k] + 1) * (k - 1))
+
+
+for _k in (6, 7, 8):
+    PUBLISHED[("n", _k)] = (bgl14_bound(_k),
+                            f"<= {bgl14_bound(_k)} [BGL14 Thm 6, Table 1 m = {BGL14_TABLE1[_k]}]")
+
 RANDOM = {
     "zp": lambda k: Fraction(1, 2 ** k),
     "n": lambda k: Fraction(1, (k - 1) * 2 ** k),
@@ -112,6 +141,15 @@ FAMILY_NAME = {
 CLAIMS = {}
 
 
+def percent_better(bound, beats):
+    """100 (1 - bound/beats) as a string with two decimals, rounded exactly."""
+    q = (1 - Fraction(bound) / Fraction(beats)) * 10000
+    n = int(q)
+    if q - n >= Fraction(1, 2):
+        n += 1
+    return f"{n // 100}.{n % 100:02d}"
+
+
 def load_claims():
     """Claims are stored next to the prose that makes them, so that editing
     README.md without re-running a search cannot silently change a claim."""
@@ -124,6 +162,7 @@ def load_claims():
             "bound": Fraction(rec["bound"]),
             "beats": Fraction(rec["beats"]) if rec.get("beats") else None,
             "beats_random": rec.get("beats_random", False),
+            "percent": rec.get("percent"),
         }
     return out
 
@@ -207,6 +246,16 @@ def check_evaluator(ck, fast):
                 bad_s += exact.psi(c, k) != exact.psi(cs, k)
                 bad_r += exact.phi(c, k) != exact.phi(cr, k)
     ck.check(bad_s == 0, "stretch invariance: Phi and Psi unchanged by subdivision")
+
+    # exact.phi_bits is the streamed form of exact.phi used above the table cap.
+    bad_b = n_b = 0
+    for m in range(1, 8 if fast else 10):
+        for c in product((0, 1), repeat=m):
+            for k in range(3, 8):
+                n_b += 1
+                bad_b += exact.phi_bits(c, k) != exact.phi(c, k)
+    ck.check(bad_b == 0, "exact.phi_bits equals exact.phi exhaustively",
+             f"{n_b} (word, k) pairs, m < {8 if fast else 10}, k = 3..7")
     ck.check(bad_r == 0, "repeat invariance: Phi unchanged by tiling (Psi is not)")
 
 
@@ -232,6 +281,52 @@ def check_literature(ck):
     lam = exact.lambda_form(bits(LUPE_B20), 4)
     ck.check(exact.mean(bits(LUPE_B20)) == 0 and lam == Fraction(-7, 75),
              "  B_20 is balanced with Lambda_4 = -7/75")
+
+    # [BGL14]: the quadratic-residue colouring of Z_p for each Table 1 entry,
+    # with 0 coloured either way, must have no monochromatic k-AP of nonzero
+    # difference (the hypothesis of their Theorem 6, second case).
+    for k, p in sorted(BGL14_TABLE1.items()):
+        if np is None:
+            ck.skip(f"BGL14 k={k}: QR colouring re-test", "numpy unavailable")
+            continue
+        prime = p > 2 and all(p % q for q in range(2, int(p ** 0.5) + 1))
+        sq = {(x * x) % p for x in range(1, p)}
+        mono = []
+        for z in (0, 1):
+            c = [z] + [0 if x in sq else 1 for x in range(1, p)]
+            mono.append(cyclic_mono_nonzero(c, k))
+        ck.check(prime and mono == [0, 0],
+                 f"BGL14 k={k}: QR colouring of Z_{p} avoids nontrivial {k}-APs with 0 either colour",
+                 f"monochromatic (a, d != 0) pairs: {mono}; delta_{k} <= {bgl14_bound(k)}")
+    ck.check(bgl14_bound(4) == PUBLISHED[("n", 4)][0] and bgl14_bound(5) == PUBLISHED[("n", 5)][0],
+             "BGL14 Theorem 6 on m = 11, 37 gives Lu-Peng's 1/72 and 1/304")
+    pdf = os.path.join(ROOT, "refs", "bgl14.pdf")
+    try:
+        import pypdf
+        text = " ".join(" ".join(pg.extract_text() for pg in pypdf.PdfReader(pdf).pages).split())
+    except Exception as exc:                       # no local copy, or no pypdf
+        ck.skip("BGL14 Table 1 quotation", f"refs/bgl14.pdf unreadable ({type(exc).__name__}); run refs/fetch.sh")
+    else:
+        missing = [k for k, row in BGL14_ROWS.items()
+                   if f"k = {k} {' '.join(row.split())}" not in text
+                   or not row.startswith(f"{BGL14_TABLE1[k]}(")]
+        ck.check(not missing, "BGL14 Table 1 rows k = 6, 7, 8 (r = 2) read as quoted from refs/bgl14.pdf",
+                 f"missing or inconsistent: {missing}" if missing else
+                 ", ".join(f"k={k}: {r}" for k, r in BGL14_ROWS.items()))
+
+
+def cyclic_mono_nonzero(c, k):
+    """Pairs (a, d) of Z_m, d != 0, with c constant on a, a+d, ..., a+(k-1)d."""
+    m = len(c)
+    arr = np.array(c, dtype=np.int8)
+    a = np.arange(m)
+    tot = 0
+    for d in range(1, m):
+        ok = np.ones(m, bool)
+        for j in range(1, k):
+            ok &= arr[(a + j * d) % m] == arr
+        tot += int(ok.sum())
+    return tot
 
 
 # ------------------------------------------------------------------ check C
@@ -344,7 +439,13 @@ def recertify(rec):
     if fam == "zp":
         if len(c) != int(rec["key"]):
             return None
-        return exact.phi(c, k)
+        if not exact.phi_table_fits(len(c), k):
+            return exact.phi_bits(c, k)     # same formula, streamed; see check C'
+        val = exact.phi(c, k)
+        if len(c) > 300:                    # the weight tables are cached per m
+            exact.block_weights.cache_clear()
+            exact.block_weights_int.cache_clear()
+        return val
     if fam == "n":
         if len(c) != int(rec["key"]):
             return None
@@ -385,6 +486,28 @@ def check_certification(ck, results, fast):
         ck.check(not bad, f"{fam:<4} k={k}: {len(items)} words re-certify",
                  "" if not bad else f"{len(bad)} bad: {bad[:3]}")
     print(f"      ({total} words re-evaluated in exact rational arithmetic)")
+
+    # C'.  exact.phi tabulates O(m^2) weights, so above exact.PHI_TABLE_CELLS
+    # the F_p words are certified by exact.phi_bits, the same carry-region
+    # formula summed by popcounts without a table.  The two implementations
+    # must agree on every stored F_p word that exact.phi can evaluate.
+    both = only_bits = 0
+    bad = []
+    for (fam, k), db in sorted(results.items()):
+        if fam != "zp":
+            continue
+        for key, rec in db.items():
+            c = bits(rec["word"])
+            got = exact.phi_bits(c, k)
+            if exact.phi_table_fits(len(c), k):
+                both += 1
+            else:
+                only_bits += 1
+            if got != rec["value"]:
+                bad.append((k, key, str(got), str(rec["value"])))
+    ck.check(not bad, f"exact.phi_bits reproduces all {both + only_bits} stored F_p values",
+             f"{both} also by exact.phi, {only_bits} above the table cap (phi_bits is their"
+             f" certificate)" if not bad else str(bad[:3]))
 
 
 # ------------------------------------------------------------------ check F
@@ -550,6 +673,9 @@ def check_bases(ck, results):
 # ------------------------------------------------------------------ check D
 
 
+THREADS = 8
+
+
 def brute(binary, args):
     exe = os.path.join(HERE, binary)
     if not os.path.exists(exe):
@@ -599,7 +725,7 @@ def check_brute(ck, results, p=60013, n=120000):
         key, rec = min(db.items(), key=lambda kv: kv[1]["bound"])
         want = float(rec["value"])
         if fam == "zp":
-            res = brute("verify_zp", [p, rec["word"], k, 8])
+            res = brute("verify_zp", [p, rec["word"], k, THREADS])
             if res is None:
                 ck.check(False, f"zp k={k}: verify_zp unavailable or failed")
                 continue
@@ -609,7 +735,7 @@ def check_brute(ck, results, p=60013, n=120000):
                      f"|diff| = {abs(meas-want):.2e} < {tol:.2e}")
             continue
         if fam == "n":
-            res = brute("verify_n", [n, rec["word"], k, 8])
+            res = brute("verify_n", [n, rec["word"], k, THREADS])
             if res is not None:
                 meas, tol = res["psi_measured"], 12.0 / n
                 ck.check(abs(meas - want) < tol,
@@ -643,8 +769,7 @@ def check_exact_brute(ck, results):
         key, rec = min(db.items(), key=lambda kv: kv[1]["bound"])
         cases.append((rec["label"], rec["word"], k, rec["value"]))
     for label, word, k, want in cases:
-        residues = 0 if k <= 5 else 2          # 0 = every residue mod lcm(1..k-1)
-        args = [word, k, 8] + ([residues] if residues else [])
+        args = [word, k, THREADS]              # every residue t0 mod lcm(1..k-1)
         res = brute("verify_zpx", args)
         if res is None:
             ck.check(False, f"zp k={k} {label}: verify_zpx unavailable, failed, or its quasi-polynomial test failed")
@@ -712,6 +837,11 @@ def check_records(ck, results):
                      f"{name}: claim strictly improves on {claim['beats']}",
                      f"{float(bound):.10f} < {float(claim['beats']):.10f} "
                      f"({100*(1-float(bound/claim['beats'])):.2f}% better)")
+            # the percentage quoted in README.md, recomputed exactly
+            want = percent_better(claim["bound"], claim["beats"])
+            ck.check(claim.get("percent") == want,
+                     f"{name}: quoted improvement {claim.get('percent')} % equals the exact {want} %",
+                     f"100 (1 - {claim['bound']} / {claim['beats']}), rounded to 2 places")
         if claim.get("beats_random"):
             ck.check(bound < RANDOM[prob](k),
                      f"{name}: claim beats the random colouring",
@@ -798,7 +928,11 @@ def main():
                     help="skip the deepest exhaustive identity checks")
     ap.add_argument("--no-brute", action="store_true",
                     help="skip the C brute-force cross-checks")
+    ap.add_argument("--threads", type=int, default=8,
+                    help="threads for the C brute-force programs (default 8)")
     args = ap.parse_args()
+    global THREADS
+    THREADS = args.threads
 
     ck = Checker()
     results = load_results()

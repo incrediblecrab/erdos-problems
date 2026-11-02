@@ -4,7 +4,7 @@ This repository studies Erdős problem 1186, monochromatic $k$-term arithmetic p
 
 **Objective:** push the *upper* bounds down by explicit construction, certify every value in exact arithmetic, and reproduce the published numbers before claiming to beat them.
 
-**Inputs:** the erdosproblems.com entry; [LuPe12], [PRS08], [CCS07], [RL12], [HHLM07] and other sources listed in [`refs/`](refs/README.md). Run `refs/fetch.sh`; none are redistributed here.
+**Inputs:** the erdosproblems.com entry; [LuPe12], [PRS08], [BGL14], [CCS07], [RL12], [HHLM07] and other sources listed in [`refs/`](refs/README.md). Run `refs/fetch.sh`; none are redistributed here.
 
 **Files:**
 
@@ -57,21 +57,22 @@ The Lean checker reuses `../formal/scripts/verify_lean.py` and its toolchain pin
 
 ## Findings
 
-Comparing the optimal periodic colourings at $m=88$ and $m=132$ showed both reduce to one 44-bit base with a free coset of size 4. Generalising gives a **wildcard recursion**, proved here as a theorem ([`NOTES.md`](NOTES.md) §3.1). A *base* is a colouring of $\mathbb{Z}_b$ with a proper coset $F$ of size $f<b$ such that every $k$-AP of nonzero difference that avoids $F$ is non-monochromatic, and every one that meets both $F$ and its complement is non-constant outside $F$. Every base gives
+Comparing the optimal periodic colourings at $m=88$ and $m=132$ showed both reduce to one 44-bit base with a free coset of size 4. Generalising gives a **wildcard recursion**, proved here as a theorem ([`NOTES.md`](NOTES.md) §3.1). Its case $f=1$ is not new: it is the "unrolling" of Butler, Graham and Lu [BGL14, Theorem 6], which these notes did not cite before November 2, 2026. A *base* is a colouring of $\mathbb{Z}_b$ with a proper coset $F$ of size $f<b$ such that every $k$-AP of nonzero difference that avoids $F$ is non-monochromatic, and every one that meets both $F$ and its complement is non-constant outside $F$. Every base gives
 
 $$m_k(\mathbb{Z}_{bt}) \le \frac{(b-f)+f^2 m_k(\mathbb{Z}_{ft})}{b^2}, \qquad \delta_k \le \frac{1}{2(k-1)(b+f)} .$$
 
-This reproduces **both** published constants exactly — $b=11,f=1\Rightarrow c_4\le1/72$ and $b=37,f=1\Rightarrow c_5\le1/304$ — which is the evidence that it measures the published quantity. Lu and Peng's two bases turn out to be the quadratic-residue (QR) colourings of $\mathbb{Z}_{11}$ and $\mathbb{Z}_{37}$, the colourings behind Rabung's lower bounds for van der Waerden numbers [RL12]. Every QR colouring that passes Rabung's test is a base, and so is every good zipped one [HHLM07] (NOTES §4). Together with one base found by search, at $k=5$, they give:
+This reproduces the published constants exactly — $b=11,f=1\Rightarrow c_4\le1/72$ and $b=37,f=1\Rightarrow c_5\le1/304$ [LuPe12], and [BGL14, Table 1]'s $1/1400$, $1/7416$ and $1/14980$ for $k=6,7,8$ — which is the evidence that it measures the published quantity. Lu and Peng's two bases are the quadratic-residue (QR) colourings of $\mathbb{Z}_{11}$ and $\mathbb{Z}_{37}$, which [BGL14, Theorem 7] already observed and used, and the colourings behind Rabung's lower bounds for van der Waerden numbers [RL12]. Every QR colouring that passes Rabung's test is a base, and so is every good zipped one [HHLM07] (NOTES §4). Bases with $f>1$, the $\mathbb{Z}_{44}$ base and zipped colourings used as bases were not found in the literature searched. Together they give:
 
 - $\delta_5 \le \mathbf{1/384}$, from a 5-AP-free $\mathbb{Z}_{44}$ base with $f=4$: a **20.83 % improvement** on Lu–Peng's $1/304$.
-- $\delta_6 \le \mathbf{1/2280}$, from the zipped QR colouring of $\mathbb{Z}_{226}$ ($f=2$), 2.6 times below this repo's previous $k=6$ value $1807/1590140$.
-- $\delta_7 \le \mathbf{1/7416}$ and $\delta_8 \le \mathbf{1/23016}$, from the QR colouring of $\mathbb{Z}_{617}$ and the zipped one of $\mathbb{Z}_{1642}$. No published bound was found for $k \ge 6$.
+- $\delta_6 \le \mathbf{1/2280}$, from the zipped QR colouring of $\mathbb{Z}_{226}$ ($f=2$): **38.60 % below** $1/1400$ [BGL14].
+- $\delta_8 \le \mathbf{1/23016}$, from the zipped QR colouring of $\mathbb{Z}_{1642}$ ($f=2$): **34.91 % below** $1/14980$ [BGL14].
+- $\delta_7 \le 1/7416$, from the QR colouring of $\mathbb{Z}_{617}$ ($f=1$), is [BGL14]'s published value, reproduced and **not improved**.
 
-Over $\mathbb{F}_p$, colourings of the circle whose colour changes are placed freely, then rounded to 496 and 600 equal blocks, improve the published $\tilde\delta_4$ by 3.22 % and $\tilde\delta_5$ by 13.06 %, and this repository's earlier equal-block values with them (NOTES §11).
+Over $\mathbb{F}_p$, colourings of the circle whose colour changes are placed freely, then rounded to equal blocks, improve the published $\tilde\delta_4$ by 3.25 % and $\tilde\delta_5$ by 13.19 % (NOTES §11). A wider search on November 2, 2026, with 466 random, symmetric and stored starts for each of $k=4, 5$ and basin-hopping that adds and removes arcs, found no better basin; finer grids ($m \approx 3000$) gave the last 0.03 % and 0.14 %. The exact continuum optimum of each basin is rational, but its denominator has 17 and 64 digits, so it is recorded and not claimed. The same search lowers this repository's equal-block $\tilde\delta_6$ and $\tilde\delta_7$ by 12.15 % and 17.69 %, and it had not converged there (NOTES §11.1).
 
 **The family is exhausted for $k \le 6$, subject to the caveats below.** A base can be recoloured on $F$ to be cyclic AP-free, so $(k-1)b < W(k;2)$, the van der Waerden number, and an exact SAT scan up to that cap finds no base with larger $b+f$. So $1/72$, $1/384$ and $1/2280$ are the best this family gives for $k = 4, 5, 6$ (NOTES §5). Every UNSAT answer of the scan, all 72 for $k=6$ included, is now LRAT-checked by `lrat-check`. Two caveats remain. The two $b=221$ instances were decided with symmetry-breaking clauses, whose soundness rests on the symmetry argument of NOTES §5 rather than on the proof check. And the cap uses $W(5;2)$ and $W(6;2)$ as reported in [RL12].
 
-**$\delta_3$ and $\delta_4$ were not improved.** $\delta_3$ reproduces [PRS08] exactly. $\delta_4 \le 1/72$ is Lu and Peng's bound, reproduced exactly and now a theorem, and NOTES §6 shows this family cannot beat it, consistent with [LuPe12, Conjecture 1]. Bases for $k = 9, \dots, 12$ are in NOTES §4; they are checked by `src/verify_base.c` but are not in `results/claims.json`.
+**$\delta_3$ and $\delta_4$ were not improved.** $\delta_3$ reproduces [PRS08] exactly. $\delta_4 \le 1/72$ is Lu and Peng's bound, reproduced exactly and now a theorem, and NOTES §6 shows this family cannot beat it, consistent with [LuPe12, Conjecture 1]. Bases for $k = 9, \dots, 12$ are in NOTES §4; they are checked by `src/verify_base.c` but are not in `results/claims.json`. Freeing the breakpoints, which helped over $\mathbb{F}_p$, does not help here: in floating point, free-boundary block colourings return [PRS08]'s word and nothing lower, and two-scale colourings with free coarse boundaries stop 0.28 % above $1/72$ (NOTES §6).
 
 ## Certified bounds
 
@@ -82,13 +83,13 @@ All exact rationals, re-derived by `src/final_check.py` from the stored colourin
 | $\delta_3$ | $117/2192$ | 0.05337591 | blocks, $m=548$ | 0.854× | $=117/2192$ [PRS08] — **not improved** |
 | $\delta_4$ | $1/72$ | 0.01388889 | recursion limit, QR base $\mathbb{Z}_{11}$, $f=1$ | 0.667× | $=1/72$ [LuPe12] — **not improved** |
 | $\delta_5$ | $\mathbf{1/384}$ | 0.00260417 | recursion limit, base $\mathbb{Z}_{44}$, $f=4$ | 0.333× | **beats $1/304$ by 20.83 %** |
-| $\delta_6$ | $\mathbf{1/2280}$ | 0.00043860 | recursion limit, zipped QR base $\mathbb{Z}_{226}$, $f=2$ | 0.140× | no published bound found |
-| $\delta_7$ | $\mathbf{1/7416}$ | 0.00013484 | recursion limit, QR base $\mathbb{Z}_{617}$, $f=1$ | 0.104× | no published bound found |
-| $\delta_8$ | $\mathbf{1/23016}$ | 0.00004345 | recursion limit, zipped QR base $\mathbb{Z}_{1642}$, $f=2$ | 0.078× | no published bound found |
-| $\tilde\delta_4$ | $\mathbf{20237/369024}$ | 0.05483925 | $\mathbb{F}_p$, free breakpoints rounded to $m=496$ | 0.877× | **beats $17/300$ by 3.22 %** |
-| $\tilde\delta_5$ | $\mathbf{20741/864000}$ | 0.02400579 | $\mathbb{F}_p$, free breakpoints rounded to $m=600$ | 0.768× | **beats $3629/131424$ by 13.06 %** |
-| $\tilde\delta_6$ | $2821/216000$ | 0.01306019 | $\mathbb{F}_p$ blocks, $m=60$ | 0.836× | no published bound found |
-| $\tilde\delta_7$ | $1517/230640$ | 0.00657735 | $\mathbb{F}_p$ blocks, $m=62$ | 0.842× | no published bound found |
+| $\delta_6$ | $\mathbf{1/2280}$ | 0.00043860 | recursion limit, zipped QR base $\mathbb{Z}_{226}$, $f=2$ | 0.140× | **beats $1/1400$ [BGL14] by 38.60 %** |
+| $\delta_7$ | $1/7416$ | 0.00013484 | recursion limit, QR base $\mathbb{Z}_{617}$, $f=1$ | 0.104× | $=1/7416$ [BGL14] — **not improved** |
+| $\delta_8$ | $\mathbf{1/23016}$ | 0.00004345 | recursion limit, zipped QR base $\mathbb{Z}_{1642}$, $f=2$ | 0.078× | **beats $1/14980$ [BGL14] by 34.91 %** |
+| $\tilde\delta_4$ | $\mathbf{1478233/26964012}$ | 0.05482244 | $\mathbb{F}_p$, free breakpoints rounded to $m=2998$ | 0.877× | **beats $17/300$ by 3.25 %** |
+| $\tilde\delta_5$ | $\mathbf{633940/26444883}$ | 0.02397212 | $\mathbb{F}_p$, free breakpoints rounded to $m=2969$ | 0.767× | **beats $3629/131424$ by 13.19 %** |
+| $\tilde\delta_6$ | $\mathbf{40816/3557535}$ | 0.01147311 | $\mathbb{F}_p$, free breakpoints rounded to $m=974$ | 0.734× | no published bound found |
+| $\tilde\delta_7$ | $\mathbf{615023/113607480}$ | 0.00541358 | $\mathbb{F}_p$, free breakpoints rounded to $m=973$ | 0.693× | no published bound found |
 
 The $\delta_4$ to $\delta_8$ rows are limits of the recursion theorem: each is an infimum over explicit colourings, and every finite level lies strictly above it. The gate re-verifies each base and re-counts the theorem's identity on explicit lifts. Finite levels counted directly sit just above the limits: $\delta_5 \le 13421/5153632$ at $m=5324$ is $1.6\times10^{-8}$ above $1/384$ and is gate-checked, and $\delta_6 \le 12657/28857940$ at $m=25538$ is $3.0\times10^{-10}$ above $1/2280$ (`results/verify_lift_k6_25538.log`, not gate-checked).
 
@@ -96,11 +97,11 @@ The $\delta_4$ to $\delta_8$ rows are limits of the recursion theorem: each is a
 
 Certification is separated from search, and no self-reported score is accepted.
 
-- Every bound is recomputed in exact `Fraction` arithmetic (`src/exact.py`), and a stored value is never read as a result. A recursion limit is recomputed from its base's $b$ and $f$, after the base itself is re-verified.
-- Headline values are confirmed by code sharing nothing with the search: `src/verify_zm.c` (direct double loop over $\mathbb{Z}_m$, no weight table), `src/verify_two.c` (brute force over $\{1,\dots,n\}$), `src/verify_base.c` (the two base conditions; it agrees with the Python check on all 21 cases of a planted cross-check), and `src/verify_zpx.c`, which recovers each $\mathbb{F}_p$ value exactly from brute-force counts over $\mathbb{Z}_{mt}$ by Ehrhart interpolation in $t$ and must equal `exact.py` digit for digit; it tests that interpolation's structure on every residue for $k \le 5$ and on two of 60 for $k = 6, 7$ (NOTES §11).
+- Every bound is recomputed in exact `Fraction` arithmetic (`src/exact.py`), and a stored value is never read as a result. For $\mathbb{F}_p$ words too long for `exact.phi`'s weight table (above `exact.PHI_TABLE_CELLS`; 4.7 GB at $m=1500$, $k=4$), including all four current $\tilde\delta_k$ words, the certificate is `exact.phi_bits`, the same formula summed by integer popcounts without the table, which must equal `exact.phi` on every word both can evaluate. For $k = 6, 7$ `exact.phi` itself was also run once on the claimed words, and agrees. A recursion limit is recomputed from its base's $b$ and $f$, after the base itself is re-verified.
+- Headline values are confirmed by code sharing nothing with the search: `src/verify_zm.c` (direct double loop over $\mathbb{Z}_m$, no weight table), `src/verify_two.c` (brute force over $\{1,\dots,n\}$), `src/verify_base.c` (the two base conditions; it agrees with the Python check on all 21 cases of a planted cross-check), and `src/verify_zpx.c`, which recovers each $\mathbb{F}_p$ value exactly from brute-force counts over $\mathbb{Z}_{mt}$ by Ehrhart interpolation in $t$ and must equal `exact.py` digit for digit; it tests that interpolation's structure on every residue, all 60 for $k = 6, 7$ since November 2, 2026, when it was rewritten with bitsets and kept the old plain loop as a built-in check at $t = 1, 2$ (NOTES §11.1).
 - The periodic-to-integer step is measured, not assumed: the boundary term is $1/(2n)$, so (measured $-$ claimed) $\times n$ must stay flat at $\approx0.50$. For the 6-AP-free $\mathbb{Z}_{226}$ word at $n=20000,60000,120000$ it is **0.506, 0.501, 0.501**.
-- Published values are reproduced first — six reproductions, including Lu–Peng's $B_{74}$ with its exact $d$-breakdown (74 APs at $d=0$, 72 at $d=37$) and the six two-colour lower bounds of [RL12, Table 1].
-- The gate is tested against planted defects, not merely observed to pass. Six defects each make it exit 1: two overclaims, a one-bit corruption of a stored word, and three corruptions of the $\mathbb{Z}_{226}$ base. `src/safesat.py --self-test` likewise fails when its symmetry group is replaced by random permutations (NOTES §10).
+- Published values are reproduced first — seven reproductions, including [BGL14, Table 1]'s five two-colour entries for $k=4,\dots,8$ (check B rebuilds each QR colouring and confirms it avoids nontrivial $k$-APs with 0 coloured either way), Lu–Peng's $B_{74}$ with its exact $d$-breakdown (74 APs at $d=0$, 72 at $d=37$) and the six two-colour lower bounds of [RL12, Table 1].
+- The gate is tested against planted defects, not merely observed to pass. Thirteen defects each make it exit 1: four overclaims, one-bit corruptions of four stored words (the $m=974$ and $m=2998$ $\mathbb{F}_p$ words among them), three corruptions of the $\mathbb{Z}_{226}$ base, a changed [BGL14] table entry and a changed quoted percentage. `src/safesat.py --self-test` likewise fails when its symmetry group is replaced by random permutations (NOTES §10).
 - The SAT solvers' UNSAT answers support only the statement that the family is exhausted; no bound depends on them. `src/prove_unsat.py` rebuilds the CNFs with `safesat.encode_cnf`, runs Homebrew CaDiCaL 3.0.1 with LRAT output, and checks with `lrat-check` from `drat-trim` commit `2e3b2dc0ecf938addbd779d42877b6ed69d9a985`. `results/lrat_check.json` records 1122 accepted proofs, one for every UNSAT instance for $k=3,4,5,6$, and no rejections or timeouts. The gate checks the counts and that each UNSAT scan record has an accepted proof under its own key. The four hardest $k=6$ instances were proved without CaDiCaL's `--plain` flag, with the proof streamed into the checker rather than stored (NOTES §8). The two $b=221$ cases use symmetry-breaking clauses; LRAT checks the encoded CNF, while soundness of those extra clauses rests on the symmetry argument in NOTES §5.
 
 ## Try it
@@ -115,7 +116,10 @@ python src/final_check.py          # re-derive every claim; exit 0 = pass
 |---|---|
 | `src/exact.py` | exact rational evaluator — the certification path |
 | `src/periodic.py`, `src/blocks.py`, `src/twoscale.py` | the three colouring families |
-| `src/circle.py`, `src/circleopt.py` | $\Phi_k$ over $\mathbb{F}_p$ from free breakpoints, and the breakpoint search that rounds to an equal-block word |
+| `src/circle.py`, `src/circleopt.py` | $\Phi_k$ over $\mathbb{F}_p$ from free breakpoints (two exact methods), and the breakpoint search that rounds to an equal-block word |
+| `src/circlef.c`, `src/twof.c` | floating-point C ports for search only (circle colourings; two-scale colourings of $\{1,\dots,n\}$ with free coarse breakpoints) |
+| `src/circlestat.py` | the exact stationary point behind a rounded circle word (NOTES §11.1) |
+| `src/twofree.py` | free-breakpoint search on $\{1,\dots,n\}$ for $\delta_3$, $\delta_4$ (NOTES §6) |
 | `src/bigm.py` | tiling-seeded search at large $m$ |
 | `src/cosetprobe.py` | finds the wildcard coset; exact safety test + positive control |
 | `src/chain.py` | builds and certifies one level of the recursion |

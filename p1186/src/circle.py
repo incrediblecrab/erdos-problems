@@ -29,8 +29,10 @@ are blocks.py's, not exact.py's, so agreement with exact.phi on a word both can
 express is a check between two different decompositions.
 
 Works in Fractions (exact) or floats (for search).  This is a search and
-cross-check tool: a bound is certified only by exact.phi on the equal-block
-word and by the brute-force count in src/verify_zp.c.
+cross-check tool: a bound is certified by exact.phi (or exact.phi_bits, above
+the table cap) on the equal-block word, and cross-checked by this module
+(check F of src/final_check.py), the exact brute-force count of
+src/verify_zpx.c and the floating-point one of src/verify_zp.c.
 """
 
 from bisect import bisect_right
@@ -88,6 +90,81 @@ def phi_circle(bounds, k):
         if len(p) >= 3:
             rec(1, p, i0 % 2)
     return total
+
+
+def _arcs(bounds, colour, shift):
+    """Disjoint sorted intervals in [0,1) of colour `colour`, translated by -shift mod 1."""
+    one = bounds[-1]
+    out = []
+    for i in range(len(bounds) - 1):
+        if i % 2 != colour:
+            continue
+        lo = (bounds[i] - shift) % one
+        hi = lo + (bounds[i + 1] - bounds[i])
+        if hi <= one:
+            out.append((lo, hi))
+        else:
+            out.append((lo, one))
+            out.append((lo - lo, hi - one))
+    out.sort()
+    return out
+
+
+def _meet(A, B):
+    out, i, j = [], 0, 0
+    while i < len(A) and j < len(B):
+        lo, hi = max(A[i][0], B[j][0]), min(A[i][1], B[j][1])
+        if lo < hi:
+            out.append((lo, hi))
+        if A[i][1] < B[j][1]:
+            i += 1
+        else:
+            j += 1
+    return out
+
+
+def _g(bounds, k, d):
+    """Measure of x in R/Z with x + jd (j < k) all in one colour class."""
+    tot = 0
+    for colour in (0, 1):
+        cur = _arcs(bounds, colour, 0 * d)
+        for j in range(1, k):
+            cur = _meet(cur, _arcs(bounds, colour, j * d))
+            if not cur:
+                break
+        tot += sum(hi - lo for lo, hi in cur)
+    return tot
+
+
+def phi_sweep(bounds, k):
+    """Phi_k by a one-dimensional sweep over d, a second exact method.
+
+    Phi_k = integral over d in [0,1) of g(d), with g(d) the measure of the x
+    whose k terms x + jd share a colour.  The x-intervals that make up g(d)
+    have endpoints a_i - jd mod 1, and their cyclic order changes only where
+    two endpoints meet, a_i - jd = a_i' - j'd mod 1, i.e. at
+    d = (a_i' - a_i + w)/(j - j') mod 1.  Between consecutive such d the order
+    is fixed and g is linear; g is continuous; so the trapezoid rule over the
+    critical points is exact.  This shares no geometry with phi_circle (no
+    polygons, no clipping) and accepts any rational breakpoints, not only
+    those on a common grid.
+    """
+    nb = len(bounds) - 1
+    assert nb >= 2 and nb % 2 == 0
+    one = bounds[-1]
+    zero = one - one
+    crit = {zero, one}
+    pts = bounds[:-1]
+    for q in range(1, k):
+        for ai in pts:
+            for bi in pts:
+                diff = (ai - bi) % one
+                for w in range(q):
+                    crit.add((diff + w) / q)
+    crit = sorted(crit)
+    vals = [_g(bounds, k, d) for d in crit]
+    return sum((crit[i + 1] - crit[i]) * (vals[i] + vals[i + 1])
+               for i in range(len(crit) - 1)) / 2
 
 
 def bounds_of_cyclic_word(word):

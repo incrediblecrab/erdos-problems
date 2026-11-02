@@ -1,0 +1,18 @@
+# exact.phi (the O(m^2) weight table) measured on November 2, 2026, under /usr/bin/time -l; machine shared, load average about 20 on 11 cores
+$ python phimem.py k m   (random word of length m, seed 1; exact.phi then exact.phi_bits)
+k 4 m 1200 phi 18.7s phi_bits 0.01s equal True
+          2933751808  maximum resident set size
+k 5 m 1000 phi 28.7s phi_bits 0.02s equal True
+          3836821504  maximum resident set size
+k 4 m 1500 phi 28.2s phi_bits 0.01s equal True
+          4685692928  maximum resident set size
+
+$ python -c "exact.phi(word, 6)" on the m=974 word of results/zp_k6_c.json, under /usr/bin/time -l
+k=6 m=974: exact.phi = 81632/3557535, stored 81632/3557535, equal True, 43s, 10829419 aggregated weights, m^2*cells = 22768224
+       81.22 real        64.22 user        16.43 sys
+          5495603200  maximum resident set size
+
+$ python -c "exact.phi(word, 7)" on the m=973 word of results/zp_k7_c.json, under /usr/bin/time -l
+k=7 m=973: exact.phi = 615023/56803740, stored 615023/56803740, equal True, 71s, 16443839 aggregated weights, m^2*cells = 34082244
+      144.97 real       100.62 user        40.83 sys
+          6157647872  maximum resident set size

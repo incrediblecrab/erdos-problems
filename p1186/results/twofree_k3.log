@@ -1,0 +1,195 @@
+$ python src/twofree.py 3 --m 2,3,4 --nb 2-12 --starts 4 --kicks 4 --seed 32
+C evaluator vs exact.psi_two_scale / blocks.psi_blocks: 54 cases, max |diff| = 7.1e-17
+180 starts; target 117/2192 = 0.0533759124
+  m=  2 nb= 2 seed=1885715326: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 2 seed=1845076782: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 2 seed= 344118858: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 2 seed=1228853484: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 3 seed= 809892435: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 3 seed= 909152701: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 3 seed= 607789346: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 4 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 3 seed= 693498018: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 4 seed=1474492097: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 4 seed=1403938480: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 4 seed= 763561967: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 4 seed=2087852393: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=1698258796: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=2076252143: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=1511497773: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 5 seed=1441602384: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 6 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 6 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 6 seed=1201353982: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 6 seed=1991029698: Psi=0.0585937500 (+9.776% vs target) 0s
+  m=  2 nb= 6 seed=         0: Psi=0.0585937500 (+9.776% vs target) 0s
+  m=  2 nb= 6 seed=1782629538: Psi=0.0577272727 (+8.152% vs target) 0s
+  m=  2 nb= 7 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 6 seed= 987223658: Psi=0.0585937500 (+9.776% vs target) 0s
+  m=  2 nb= 7 seed= 680918876: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 7 seed=         0: Psi=0.0585937500 (+9.776% vs target) 0s
+  m=  2 nb= 7 seed=         0: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb= 7 seed=1165130628: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 7 seed=1296800676: Psi=0.0581896552 (+9.019% vs target) 0s
+  m=  2 nb= 8 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 8 seed=         0: Psi=0.0572211303 (+7.204% vs target) 0s
+  m=  2 nb= 7 seed=1854491674: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb= 8 seed=1157589319: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 8 seed=         0: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb= 8 seed=1960710960: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 8 seed= 623025947: Psi=0.0577012333 (+8.104% vs target) 0s
+  m=  2 nb= 8 seed=1291117368: Psi=0.0563312541 (+5.537% vs target) 0s
+  m=  2 nb= 9 seed=         0: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb= 9 seed=         0: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb= 9 seed=         0: Psi=0.0563335133 (+5.541% vs target) 0s
+  m=  2 nb= 9 seed= 162700580: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb= 9 seed= 863315654: Psi=0.0563476662 (+5.568% vs target) 0s
+  m=  2 nb= 9 seed= 877155505: Psi=0.0570109025 (+6.810% vs target) 0s
+  m=  2 nb= 9 seed=1183083026: Psi=0.0553385417 (+3.677% vs target) 0s
+  m=  2 nb=10 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  2 nb=10 seed=         0: Psi=0.0578817734 (+8.442% vs target) 0s
+  m=  2 nb=10 seed=         0: Psi=0.0572033898 (+7.171% vs target) 0s
+  m=  2 nb=10 seed= 881510470: Psi=0.0605053191 (+13.357% vs target) 0s
+  m=  2 nb=10 seed=1302406798: Psi=0.0585937500 (+9.776% vs target) 0s
+  m=  2 nb=10 seed= 327254778: Psi=0.0578737342 (+8.427% vs target) 0s
+  m=  2 nb=10 seed=1352853008: Psi=0.0577257907 (+8.150% vs target) 0s
+  m=  2 nb=11 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  2 nb=11 seed=         0: Psi=0.0577188795 (+8.137% vs target) 0s
+  m=  2 nb=11 seed=         0: Psi=0.0549557663 (+2.960% vs target) 0s
+  m=  2 nb=11 seed=1996573621: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb=11 seed=  87063388: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  2 nb=11 seed=1538056161: Psi=0.0570997491 (+6.977% vs target) 0s
+  m=  2 nb=12 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  2 nb=11 seed= 500756230: Psi=0.0581896552 (+9.019% vs target) 0s
+  m=  2 nb=12 seed=         0: Psi=0.0549720950 (+2.990% vs target) 0s
+  m=  2 nb=12 seed=         0: Psi=0.0544508020 (+2.014% vs target) 0s
+  m=  2 nb=12 seed=1305206658: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  3 nb= 2 seed=1575841100: Psi=0.0694444444 (+30.104% vs target) 0s
+  m=  3 nb= 2 seed=  18649296: Psi=0.0694444444 (+30.104% vs target) 0s
+  m=  3 nb= 2 seed= 424610964: Psi=0.0694444444 (+30.104% vs target) 0s
+  m=  3 nb= 2 seed= 986139600: Psi=0.0694444444 (+30.104% vs target) 0s
+  m=  2 nb=12 seed= 502544445: Psi=0.0577247535 (+8.148% vs target) 1s
+  m=  3 nb= 3 seed=1358715551: Psi=0.0631313131 (+18.277% vs target) 0s
+  m=  2 nb=12 seed= 653770674: Psi=0.0563164501 (+5.509% vs target) 0s
+  m=  3 nb= 3 seed=1744967599: Psi=0.0631313131 (+18.277% vs target) 0s
+  m=  3 nb= 3 seed=1268094852: Psi=0.0648148148 (+21.431% vs target) 0s
+  m=  3 nb= 3 seed=2065427137: Psi=0.0631313131 (+18.277% vs target) 0s
+  m=  3 nb= 4 seed=         0: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  3 nb= 4 seed= 770873708: Psi=0.0631313131 (+18.277% vs target) 0s
+  m=  3 nb= 4 seed= 346169909: Psi=0.0615079365 (+15.235% vs target) 0s
+  m=  3 nb= 4 seed= 905052524: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  3 nb= 4 seed= 143163452: Psi=0.0615079365 (+15.235% vs target) 0s
+  m=  3 nb= 5 seed=         0: Psi=0.0615079365 (+15.235% vs target) 0s
+  m=  3 nb= 5 seed=         0: Psi=0.0578791611 (+8.437% vs target) 0s
+  m=  3 nb= 5 seed= 218229370: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 5 seed= 210250900: Psi=0.0631313131 (+18.277% vs target) 0s
+  m=  3 nb= 5 seed= 320631368: Psi=0.0615079365 (+15.235% vs target) 0s
+  m=  2 nb=12 seed=1943102804: Psi=0.0535714286 (+0.366% vs target) 1s
+  m=  3 nb= 6 seed=         0: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 5 seed= 701894776: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 6 seed=         0: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 6 seed=         0: Psi=0.0611111111 (+14.492% vs target) 0s
+  m=  3 nb= 6 seed=1144939132: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 6 seed= 301099044: Psi=0.0614754098 (+15.174% vs target) 0s
+  m=  3 nb= 6 seed= 784778574: Psi=0.0578791611 (+8.437% vs target) 0s
+  m=  3 nb= 6 seed=1270109273: Psi=0.0583333333 (+9.288% vs target) 0s
+  m=  3 nb= 7 seed=         0: Psi=0.0570700076 (+6.921% vs target) 0s
+  m=  3 nb= 7 seed=         0: Psi=0.0558608059 (+4.655% vs target) 0s
+  m=  3 nb= 7 seed= 308054388: Psi=0.0609304957 (+14.154% vs target) 0s
+  m=  3 nb= 7 seed=         0: Psi=0.0571652987 (+7.099% vs target) 0s
+  m=  3 nb= 7 seed=1873971636: Psi=0.0617981678 (+15.779% vs target) 0s
+  m=  3 nb= 7 seed= 100082060: Psi=0.0607569721 (+13.828% vs target) 0s
+  m=  3 nb= 7 seed=1985413426: Psi=0.0615435795 (+15.302% vs target) 0s
+  m=  3 nb= 8 seed=         0: Psi=0.0559772296 (+4.874% vs target) 0s
+  m=  3 nb= 8 seed=         0: Psi=0.0569105691 (+6.622% vs target) 0s
+  m=  3 nb= 8 seed=         0: Psi=0.0560059327 (+4.927% vs target) 0s
+  m=  3 nb= 8 seed=1425636814: Psi=0.0619444444 (+16.053% vs target) 0s
+  m=  3 nb= 8 seed= 226696078: Psi=0.0611111111 (+14.492% vs target) 0s
+  m=  3 nb= 8 seed= 987392358: Psi=0.0615435795 (+15.302% vs target) 0s
+  m=  3 nb= 9 seed=         0: Psi=0.0552084901 (+3.433% vs target) 0s
+  m=  3 nb= 8 seed=1150341953: Psi=0.0571652987 (+7.099% vs target) 0s
+  m=  3 nb= 9 seed=         0: Psi=0.0562604635 (+5.404% vs target) 0s
+  m=  3 nb= 9 seed= 937840091: Psi=0.0613037491 (+14.853% vs target) 0s
+  m=  3 nb= 9 seed=         0: Psi=0.0558608059 (+4.655% vs target) 0s
+  m=  3 nb=10 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  3 nb= 9 seed=1835403470: Psi=0.0568120214 (+6.438% vs target) 0s
+  m=  3 nb= 9 seed=2120157122: Psi=0.0564516129 (+5.762% vs target) 0s
+  m=  3 nb= 9 seed= 925379024: Psi=0.0607770867 (+13.866% vs target) 0s
+  m=  3 nb=10 seed=         0: Psi=0.0551441067 (+3.313% vs target) 0s
+  m=  3 nb=10 seed=         0: Psi=0.0562604635 (+5.404% vs target) 0s
+  m=  3 nb=10 seed= 665449244: Psi=0.0572715883 (+7.299% vs target) 0s
+  m=  3 nb=10 seed= 641277049: Psi=0.0562604635 (+5.404% vs target) 0s
+  m=  3 nb=10 seed=1608286224: Psi=0.0564516129 (+5.762% vs target) 0s
+  m=  3 nb=10 seed=1696898417: Psi=0.0560260586 (+4.965% vs target) 0s
+  m=  3 nb=11 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  3 nb=11 seed=         0: Psi=0.0546875000 (+2.457% vs target) 0s
+  m=  3 nb=11 seed=         0: Psi=0.0555137455 (+4.005% vs target) 0s
+  m=  3 nb=11 seed=1260465684: Psi=0.0609304957 (+14.154% vs target) 0s
+  m=  3 nb=11 seed=1736891876: Psi=0.0593193014 (+11.135% vs target) 1s
+  m=  3 nb=12 seed=         0: Psi=0.0535714286 (+0.366% vs target) 0s
+  m=  3 nb=11 seed= 721846711: Psi=0.0615079365 (+15.235% vs target) 1s
+  m=  3 nb=11 seed=1539908300: Psi=0.0571652987 (+7.099% vs target) 1s
+  m=  3 nb=12 seed=         0: Psi=0.0542783895 (+1.691% vs target) 0s
+  m=  3 nb=12 seed=         0: Psi=0.0546875000 (+2.457% vs target) 1s
+  m=  3 nb=12 seed=1198355888: Psi=0.0562446168 (+5.375% vs target) 1s
+  m=  4 nb= 2 seed= 904926676: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 2 seed=1999092299: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 2 seed=1268158427: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  3 nb=12 seed= 153461020: Psi=0.0555470123 (+4.068% vs target) 0s
+  m=  4 nb= 2 seed= 584420838: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 3 seed=1335162343: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 3 seed= 483335008: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 3 seed= 241801516: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 3 seed= 549633272: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 4 seed=1033048815: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 4 seed=1114441047: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 4 seed=2020248689: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 4 seed= 427943869: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 5 seed=1549586262: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 5 seed= 728429907: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 5 seed=1689070391: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  3 nb=12 seed=1858101324: Psi=0.0554055834 (+3.803% vs target) 1s
+  m=  3 nb=12 seed= 255905924: Psi=0.0556818182 (+4.320% vs target) 1s
+  m=  4 nb= 6 seed=1068724907: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 6 seed= 836096394: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 6 seed= 889622957: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 6 seed=1997909106: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 5 seed=2128104979: Psi=0.0619352410 (+16.036% vs target) 0s
+  m=  4 nb= 7 seed= 946070972: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 7 seed=1231275465: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 7 seed=1061780509: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 8 seed=1750916714: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 8 seed= 613551063: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 7 seed= 824805057: Psi=0.0570683854 (+6.918% vs target) 0s
+  m=  4 nb= 9 seed=1739456223: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 8 seed=  68335941: Psi=0.0611359464 (+14.538% vs target) 0s
+  m=  4 nb= 9 seed= 608267200: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 8 seed=2031616886: Psi=0.0579098708 (+8.494% vs target) 1s
+  m=  4 nb=10 seed= 800448381: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb= 9 seed= 901970164: Psi=0.0599429482 (+12.303% vs target) 0s
+  m=  4 nb= 9 seed=1152263467: Psi=0.0596669453 (+11.786% vs target) 1s
+  m=  4 nb=10 seed=1621986113: Psi=0.0615556157 (+15.325% vs target) 1s
+  m=  4 nb=10 seed= 690526860: Psi=0.0561761922 (+5.246% vs target) 1s
+  m=  4 nb=10 seed=1444407310: Psi=0.0567800711 (+6.378% vs target) 1s
+  m=  4 nb=11 seed= 994257790: Psi=0.0537946429 (+0.784% vs target) 1s
+  m=  4 nb=11 seed= 819422991: Psi=0.0535714286 (+0.366% vs target) 1s
+  m=  4 nb=12 seed= 362296342: Psi=0.0625000000 (+17.094% vs target) 0s
+  m=  4 nb=11 seed=1611364511: Psi=0.0558371406 (+4.611% vs target) 1s
+  m=  4 nb=11 seed=  78296581: Psi=0.0557602143 (+4.467% vs target) 1s
+  m=  4 nb=12 seed=1090638521: Psi=0.0563476662 (+5.568% vs target) 1s
+  m=  4 nb=12 seed=1640987056: Psi=0.0591982822 (+10.908% vs target) 2s
+  m=  4 nb=12 seed= 403292218: Psi=0.0564028856 (+5.671% vs target) 3s
+best 10:
+  0.053571428571  m=3 nb=11 seed=0  +0.3663%  lengths=[0.053572, 0.053571, 0.071429, 0.107143, 0.107143, 0.107143, 0.107143, 0.107142, 0.107143, 0.071429, 0.107143]  C=110100110101101001101011010011010
+  0.053571428571  m=2 nb=11 seed=0  +0.3663%  lengths=[0.053572, 0.053571, 0.071429, 0.107143, 0.107143, 0.107143, 0.107143, 0.107142, 0.107143, 0.071429, 0.107143]  C=1101001101011010011010
+  0.053571428571  m=2 nb=10 seed=0  +0.3663%  lengths=[0.107143, 0.071429, 0.107143, 0.107143, 0.107143, 0.107143, 0.107143, 0.107143, 0.071429, 0.107143]  C=10100110101010011010
+  0.053571428571  m=2 nb=12 seed=1305206658  +0.3663%  lengths=[0.107143, 0.071429, 0.107143, 0.12171, 0.092576, 0.03137, 0.182916, 0.044322, 0.062821, 0.071429, 0.054314, 0.052829]  C=101001100100101001100100
+  0.053571428571  m=3 nb=12 seed=0  +0.3663%  lengths=[0.053571, 0.053571, 0.071429, 0.107143, 0.107143, 0.107143, 0.071429, 0.071429, 0.071429, 0.107143, 0.071429, 0.107143]  C=110100111010110100111010110100111010
+  0.053571428571  m=3 nb=10 seed=0  +0.3663%  lengths=[0.107143, 0.071429, 0.107143, 0.107143, 0.107143, 0.107143, 0.107143, 0.107143, 0.071429, 0.107143]  C=101001101010100110101010011010
+  0.053571428571  m=4 nb=11 seed=819422991  +0.3663%  lengths=[0.107143, 0.071429, 0.107143, 0.022892, 0.191393, 0.023974, 0.190311, 0.018316, 0.088827, 0.071429, 0.107143]  C=01011001101010110011010101100110101011001101
+  0.053571428571  m=2 nb=12 seed=0  +0.3663%  lengths=[0.053571, 0.053571, 0.071429, 0.107143, 0.107143, 0.107143, 0.071429, 0.071429, 0.071428, 0.107143, 0.071429, 0.107143]  C=110100111010110100111010
+  0.053571428571  m=2 nb=12 seed=1943102804  +0.3663%  lengths=[0.018597, 0.088546, 0.071429, 0.0, 0.107143, 0.214286, 0.214286, 0.107143, 0.0, 0.071429, 0.0, 0.107143]  C=110110100110110010101100
+  0.053794642857  m=4 nb=11 seed=994257790  +0.7845%  lengths=[0.053571, 0.063095, 0.061905, 0.108929, 0.2125, 0.2125, 0.0, 0.108929, 0.061905, 0.063095, 0.053571]  C=00101001011001010110110010100101101101011001
+best floating-point Psi_3 = 0.053571428571 vs target 0.053375912409: not below target

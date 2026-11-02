@@ -39,7 +39,7 @@ bash refs/fetch.sh || echo "  (some references are paywalled; see refs/README.md
 
 say "2. build the independent C brute forces and the quadratic-residue generator"
 cc -O3 -o src/verify_zp   src/verify_zp.c   || die "verify_zp"
-cc -O3 -o src/verify_zpx  src/verify_zpx.c  || die "verify_zpx"
+cc -O3 -pthread -o src/verify_zpx src/verify_zpx.c || die "verify_zpx"
 cc -O3 -o src/verify_n    src/verify_n.c    || die "verify_n"
 cc -O3 -o src/verify_two  src/verify_two.c  || die "verify_two"
 cc -O3 -o src/verify_zm   src/verify_zm.c   || die "verify_zm"
@@ -91,6 +91,17 @@ for k in 4 5 6 7; do
   while [ "$(jobs -r | wc -l)" -ge "$NT" ]; do wait -n; done
 done
 wait
+
+# 5a'. free breakpoints on the circle (NOTES.md section 11.1), each run with four workers, so one at a time.
+#      The November 1 runs (results/circleopt_k4.log, circleopt_k5.log) are kept as one-offs.
+for spec in "6 --bmax 36 --random 6 --keep 10 --hops 60 --bmax-hop 48 --mmax 1000" \
+            "7 --bmax 36 --random 6 --keep 10 --hops 60 --bmax-hop 48 --mmax 1000" \
+            "4 --bmax 30 --random 10 --keep 12 --hops 80 --bmax-hop 44 --mmax 3000" \
+            "5 --bmax 30 --random 10 --keep 12 --hops 80 --bmax-hop 44 --mmax 3000"; do
+  set -- $spec; k=$1; shift
+  run src/circleopt.py "$k" --wide --top 6 --bmin 2 "$@" --mmin 100 --seed "$k" --workers 4 \
+      --store "results/zp_k${k}_c.json" > "results/circleopt_k${k}_wide.log" 2>&1
+done
 
 # 5b. the {1..n} block family -- reproduces PRS08 at k=3
 for k in 3 4 5; do

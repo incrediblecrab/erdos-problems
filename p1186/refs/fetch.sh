@@ -61,6 +61,9 @@ curl -sL "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v19i
 # [HHLM07] Herwig, Heule, van Lambalgen, van Maaren, "A new method to construct lower bounds for van der Waerden numbers", Electron. J. Combin. 14 (2007) #R6. The cyclic zipper behind the f = 2 bases. Open access.
 curl -sL "https://www.combinatorics.org/ojs/index.php/eljc/article/download/v14i1r6/pdf/" -o hhlm07.pdf
 
+# [BGL14] Butler, Graham, Lu, "Unrolling residues to avoid progressions", Math. Mag. 87(2) (2014) 83-94, DOI 10.4169/math.mag.87.2.83. Theorem 6 is the periodic bound 1/(2m(k-1)) and its unrolled form 1/(2(m+1)(k-1)) (the f = 1 wildcard recursion); Theorem 7 the quadratic-residue colourings; Table 1 gives delta_6 <= 1/1400, delta_7 <= 1/7416, delta_8 <= 1/14980. src/final_check.py quotes Table 1 from this file.
+curl -sL "https://arxiv.org/pdf/1209.2687" -o bgl14.pdf
+
 # The problem statement itself.
 curl -sL "https://www.erdosproblems.com/1186" -o erdos1186.html
 

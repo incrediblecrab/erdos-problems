@@ -1,0 +1,419 @@
+$ python src/circleopt.py 6 --wide --top 6 --bmin 2 --bmax 36 --random 6 --keep 10 --hops 60 --bmax-hop 48 --mmin 100 --mmax 1000 --seed 6 --store results/zp_k6_c.json
+C evaluator vs circle.py: max |diff| = 2.5e-15 on 200 random colourings
+stage A: 330 starts, B = 2..36, symmetries ['none', 'anti', 'mirror', 'antimirror'], 6 random per (B, symmetry), 4 workers
+  A none       B=26 seed=stored m=64: Phi=0.0253221135 arcs=26 1s 
+  A none       B=30 seed=stored m=66: Phi=0.0254050799 arcs=30 1s 
+  A none       B=30 seed=stored m=60: Phi=0.0247695354 arcs=30 2s 
+  A none       B= 2 seed=955728255: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 2 seed=1155699144: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 2 seed=1111885935: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 2 seed=737168579: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 2 seed=2031819255: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 2 seed=792565862: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=1412471218: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=804225680: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=966185142: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=2120521969: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=400620265: Phi=0.1000000000 arcs=2 0s 
+  A anti       B= 2 seed=1358833748: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=916926069: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=1448099614: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=1622851428: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=708591124: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=1443721276: Phi=0.1000000000 arcs=2 0s 
+  A mirror     B= 2 seed=1460112059: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=970518847: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=264081164: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=1326097162: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=111087679: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=1902530058: Phi=0.1000000000 arcs=2 0s 
+  A antimirror B= 2 seed=1825772014: Phi=0.1000000000 arcs=2 0s 
+  A none       B= 4 seed=1817346419: Phi=0.0711565979 arcs=4 0s 
+  A none       B= 4 seed=19103596: Phi=0.0711565979 arcs=4 0s 
+  A none       B= 4 seed=2086271662: Phi=0.0711565979 arcs=4 0s 
+  A none       B= 4 seed=2101887334: Phi=0.0711565979 arcs=4 0s 
+  A none       B= 4 seed=1258165684: Phi=0.0711565979 arcs=4 0s 
+  A none       B= 4 seed=1775975474: Phi=0.0711565979 arcs=4 0s 
+  A mirror     B= 4 seed=1648304178: Phi=0.0750337903 arcs=4 0s 
+  A mirror     B= 4 seed=1686227695: Phi=0.0750337903 arcs=4 0s 
+  A mirror     B= 4 seed=329807038: Phi=0.0750337903 arcs=4 0s 
+  A mirror     B= 4 seed=103258502: Phi=0.0750337903 arcs=4 0s 
+  A mirror     B= 4 seed=569500762: Phi=0.0750337903 arcs=4 0s 
+  A mirror     B= 4 seed=445472432: Phi=0.0750337903 arcs=4 0s 
+  A none       B= 6 seed=1177541702: Phi=0.0484415584 arcs=6 0s 
+  A none       B= 6 seed=1825072545: Phi=0.0500162920 arcs=6 0s 
+  A none       B= 6 seed=1606396928: Phi=0.0500162920 arcs=6 0s 
+  A none       B= 6 seed=928775535: Phi=0.0573287826 arcs=6 0s 
+  A none       B= 6 seed=1166939312: Phi=0.0500162920 arcs=6 0s 
+  A none       B= 6 seed=1347477127: Phi=0.0500162920 arcs=6 0s 
+  A anti       B= 6 seed=1652529975: Phi=0.0484415584 arcs=6 0s 
+  A anti       B= 6 seed=262599451: Phi=0.0484415584 arcs=6 0s 
+  A anti       B= 6 seed=1671412181: Phi=0.0484415584 arcs=6 0s 
+  A anti       B= 6 seed=400154197: Phi=0.0484415584 arcs=6 0s 
+  A anti       B= 6 seed=1234398096: Phi=0.0484415584 arcs=6 0s 
+  A anti       B= 6 seed=1067874711: Phi=0.0484415584 arcs=6 0s 
+  A mirror     B= 6 seed=1840395550: Phi=0.0634686171 arcs=6 0s 
+  A mirror     B= 6 seed=1630942054: Phi=0.0573881173 arcs=6 0s 
+  A mirror     B= 6 seed=363659795: Phi=0.0634686171 arcs=6 0s 
+  A mirror     B= 6 seed=1159334518: Phi=0.0484415584 arcs=6 0s 
+  A mirror     B= 6 seed=102968023: Phi=0.0573881173 arcs=6 0s 
+  A mirror     B= 6 seed=229523221: Phi=0.0573881173 arcs=6 0s 
+  A antimirror B= 6 seed=1013356246: Phi=0.0484415584 arcs=6 0s 
+  A antimirror B= 6 seed=1860120439: Phi=0.0484415584 arcs=6 0s 
+  A antimirror B= 6 seed=463838844: Phi=0.0484415584 arcs=6 0s 
+  A antimirror B= 6 seed=299915224: Phi=0.0484415584 arcs=6 0s 
+  A antimirror B= 6 seed=2035776969: Phi=0.0573881173 arcs=6 0s 
+  A antimirror B= 6 seed=944157844: Phi=0.0484415584 arcs=6 0s 
+  A none       B= 8 seed=255106638: Phi=0.0391492817 arcs=8 0s 
+  A none       B= 8 seed=1260249648: Phi=0.0409039218 arcs=8 0s 
+  A none       B= 8 seed=702762507: Phi=0.0394337594 arcs=8 0s 
+  A none       B= 8 seed=685368337: Phi=0.0391492817 arcs=8 0s 
+  A none       B= 8 seed=918837267: Phi=0.0404272990 arcs=8 0s 
+  A none       B= 8 seed=897764485: Phi=0.0409039218 arcs=8 0s 
+  A mirror     B= 8 seed=1747262567: Phi=0.0496652859 arcs=8 0s 
+  A mirror     B= 8 seed=1904741740: Phi=0.0447933514 arcs=8 0s 
+  A mirror     B= 8 seed=554977591: Phi=0.0497114440 arcs=8 0s 
+  A mirror     B= 8 seed=975248993: Phi=0.0497114440 arcs=8 0s 
+  A mirror     B= 8 seed=1443725188: Phi=0.0447933514 arcs=8 0s 
+  A mirror     B= 8 seed=1158024356: Phi=0.0497114440 arcs=8 0s 
+  A none       B=10 seed=1218804535: Phi=0.0331096064 arcs=10 0s 
+  A none       B=10 seed=2084109584: Phi=0.0331096064 arcs=10 0s 
+  A none       B=28 seed=stored m=63: Phi=0.0246674127 arcs=28 1s 
+  A none       B=10 seed=493490164: Phi=0.0348110994 arcs=10 0s 
+  A none       B=10 seed=592669272: Phi=0.0387257077 arcs=10 0s 
+  A none       B=10 seed=1631506615: Phi=0.0331096064 arcs=10 0s 
+  A none       B=10 seed=1921547296: Phi=0.0393986841 arcs=10 0s 
+  A anti       B=10 seed=888138893: Phi=0.0342053150 arcs=10 0s 
+  A anti       B=10 seed=777078815: Phi=0.0342053150 arcs=10 0s 
+  A anti       B=10 seed=670102982: Phi=0.0342053150 arcs=10 0s 
+  A anti       B=10 seed=1682874663: Phi=0.0356050004 arcs=10 0s 
+  A anti       B=10 seed=1023014411: Phi=0.0342135304 arcs=10 0s 
+  A anti       B=10 seed=1892554134: Phi=0.0342135304 arcs=10 0s 
+  A mirror     B=10 seed=829728200: Phi=0.0448410733 arcs=10 0s 
+  A mirror     B=10 seed=1112976230: Phi=0.0442486584 arcs=10 0s 
+  A mirror     B=10 seed=140653195: Phi=0.0389193774 arcs=10 0s 
+  A mirror     B=10 seed=1861127702: Phi=0.0389193774 arcs=10 0s 
+  A mirror     B=10 seed=1783634566: Phi=0.0442486584 arcs=10 0s 
+  A antimirror B=10 seed=1659378828: Phi=0.0487883336 arcs=10 0s 
+  A mirror     B=10 seed=1777617424: Phi=0.0518897250 arcs=8 0s 
+  A antimirror B=10 seed=1921385490: Phi=0.0350548489 arcs=10 0s 
+  A antimirror B=10 seed=128327754: Phi=0.0487883336 arcs=10 0s 
+  A antimirror B=10 seed=664667408: Phi=0.0350548489 arcs=10 0s 
+  A antimirror B=10 seed=512831109: Phi=0.0487883336 arcs=10 0s 
+  A antimirror B=10 seed=1531124314: Phi=0.0350548489 arcs=10 0s 
+  A none       B=12 seed=1664629713: Phi=0.0391625834 arcs=12 0s 
+  A none       B=12 seed=1509224076: Phi=0.0368970288 arcs=12 0s 
+  A none       B=12 seed=1034317623: Phi=0.0363843293 arcs=12 0s 
+  A none       B=12 seed=938128420: Phi=0.0384825388 arcs=12 0s 
+  A none       B=12 seed=1168502381: Phi=0.0325049052 arcs=12 0s 
+  A none       B=12 seed=11409921: Phi=0.0321619319 arcs=12 0s 
+  A mirror     B=12 seed=1487389310: Phi=0.0332111642 arcs=12 0s 
+  A mirror     B=12 seed=1910165496: Phi=0.0332111642 arcs=12 0s 
+  A mirror     B=12 seed=1717492297: Phi=0.0404926973 arcs=12 0s 
+  A mirror     B=12 seed=36593246: Phi=0.0407796806 arcs=12 0s 
+  A none       B=28 seed=stored m=65: Phi=0.0251817000 arcs=28 1s 
+  A mirror     B=12 seed=1874833966: Phi=0.0336516577 arcs=12 0s 
+  A mirror     B=12 seed=2090843638: Phi=0.0388964211 arcs=12 0s 
+  A none       B=14 seed=1052106405: Phi=0.0306542048 arcs=14 0s 
+  A none       B=14 seed=323548754: Phi=0.0304823626 arcs=14 0s 
+  A none       B=14 seed=816222361: Phi=0.0315421621 arcs=14 0s 
+  A none       B=14 seed=2018408417: Phi=0.0313437931 arcs=14 0s 
+  A none       B=14 seed=541069188: Phi=0.0310904645 arcs=14 0s 
+  A anti       B=14 seed=197158591: Phi=0.0316477916 arcs=14 0s 
+  A anti       B=14 seed=991444194: Phi=0.0300768478 arcs=14 0s 
+  A none       B=14 seed=1806808113: Phi=0.0328815521 arcs=14 0s 
+  A anti       B=14 seed=588991560: Phi=0.0330491566 arcs=14 0s 
+  A anti       B=14 seed=1558830619: Phi=0.0319283243 arcs=14 0s 
+  A anti       B=14 seed=392443103: Phi=0.0316477916 arcs=14 0s 
+  A anti       B=14 seed=970153025: Phi=0.0307985711 arcs=14 0s 
+  A mirror     B=14 seed=299352337: Phi=0.0383736128 arcs=14 0s 
+  A mirror     B=14 seed=431947954: Phi=0.0321661572 arcs=14 0s 
+  A mirror     B=14 seed=898384388: Phi=0.0363598160 arcs=14 0s 
+  A mirror     B=14 seed=1165512238: Phi=0.0399545148 arcs=14 0s 
+  A mirror     B=14 seed=1865485249: Phi=0.0369119243 arcs=14 0s 
+  A antimirror B=14 seed=1131605081: Phi=0.0300494953 arcs=14 0s 
+  A antimirror B=14 seed=2115587442: Phi=0.0325568929 arcs=14 0s 
+  A antimirror B=14 seed=1404454475: Phi=0.0305083822 arcs=14 0s 
+  A antimirror B=14 seed=1355627729: Phi=0.0362184162 arcs=14 0s 
+  A mirror     B=14 seed=533338395: Phi=0.0346612620 arcs=14 0s 
+  A antimirror B=14 seed=667164252: Phi=0.0300494953 arcs=14 0s 
+  A antimirror B=14 seed=1271786134: Phi=0.0361337494 arcs=14 0s 
+  A none       B=16 seed=649820970: Phi=0.0293410904 arcs=16 0s 
+  A none       B=16 seed=452751068: Phi=0.0293565753 arcs=16 0s 
+  A none       B=16 seed=175711955: Phi=0.0287224730 arcs=16 0s 
+  A none       B=16 seed=2120722546: Phi=0.0303267622 arcs=16 0s 
+  A none       B=16 seed=1323026403: Phi=0.0294528859 arcs=16 0s 
+  A none       B=16 seed=965635583: Phi=0.0305159289 arcs=16 0s 
+  A mirror     B=16 seed=378474563: Phi=0.0327062886 arcs=14 0s 
+  A mirror     B=16 seed=1952557472: Phi=0.0365329069 arcs=16 0s 
+  A mirror     B=16 seed=312438586: Phi=0.0371500278 arcs=16 0s 
+  A mirror     B=16 seed=1983143135: Phi=0.0372119671 arcs=16 0s 
+  A mirror     B=16 seed=1648074327: Phi=0.0304754102 arcs=16 0s 
+  A mirror     B=16 seed=1146072648: Phi=0.0327269992 arcs=14 0s 
+  A none       B=18 seed=1865875034: Phi=0.0292007177 arcs=18 0s 
+  A none       B=18 seed=1058025122: Phi=0.0302141030 arcs=16 0s 
+  A none       B=18 seed=198419119: Phi=0.0317796135 arcs=16 0s 
+  A none       B=18 seed=1354809780: Phi=0.0309361787 arcs=16 0s 
+  A anti       B=18 seed=604029187: Phi=0.0313388833 arcs=18 0s 
+  A none       B=18 seed=1914348779: Phi=0.0298779547 arcs=16 1s 
+  A anti       B=18 seed=1130262870: Phi=0.0324563693 arcs=18 0s 
+  A none       B=18 seed=853773497: Phi=0.0310125936 arcs=18 0s 
+  A anti       B=18 seed=127163584: Phi=0.0296500125 arcs=18 0s 
+  A anti       B=18 seed=932648726: Phi=0.0284825326 arcs=18 0s 
+  A anti       B=18 seed=426454862: Phi=0.0313119306 arcs=18 0s 
+  A anti       B=18 seed=1230121886: Phi=0.0291114951 arcs=18 0s 
+  A mirror     B=18 seed=673503544: Phi=0.0300208876 arcs=18 0s 
+  A mirror     B=18 seed=414741160: Phi=0.0341796589 arcs=18 0s 
+  A none       B=42 seed=stored m=62: Phi=0.0229150158 arcs=42 5s 
+  A mirror     B=18 seed=1352316640: Phi=0.0345633756 arcs=18 0s 
+  A antimirror B=18 seed=277256753: Phi=0.0316210459 arcs=18 0s 
+  A mirror     B=18 seed=1678042272: Phi=0.0358837965 arcs=18 0s 
+  A mirror     B=18 seed=1777086576: Phi=0.0335498177 arcs=18 0s 
+  A antimirror B=18 seed=2134161323: Phi=0.0319033410 arcs=18 0s 
+  A antimirror B=18 seed=1793091118: Phi=0.0319033410 arcs=18 0s 
+  A antimirror B=18 seed=900460008: Phi=0.0304779880 arcs=18 0s 
+  A antimirror B=18 seed=459224210: Phi=0.0300494953 arcs=14 0s 
+  A mirror     B=18 seed=99850376: Phi=0.0313332684 arcs=18 0s 
+  A antimirror B=18 seed=127267098: Phi=0.0319033410 arcs=18 0s 
+  A none       B=20 seed=1229093436: Phi=0.0292153066 arcs=16 1s 
+  A none       B=20 seed=1555477547: Phi=0.0269672050 arcs=20 1s 
+  A none       B=20 seed=821776567: Phi=0.0287822223 arcs=20 1s 
+  A none       B=20 seed=1735552267: Phi=0.0276072677 arcs=20 1s 
+  A mirror     B=20 seed=205578906: Phi=0.0349952780 arcs=20 0s 
+  A none       B=20 seed=664872577: Phi=0.0287638927 arcs=20 0s 
+  A mirror     B=20 seed=1055857927: Phi=0.0317312791 arcs=18 0s 
+  A none       B=20 seed=1873125906: Phi=0.0334372560 arcs=18 1s 
+  A mirror     B=20 seed=1694391232: Phi=0.0302968102 arcs=18 0s 
+  A mirror     B=20 seed=1528022563: Phi=0.0320806369 arcs=20 0s 
+  A mirror     B=20 seed=1022012400: Phi=0.0308003053 arcs=18 0s 
+  A mirror     B=20 seed=1139913555: Phi=0.0312688937 arcs=20 0s 
+  A none       B=22 seed=795044776: Phi=0.0290819508 arcs=20 1s 
+  A none       B=22 seed=1778461996: Phi=0.0315123722 arcs=20 1s 
+  A none       B=22 seed=332716680: Phi=0.0298238640 arcs=20 1s 
+  A anti       B=22 seed=65499477: Phi=0.0283306184 arcs=22 0s 
+  A none       B=22 seed=2055046009: Phi=0.0292596136 arcs=20 1s 
+  A anti       B=22 seed=564751917: Phi=0.0275319883 arcs=22 0s 
+  A none       B=22 seed=2119575535: Phi=0.0293824708 arcs=22 1s 
+  A anti       B=22 seed=2055863707: Phi=0.0286443611 arcs=22 0s 
+  A anti       B=22 seed=1255938586: Phi=0.0325224960 arcs=22 0s 
+  A none       B=22 seed=922245787: Phi=0.0284130408 arcs=20 1s 
+  A anti       B=22 seed=1160103489: Phi=0.0258768736 arcs=22 0s 
+  A anti       B=22 seed=447144970: Phi=0.0286985862 arcs=22 0s 
+  A mirror     B=22 seed=1724662089: Phi=0.0278328296 arcs=22 0s 
+  A mirror     B=22 seed=181985764: Phi=0.0309277056 arcs=22 1s 
+  A mirror     B=22 seed=1572451417: Phi=0.0294532691 arcs=22 0s 
+  A mirror     B=22 seed=629946055: Phi=0.0294809905 arcs=18 1s 
+  A antimirror B=22 seed=74333684: Phi=0.0260523853 arcs=22 0s 
+  A antimirror B=22 seed=428913765: Phi=0.0273529379 arcs=22 0s 
+  A antimirror B=22 seed=1475924414: Phi=0.0300494953 arcs=14 0s 
+  A antimirror B=22 seed=2048178309: Phi=0.0311468348 arcs=22 0s 
+  A mirror     B=22 seed=2082833611: Phi=0.0325680880 arcs=22 1s 
+  A antimirror B=22 seed=858419376: Phi=0.0307117868 arcs=22 0s 
+  A antimirror B=22 seed=1477325326: Phi=0.0292364753 arcs=18 0s 
+  A mirror     B=22 seed=1753218848: Phi=0.0310216455 arcs=22 1s 
+  A none       B=24 seed=1561048457: Phi=0.0288176450 arcs=22 1s 
+  A none       B=24 seed=1745503775: Phi=0.0271803880 arcs=22 1s 
+  A none       B=24 seed=645478752: Phi=0.0282432466 arcs=22 1s 
+  A none       B=24 seed=399148698: Phi=0.0281654961 arcs=22 1s 
+  A mirror     B=24 seed=1565024596: Phi=0.0333206189 arcs=24 0s 
+  A none       B=24 seed=242260000: Phi=0.0273379432 arcs=24 1s 
+  A none       B=24 seed=1499793669: Phi=0.0283147301 arcs=20 1s 
+  A mirror     B=24 seed=1657472794: Phi=0.0300355487 arcs=24 1s 
+  A mirror     B=24 seed=1910104468: Phi=0.0306840108 arcs=24 1s 
+  A mirror     B=24 seed=612704644: Phi=0.0298237143 arcs=20 1s 
+  A mirror     B=24 seed=1669042046: Phi=0.0310602063 arcs=20 1s 
+  A mirror     B=24 seed=1488842025: Phi=0.0343234670 arcs=20 1s 
+  A none       B=26 seed=1077654522: Phi=0.0279305710 arcs=26 1s 
+  A none       B=26 seed=989784001: Phi=0.0271006761 arcs=26 1s 
+  A none       B=26 seed=1332331006: Phi=0.0279564821 arcs=24 2s 
+  A anti       B=26 seed=533937902: Phi=0.0259682449 arcs=26 0s 
+  A anti       B=26 seed=2076993457: Phi=0.0252307450 arcs=26 0s 
+  A none       B=26 seed=1261099997: Phi=0.0291560729 arcs=26 1s 
+  A none       B=26 seed=268377544: Phi=0.0258115107 arcs=26 2s 
+  A anti       B=26 seed=1020225181: Phi=0.0275141357 arcs=26 1s 
+  A anti       B=26 seed=2074350034: Phi=0.0270112412 arcs=26 1s 
+  A anti       B=26 seed=397006384: Phi=0.0270911816 arcs=26 1s 
+  A none       B=26 seed=801489149: Phi=0.0286528850 arcs=22 2s 
+  A anti       B=26 seed=2067113112: Phi=0.0258034279 arcs=22 1s 
+  A mirror     B=26 seed=253554253: Phi=0.0290379892 arcs=26 1s 
+  A mirror     B=26 seed=982687736: Phi=0.0313233428 arcs=22 1s 
+  A mirror     B=26 seed=303089070: Phi=0.0304739070 arcs=22 1s 
+  A mirror     B=26 seed=1237868721: Phi=0.0340755301 arcs=24 1s 
+  A mirror     B=26 seed=372754416: Phi=0.0337983650 arcs=26 1s 
+  A antimirror B=26 seed=1939819764: Phi=0.0318210436 arcs=22 0s 
+  A mirror     B=26 seed=475380698: Phi=0.0262286771 arcs=26 1s 
+  A antimirror B=26 seed=2138833927: Phi=0.0318782762 arcs=26 0s 
+  A antimirror B=26 seed=1180663488: Phi=0.0260523853 arcs=22 0s 
+  A antimirror B=26 seed=1872008600: Phi=0.0286432835 arcs=26 0s 
+  A antimirror B=26 seed=1941273958: Phi=0.0316208329 arcs=18 0s 
+  A antimirror B=26 seed=234746161: Phi=0.0295585490 arcs=22 0s 
+  A none       B=28 seed=928643159: Phi=0.0289042059 arcs=26 2s 
+  A none       B=28 seed=1519352287: Phi=0.0282379477 arcs=26 2s 
+  A none       B=28 seed=963279704: Phi=0.0255536134 arcs=24 2s 
+  A none       B=28 seed=983939986: Phi=0.0284383710 arcs=22 2s 
+  A mirror     B=28 seed=1872830115: Phi=0.0298801797 arcs=28 1s 
+  A mirror     B=28 seed=902790051: Phi=0.0305178586 arcs=26 1s 
+  A none       B=28 seed=557513347: Phi=0.0278300177 arcs=28 2s 
+  A mirror     B=28 seed=571873907: Phi=0.0277601233 arcs=26 1s 
+  A none       B=28 seed=1706775898: Phi=0.0283099601 arcs=22 3s 
+  A mirror     B=28 seed=1901112342: Phi=0.0311725445 arcs=28 1s 
+  A mirror     B=28 seed=1783403506: Phi=0.0291285230 arcs=28 1s 
+  A mirror     B=28 seed=1683699008: Phi=0.0306571234 arcs=28 1s 
+  A none       B=30 seed=1732732840: Phi=0.0266989705 arcs=28 2s 
+  A none       B=30 seed=89629613: Phi=0.0273131506 arcs=28 2s 
+  A none       B=30 seed=571196692: Phi=0.0291715269 arcs=22 3s 
+  A none       B=30 seed=107371419: Phi=0.0270104557 arcs=26 3s 
+  A anti       B=30 seed=1314125912: Phi=0.0257651925 arcs=26 1s 
+  A anti       B=30 seed=1190861894: Phi=0.0250156120 arcs=30 1s 
+  A none       B=30 seed=470347942: Phi=0.0274877655 arcs=28 2s 
+  A none       B=30 seed=247447348: Phi=0.0263704391 arcs=24 3s 
+  A anti       B=30 seed=893165661: Phi=0.0284713545 arcs=26 1s 
+  A anti       B=30 seed=168710289: Phi=0.0258843910 arcs=30 1s 
+  A anti       B=30 seed=719996137: Phi=0.0254357990 arcs=26 1s 
+  A anti       B=30 seed=1267548559: Phi=0.0255281762 arcs=26 1s 
+  A mirror     B=30 seed=489764612: Phi=0.0278361531 arcs=30 1s 
+  A mirror     B=30 seed=1980325373: Phi=0.0298761589 arcs=30 1s 
+  A mirror     B=30 seed=2034214732: Phi=0.0327078894 arcs=26 1s 
+  A antimirror B=30 seed=538300168: Phi=0.0302020097 arcs=30 0s 
+  A mirror     B=30 seed=759762562: Phi=0.0312972261 arcs=30 1s 
+  A antimirror B=30 seed=433569354: Phi=0.0311764562 arcs=22 0s 
+  A antimirror B=30 seed=1787433999: Phi=0.0321646298 arcs=26 0s 
+  A mirror     B=30 seed=1482570940: Phi=0.0302390850 arcs=30 1s 
+  A antimirror B=30 seed=1925094525: Phi=0.0304503688 arcs=30 0s 
+  A antimirror B=30 seed=1710410364: Phi=0.0261133711 arcs=30 0s 
+  A antimirror B=30 seed=1581322781: Phi=0.0292278132 arcs=30 1s 
+  A mirror     B=30 seed=677250208: Phi=0.0314848463 arcs=24 2s 
+  A none       B=32 seed=697123101: Phi=0.0281170218 arcs=30 2s 
+  A none       B=32 seed=1613409616: Phi=0.0255923106 arcs=30 3s 
+  A none       B=32 seed=1750703088: Phi=0.0272332728 arcs=28 4s 
+  A none       B=32 seed=946491385: Phi=0.0277282000 arcs=28 4s 
+  A none       B=32 seed=747851264: Phi=0.0268594550 arcs=32 2s 
+  A mirror     B=32 seed=619154865: Phi=0.0301967666 arcs=32 1s 
+  A mirror     B=32 seed=179846545: Phi=0.0303212953 arcs=30 2s 
+  A none       B=32 seed=580454919: Phi=0.0264867859 arcs=30 4s 
+  A mirror     B=32 seed=311880296: Phi=0.0307444810 arcs=30 2s 
+  A mirror     B=32 seed=1821026212: Phi=0.0307400643 arcs=32 1s 
+  A mirror     B=32 seed=1941259269: Phi=0.0308834745 arcs=32 1s 
+  A mirror     B=32 seed=1940939251: Phi=0.0284669800 arcs=30 1s 
+  A none       B=34 seed=1199329952: Phi=0.0267004752 arcs=30 3s 
+  A none       B=34 seed=682718587: Phi=0.0266545818 arcs=34 3s 
+  A none       B=34 seed=1076779119: Phi=0.0258156483 arcs=28 4s 
+  A none       B=34 seed=1640948859: Phi=0.0277891825 arcs=28 4s 
+  A anti       B=34 seed=369027198: Phi=0.0272541837 arcs=26 2s 
+  A anti       B=34 seed=1623394056: Phi=0.0247895603 arcs=34 1s 
+  A none       B=34 seed=824983104: Phi=0.0276182894 arcs=30 4s 
+  A none       B=34 seed=489391600: Phi=0.0258771696 arcs=30 4s 
+  A anti       B=34 seed=536366989: Phi=0.0248903013 arcs=30 2s 
+  A anti       B=34 seed=798041485: Phi=0.0261262792 arcs=30 2s 
+  A anti       B=34 seed=1122732735: Phi=0.0268561178 arcs=26 3s 
+  A anti       B=34 seed=1565654616: Phi=0.0245992022 arcs=30 2s 
+  A mirror     B=34 seed=370774379: Phi=0.0280683555 arcs=32 2s 
+  A mirror     B=34 seed=25709338: Phi=0.0290157989 arcs=34 2s 
+  A mirror     B=34 seed=403731025: Phi=0.0288598248 arcs=30 2s 
+  A mirror     B=34 seed=574134158: Phi=0.0293227825 arcs=34 2s 
+  A mirror     B=34 seed=826130874: Phi=0.0312489014 arcs=30 2s 
+  A antimirror B=34 seed=896983248: Phi=0.0278206878 arcs=34 1s 
+  A antimirror B=34 seed=86803487: Phi=0.0293124753 arcs=34 1s 
+  A antimirror B=34 seed=831998171: Phi=0.0264144693 arcs=34 1s 
+  A antimirror B=34 seed=557240463: Phi=0.0290809488 arcs=26 1s 
+  A mirror     B=34 seed=511511113: Phi=0.0276453206 arcs=32 2s 
+  A antimirror B=34 seed=1972579486: Phi=0.0300472661 arcs=34 1s 
+  A antimirror B=34 seed=160849281: Phi=0.0308746382 arcs=34 1s 
+  A none       B=36 seed=1981082606: Phi=0.0268909715 arcs=36 3s 
+  A none       B=36 seed=199938932: Phi=0.0259663429 arcs=34 4s 
+  A none       B=36 seed=649698298: Phi=0.0278127325 arcs=30 5s 
+  A none       B=36 seed=250026605: Phi=0.0267771883 arcs=28 5s 
+  A mirror     B=36 seed=1582111181: Phi=0.0293115846 arcs=32 2s 
+  A none       B=36 seed=372336891: Phi=0.0252619495 arcs=32 5s 
+  A mirror     B=36 seed=1658448019: Phi=0.0283550824 arcs=36 2s 
+  A none       B=36 seed=1431952902: Phi=0.0257048189 arcs=34 5s 
+  A mirror     B=36 seed=1680760190: Phi=0.0303672436 arcs=36 2s 
+  A mirror     B=36 seed=740433181: Phi=0.0284395610 arcs=36 2s 
+  A mirror     B=36 seed=628660684: Phi=0.0276010629 arcs=36 2s 
+  A mirror     B=36 seed=1982612551: Phi=0.0283666277 arcs=26 2s 
+stage A best 15:
+  0.022915015800  none       B=42 arcs=42 seed=stored m=62
+  0.024599202211  anti       B=34 arcs=30 seed=1565654616
+  0.024667412665  none       B=28 arcs=28 seed=stored m=63
+  0.024769535386  none       B=30 arcs=30 seed=stored m=60
+  0.024789560257  anti       B=34 arcs=34 seed=1623394056
+  0.024890301294  anti       B=34 arcs=30 seed=536366989
+  0.025015612013  anti       B=30 arcs=30 seed=1190861894
+  0.025181699969  none       B=28 arcs=28 seed=stored m=65
+  0.025230745008  anti       B=26 arcs=26 seed=2076993457
+  0.025261949478  none       B=36 arcs=32 seed=372336891
+  0.025322113518  none       B=26 arcs=26 seed=stored m=64
+  0.025405079948  none       B=30 arcs=30 seed=stored m=66
+  0.025435798964  anti       B=30 arcs=26 seed=719996137
+  0.025528176193  anti       B=30 arcs=26 seed=1267548559
+  0.025553613419  none       B=28 arcs=24 seed=963279704
+stage B: 10 basins x 60 hops
+  B Phi=0.022901316461 arcs=46 seed=1865212976 improving hops=3
+      hop   5 split        arcs 42->44  0.022915015800 -> 0.022903475652
+      hop   6 perturb0.15  arcs 44->44  0.022903475652 -> 0.022903475651
+      hop  27 split        arcs 44->46  0.022903475651 -> 0.022901316461
+  B Phi=0.023951155482 arcs=36 seed=682674684 improving hops=10
+      hop   4 perturb0.05  arcs 30->30  0.025015612013 -> 0.024982268847
+      hop  16 split        arcs 30->32  0.024982268847 -> 0.024844376819
+      hop  17 split        arcs 32->34  0.024844376819 -> 0.024651797658
+      hop  19 split        arcs 34->36  0.024651797658 -> 0.024465827123
+      hop  20 perturb0.15  arcs 36->34  0.024465827123 -> 0.024342929844
+      hop  21 split        arcs 34->34  0.024342929844 -> 0.024342921958
+      hop  24 perturb0.15  arcs 34->34  0.024342921958 -> 0.024296768548
+      hop  29 perturb0.15  arcs 34->34  0.024296768548 -> 0.024289136160
+      hop  57 perturb0.15  arcs 34->34  0.024289136160 -> 0.024213562107
+      hop  58 split        arcs 34->36  0.024213562107 -> 0.023951155482
+  B Phi=0.024177724340 arcs=36 seed=1154371302 improving hops=13
+      hop   0 perturb0.15  arcs 30->30  0.024769535386 -> 0.024769289696
+      hop   3 split        arcs 30->32  0.024769289696 -> 0.024766202556
+      hop   5 split        arcs 32->34  0.024766202556 -> 0.024757890474
+      hop  11 split        arcs 34->36  0.024757890474 -> 0.024713880453
+      hop  16 perturb0.15  arcs 36->36  0.024713880453 -> 0.024713231874
+      hop  18 perturb0.05  arcs 36->34  0.024713231874 -> 0.024712034230
+      hop  31 split        arcs 34->36  0.024712034230 -> 0.024669890483
+      hop  32 perturb0.15  arcs 36->36  0.024669890483 -> 0.024669890483
+      hop  33 split        arcs 36->36  0.024669890483 -> 0.024610753186
+      hop  35 split        arcs 36->36  0.024610753186 -> 0.024180844338
+      hop  37 split        arcs 36->36  0.024180844338 -> 0.024180839389
+      hop  38 merge        arcs 36->34  0.024180839389 -> 0.024177826896
+      hop  57 split        arcs 34->36  0.024177826896 -> 0.024177724340
+  B Phi=0.024229445054 arcs=34 seed=1925420599 improving hops=3
+      hop   2 perturb0.05  arcs 30->30  0.024890301279 -> 0.024830797011
+      hop  16 split        arcs 30->32  0.024830797011 -> 0.024320787427
+      hop  32 split        arcs 32->34  0.024320787427 -> 0.024229445054
+  B Phi=0.024503255266 arcs=30 seed=447293863 improving hops=4
+      hop   2 perturb0.15  arcs 34->32  0.024789560257 -> 0.024555702916
+      hop   4 perturb0.15  arcs 32->32  0.024555702916 -> 0.024555701888
+      hop  23 perturb0.15  arcs 32->30  0.024555701888 -> 0.024503255308
+      hop  25 perturb0.05  arcs 30->30  0.024503255308 -> 0.024503255266
+  B Phi=0.024530655828 arcs=38 seed=1737295617 improving hops=8
+      hop  14 split        arcs 28->30  0.025181699969 -> 0.024729519638
+      hop  21 split        arcs 30->32  0.024729519638 -> 0.024728849309
+      hop  24 perturb0.15  arcs 32->32  0.024728849309 -> 0.024562982131
+      hop  29 split        arcs 32->34  0.024562982131 -> 0.024540588678
+      hop  43 split        arcs 34->36  0.024540588678 -> 0.024540557542
+      hop  51 split        arcs 36->36  0.024540557542 -> 0.024531401609
+      hop  53 perturb0.05  arcs 36->36  0.024531401609 -> 0.024531401326
+      hop  59 split        arcs 36->38  0.024531401326 -> 0.024530655828
+  B Phi=0.024597595952 arcs=30 seed=1497073960 improving hops=1
+      hop  14 perturb0.15  arcs 30->30  0.024599197143 -> 0.024597595952
+  B Phi=0.024661540168 arcs=28 seed=928612200 improving hops=1
+      hop  49 perturb0.4   arcs 28->28  0.024667412665 -> 0.024661540168
+  B Phi=0.025198714694 arcs=26 seed=1297631655 improving hops=3
+      hop  12 perturb0.15  arcs 32->32  0.025255549026 -> 0.025241648864
+      hop  45 perturb0.05  arcs 32->32  0.025241648864 -> 0.025238972096
+      hop  58 perturb0.4   arcs 32->26  0.025238972096 -> 0.025198714694
+  B Phi=0.025230745008 arcs=26 seed=785466838 improving hops=0
+best continuous Phi = 0.022901316461 (floating point, search output); arc lengths: [0.01213, 0.0147, 0.016711, 0.001753, 0.002396, 0.01095, 0.016289, 0.008362, 0.026787, 0.032868, 0.013353, 0.030359, 0.020848, 0.014086, 0.019296, 0.046844, 0.033345, 0.048642, 0.010789, 0.036348, 0.009017, 0.037581, 0.036921, 0.011739, 0.014582, 0.021331, 0.010624, 0.016184, 0.008821, 0.00295, 0.000674, 0.022757, 0.03287, 0.013594, 0.030331, 0.020566, 0.014197, 0.019125, 0.046871, 0.033122, 0.048959, 0.010819, 0.036385, 0.008853, 0.037718, 0.036553]
+  basin 0.022901316461: M=  974 rounded 0.022951355363 polished 0.022946225406
+  basin 0.022901316461: M=  926 rounded 0.022946764691 polished 0.022946589759
+  basin 0.022901316461: M=  938 rounded 0.022947098198 polished 0.022947098198
+  basin 0.023951155482: M=  983 rounded 0.023986009017 polished 0.023977764416
+  basin 0.023951155482: M= 1000 rounded 0.023988966667 polished 0.023978400000
+  basin 0.023951155482: M=  965 rounded 0.023982442482 polished 0.023978666094
+  basin 0.024177724340: M=  951 rounded 0.024204915740 polished 0.024203699465
+  basin 0.024177724340: M=  926 rounded 0.024221494246 polished 0.024205186695
+  basin 0.024177724340: M=  996 rounded 0.024211739864 polished 0.024208161293
+certified m=974: Phi = 81632/3557535 = 0.022946225406, delta~_6 <= 40816/3557535  [exact.phi_bits; circle.py agrees]
+best stored word: Phi = 2821/108000 = 0.026120370370; IMPROVES  (1348s total)
+stored in results/zp_k6_c.json
