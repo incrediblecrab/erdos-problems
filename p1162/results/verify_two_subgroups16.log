@@ -1,0 +1,52 @@
+== 9 orbit types with blocks <= 8, by count_type() of two_subgroups.py ==
+  (8, 4, 2, 2)                 938640 listed, c = 252347760  (219s)
+  (8, 2, 2, 2, 2)              452624 listed, c = 55613400  (81s)
+  (8, 4, 4)                   2048608 listed, c = 1279420320  (498s)
+  (8, 8)                      1105344 listed, c = 21245572800  (550s)
+  (4, 2, 2, 2, 2, 2, 2)        475742 listed, c = 966898  (60s)
+  (4, 4, 4, 2, 2)             1970728 listed, c = 18482888  (315s)
+  (4, 4, 2, 2, 2, 2)           951484 listed, c = 4072748  (127s)
+  (2, 2, 2, 2, 2, 2, 2, 2)     245578 listed, c = 245578  (30s)
+  (4, 4, 4, 4)                4250512 listed, c = 91676176  (832s)
+  [pass] type (8, 8): every weighted sum is an integer
+  [pass] type (8, 4, 4): every weighted sum is an integer
+  [pass] type (8, 4, 2, 2): every weighted sum is an integer
+  [pass] type (4, 4, 4, 4): every weighted sum is an integer
+  [pass] type (8, 2, 2, 2, 2): every weighted sum is an integer
+  [pass] type (4, 4, 4, 2, 2): every weighted sum is an integer
+  [pass] type (4, 4, 2, 2, 2, 2): every weighted sum is an integer
+  [pass] type (4, 2, 2, 2, 2, 2, 2): every weighted sum is an integer
+  [pass] type (2, 2, 2, 2, 2, 2, 2, 2): every weighted sum is an integer
+
+== type (16): the extensions H = K u tK of the (8, 8) list ==
+  [pass] type (16): every weighted sum is an integer
+  137557 transitive subgroups of R_16; 20134311622425 transitive 2-subgroups of S_16
+  regular subgroups: 14 isomorphism classes, sum 16!/(16|Aut G|) = 647091244800  (8s)
+  [pass] no weights: the regular subgroups of S_16 number sum_G 16!/(16|Aut G|) = 647091244800 = the weighted count of order 16
+
+== T(16), T(17) from the n <= 15 recount and t(16) ==
+  [pass] the inverse binomial transform of the n <= 15 recount vanishes at every odd k
+  n=16: 2796152160962346 2-subgroups, 2212705110626196 FC
+  n=17: 44450356088881802 2-subgroups, 35042994669676052 FC
+
+== against two_subgroups16.json ==
+  [pass] type (8,8): 1105344 listed, c = 21245572800, c_FC = 13791261600, equal census16
+  [pass] type (8,4,4): 2048608 listed, c = 1279420320, c_FC = 857059320, equal census16
+  [pass] type (8,4,2,2): 938640 listed, c = 252347760, c_FC = 218305080, equal census16
+  [pass] type (4,4,4,4): 4250512 listed, c = 91676176, c_FC = 59047162, equal census16
+  [pass] type (8,2,2,2,2): 452624 listed, c = 55613400, c_FC = 55613400, equal census16
+  [pass] type (4,4,4,2,2): 1970728 listed, c = 18482888, c_FC = 14992922, equal census16
+  [pass] type (4,4,2,2,2,2): 951484 listed, c = 4072748, c_FC = 3807266, equal census16
+  [pass] type (4,2,2,2,2,2,2): 475742 listed, c = 966898, c_FC = 966898, equal census16
+  [pass] type (2,2,2,2,2,2,2,2): 245578 listed, c = 245578, c_FC = 245578, equal census16
+  [pass] type (16): 137557 subgroups of R_16, by order, equal census16
+  [pass] type (16): total equals census16
+  [pass] type (16): by_order equals census16
+  [pass] type (16): listed_by_s equals census16
+  [pass] type (16): listed_by_d equals census16
+  [pass] type (16): by_d equals census16
+  [pass] n=16: 2796152160962346 2-subgroups, 2212705110626196 FC, by order, equal two_subgroups16.py
+  [pass] n=17: 44450356088881802 2-subgroups, 35042994669676052 FC, by order, equal two_subgroups16.py
+
+wrote results/verify_two_subgroups16.json  (840.3s)
+all checks passed

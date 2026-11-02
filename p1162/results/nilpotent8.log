@@ -1,0 +1,11 @@
+== nilpotent subgroups of S_n = 2-subgroups + those with an odd part, against A218939 (oeis_A218939.txt) ==
+  [pass] n=1: 1 2-subgroups + 0 with one of 0 odd parts = 1 = A218939(1) = 1
+  [pass] n=2: 2 2-subgroups + 0 with one of 0 odd parts = 2 = A218939(2) = 2
+  [pass] n=3: 4 2-subgroups + 1 with one of 1 odd parts = 5 = A218939(3) = 5
+  [pass] n=4: 20 2-subgroups + 4 with one of 4 odd parts = 24 = A218939(4) = 24
+  [pass] n=5: 76 2-subgroups + 26 with one of 16 odd parts = 102 = A218939(5) = 102
+  [pass] n=6: 631 2-subgroups + 206 with one of 86 odd parts = 837 = A218939(6) = 837
+  [pass] n=7: 3417 2-subgroups + 1702 with one of 491 odd parts = 5119 = A218939(7) = 5119
+  [pass] n=8: 65054 2-subgroups + 13616 with one of 2528 odd parts = 78670 = A218939(8) = 78670
+(12.3s)
+all checks passed

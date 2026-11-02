@@ -11,7 +11,9 @@ Artifacts written by the programs in `src/`. `scripts/reproduce.sh` regenerates 
 | `orbit_model.json` | `orbit_model.py` | orbit profiles, pure types, local coefficients and the held-out extrapolation |
 | `sd_precision.json` | `sd_precision.py` | the exact rank sd at $n = 64, 128, 256, 512$ to 30 digits and its error against the closed form, computed at 60 decimal places |
 | `census8.json` | `census8.py` | the 2-subgroups of $S_n$ for $n \le 8$: counts by order, the transitive types, and the Frattini-closed counts. The key `sylow_subgroups` is the number of subgroups of one Sylow 2-subgroup of $S_8$, not the number of Sylow subgroups |
+| `nilpotent8.json` | `nilpotent8.py` | for $n \le 8$, the 2-subgroups of $S_n$ from `census8.json`, the number of odd-order nilpotent $Q \ne 1$, the nilpotent subgroups they give, and A218939$(n)$ |
 | `two_subgroups.json` | `two_subgroups.py` | every 2-subgroup of $S_n$ for $n \le 15$: totals, FC and non-FC counts, counts by order and by largest orbit, the fixed-point-free counts, the count for each orbit type with the number of subgroups of $R$ it lists, and the Sylow weights $s_b$ |
+| `two_subgroups16.json` | `two_subgroups16.py` | every 2-subgroup of $S_{16}$ and $S_{17}$, in the fields of `two_subgroups.json`, with $\lvert S_3(n)\rvert$ and $B(n)$; for each orbit type of 16 points the list length, by order, and the weighted counts; and the transitive 2-subgroups of $S_{16}$ by order and by $d$, with the subgroups of $R_{16}$ listed by $s_{16}$ and by $d$ |
 | `block_families.json` | `block_families.py` | the §9 family: $\log_2 B(n)$ for $n \le 512$, its order statistics, $F_8$, $S_3(n)/B(n)$, the comparisons of §9.2 and §9.3, and the fractions of $f(n)$ in §9.8 for $n \le 18$ |
 
 The statistics in `elemab_stats.json` are computed through floating-point logarithms and are much less precise than their doubles (`NOTES.md` §3); `sd_precision.json` has the sd computed exactly.

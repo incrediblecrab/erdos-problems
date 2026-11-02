@@ -179,6 +179,17 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    absent from the paper: '0.875'
   ok    absent from the paper: 'extra.{0,3}special'
 
+== verbatim quotations from [Sa26] (NOTES.md §9.8) ==
+  ok    [Sa26] quote present: "A proof claimed by Amir Sarid (using ChatGPT 5.6 Sol, Ch"
+  ok    [Sa26] quote present: "all but an exponentially small proportion of the subgrou"
+  ok    [Sa26] quote present: "Submitted 2026-10-01"
+  ok    [Sa26] quote present: "L_n = n! G_R [y^R] (1+y/6)^epsilon exp(P(y))"
+  ok    [Sa26] quote present: "P(y) = y/2 + y^2/6 + y^4/384"
+  ok    [Sa26] quote present: "Put R = floor(n/2), epsilon = n mod 2"
+  ok    [Sa26] quote present: "abs(s_n/L_n - 1) <= C * 2^(-c*n)"
+  ok    [Sa26] quote present: "This statement specifies neither an optimized numerical "
+  ok    [Sa26] quote present: "relative to seven explicitly named published mathematica"
+
 == the §9 programs, rerun into a temporary directory ==
   ok    census8.py exits 0   [exit 0]
   ok    census8.py passes all 33 of its checks   [33 passed]
@@ -186,6 +197,9 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    block_families.py exits 0   [exit 0]
   ok    block_families.py passes all 62 of its checks   [62 passed]
   ok    block_families.py: a fresh run reproduces data/block_families.json
+  ok    nilpotent8.py exits 0   [exit 0]
+  ok    nilpotent8.py passes all 8 of its checks   [8 passed]
+  ok    nilpotent8.py: a fresh run reproduces data/nilpotent8.json
 
 == two_subgroups.py: every 2-subgroup of S_n, n <= 15 (NOTES.md §9.8) ==
   ok    two_subgroups.json covers n = 1..15 and records no failed check   [n_max 15]
@@ -204,6 +218,28 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    verify_two_subgroups.py ran to n = 15 and matched   [n_max 15]
   ok    verify_two_subgroups.json equals two_subgroups.json for every n <= 15 (totals, FC, by order)   [n = 1..15]
   ok    both programs list the same number of subgroups of R for every orbit type they share   [25 types]
+
+== two_subgroups16.py: every 2-subgroup of S_16 and S_17 (NOTES.md §9.8) ==
+  ok    two_subgroups16.json records all 62 of its checks and no failure   [62 run]
+  ok    the orbit types of 16 points are the ten multisets of 16, 8, 4, 2   [10]
+  ok    n = 16, 17: each row is the binomial transform of the stored t(k), k <= 14, and t(16)
+  ok    t(16) is the sum over the ten orbit types, in total and FC
+  ok    type (16): its count is the transitive count, all FC, summed over orders
+  ok    type (16): the listed subgroups of R_16, by order, by s and by d, add up
+  ok    every orbit type: its list adds up by order
+  ok    k = 16: exactly the orbit types with two or more orbits of length >= 4 have non-FC subgroups
+  ok    every transitive 2-subgroup of degree 16 has d <= 6 = 16/4 + 2, and d = 6 occurs
+  ok    Frobenius at n = 16, 17: each order 2^j <= |P| occurs an odd number of times, and |P| exactly n!/|P| times
+  ok    n = 16, 17: FC subgroups with orbits of size <= 8, by order, equal the formula of §9.1
+  ok    n = 16, 17: FC with an orbit longer than 8 = C(n, 16) x the transitive count, all with largest orbit 16
+  ok    n = 16, 17: elementary abelian subgroups by rank equal elemab.rank_counts
+  ok    n = 16, 17: 2-subgroups + |S3(n)| <= f(n) = A005432(n), with |S3(n)| as stored
+  ok    a fresh run of census16.c on type (16) reproduces the stored transitive counts
+  ok    verify_two_subgroups16.py matched
+  ok    the recount of the nine orbit types with orbits <= 8 equals census16.c   [9 types]
+  ok    the recount of type (16) through the (8, 8) list equals census16.c, by order, d and s
+  ok    no weights: sum over the isomorphism classes of regular subgroups of 16!/(16|Aut G|) equals the order-16 count   [14 classes]
+  ok    the recount's rows for n = 16, 17 equal two_subgroups16.json (totals, FC, by order)
 
 == NOTES.md §2: exact counts ==
   ok    NOTES: §2.1 lattice, n = 1..7   [| 1–7 | 1, 2, 6, 30, 156, 1455, 11300 | 1, 2, 4, 11, 19, 56, 96 |]
@@ -485,6 +521,41 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    NOTES: §8/§9.8 the non-FC share at n = 14, after 'the share rises to '   [16.5]
   ok    NOTES: §8/§9.8 the non-FC share at n = 14, after 'By $n = 14$ the share is '   [16.5]
 
+== NOTES.md §9.8: the census at n = 16 and 17 ==
+  ok    NOTES: §9.8 census row n = 16   [2 796 152 160 962 346, 0.2087, 0.1097, 0.5255, 0.0548, 0.4197]
+  ok    NOTES: §9.8 census row n = 17   [44 450 356 088 881 802, 0.2116, 0.0747, 0.3531, 0.1759, 0.4710]
+  ok    NOTES: §9 the check count of two_subgroups16.py   [62]
+  ok    NOTES: §9.8 premise (c): its share at n = 16   [0.910]
+  ok    NOTES: §1 item 8: under 1% of the FC 2-subgroups at n = 16 and 17
+  ok    NOTES: §8 (v): the non-FC share at n = 16   [20.9]
+  ok    NOTES: §9.8 the longest list of 16 points is that of (4, 4, 4, 4)   [4,4,4,4]
+  ok    NOTES: §9.8 the list of (4, 4, 4, 4)   [4 250 512]
+  ok    NOTES: §9.8 the transitive subgroups of R_16   [137 557]
+  ok    NOTES: §9.8 the transitive 2-subgroups of S_16   [20 134 311 622 425]
+  ok    NOTES: §9.8 the driver's check count   [62]
+  ok    NOTES: §9.8 the OEIS search terms are the transitive counts   [1, 1, 7, 12945, 20134311622425]
+  ok    NOTES: §9.8 the searched transitive counts for b = 1, 2, 4, 8 are census8's
+  ok    NOTES: §9.8 the isomorphism classes of regular subgroups   [14]
+  ok    NOTES: §9.8 (c): shares of FC and of f, the first share of 8-orbits, and the 8-orbit share at n = 16   [0.910, 0.977, 0.378, 0.272, 20.9, 56.6]
+  ok    NOTES: §9.8 (c): the share rises from n = 16 to 17
+  ok    NOTES: §9.8 (c): d <= 6 = 16/4 + 2 and d = 6 occurs
+  ok    NOTES: §9.8 (b): non-FC shares at n = 16, 17, of f(16), and the orbit types with two long orbits at n = 16   [20.9, 21.2, 11.0, 94.8, 22.0]
+  ok    NOTES: §9.8 (b): every orbit type with a non-FC subgroup has two orbits of length >= 4, so the count above is the non-FC total
+  ok    NOTES: §9.8 (b): the non-FC share rises along even n = 8..16   [1575/32527, 793800/11666461, 665799750/4498662367, 1054350297/6394236619, 97241175056025/466025360160391]
+  ok    NOTES: §9.8 (b): the non-FC share rises along odd n = 9..17   [567/10163, 7692300/110251571, 8266207950/52935128039, 2876425501950/17368259966903, 4703680709602875/22225178044440901]
+  ok    NOTES: §9.8 (a): neither at n = 16, 17; 2-subgroups of f(16); the split of the share outside B and S3 at n = 16   [42.0, 47.1, 52.6, 53.3, 42.0, 11.0, 0.4]
+  ok    NOTES: §9.8 (a): the split adds up
+  ok    NOTES: §9.8 (a): n = 16 has the lowest share in the census, n = 8..17
+  ok    NOTES: §9.8 (a): falling along even n since 10 and along odd n since 11
+  ok    NOTES: §9.8 (a): 2-subgroups exceed half of f(n) at n = 16, at n = 4, and at no n in 5..15
+  ok    NOTES: §9.8 the summary range of (a)   [42, 47]
+  ok    NOTES: §9.8 [Sa26]: the forum line, quoted as checked against refs/ above   [A proof claimed by Amir Sarid (using ChatGPT 5.6 Sol, ChatGPT 6 Astra, Claude Opus 5.5)]
+  ok    NOTES: §9.8 [Sa26]'s L_n equals the recorded formula exactly, 3 <= n <= 64
+  ok    NOTES: §9.8 [Sa26]: the range of the identity check   [64]
+  ok    NOTES: §9.8 [Sa26]: the shares at n = 17   [21.2, 47.1]
+  ok    NOTES: §9.8 nilpotent8.py matched A218939 for every n <= 8, from the census counts
+  ok    NOTES: §9.8 A218939 at n = 8 and its 2-groups   [78 670, 8, 65 054]
+
 == NOTES.md §9.9: the double root, redone ==
   ok    NOTES: §9.9 order of the ambient group and of its Frattini subgroup   [which has order $2^{5n/8}$ and a Frattini subgroup of order $2^{n/8}$]
   ok    NOTES: §9.9 the count of FC subgroups of order 2^(nu n)   [$2^{n^2(\nu - 1/8)(5/8 - \nu)}$]
@@ -498,10 +569,10 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    NOTES: §10 the stored rows recomputed   [for $n \le 256$ and $n = 512$, 88 of the 119; recomputing the other 31]
 
 == NOTES.md: which decimal numbers were compared ==
-  522 of 543 decimal numbers compared; 9 quoted from first versions, 12 timings, 0 not compared
-  ok    NOTES: every decimal number is compared, or marked as a timing or a first-version value   [543 numbers]
-  ok    NOTES: §10 the number of checks   [429]
+  556 of 579 decimal numbers compared; 9 quoted from first versions, 14 timings, 0 not compared
+  ok    NOTES: every decimal number is compared, or marked as a timing or a first-version value   [579 numbers]
+  ok    NOTES: §10 the number of checks   [494]
 
-429 checks run, 0 failed, 0 skipped
+494 checks run, 0 failed, 0 skipped
 
 Every check that ran passed.

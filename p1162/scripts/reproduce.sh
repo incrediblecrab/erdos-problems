@@ -10,8 +10,9 @@
 #   5. exact elementary abelians    n up to 512: rank law, Galois constant
 #   6. the orbit model              second-order term, incl. the held-out extrapolation
 #   6b. sd precision                the rank sd against its closed form, exact at 60 dp
-#   6c. the section 9 programs      census8.py (2-subgroups of S_n, n <= 8) and block_families.py
+#   6c. the section 9 programs      census8.py (2-subgroups of S_n, n <= 8), nilpotent8.py (against A218939) and block_families.py
 #   6d. all 2-subgroups, n <= 15    two_subgroups.py and its independent recount verify_two_subgroups.py
+#   6e. n = 16 and 17               census16.c (cc -O3) with two_subgroups16.py, and the recount verify_two_subgroups16.py
 #   7. final_check.py               checks the artifacts and the numbers in NOTES.md; exit 0 = pass
 #
 # Needs: cc (C99), curl, a python3 with numpy and mpmath, and poppler's pdftotext for the quotation checks in stage 7.  $PY overrides the interpreter; otherwise ~/.venvs/main/bin/python is used when present and python3 from $PATH otherwise.  Without the downloads those checks report "skip", not "pass" -- final_check.py distinguishes them.
@@ -108,6 +109,8 @@ echo "=== 6c. the section 9 programs ======================================"
 # census8.py enumerates the 2-subgroups of S_n for n <= 8 by brute force on permutations; block_families.py reads its output and the stage 5 and 6 artifacts.
 "$PY" src/census8.py > results/census8.log 2>&1
 tail -2 results/census8.log
+"$PY" src/nilpotent8.py > results/nilpotent8.log 2>&1
+tail -1 results/nilpotent8.log
 "$PY" src/block_families.py --n-max "$N_MAX" > results/block_families.log 2>&1
 tail -2 results/block_families.log
 
@@ -118,6 +121,16 @@ tail -2 results/two_subgroups.log
 if [ "$FAST" = "1" ]; then V_MAX=12; DEDUP_MAX=10; else V_MAX=15; DEDUP_MAX=12; fi
 "$PY" -u src/verify_two_subgroups.py --n-max "$V_MAX" --dedup-max "$DEDUP_MAX" > results/verify_two_subgroups.log 2>&1
 tail -2 results/verify_two_subgroups.log
+
+echo "=== 6e. every 2-subgroup of S_16 and S_17 ============================"
+# census16.c lists the subgroups of the Sylow subgroup of each orbit type of 16 points; two_subgroups16.py weights them and adds the n <= 15 census of stage 6d.  verify_two_subgroups16.py recounts them in Python, sharing no code, with type (16) built from the (8, 8) list; it takes the longest of all the stages (NOTES.md section 10) and needs about 3 GB, so FAST=1 skips it and final_check.py reads the committed results/verify_two_subgroups16.json.
+"$CC" -O3 -std=c99 -Wall -o src/census16 src/census16.c
+"$PY" src/two_subgroups16.py > results/two_subgroups16.log 2>&1
+tail -1 results/two_subgroups16.log
+if [ "$FAST" != "1" ]; then
+  "$PY" -u src/verify_two_subgroups16.py > results/verify_two_subgroups16.log 2>&1
+  tail -1 results/verify_two_subgroups16.log
+fi
 
 echo "=== 7. final check ==================================================="
 # The gate.  Exit 0 means the artifacts above pass their checks and every decimal number in NOTES.md agrees with a fresh computation, apart from the timings and the first-version values that NOTES.md marks.  It was validated by planting defects (NOTES.md section 10); a clean pass of an unchallenged checker proves nothing.

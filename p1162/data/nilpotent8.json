@@ -1,0 +1,54 @@
+{
+ "description": "2-subgroup counts of S_n against A218939 (src/nilpotent8.py)",
+ "rows": {
+  "1": {
+   "two_subgroups": 1,
+   "odd_parts": 0,
+   "nilpotent": 1,
+   "A218939": 1
+  },
+  "2": {
+   "two_subgroups": 2,
+   "odd_parts": 0,
+   "nilpotent": 2,
+   "A218939": 2
+  },
+  "3": {
+   "two_subgroups": 4,
+   "odd_parts": 1,
+   "nilpotent": 5,
+   "A218939": 5
+  },
+  "4": {
+   "two_subgroups": 20,
+   "odd_parts": 4,
+   "nilpotent": 24,
+   "A218939": 24
+  },
+  "5": {
+   "two_subgroups": 76,
+   "odd_parts": 16,
+   "nilpotent": 102,
+   "A218939": 102
+  },
+  "6": {
+   "two_subgroups": 631,
+   "odd_parts": 86,
+   "nilpotent": 837,
+   "A218939": 837
+  },
+  "7": {
+   "two_subgroups": 3417,
+   "odd_parts": 491,
+   "nilpotent": 5119,
+   "A218939": 5119
+  },
+  "8": {
+   "two_subgroups": 65054,
+   "odd_parts": 2528,
+   "nilpotent": 78670,
+   "A218939": 78670
+  }
+ },
+ "match": true
+}

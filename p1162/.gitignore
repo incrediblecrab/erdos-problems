@@ -8,8 +8,9 @@ refs/*
 # Log written by the fetch stage of scripts/reproduce.sh.
 results/fetch.log
 
-# Built from src/subgroups.c by scripts/reproduce.sh.
+# Built from src/subgroups.c and src/census16.c by scripts/reproduce.sh.
 src/subgroups
+src/census16
 
 __pycache__/
 

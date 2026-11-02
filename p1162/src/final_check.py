@@ -644,6 +644,40 @@ def check_quotes() -> None:
         check(f"absent from the paper: {pat!r}", PDF_RESULTS[pat])
 
 
+def check_quotes_sa26() -> None:
+    section("verbatim quotations from [Sa26] (NOTES.md §9.8)")
+    files = {
+        "forum": ROOT / "refs" / "erdosproblems_1162_proof_claims.html",
+        "spec": ROOT / "refs" / "sarid_SPEC_b1f33ddf.md",
+        "readme": ROOT / "refs" / "sarid_README_b1f33ddf.md",
+    }
+    if not all(f.exists() for f in files.values()):
+        SKIPPED.append("refs/ files of [Sa26] absent (run refs/fetch.sh); its quotations unchecked")
+        print("  skip  [Sa26] files not present; run refs/fetch.sh")
+        return
+    import html as _html
+
+    flat = {}
+    for k, f in files.items():
+        t = f.read_text("utf-8", errors="replace")
+        if k == "forum":
+            t = _html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<script.*?</script>|<style.*?</style>", "", t, flags=re.S)))
+        flat[k] = " ".join(t.split())
+    quotes = (
+        ("forum", "A proof claimed by Amir Sarid (using ChatGPT 5.6 Sol, ChatGPT 6 Astra, Claude Opus 5.5)"),
+        ("forum", "all but an exponentially small proportion of the subgroups are subdirect products of copies of four permutation groups"),
+        ("forum", "Submitted 2026-10-01"),
+        ("spec", "L_n = n! G_R [y^R] (1+y/6)^epsilon exp(P(y))"),
+        ("spec", "P(y) = y/2 + y^2/6 + y^4/384"),
+        ("spec", "Put R = floor(n/2), epsilon = n mod 2"),
+        ("spec", "abs(s_n/L_n - 1) <= C * 2^(-c*n)"),
+        ("spec", "This statement specifies neither an optimized numerical c nor an effective N0"),
+        ("readme", "relative to seven explicitly named published mathematical inputs"),
+    )
+    for k, q in quotes:
+        check(f'[Sa26] quote present: "{q[:56]}"', q in flat[k])
+
+
 # ------------------------------------------------------ numbers in NOTES.md
 # The second half.  Each number is found by the text just before it (an anchor
 # that must occur exactly once in NOTES.md) and compared with a fresh value to
@@ -1023,6 +1057,11 @@ BF_N = min(512, max(ST, default=0))
 @functools.lru_cache(maxsize=None)
 def census_fresh():
     return _fresh_run("census8.py")
+
+
+@functools.lru_cache(maxsize=None)
+def nil_fresh():
+    return _fresh_run("nilpotent8.py")
 
 
 @functools.lru_cache(maxsize=None)
@@ -1760,6 +1799,103 @@ def notes_s9_8_census() -> None:
         compare(f"§8/§9.8 the non-FC share at n = 14, after {anchor!r}", anchor, 100 * nonfc[14])
 
 
+def notes_s9_8_census16() -> None:
+    section("NOTES.md §9.8: the census at n = 16 and 17")
+    ts, t16, ver, cen = load("data/two_subgroups.json"), load("data/two_subgroups16.json"), load("results/verify_two_subgroups16.json"), load("data/census8.json")
+    if ts is None or t16 is None or cen is None:
+        NOTES_SKIPPED.append("§9.8 n = 16, 17 (data/two_subgroups16.json missing)")
+        return
+    R = {int(n): r for n, r in ts["two_subgroups"].items()}
+    R.update({int(n): r for n, r in t16["two_subgroups"].items()})
+    F = egf(weights(load_types(cen)), 17)
+    f = A005432
+    nonfc = {n: Fraction(r["non_fc"], r["total"]) for n, r in R.items()}
+    neither = {n: 1 - Fraction(r["total"] + s3_count(n, F), f[n]) for n, r in R.items()}
+    long16 = {n: R[n]["fc_with_orbit_longer_than_8"] for n in (16, 17)}
+    of_fc = {n: Fraction(long16[n], R[n]["fc"]) for n in (16, 17)}
+    types, tr = t16["types"], t16["transitive16"]
+    rows = table("| $n$ | 2-subgroups | not FC, of 2-subgroups |")
+    for n in (16, 17):
+        compare_row(f"§9.8 census row n = {n}", rows, str(n), [R[n]["total"], nonfc[n], Fraction(R[n]["non_fc"], f[n]), Fraction(R[n]["total"], f[n]), Fraction(s3_count(n, F), f[n]), neither[n]])
+    compare("§9 the check count of two_subgroups16.py", "`src/two_subgroups16.py` (", t16["checks_run"], ints=True)
+    compare("§9.8 premise (c): its share at n = 16", "at which they exist is 16, where they are ", 100 * of_fc[16])
+    check("NOTES: §1 item 8: under 1% of the FC 2-subgroups at n = 16 and 17", all(v < Fraction(1, 100) for v in of_fc.values()))
+    compare("§8 (v): the non-FC share at n = 16", "*Added November 2, 2026:* and to ", 100 * nonfc[16])
+    longest = max(types, key=lambda t: types[t]["listed_in_R"])
+    check("NOTES: §9.8 the longest list of 16 points is that of (4, 4, 4, 4)", longest == "4,4,4,4", longest)
+    compare("§9.8 the list of (4, 4, 4, 4)", "The longest list is that of $(4, 4, 4, 4)$, with ", types[longest]["listed_in_R"], ints=True)
+    compare("§9.8 the transitive subgroups of R_16", "$R_{16}$ has ", tr["listed"], ints=True)
+    compare("§9.8 the transitive 2-subgroups of S_16", "subgroups of $S_{16}$ number ", tr["total"], ints=True)
+    compare("§9.8 the driver's check count", "The driver passes its ", t16["checks_run"], ints=True)
+    compare("§9.8 the OEIS search terms are the transitive counts", "the OEIS had no sequence containing ", [1, 1, 7, 12945, tr["total"]], ints=True)
+    tb = {b: cen["transitive"][str(b)]["transitive_total"] for b in (1, 2, 4, 8)}
+    check("NOTES: §9.8 the searched transitive counts for b = 1, 2, 4, 8 are census8's", (tb[1], tb[2], tb[4], tb[8]) == (1, 1, 7, 12945))
+    if ver is not None:
+        compare("§9.8 the isomorphism classes of regular subgroups", "counted by brute force; it finds ", len(ver["regular16"]["classes"]), ints=True)
+    else:
+        NOTES_SKIPPED.append("§9.8 the regular classes (results/verify_two_subgroups16.json missing)")
+    fc8 = cen["frattini_closed"]["8"]["count"]
+    compare(
+        "§9.8 (c): shares of FC and of f, the first share of 8-orbits, and the 8-orbit share at n = 16",
+        "and at $n = 17$ there are 17 times as many. They are ",
+        [100 * of_fc[16], 100 * of_fc[17], 100 * Fraction(long16[16], f[16]), 100 * Fraction(long16[17], f[17]), 100 * Fraction(tb[8], fc8), 100 * Fraction(R[16]["fc_by_largest_orbit"]["8"], R[16]["fc"])],
+    )
+    check("NOTES: §9.8 (c): the share rises from n = 16 to 17", of_fc[17] > of_fc[16])
+    check("NOTES: §9.8 (c): d <= 6 = 16/4 + 2 and d = 6 occurs", tr["max_d"] == 6)
+    long2 = 0
+    nonfc2 = 0
+    for name, t in {**ts["types"], **types}.items():
+        k = sum(map(int, name.split(",")))
+        if sum(1 for b in name.split(",") if int(b) >= 4) >= 2:
+            long2 += comb(16, k) * t["partitions"] * t["per_partition"]
+            nonfc2 += comb(16, k) * t["partitions"] * (t["per_partition"] - t["per_partition_fc"])
+    compare(
+        "§9.8 (b): non-FC shares at n = 16, 17, of f(16), and the orbit types with two long orbits at n = 16",
+        "* (b) keeps running the wrong way. The non-FC share of 2-subgroups is ",
+        [100 * nonfc[16], 100 * nonfc[17], 100 * Fraction(R[16]["non_fc"], f[16]), 100 * Fraction(long2, R[16]["total"]), 100 * Fraction(nonfc2, long2)],
+    )
+    check("NOTES: §9.8 (b): every orbit type with a non-FC subgroup has two orbits of length >= 4, so the count above is the non-FC total", nonfc2 == R[16]["non_fc"])
+    rising("§9.8 (b): the non-FC share rises along even n = 8..16", [nonfc[n] for n in range(8, 17, 2)])
+    rising("§9.8 (b): the non-FC share rises along odd n = 9..17", [nonfc[n] for n in range(9, 18, 2)])
+    outside16 = 1 - Fraction(R[16]["fc_orbits_at_most_8"] + s3_count(16, F), f[16])
+    compare(
+        "§9.8 (a): neither at n = 16, 17; 2-subgroups of f(16); the split of the share outside B and S3 at n = 16",
+        "* (a) The subgroups that are neither 2-groups nor in $S_3(n)$ are ",
+        [100 * neither[16], 100 * neither[17], 100 * Fraction(R[16]["total"], f[16]), 100 * outside16, 100 * neither[16], 100 * Fraction(R[16]["non_fc"], f[16]), 100 * Fraction(long16[16], f[16])],
+    )
+    check("NOTES: §9.8 (a): the split adds up", outside16 == neither[16] + Fraction(R[16]["non_fc"] + long16[16], f[16]))
+    check("NOTES: §9.8 (a): n = 16 has the lowest share in the census, n = 8..17", neither[16] == min(neither[n] for n in range(8, 18)))
+    check("NOTES: §9.8 (a): falling along even n since 10 and along odd n since 11", all(neither[n] > neither[n + 2] for n in (10, 12, 14, 11, 13, 15)) and neither[9] < neither[11] and neither[8] < neither[10])
+    small = {n: Fraction(R[n]["total"], f[n]) for n in range(1, 18)}
+    check("NOTES: §9.8 (a): 2-subgroups exceed half of f(n) at n = 16, at n = 4, and at no n in 5..15", small[16] > Fraction(1, 2) and small[4] > Fraction(1, 2) and all(small[n] <= Fraction(1, 2) for n in range(5, 16)))
+    compare("§9.8 the summary range of (a)", "and (a) falls but is still ", [100 * neither[16], 100 * neither[17]], ints=True)
+
+    text("§9.8 [Sa26]: the forum line, quoted as checked against refs/ above", "A proof claimed by Amir Sarid (using ChatGPT 5.6 Sol, ChatGPT 6 Astra, Claude Opus 5.5)")
+    # [Sa26]: its L_n is the recorded formula G_{n/2} B*(n), G_{(n-1)/2} (n B*(n-1) + C(n,3) B*(n-3))
+    tr8 = cen["transitive"]
+    dense = {b: sum(c["class_size"] for c in tr8[str(b)]["classes"] if 2 * c["d"] == b) for b in (2, 4, 8)}
+    Bs = dense_structures(dense, 64)
+    c = [Fraction(1)]
+    for R_ in range(1, 33):  # SPEC.md: R c_R = c_{R-1}/2 + c_{R-2}/3 + c_{R-4}/96
+        c.append((c[R_ - 1] / 2 + (c[R_ - 2] / 3 if R_ >= 2 else 0) + (c[R_ - 4] / 96 if R_ >= 4 else 0)) / R_)
+    same = True
+    for n in range(3, 65):
+        R_, eps = n // 2, n % 2
+        Ln = factorial(n) * galois_number(R_) * (c[R_] + (c[R_ - 1] / 6 if eps else 0))
+        rec = galois_number(n // 2) * Bs[n] if n % 2 == 0 else galois_number((n - 1) // 2) * (n * Bs[n - 1] + comb(n, 3) * Bs[n - 3])
+        same = same and Ln == rec
+    check("NOTES: §9.8 [Sa26]'s L_n equals the recorded formula exactly, 3 <= n <= 64", same and dense == {2: 1, 4: 4, 8: 105})
+    compare("§9.8 [Sa26]: the range of the identity check", "checks this identity exactly for $3 \\le n \\le ", 64, ints=True)
+    compare("§9.8 [Sa26]: the shares at n = 17", "At $n = 17$ the 2-subgroups that are not FC are ", [100 * nonfc[17], 100 * neither[17]])
+    nil = load("data/nilpotent8.json")
+    if nil is None:
+        NOTES_SKIPPED.append("§9.8 A218939 (data/nilpotent8.json missing)")
+    else:
+        r8 = nil["rows"]["8"]
+        check("NOTES: §9.8 nilpotent8.py matched A218939 for every n <= 8, from the census counts", nil["match"] and sorted(map(int, nil["rows"])) == list(range(1, 9)) and all(r["two_subgroups"] == cen["frattini_closed"][n]["two_subgroups"] for n, r in nil["rows"].items()))
+        compare("§9.8 A218939 at n = 8 and its 2-groups", "gives A218939$(n)$ for every $n \\le 8$, ", [r8["nilpotent"], 8, r8["two_subgroups"]], ints=True)
+
+
 def tfrac(q: Fraction) -> str:
     """A positive fraction as NOTES writes it: \\tfrac34, \\tfrac9{64}."""
     return r"\tfrac" + "".join(s if len(s) == 1 else "{" + s + "}" for s in (str(q.numerator), str(q.denominator)))
@@ -1832,6 +1968,7 @@ def check_fresh_runs() -> None:
     runs = (
         ("census8.py", census_fresh, "data/census8.json", 33),
         ("block_families.py", bf_fresh, "data/block_families.json", {512: 62, 128: 60}.get(BF_N)),
+        ("nilpotent8.py", nil_fresh, "data/nilpotent8.json", 8),
     )
     for name, run, path, want in runs:
         code, passes, data = run()
@@ -1943,6 +2080,131 @@ def check_two_subgroups() -> None:
     lbad = [t for t, c in ver["listed_per_type"].items() if ts["types"].get(t, {}).get("listed_in_R") != c]
     check("both programs list the same number of subgroups of R for every orbit type they share", not lbad and set(ver["listed_per_type"]) == covered, f"differ at {lbad}" if lbad else f"{len(covered)} types")
 
+TS16_CHECKS = 62  # two_subgroups16.py: 25 stored types, 10 new types, 1 non-FC rule, 1 d bound, 15 transforms, 2 x 5 at n = 16, 17
+
+
+def census16_fresh_transitive():
+    """Build src/census16.c in a temporary directory and rerun it on the orbit type (16): parsed keys, or None."""
+    with tempfile.TemporaryDirectory() as td:
+        exe = pathlib.Path(td) / "census16"
+        try:
+            subprocess.run([__import__("os").environ.get("CC", "cc"), "-O3", "-std=c99", "-o", str(exe), str(HERE / "census16.c")], check=True, capture_output=True)
+        except (OSError, subprocess.CalledProcessError):
+            return None
+        p = subprocess.run([str(exe), "16"], capture_output=True, text=True)
+    if p.returncode != 0:
+        return "failed"
+    keys = []
+    for line in p.stdout.splitlines():
+        f = line.split()
+        if f[0] == "key":
+            keys.append(tuple(map(int, f[1:])))  # j fc ea d s count
+    return keys
+
+
+def check_two_subgroups16() -> None:
+    section("two_subgroups16.py: every 2-subgroup of S_16 and S_17 (NOTES.md §9.8)")
+    ts, t16, ver, cen = load("data/two_subgroups.json"), load("data/two_subgroups16.json"), load("results/verify_two_subgroups16.json"), load("data/census8.json")
+    if ts is None or t16 is None or cen is None:
+        SKIPPED.append("data/two_subgroups16.json missing (run src/two_subgroups16.py)")
+        print("  skip  data/two_subgroups16.json not present")
+        return
+    check(f"two_subgroups16.json records all {TS16_CHECKS} of its checks and no failure", t16["checks_run"] == TS16_CHECKS and not t16["checks_failed"], f"{t16['checks_run']} run")
+    rows = {int(n): r for n, r in t16["two_subgroups"].items()}
+    types, tr = t16["types"], t16["transitive16"]
+    check("the orbit types of 16 points are the ten multisets of 16, 8, 4, 2", sorted(types) == sorted(",".join(map(str, t)) for t in _orbit_types16(16)), str(len(types)))
+
+    # identities on the stored numbers
+    fpf = {int(k): r for k, r in ts["fixed_point_free"].items()}
+    fpf[0] = {"total": 1, "fc": 1, "non_fc": 0, "elementary_abelian": 1, "fc_with_orbit_longer_than_8": 0, "by_order": {"1": 1}, "fc_by_order": {"1": 1}, "elementary_abelian_by_order": {"1": 1}, "by_largest_orbit": {"1": 1}, "fc_by_largest_orbit": {"1": 1}}
+    fpf[16] = t16["fixed_point_free_16"]
+    keys = ("total", "fc", "non_fc", "elementary_abelian", "fc_with_orbit_longer_than_8")
+    hists = ("by_order", "fc_by_order", "elementary_abelian_by_order", "by_largest_orbit", "fc_by_largest_orbit")
+    bad = []
+    for n in (16, 17):
+        for key in keys:
+            if sum(comb(n, k) * r[key] for k, r in fpf.items()) != rows[n][key]:
+                bad.append((n, key))
+        for h in hists:
+            c = Counter()
+            for k, r in fpf.items():
+                for o, v in r[h].items():
+                    c[o] += comb(n, k) * v
+            if {o: v for o, v in c.items() if v} != rows[n][h]:
+                bad.append((n, h))
+    check("n = 16, 17: each row is the binomial transform of the stored t(k), k <= 14, and t(16)", not bad, str(bad) if bad else "")
+    check("t(16) is the sum over the ten orbit types, in total and FC", fpf[16]["total"] == sum(t["partitions"] * t["per_partition"] for t in types.values()) and fpf[16]["fc"] == sum(t["partitions"] * t["per_partition_fc"] for t in types.values()))
+    check("type (16): its count is the transitive count, all FC, summed over orders", types["16"]["per_partition"] == types["16"]["per_partition_fc"] == tr["total"] == sum(tr["by_order"].values()) == sum(tr["by_d"].values()) and types["16"]["partitions"] == 1)
+    check("type (16): the listed subgroups of R_16, by order, by s and by d, add up", tr["listed"] == types["16"]["listed_in_R"] == sum(types["16"]["listed_by_log2_order"].values()) == sum(tr["listed_by_s"].values()) == sum(tr["listed_by_d"].values()))
+    check("every orbit type: its list adds up by order", all(t["listed_in_R"] == sum(t["listed_by_log2_order"].values()) for t in types.values()))
+    two_big = {name: sum(1 for b in name.split(",") if int(b) >= 4) >= 2 for name in types}
+    check("k = 16: exactly the orbit types with two or more orbits of length >= 4 have non-FC subgroups", all((t["per_partition_fc"] < t["per_partition"]) == two_big[name] for name, t in types.items()))
+    check("every transitive 2-subgroup of degree 16 has d <= 6 = 16/4 + 2, and d = 6 occurs", tr["max_d"] == max(map(int, tr["listed_by_d"])) == 6)
+    par = []
+    for n, r in rows.items():
+        v2 = sum(n // 2**i for i in range(1, 6))
+        by = {int(o).bit_length() - 1: v for o, v in r["by_order"].items()}
+        if sorted(by) != list(range(v2 + 1)) or any(v % 2 == 0 for v in by.values()) or by[v2] != factorial(n) // 2**v2:
+            par.append(n)
+    check("Frobenius at n = 16, 17: each order 2^j <= |P| occurs an odd number of times, and |P| exactly n!/|P| times", not par, f"fails at n={par}" if par else "")
+    types_all = load_types(cen)
+    dist = order_distribution(types_all, 17)
+    fcbad = []
+    for n, r in rows.items():
+        c = Counter({int(o).bit_length() - 1: v for o, v in r["fc_by_order"].items()})
+        for o, v in tr["by_order"].items():
+            c[int(o).bit_length() - 1] -= comb(n, 16) * v
+        if {j: v for j, v in c.items() if v} != dist[n] or r["fc_orbits_at_most_8"] != sum(dist[n].values()):
+            fcbad.append(n)
+    check("n = 16, 17: FC subgroups with orbits of size <= 8, by order, equal the formula of §9.1", not fcbad, f"mismatch at n={fcbad}" if fcbad else "")
+    check("n = 16, 17: FC with an orbit longer than 8 = C(n, 16) x the transitive count, all with largest orbit 16", all(r["fc_with_orbit_longer_than_8"] == comb(n, 16) * tr["total"] == r["by_largest_orbit"]["16"] == r["fc_by_largest_orbit"]["16"] for n, r in rows.items()))
+    check("n = 16, 17: elementary abelian subgroups by rank equal elemab.rank_counts", all([r["elementary_abelian_by_order"].get(str(2**j), 0) for j in range(n // 2 + 1)] == rank_counts(n) for n, r in rows.items()))
+    F = egf(weights(types_all), 17)
+    check("n = 16, 17: 2-subgroups + |S3(n)| <= f(n) = A005432(n), with |S3(n)| as stored", all(r["s3"] == s3_count(n, F) and r["total"] + r["s3"] <= A005432[n] for n, r in rows.items()))
+
+    # a fresh run of census16.c on the orbit type (16)
+    fresh = census16_fresh_transitive()
+    if fresh is None:
+        SKIPPED.append("the fresh run of census16.c on type (16) (no C compiler)")
+        print("  skip  census16.c could not be built")
+    else:
+        ok = fresh != "failed" and all(s >= 1 for j, fc, ea, d, s, c in fresh)
+        if ok:
+            n2 = factorial(16) // 2**15
+            byo, byd, ls, ld, lo = Counter(), Counter(), Counter(), Counter(), Counter()
+            for j, fc, ea, d, s, c in fresh:
+                byo[str(2**j)] += Fraction(n2 * c, s)
+                byd[str(d)] += Fraction(n2 * c, s)
+                ls[str(s)] += c
+                ld[str(d)] += c
+                lo[str(j)] += c
+            ok = all(v.denominator == 1 for v in byo.values())
+            ok = ok and {k: int(v) for k, v in byo.items()} == tr["by_order"] and {k: int(v) for k, v in byd.items()} == tr["by_d"]
+            ok = ok and dict(ls) == tr["listed_by_s"] and dict(ld) == tr["listed_by_d"] and dict(lo) == types["16"]["listed_by_log2_order"]
+        check("a fresh run of census16.c on type (16) reproduces the stored transitive counts", ok)
+
+    # the independent recount
+    if ver is None:
+        SKIPPED.append("results/verify_two_subgroups16.json missing (run src/verify_two_subgroups16.py)")
+        print("  skip  results/verify_two_subgroups16.json not present")
+        return
+    check("verify_two_subgroups16.py matched", bool(ver["match"]))
+    vt = ver["types"]
+    tbad = [name for name in types if name != "16" and (name not in vt or any(vt[name][k] != types[name][k] for k in ("listed_in_R", "per_partition", "per_partition_fc", "partitions")))]
+    check("the recount of the nine orbit types with orbits <= 8 equals census16.c", not tbad and len(vt) == 9, f"differ at {tbad}" if tbad else "9 types")
+    vtr = ver["transitive16"]
+    check("the recount of type (16) through the (8, 8) list equals census16.c, by order, d and s", all(vtr[k] == tr[k] for k in ("total", "by_order", "by_d", "listed_by_s", "listed_by_d")) and vtr["listed_by_log2_order"] == types["16"]["listed_by_log2_order"])
+    reg = ver["regular16"]
+    check("no weights: sum over the isomorphism classes of regular subgroups of 16!/(16|Aut G|) equals the order-16 count", reg["total"] == tr["by_order"]["16"] == sum(Fraction(factorial(16), 16 * c["aut"]) for c in reg["classes"]), f"{len(reg['classes'])} classes")
+    check("the recount's rows for n = 16, 17 equal two_subgroups16.json (totals, FC, by order)", all(ver["two_subgroups"][str(n)][k] == rows[n][k] for n in (16, 17) for k in ("total", "fc", "by_order", "fc_by_order")))
+
+
+def _orbit_types16(k: int, top: int = 16):
+    if k == 0:
+        return [()]
+    return [(b,) + rest for b in (16, 8, 4, 2) if b <= min(k, top) for rest in _orbit_types16(k - b, b)]
+
+
 def coverage(listing: bool) -> None:
     section("NOTES.md: which decimal numbers were compared")
     decs = [(off, s) for off, s in NUMS if is_dec(s)]
@@ -1964,7 +2226,7 @@ def coverage(listing: bool) -> None:
 
 NOTES_SECTIONS = (
     notes_s2, notes_s3, notes_s4, notes_s5, notes_s6, notes_s7, notes_s8,
-    notes_s9_1, notes_s9_2, notes_s9_3, notes_s9_4, notes_s9_5, notes_s9_6, notes_s9_7, notes_s9_8, notes_s9_8_census, notes_s9_9, notes_s10,
+    notes_s9_1, notes_s9_2, notes_s9_3, notes_s9_4, notes_s9_5, notes_s9_6, notes_s9_7, notes_s9_8, notes_s9_8_census, notes_s9_8_census16, notes_s9_9, notes_s10,
 )
 
 
@@ -1985,8 +2247,10 @@ def main() -> int:
     check_sd_high_precision()
     check_rotr_thresholds()
     check_quotes()  # before the prose: notes_s9_4 reads PDF_RESULTS
+    check_quotes_sa26()
     check_fresh_runs()
     check_two_subgroups()
+    check_two_subgroups16()
     for fn in NOTES_SECTIONS:
         try:
             fn()

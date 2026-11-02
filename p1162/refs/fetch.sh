@@ -42,6 +42,24 @@ done
 curl -sL "https://oeis.org/search?q=1%2C2%2C4%2C20%2C76%2C631%2C3417%2C65054&fmt=text" \
      -o oeis_search_2subgroups.txt
 
+# The same for the number of transitive 2-subgroups of S_b, b = 1, 2, 4, 8, 16, and for its
+# last two terms alone.  Both "No results." on November 2, 2026 (NOTES.md section 9.8).
+curl -sL "https://oeis.org/search?q=1%2C1%2C7%2C12945%2C20134311622425&fmt=text" \
+     -o oeis_search_transitive2.txt
+curl -sL "https://oeis.org/search?q=12945%2C20134311622425&fmt=text" \
+     -o oeis_search_transitive2_short.txt
+
+# OEIS A218939, nilpotent subgroups of S_n: src/nilpotent8.py checks the 2-subgroup counts for
+# n <= 8 against it (NOTES.md section 9.8).
+curl -sL "https://oeis.org/search?q=id:A218939&fmt=text" -o oeis_A218939.txt
+
+# [Sa26] the proof claim on the problem's forum page, and the statement file and README of the
+# repository it links, pinned to commit b1f33ddf (NOTES.md section 9.8).  src/final_check.py checks
+# the quotations NOTES.md takes from them.
+curl -sL "https://www.erdosproblems.com/forum/thread/1162/proof-claims" -o erdosproblems_1162_proof_claims.html
+curl -sL "https://raw.githubusercontent.com/aimir/symmetric-subgroup-asymptotics/b1f33ddf/SPEC.md" -o sarid_SPEC_b1f33ddf.md
+curl -sL "https://raw.githubusercontent.com/aimir/symmetric-subgroup-asymptotics/b1f33ddf/README.md" -o sarid_README_b1f33ddf.md
+
 # [GN] GroupNames, transitive groups of degree up to 15.  NOTES.md section
 # 9.1 takes the orders of 8T1-8T35 and the entry for 8T22 from it, and
 # src/final_check.py parses the saved page to check them.  (LMFDB blocks

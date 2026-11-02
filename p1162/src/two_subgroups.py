@@ -272,13 +272,17 @@ def partitions_of_type(blocks: tuple[int, ...]) -> int:
     return factorial(k) // den
 
 
-def count_type(blocks, sw) -> tuple[dict, int]:
-    """c(type) split by (log2|H|, FC, elementary abelian): exact integers."""
+def count_type(blocks, sw, visit=None) -> tuple[dict, int]:
+    """c(type) split by (log2|H|, FC, elementary abelian): exact integers.
+
+    visit(A, els), if given, is called on every subgroup listed (verify_two_subgroups16.py uses it)."""
     A = Ambient(blocks)
     raw = Counter()
     listed = 0
     for els in descend(A, transitive_only=True):
         listed += 1
+        if visit is not None:
+            visit(A, els)
         mem = np.zeros(A.N, dtype=bool)
         mem[els] = True
         fc = all(bool(mem[A.restsq[i][els]].all()) for i, b in enumerate(blocks) if b >= 4)

@@ -1,0 +1,89 @@
+== census16 against data/two_subgroups.json, every orbit type of k <= 14 ==
+  [pass] type (2,): 1 listed, c = 1, c_FC = 1, as stored
+  [pass] type (2, 2): 2 listed, c = 2, c_FC = 2, as stored
+  [pass] type (4,): 3 listed, c = 7, c_FC = 7, as stored
+  [pass] type (2, 2, 2): 6 listed, c = 6, c_FC = 6, as stored
+  [pass] type (4, 2): 10 listed, c = 22, c_FC = 22, as stored
+  [pass] type (2, 2, 2, 2): 26 listed, c = 26, c_FC = 26, as stored
+  [pass] type (4, 2, 2): 46 listed, c = 98, c_FC = 98, as stored
+  [pass] type (4, 4): 92 listed, c = 460, c_FC = 370, as stored
+  [pass] type (8,): 85 listed, c = 12945, c_FC = 12945, as stored
+  [pass] type (2, 2, 2, 2, 2): 158 listed, c = 158, c_FC = 158, as stored
+  [pass] type (4, 2, 2, 2): 290 listed, c = 606, c_FC = 606, as stored
+  [pass] type (4, 4, 2): 580 listed, c = 2740, c_FC = 2326, as stored
+  [pass] type (8, 2): 448 listed, c = 63240, c_FC = 63240, as stored
+  [pass] type (2, 2, 2, 2, 2, 2): 1330 listed, c = 1330, c_FC = 1330, as stored
+  [pass] type (4, 2, 2, 2, 2): 2502 listed, c = 5162, c_FC = 5162, as stored
+  [pass] type (4, 4, 2, 2): 5004 listed, c = 22652, c_FC = 20042, as stored
+  [pass] type (4, 4, 4): 10696 listed, c = 113320, c_FC = 77842, as stored
+  [pass] type (8, 2, 2): 3248 listed, c = 433080, c_FC = 433080, as stored
+  [pass] type (8, 4): 7120 listed, c = 2236080, c_FC = 1669080, as stored
+  [pass] type (2, 2, 2, 2, 2, 2, 2): 15414 listed, c = 15414, c_FC = 15414, as stored
+  [pass] type (4, 2, 2, 2, 2, 2): 29498 listed, c = 60326, c_FC = 60326, as stored
+  [pass] type (4, 4, 2, 2, 2): 58996 listed, c = 258660, c_FC = 236142, as stored
+  [pass] type (4, 4, 4, 2): 123864 listed, c = 1226008, c_FC = 924526, as stored
+  [pass] type (8, 2, 2, 2): 32544 listed, c = 4148520, c_FC = 4148520, as stored
+  [pass] type (8, 4, 2): 69104 listed, c = 19948560, c_FC = 16161000, as stored
+
+== the orbit types of 16 points ==
+  [pass] type (16,): every Sylow number is positive and every weighted sum is an integer
+  (16,)                        137557 listed; c = 20134311622425 per partition, x 1 partitions  (7.4s cpu)
+  [pass] type (8, 8): every Sylow number is positive and every weighted sum is an integer
+  (8, 8)                      1105344 listed; c = 21245572800 per partition, x 6435 partitions  (22.6s cpu)
+  [pass] type (8, 4, 4): every Sylow number is positive and every weighted sum is an integer
+  (8, 4, 4)                   2048608 listed; c = 1279420320 per partition, x 450450 partitions  (30.9s cpu)
+  [pass] type (8, 4, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (8, 4, 2, 2)                 938640 listed; c = 252347760 per partition, x 2702700 partitions  (10.3s cpu)
+  [pass] type (8, 2, 2, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (8, 2, 2, 2, 2)              452624 listed; c = 55613400 per partition, x 1351350 partitions  (3.0s cpu)
+  [pass] type (4, 4, 4, 4): every Sylow number is positive and every weighted sum is an integer
+  (4, 4, 4, 4)                4250512 listed; c = 91676176 per partition, x 2627625 partitions  (48.3s cpu)
+  [pass] type (4, 4, 4, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (4, 4, 4, 2, 2)             1970728 listed; c = 18482888 per partition, x 31531500 partitions  (14.5s cpu)
+  [pass] type (4, 4, 2, 2, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (4, 4, 2, 2, 2, 2)           951484 listed; c = 4072748 per partition, x 47297250 partitions  (4.6s cpu)
+  [pass] type (4, 2, 2, 2, 2, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (4, 2, 2, 2, 2, 2, 2)        475742 listed; c = 966898 per partition, x 18918900 partitions  (1.4s cpu)
+  [pass] type (2, 2, 2, 2, 2, 2, 2, 2): every Sylow number is positive and every weighted sum is an integer
+  (2, 2, 2, 2, 2, 2, 2, 2)     245578 listed; c = 245578 per partition, x 2027025 partitions  (0.5s cpu)
+  [pass] k = 16: exactly the types with two or more orbits of length >= 4 have non-FC subgroups
+  [pass] every transitive P <= R_16 has d(P) <= 6 = 16/4 + 2 (largest d: 6)
+  transitive 2-subgroups of S_16: 20134311622425  (largest d = 6)
+
+== binomial transform: the stored t(k), k <= 14, and the new t(16) ==
+  [pass] n=1: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=2: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=3: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=4: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=5: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=6: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=7: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=8: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=9: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=10: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=11: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=12: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=13: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=14: the binomial transform of the stored t(k) gives the stored row
+  [pass] n=15: the binomial transform of the stored t(k) gives the stored row
+
+== n = 16, 17: Frobenius, the Sylow count, elemab.py, block_families.py, A005432 ==
+  [pass] n=16: every order 2^0..2^15 occurs an odd number of times; 638512875 of order 2^15 = n!/2^15
+  [pass] n=16: elementary abelian by rank = elemab.rank_counts
+  [pass] n=16: FC by order, orbits of size <= 8 only, = block_families.order_distribution (B(n) = 2192570799003771)
+  [pass] n=16: FC with an orbit longer than 8 = C(n,16) x the transitive count of degree 16
+  [pass] n=16: 2-subgroups + |S3(n)| = 3087657917236106 <= f(n) = 5320744503742316
+  [pass] n=17: every order 2^0..2^15 occurs an odd number of times; 10854718875 of order 2^15 = n!/2^15
+  [pass] n=17: elementary abelian by rank = elemab.rank_counts
+  [pass] n=17: FC by order, orbits of size <= 8 only, = block_families.order_distribution (B(n) = 34700711372094827)
+  [pass] n=17: FC with an orbit longer than 8 = C(n,16) x the transitive count of degree 16
+  [pass] n=17: 2-subgroups + |S3(n)| = 66594403831525442 <= f(n) = 125889331236297288
+
+== the census ==
+  n=16: 2796152160962346 2-subgroups, 2212705110626196 FC, 583447050336150 not FC (share 0.208661); 2-subgroups/f = 0.525519
+        FC with an orbit longer than 8: 20134311622425, share of FC 0.009099, of f 0.003784
+  n=17: 44450356088881802 2-subgroups, 35042994669676052 FC, 9407361419205750 not FC (share 0.211637); 2-subgroups/f = 0.353091
+        FC with an orbit longer than 8: 342283297581225, share of FC 0.009768, of f 0.002719
+
+wrote data/two_subgroups16.json  (72.7s)
+62 checks, all passed
