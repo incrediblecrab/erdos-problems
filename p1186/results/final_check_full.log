@@ -44,11 +44,11 @@ C. exact re-certification of every stored word
   [PASS] zm   k=4: 97 words re-certify
   [PASS] zm   k=5: 87 words re-certify
   [PASS] zm   k=6: 105 words re-certify
-  [PASS] zp   k=4: 118 words re-certify
-  [PASS] zp   k=5: 80 words re-certify
+  [PASS] zp   k=4: 119 words re-certify
+  [PASS] zp   k=5: 81 words re-certify
   [PASS] zp   k=6: 36 words re-certify
   [PASS] zp   k=7: 30 words re-certify
-      (939 words re-evaluated in exact rational arithmetic)
+      (941 words re-evaluated in exact rational arithmetic)
 
 F. second, independent evaluator (src/blocks.py)
   [PASS] blocks.py reproduces PRS08 from continuous block lengths   117/2192 vs 117/2192
@@ -57,6 +57,8 @@ F. second, independent evaluator (src/blocks.py)
   [PASS] blocks.py: constant colouring gives the triangle area for k=5   1/8
   [PASS] blocks.py: constant colouring gives the triangle area for k=6   1/10
   [PASS] blocks.py agrees with exact.py on 75 stored block words
+  [PASS] circle.py reproduces Lu-Peng's B_20 from its breakpoints   17/150 vs 17/150
+  [PASS] circle.py agrees with exact.py on 40 stored F_p words
 
 G. AP-free certificates re-checked by direct enumeration
   [PASS] k=5: 0 AP-free colourings verified (0 monochromatic k-APs, Psi = 1/(2(k-1)m))
@@ -103,10 +105,17 @@ D. independent brute force (no code shared with exact.py)
   [PASS] zm  k=4 m=99: Psi 0.013965369 vs exact 0.013961160   |diff| = 4.21e-06 < 1.00e-04
   [PASS] zm  k=5 m=5324: Psi 0.002608355 vs exact 0.002604183   |diff| = 4.17e-06 < 1.00e-04
   [PASS] zm  k=6 m=3698: Psi 0.001140563 vs exact 0.001136378   |diff| = 4.18e-06 < 1.00e-04
-  [PASS] zp  k=4 m=152: Phi 0.110111370 vs exact 0.110110803   |diff| = 5.66e-07 < 2.00e-04
-  [PASS] zp  k=5 m=114: Phi 0.049360331 vs exact 0.049361342   |diff| = 1.01e-06 < 2.00e-04
+  [PASS] zp  k=4 m=496: Phi 0.109678228 vs exact 0.109678503   |diff| = 2.75e-07 < 2.00e-04
+  [PASS] zp  k=5 m=600: Phi 0.048011555 vs exact 0.048011574   |diff| = 1.94e-08 < 2.00e-04
   [PASS] zp  k=6 m=60: Phi 0.026120556 vs exact 0.026120370   |diff| = 1.86e-07 < 2.00e-04
   [PASS] zp  k=7 m=62: Phi 0.013153447 vs exact 0.013154700   |diff| = 1.25e-06 < 2.00e-04
+
+D'. exact value by brute-force counting (src/verify_zpx)
+  [PASS] zp  k=4 Lu-Peng B_20: verify_zpx Phi = 17/150 equals exact.py   exact.py 17/150; 6 of 6 residues checked
+  [PASS] zp  k=4 m=496: verify_zpx Phi = 20237/184512 equals exact.py   exact.py 20237/184512; 6 of 6 residues checked
+  [PASS] zp  k=5 m=600: verify_zpx Phi = 20741/432000 equals exact.py   exact.py 20741/432000; 12 of 12 residues checked
+  [PASS] zp  k=6 m=60: verify_zpx Phi = 2821/108000 equals exact.py   exact.py 2821/108000; 2 of 60 residues checked
+  [PASS] zp  k=7 m=62: verify_zpx Phi = 1517/115320 equals exact.py   exact.py 1517/115320; 2 of 60 residues checked
 
 E. certified records vs published values and vs random
   per family:
@@ -125,8 +134,8 @@ E. certified records vs published values and vs random
     periodic colouring mod m     k=4  m=99                      821/58806 = 0.0139611604  0.6701x random
     periodic colouring mod m     k=5  m=5324                13421/5153632 = 0.0026041828  0.3333x random
     periodic colouring mod m     k=6  m=3698                 1807/1590140 = 0.0011363779  0.3636x random
-    block colouring of F_p       k=4  m=152                      159/2888 = 0.0550554017  0.8809x random
-    block colouring of F_p       k=5  m=114                    1283/51984 = 0.0246806710  0.7898x random
+    block colouring of F_p       k=4  m=496                  20237/369024 = 0.0548392516  0.8774x random
+    block colouring of F_p       k=5  m=600                  20741/864000 = 0.0240057870  0.7682x random
     block colouring of F_p       k=6  m=60                    2821/216000 = 0.0130601852  0.8359x random
     block colouring of F_p       k=7  m=62                    1517/230640 = 0.0065773500  0.8419x random
 
@@ -138,8 +147,8 @@ E. certified records vs published values and vs random
     delta_6   wildcard chain limit  b=226 f=2                   1/2280  0.0004385965   0.1404x  beats random; no published bound found
     delta_7   wildcard chain limit  b=617 f=1                   1/7416  0.0001348436   0.1036x  beats random; no published bound found
     delta_8   wildcard chain limit  b=1642 f=2                 1/23016  0.0000434480   0.0779x  beats random; no published bound found
-    delta~_4   block colouring of F_pm=152                     159/2888  0.0550554017   0.8809x  beats random; beats published <= 17/300 [LuPe12 Thm 1, prime p]
-    delta~_5   block colouring of F_pm=114                   1283/51984  0.0246806710   0.7898x  beats random; beats published <= 3629/131424 [LuPe12 Thm 4, odd n]
+    delta~_4   block colouring of F_pm=496                 20237/369024  0.0548392516   0.8774x  beats random; beats published <= 17/300 [LuPe12 Thm 1, prime p]
+    delta~_5   block colouring of F_pm=600                 20741/864000  0.0240057870   0.7682x  beats random; beats published <= 3629/131424 [LuPe12 Thm 4, odd n]
     delta~_6   block colouring of F_pm=60                   2821/216000  0.0130601852   0.8359x  beats random; no published bound found
     delta~_7   block colouring of F_pm=62                   1517/230640  0.0065773500   0.8419x  beats random; no published bound found
 
@@ -157,15 +166,35 @@ E. certified records vs published values and vs random
   [PASS] delta_7: claim beats the random colouring   0.0001348436 < 0.0013020833
   [PASS] delta_8: certified 1/23016 <= claimed 1/23016
   [PASS] delta_8: claim beats the random colouring   0.0000434480 < 0.0005580357
-  [PASS] delta~_4: certified 159/2888 <= claimed 159/2888
-  [PASS] delta~_4: claim strictly improves on 17/300   0.0550554017 < 0.0566666667 (2.84% better)
-  [PASS] delta~_4: claim beats the random colouring   0.0550554017 < 0.0625000000
-  [PASS] delta~_5: certified 1283/51984 <= claimed 1283/51984
-  [PASS] delta~_5: claim strictly improves on 3629/131424   0.0246806710 < 0.0276129170 (10.62% better)
-  [PASS] delta~_5: claim beats the random colouring   0.0246806710 < 0.0312500000
+  [PASS] delta~_4: certified 20237/369024 <= claimed 20237/369024
+  [PASS] delta~_4: claim strictly improves on 17/300   0.0548392516 < 0.0566666667 (3.22% better)
+  [PASS] delta~_4: claim beats the random colouring   0.0548392516 < 0.0625000000
+  [PASS] delta~_5: certified 20741/864000 <= claimed 20741/864000
+  [PASS] delta~_5: claim strictly improves on 3629/131424   0.0240057870 < 0.0276129170 (13.06% better)
+  [PASS] delta~_5: claim beats the random colouring   0.0240057870 < 0.0312500000
   [PASS] delta~_6: certified 2821/216000 <= claimed 2821/216000
   [PASS] delta~_6: claim beats the random colouring   0.0130601852 < 0.0156250000
   [PASS] delta~_7: certified 1517/230640 <= claimed 1517/230640
   [PASS] delta~_7: claim beats the random colouring   0.0065773500 < 0.0078125000
 
-117 passed, 0 failed
+I. LRAT-checked UNSAT ledger
+  [PASS] lrat-check accepts the validation proof
+  [PASS] lrat-check rejects a proof with a corrupted hint/clause
+  [PASS] lrat-check rejects the same proof after dropping a CNF clause
+  [PASS] LRAT ledger k=3 counts match the prose   got {'accepted': 89, 'other': 0, 'rejected': 0, 'sat': 0, 'solver_error': 0, 'timeout': 0}, want {'accepted': 89, 'timeout': 0, 'rejected': 0, 'solver_error': 0}
+  [PASS] LRAT ledger k=4 counts match the prose   got {'accepted': 423, 'other': 0, 'rejected': 0, 'sat': 0, 'solver_error': 0, 'timeout': 0}, want {'accepted': 423, 'timeout': 0, 'rejected': 0, 'solver_error': 0}
+  [PASS] LRAT ledger k=5 counts match the prose   got {'accepted': 538, 'other': 0, 'rejected': 0, 'sat': 0, 'solver_error': 0, 'timeout': 0}, want {'accepted': 538, 'timeout': 0, 'rejected': 0, 'solver_error': 0}
+  [PASS] LRAT ledger k=6 counts match the prose   got {'accepted': 72, 'other': 0, 'rejected': 0, 'sat': 0, 'solver_error': 0, 'timeout': 0}, want {'accepted': 72, 'timeout': 0, 'rejected': 0, 'solver_error': 0}
+  [PASS] every UNSAT answer in safesat_k{3..6}.json has an accepted LRAT proof   1122 accepted
+
+J. cyclic-to-periodic transfer
+  [PASS] stored transfer artifact matches a fresh exact run
+  [PASS] small base is cyclic AP-free
+  [PASS] digit products are interval AP-free
+  [PASS] cyclic AP-freeness does not imply a safe proper wildcard coset
+  [PASS] known quadratic-residue wildcard base still passes
+  [PASS] direct periodic counts and normalization need no safe coset
+  [PASS] core-only Lean transfer replays and matches its recorded result
+      The superexponential consequence remains conditional on the cited upstream cyclic theorem.
+
+139 passed, 0 failed

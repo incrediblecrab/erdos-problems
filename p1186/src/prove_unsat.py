@@ -6,12 +6,29 @@ It rebuilds each CNF with safesat.encode_cnf(), runs Homebrew CaDiCaL with LRAT
 proof logging, checks the proof with drat-trim's lrat-check, and records the
 result in results/lrat_check.json.  The script is resumable: accepted records
 are skipped unless --force is passed.
+
+Options for long instances:
+
+  --only K:B:F:S,...  run only these instance keys
+  --timeout SECONDS   per-instance alarm for the solver and the checker
+  --stream            pipe the proof through a FIFO into lrat-check while
+                      CaDiCaL runs, so no proof file is written to disk
+  --min-free-gib G    refuse to launch, and kill a running solver, when free
+                      disk space falls below G GiB
+  --no-plain          drop CaDiCaL's --plain flag, keeping its default
+                      inprocessing; each record stores its solver_args
+
+With none of these options the behaviour is unchanged.  Records written before
+solver_args existed were all produced with "-q --plain --no-binary --lrat".
 """
 
 import argparse
 import concurrent.futures
 import json
 import os
+import re
+import signal
+import threading
 import shutil
 import subprocess
 import sys
@@ -37,6 +54,36 @@ def run(cmd, seconds=None):
     start = time.monotonic()
     proc = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True)
     return proc, time.monotonic() - start
+
+
+def free_gib(path):
+    return shutil.disk_usage(path).free / 2**30
+
+
+def run_guarded(cmd, seconds, args):
+    """Like run(), but polls free disk space and kills the process when it
+    falls below args.min_free_gib.  Returns (proc-like, seconds, disk_abort)."""
+    if seconds is not None:
+        cmd = ["perl", "-e", "alarm shift; exec @ARGV", str(seconds)] + cmd
+    start = time.monotonic()
+    proc = subprocess.Popen(cmd, cwd=ROOT, text=True,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    aborted = threading.Event()
+    done = threading.Event()
+
+    def guard():
+        while not done.wait(15):
+            if args.min_free_gib and free_gib(args.work_dir) < args.min_free_gib:
+                aborted.set()
+                proc.send_signal(signal.SIGTERM)
+                return
+
+    watcher = threading.Thread(target=guard, daemon=True)
+    watcher.start()
+    out, err = proc.communicate()
+    done.set()
+    return (subprocess.CompletedProcess(cmd, proc.returncode, out, err),
+            time.monotonic() - start, aborted.is_set())
 
 
 def tool_output(cmd):
@@ -92,9 +139,13 @@ def proof_size(path):
     return {"bytes": path.stat().st_size, "lines": lines}
 
 
+def verified(text):
+    return re.search(r"^c VERIFIED$", text, re.M) is not None
+
+
 def check_proof(cnf_path, proof_path, lrat_check, timeout):
     proc, seconds = run([str(lrat_check), str(cnf_path), str(proof_path)], timeout)
-    verdict = proc.returncode == 0 and "VERIFIED" in (proc.stdout + proc.stderr)
+    verdict = proc.returncode == 0 and verified(proc.stdout + proc.stderr)
     return {
         "accepted": verdict,
         "exit_code": proc.returncode,
@@ -102,6 +153,11 @@ def check_proof(cnf_path, proof_path, lrat_check, timeout):
         "stdout_tail": proc.stdout[-500:],
         "stderr_tail": proc.stderr[-500:],
     }
+
+
+def solver_flags(args):
+    """CaDiCaL flags; --plain (no inprocessing) unless --no-plain is given."""
+    return ["-q"] + ([] if args.no_plain else ["--plain"]) + ["--no-binary", "--lrat"]
 
 
 def prove_one(case, args):
@@ -115,8 +171,14 @@ def prove_one(case, args):
     if cnf is None:
         return {"key": key, "k": k, "b": b, "f": f, "symbreak": symbreak, "status": "FORCED"}
     write_cnf(cnf, cnf_path)
-    cmd = [args.cadical, "-q", "--plain", "--no-binary", "--lrat", str(cnf_path), str(proof_path)]
-    solver, solve_seconds = run(cmd, args.timeout)
+    cmd = [args.cadical] + solver_flags(args) + [str(cnf_path), str(proof_path)]
+    if args.stream:
+        solver, solve_seconds, disk_abort, counts, verdict = prove_stream(cmd, cnf_path, proof_path, args)
+    elif args.min_free_gib:
+        solver, solve_seconds, disk_abort = run_guarded(cmd, args.timeout, args)
+    else:
+        solver, solve_seconds = run(cmd, args.timeout)
+        disk_abort = False
     rec = {
         "key": key,
         "k": k,
@@ -126,13 +188,21 @@ def prove_one(case, args):
         "variables": cnf.nv,
         "clauses": len(cnf.clauses),
         "solver": "cadical",
+        "solver_args": " ".join(solver_flags(args)),
         "solver_exit": solver.returncode,
         "solver_seconds": round(solve_seconds, 3),
         "status": "timeout" if solver.returncode in (142, -14) else "solver_error",
-        "proof": proof_size(proof_path),
+        "proof": counts if args.stream else proof_size(proof_path),
     }
-    if solver.returncode == 20:
-        verdict = check_proof(cnf_path, proof_path, args.lrat_check, args.timeout)
+    if args.stream:
+        rec["proof_mode"] = "stream"
+        rec["timeout_cap"] = args.timeout
+    if disk_abort:
+        rec["status"] = "disk_abort"
+        rec["min_free_gib"] = args.min_free_gib
+    elif solver.returncode == 20:
+        if not args.stream:
+            verdict = check_proof(cnf_path, proof_path, args.lrat_check, args.timeout)
         rec.update({
             "status": "accepted" if verdict["accepted"] else "rejected",
             "checker": "lrat-check",
@@ -141,7 +211,7 @@ def prove_one(case, args):
             "checker_verdict": "accepted" if verdict["accepted"] else "rejected",
             "checker_stdout_tail": verdict["stdout_tail"],
             "checker_stderr_tail": verdict["stderr_tail"],
-            "proof": proof_size(proof_path),
+            "proof": counts if args.stream else proof_size(proof_path),
         })
     elif solver.returncode == 10:
         rec["status"] = "sat"
@@ -150,6 +220,77 @@ def prove_one(case, args):
     if not args.keep_proofs:
         shutil.rmtree(work, ignore_errors=True)
     return rec
+
+
+def prove_stream(cmd, cnf_path, fifo_path, args):
+    """Run CaDiCaL writing its LRAT proof into a FIFO that is relayed to
+    lrat-check's stdin, counting bytes and lines on the way.  Nothing is
+    written to disk except the CNF."""
+    if fifo_path.exists():
+        fifo_path.unlink()
+    os.mkfifo(fifo_path)
+    checker = subprocess.Popen([str(args.lrat_check), str(cnf_path)], cwd=ROOT,
+                               stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
+    counts = {"bytes": 0, "lines": 0}
+    out_box = {}
+
+    def drain():
+        out_box["out"], out_box["err"] = checker.stdout.read(), checker.stderr.read()
+
+    def relay():
+        try:
+            with open(fifo_path, "rb", buffering=0) as src:
+                while True:
+                    chunk = src.read(1 << 20)
+                    if not chunk:
+                        break
+                    counts["bytes"] += len(chunk)
+                    counts["lines"] += chunk.count(b"\n")
+                    try:
+                        checker.stdin.write(chunk)
+                    except BrokenPipeError:
+                        # checker stopped (a failed step): keep draining so
+                        # the solver is not blocked, and record the verdict
+                        pass
+        finally:
+            try:
+                checker.stdin.close()
+            except BrokenPipeError:
+                pass
+
+    drainer = threading.Thread(target=drain, daemon=True)
+    relayer = threading.Thread(target=relay, daemon=True)
+    drainer.start()
+    relayer.start()
+    check_start = time.monotonic()
+    solver, solve_seconds, disk_abort = run_guarded(cmd, args.timeout, args)
+    if relayer.is_alive():
+        # the solver may have exited without opening the proof file; open the
+        # writer end once so the relay's open() returns and sees EOF
+        try:
+            fd = os.open(fifo_path, os.O_WRONLY | os.O_NONBLOCK)
+            os.close(fd)
+        except OSError:
+            pass
+    relayer.join()
+    try:
+        checker.wait(timeout=args.timeout)
+    except subprocess.TimeoutExpired:
+        checker.kill()
+        checker.wait()
+    drainer.join()
+    fifo_path.unlink(missing_ok=True)
+    out = out_box.get("out", b"").decode(errors="replace")
+    err = out_box.get("err", b"").decode(errors="replace")
+    verdict = {
+        "accepted": checker.returncode == 0 and verified(out + err),
+        "exit_code": checker.returncode,
+        "seconds": round(time.monotonic() - check_start, 3),
+        "stdout_tail": out[-500:],
+        "stderr_tail": err[-500:],
+    }
+    return solver, solve_seconds, disk_abort, counts, verdict
 
 
 def corrupt_first_hint_or_clause(src, dst):
@@ -199,8 +340,8 @@ def validate_path(args):
     cnf_path = work / "valid.cnf"
     proof_path = work / "valid.lrat"
     write_cnf(cnf, cnf_path)
-    solver, solve_seconds = run([args.cadical, "-q", "--plain", "--no-binary", "--lrat",
-                                 str(cnf_path), str(proof_path)], args.timeout)
+    solver, solve_seconds = run([args.cadical] + solver_flags(args) +
+                                [str(cnf_path), str(proof_path)], args.timeout)
     correct = check_proof(cnf_path, proof_path, args.lrat_check, args.timeout)
     corrupt_path = work / "corrupt.lrat"
     corrupt_first_hint_or_clause(proof_path, corrupt_path)
@@ -212,6 +353,7 @@ def validate_path(args):
         shutil.rmtree(work, ignore_errors=True)
     return {
         "instance": {"k": 4, "b": 12, "f": 2, "symbreak": 0},
+        "solver_args": " ".join(solver_flags(args)),
         "solver_exit": solver.returncode,
         "solver_seconds": round(solve_seconds, 3),
         "correct_proof_accepted": correct["accepted"],
@@ -266,6 +408,14 @@ def main():
     ap.add_argument("--cadical", default="cadical")
     ap.add_argument("--lrat-check", type=Path, default=DEFAULT_LRAT)
     ap.add_argument("--drat-trim", type=Path, default=DEFAULT_DRAT)
+    ap.add_argument("--only", default="",
+                    help="comma-separated instance keys k:b:f:symbreak to run (default: all UNSAT records)")
+    ap.add_argument("--stream", action="store_true",
+                    help="relay the proof through a FIFO into lrat-check; no proof file on disk")
+    ap.add_argument("--no-plain", action="store_true",
+                    help="run CaDiCaL with its default inprocessing instead of --plain")
+    ap.add_argument("--min-free-gib", type=float, default=0,
+                    help="do not launch, and kill a running solver, below this much free disk (0 = off)")
     args = ap.parse_args()
     args.jobs = max(1, min(2, args.jobs))
     args.work_dir.mkdir(parents=True, exist_ok=True)
@@ -276,6 +426,13 @@ def main():
     ks = [int(x) for x in args.ks.split(",") if x]
     cases = [case for case in collect_cases(ks, args.k6_limit)
              if instance_key(*case) not in existing]
+    if args.only:
+        wanted = [key.strip() for key in args.only.split(",") if key.strip()]
+        known = {instance_key(*case) for case in collect_cases(ks, args.k6_limit)}
+        missing = [key for key in wanted if key not in known]
+        if missing:
+            sys.exit(f"--only: not UNSAT records for --ks {args.ks}: {missing}")
+        cases = [case for case in cases if instance_key(*case) in wanted]
 
     data["tool_versions"] = tool_versions(args.cadical, args.lrat_check, args.drat_trim)
     data["validation"] = validate_path(args)
@@ -287,6 +444,9 @@ def main():
         pending = []
         for case in cases:
             if args.max_wall and time.monotonic() - start >= args.max_wall:
+                break
+            if args.min_free_gib and free_gib(args.work_dir) < args.min_free_gib:
+                print(f"stopping: free disk {free_gib(args.work_dir):.1f} GiB < {args.min_free_gib} GiB", flush=True)
                 break
             pending.append(pool.submit(prove_one, case, args))
             launched += 1
@@ -315,6 +475,10 @@ def main():
         "k6_limit": args.k6_limit,
         "timeout": args.timeout,
         "jobs": args.jobs,
+        "only": args.only or None,
+        "stream": args.stream,
+        "solver_args": " ".join(solver_flags(args)),
+        "min_free_gib": args.min_free_gib,
         "launched": launched,
         "seconds": round(time.monotonic() - start, 3),
     }

@@ -26927,21 +26927,30 @@
     },
     {
       "b": 203,
+      "checker": "lrat-check",
+      "checker_exit": 0,
+      "checker_seconds": 7103.666,
+      "checker_stderr_tail": "",
+      "checker_stdout_tail": "c expecting proof in stdin\nc parsed a formula with 174 variables and 39383 clauses\nc topTable reallocation from 1024 to 1536\nc increasing the number of buckets from 1024 to 1536\nc topTable reallocation from 1536 to 2304\nc VERIFIED\nc allocated 1536 15329304 225735\nc Added clauses = 12834726.  Deleted clauses = 12432043.  Max live clauses = 802770\nc verification time = 7103.69 secs\n",
+      "checker_verdict": "accepted",
       "clauses": 39383,
       "f": 29,
       "k": 6,
       "key": "6:203:29:0",
       "proof": {
-        "bytes": 321646592,
-        "lines": 1698041
+        "bytes": 2552143559,
+        "lines": 15551553
       },
+      "proof_mode": "stream",
       "solver": "cadical",
-      "solver_exit": -14,
-      "solver_seconds": 300.019,
+      "solver_args": "-q --no-binary --lrat",
+      "solver_exit": 20,
+      "solver_seconds": 7103.665,
       "solver_stderr_tail": "",
-      "solver_stdout_tail": "",
-      "status": "timeout",
+      "solver_stdout_tail": "s UNSATISFIABLE\n",
+      "status": "accepted",
       "symbreak": 0,
+      "timeout_cap": 10800,
       "variables": 174
     },
     {
@@ -27471,21 +27480,30 @@
     },
     {
       "b": 217,
+      "checker": "lrat-check",
+      "checker_exit": 0,
+      "checker_seconds": 5198.241,
+      "checker_stderr_tail": "",
+      "checker_stdout_tail": "c expecting proof in stdin\nc parsed a formula with 186 variables and 45075 clauses\nc topTable reallocation from 1024 to 1536\nc increasing the number of buckets from 1024 to 1536\nc VERIFIED\nc allocated 1536 17544843 160854\nc Added clauses = 11344943.  Deleted clauses = 11107032.  Max live clauses = 694495\nc verification time = 5198.24 secs\n",
+      "checker_verdict": "accepted",
       "clauses": 45075,
       "f": 31,
       "k": 6,
       "key": "6:217:31:0",
       "proof": {
-        "bytes": 345903104,
-        "lines": 1800114
+        "bytes": 2267465273,
+        "lines": 13855593
       },
+      "proof_mode": "stream",
       "solver": "cadical",
-      "solver_exit": -14,
-      "solver_seconds": 300.02,
+      "solver_args": "-q --no-binary --lrat",
+      "solver_exit": 20,
+      "solver_seconds": 5198.235,
       "solver_stderr_tail": "",
-      "solver_stdout_tail": "",
-      "status": "timeout",
+      "solver_stdout_tail": "s UNSATISFIABLE\n",
+      "status": "accepted",
       "symbreak": 0,
+      "timeout_cap": 10800,
       "variables": 186
     },
     {
@@ -27640,40 +27658,58 @@
     },
     {
       "b": 221,
+      "checker": "lrat-check",
+      "checker_exit": 0,
+      "checker_seconds": 1668.693,
+      "checker_stderr_tail": "",
+      "checker_stdout_tail": "c expecting proof in stdin\nc parsed a formula with 57329 variables and 222323 clauses\nc topTable reallocation from 1024 to 1536\nc increasing the number of buckets from 1024 to 1536\nc topTable reallocation from 1536 to 2304\nc increasing the number of buckets from 1536 to 2304\nc VERIFIED\nc allocated 2304 5064790 573290\nc Added clauses = 14605303.  Deleted clauses = 14328055.  Max live clauses = 410022\nc verification time = 1668.69 secs\n",
+      "checker_verdict": "accepted",
       "clauses": 222323,
       "f": 13,
       "k": 6,
       "key": "6:221:13:24",
       "proof": {
-        "bytes": 367038464,
-        "lines": 1572917
+        "bytes": 2980521715,
+        "lines": 17677146
       },
+      "proof_mode": "stream",
       "solver": "cadical",
-      "solver_exit": -14,
-      "solver_seconds": 300.025,
+      "solver_args": "-q --no-binary --lrat",
+      "solver_exit": 20,
+      "solver_seconds": 1668.692,
       "solver_stderr_tail": "",
-      "solver_stdout_tail": "",
-      "status": "timeout",
+      "solver_stdout_tail": "s UNSATISFIABLE\n",
+      "status": "accepted",
       "symbreak": 24,
+      "timeout_cap": 10800,
       "variables": 57329
     },
     {
       "b": 221,
+      "checker": "lrat-check",
+      "checker_exit": 0,
+      "checker_seconds": 4770.504,
+      "checker_stderr_tail": "",
+      "checker_stdout_tail": "c expecting proof in stdin\nc parsed a formula with 74893 variables and 275679 clauses\nc topTable reallocation from 1024 to 1536\nc increasing the number of buckets from 1024 to 1536\nc topTable reallocation from 1536 to 2304\nc increasing the number of buckets from 1536 to 2304\nc VERIFIED\nc allocated 2304 14130693 748930\nc Added clauses = 17607799.  Deleted clauses = 17252630.  Max live clauses = 628888\nc verification time = 4770.52 secs\n",
+      "checker_verdict": "accepted",
       "clauses": 275679,
       "f": 17,
       "k": 6,
       "key": "6:221:17:24",
       "proof": {
-        "bytes": 214147072,
-        "lines": 790589
+        "bytes": 4058723428,
+        "lines": 21041349
       },
+      "proof_mode": "stream",
       "solver": "cadical",
-      "solver_exit": -14,
-      "solver_seconds": 300.027,
+      "solver_args": "-q --no-binary --lrat",
+      "solver_exit": 20,
+      "solver_seconds": 4770.502,
       "solver_stderr_tail": "",
-      "solver_stdout_tail": "",
-      "status": "timeout",
+      "solver_stdout_tail": "s UNSATISFIABLE\n",
+      "status": "accepted",
       "symbreak": 24,
+      "timeout_cap": 10800,
       "variables": 74893
     },
     {
@@ -28034,11 +28070,15 @@
       6
     ],
     "launched": 4,
-    "seconds": 601.402,
-    "timeout": 300
+    "min_free_gib": 2.0,
+    "only": "6:203:29:0,6:217:31:0,6:221:13:24,6:221:17:24",
+    "seconds": 11638.638,
+    "solver_args": "-q --no-binary --lrat",
+    "stream": true,
+    "timeout": 10800
   },
   "summary": {
-    "accepted": 1118,
+    "accepted": 1122,
     "by_k": {
       "3": {
         "accepted": 89,
@@ -28065,19 +28105,19 @@
         "timeout": 0
       },
       "6": {
-        "accepted": 68,
+        "accepted": 72,
         "other": 0,
         "rejected": 0,
         "sat": 0,
         "solver_error": 0,
-        "timeout": 4
+        "timeout": 0
       }
     },
     "other": 0,
     "rejected": 0,
     "sat": 0,
     "solver_error": 0,
-    "timeout": 4
+    "timeout": 0
   },
   "tool_versions": {
     "cadical": "3.0.1",
@@ -28092,7 +28132,7 @@
     "correct": {
       "accepted": true,
       "exit_code": 0,
-      "seconds": 0.009,
+      "seconds": 0.025,
       "stderr_tail": "",
       "stdout_tail": "c parsed a formula with 10 variables and 95 clauses\nc VERIFIED\nc allocated 1024 640 100\nc Added clauses = 103.  Deleted clauses = 0.  Max live clauses = 103\nc verification time = 0.00 secs\n"
     },
@@ -28100,7 +28140,7 @@
     "corrupted_hint_or_clause": {
       "accepted": false,
       "exit_code": 1,
-      "seconds": 0.009,
+      "seconds": 0.02,
       "stderr_tail": "",
       "stdout_tail": "c parsed a formula with 10 variables and 95 clauses\nc ERROR: using DELETED hint clause 999999999\nc 0\nc failed while checking clause: 6 0\nc check redundancy res: 0 pivot: 6 start: 0\nc hint 999999999\nc 0\nc ERROR: using DELETED hint clause 999999999\nc 0\nc WARNING: Verification incomplete. Last line checked = 96\nc NOT VERIFIED\nc allocated 1024 640 100\nc Added clauses = 95.  Deleted clauses = 0.  Max live clauses = 95\nc verification time = 0.00 secs\n"
     },
@@ -28108,7 +28148,7 @@
     "dropped_clause": {
       "accepted": false,
       "exit_code": 1,
-      "seconds": 0.009,
+      "seconds": 0.018,
       "stderr_tail": "",
       "stdout_tail": "c parsed a formula with 10 variables and 94 clauses\nc ERROR: using DELETED hint clause 95\nc 0\nc failed while checking clause: 6 0\nc check redundancy res: 0 pivot: 6 start: 0\nc hint 95\nc 0\nc ERROR: using DELETED hint clause 95\nc 0\nc WARNING: Verification incomplete. Last line checked = 96\nc NOT VERIFIED\nc allocated 1024 634 100\nc Added clauses = 94.  Deleted clauses = 0.  Max live clauses = 94\nc verification time = 0.00 secs\n"
     },
@@ -28119,7 +28159,8 @@
       "k": 4,
       "symbreak": 0
     },
+    "solver_args": "-q --no-binary --lrat",
     "solver_exit": 20,
-    "solver_seconds": 0.007
+    "solver_seconds": 0.038
   }
 }

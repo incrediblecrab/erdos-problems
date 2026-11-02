@@ -18,12 +18,18 @@ Checks, in order:
                                     its stored value
   D  independent cross-check     -- the record words re-measured by brute force
                                     over Z_p and over {1,...,n}
+  D' exact brute-force value     -- src/verify_zpx counts Z_{mt} directly at
+                                    several block sizes t and recovers the
+                                    exact Phi_k of each best zp word (and of
+                                    Lu-Peng's B_20) by Ehrhart interpolation;
+                                    it must equal exact.py's value exactly
   E  record table                -- the best certified bound per (problem, k),
                                     compared against the published values
   F  second evaluator            -- src/blocks.py computes Psi_k by a completely
                                     different decomposition (continuous block
                                     boundaries, its own polygon clipper) and
-                                    must agree with src/exact.py
+                                    must agree with src/exact.py; src/circle.py
+                                    does the same for Phi_k over F_p
   G  AP-free certificates        -- every SAT model in results/apfree_*.json is
                                     re-checked by a plain loop
   H  wildcard recursion bases    -- every base in results/safebase_*.json has
@@ -52,6 +58,7 @@ sys.path.insert(0, HERE)
 
 import exact  # noqa: E402
 import blocks  # noqa: E402  -- second, independent evaluator (check F)
+import circle  # noqa: E402  -- F_p evaluator over free breakpoints (check F)
 
 try:
     import numpy as np
@@ -412,6 +419,28 @@ def check_second_evaluator(ck, results, fast):
     ck.check(not bad, f"blocks.py agrees with exact.py on {n} stored block words",
              "" if not bad else str(bad[:3]))
 
+    # src/circle.py scores F_p colourings from free breakpoints on R/Z by
+    # clipping the unit square with wrapped strips; exact.py uses carry
+    # regions over a grid.  They must agree exactly on every word both express.
+    got = circle.phi_circle(circle.bounds_of_cyclic_word(LUPE_B20)[0], 4)
+    ck.check(got == LUPE_PHI4, "circle.py reproduces Lu-Peng's B_20 from its breakpoints",
+             f"{got} vs {LUPE_PHI4}")
+    bad, n = [], 0
+    for (fam, k), db in sorted(results.items()):
+        if fam != "zp":
+            continue
+        items = sorted(db.items(), key=lambda kv: kv[1]["bound"])
+        items = items[:3] if fast else items[:10]
+        for key, rec in items:
+            if len(set(rec["word"])) < 2:
+                continue
+            got = circle.phi_circle(circle.bounds_of_cyclic_word(rec["word"])[0], k)
+            n += 1
+            if got != rec["value"]:
+                bad.append((k, key, str(rec["value"]), str(got)))
+    ck.check(not bad, f"circle.py agrees with exact.py on {n} stored F_p words",
+             "" if not bad else str(bad[:3]))
+
 
 # ------------------------------------------------------------------ check G
 
@@ -599,6 +628,32 @@ def check_brute(ck, results, p=60013, n=120000):
                  f"|diff| = {abs(meas-want):.2e} < {tol:.2e}")
 
 
+# ------------------------------------------------------------------ check D'
+
+def check_exact_brute(ck, results):
+    """verify_zpx counts monochromatic pairs in Z_{mt} by brute force and takes
+    the second difference in t at step lcm(1..k-1), which is exactly
+    m^2 Phi_k times 2 lcm^2 (Ehrhart).  Unlike check D this gives an exact
+    rational, so it must agree with exact.phi to the last digit."""
+    print("\nD'. exact value by brute-force counting (src/verify_zpx)")
+    cases = [("Lu-Peng B_20", LUPE_B20, 4, LUPE_PHI4)]
+    for (fam, k), db in sorted(results.items()):
+        if fam != "zp":
+            continue
+        key, rec = min(db.items(), key=lambda kv: kv[1]["bound"])
+        cases.append((rec["label"], rec["word"], k, rec["value"]))
+    for label, word, k, want in cases:
+        residues = 0 if k <= 5 else 2          # 0 = every residue mod lcm(1..k-1)
+        args = [word, k, 8] + ([residues] if residues else [])
+        res = brute("verify_zpx", args)
+        if res is None:
+            ck.check(False, f"zp k={k} {label}: verify_zpx unavailable, failed, or its quasi-polynomial test failed")
+            continue
+        ck.check(res["structure_ok"] and Fraction(res["phi"]) == want,
+                 f"zp  k={k} {label}: verify_zpx Phi = {res['phi']} equals exact.py",
+                 f"exact.py {want}; {res['residues_checked']} of {res['period']} residues checked")
+
+
 # ------------------------------------------------------------------ check E
 
 def check_records(ck, results):
@@ -686,7 +741,7 @@ def check_lrat(ck):
         "3": {"accepted": 89, "timeout": 0, "rejected": 0, "solver_error": 0},
         "4": {"accepted": 423, "timeout": 0, "rejected": 0, "solver_error": 0},
         "5": {"accepted": 538, "timeout": 0, "rejected": 0, "solver_error": 0},
-        "6": {"accepted": 68, "timeout": 4, "rejected": 0, "solver_error": 0},
+        "6": {"accepted": 72, "timeout": 0, "rejected": 0, "solver_error": 0},
     }
     by_k = data.get("summary", {}).get("by_k", {})
     for k, want in expected.items():
@@ -694,6 +749,20 @@ def check_lrat(ck):
         ok = all(got.get(field) == value for field, value in want.items())
         ck.check(ok, f"LRAT ledger k={k} counts match the prose",
                  f"got {got}, want {want}")
+    # every UNSAT scan answer must have an accepted proof under its own key,
+    # so the counts cannot match by accepting the wrong instances
+    accepted = {r.get("key") for r in data.get("instances", [])
+                if r.get("status") == "accepted" and r.get("checker_verdict") == "accepted"}
+    missing = []
+    for k in expected:
+        scan = json.load(open(os.path.join(ROOT, "results", f"safesat_k{k}.json")))
+        for rec in scan.values():
+            if rec.get("status") == "UNSAT":
+                key = f"{rec['k']}:{rec['b']}:{rec['f']}:{rec.get('symbreak', 0) or 0}"
+                if key not in accepted:
+                    missing.append(key)
+    ck.check(not missing, "every UNSAT answer in safesat_k{3..6}.json has an accepted LRAT proof",
+             f"{len(missing)} without: {missing[:4]}" if missing else f"{len(accepted)} accepted")
 
 
 def check_openai_transfer(ck):
@@ -744,6 +813,7 @@ def main():
     check_bases(ck, results)
     if not args.no_brute:
         check_brute(ck, results)
+        check_exact_brute(ck, results)
     check_records(ck, results)
     check_lrat(ck)
     check_openai_transfer(ck)

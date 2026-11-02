@@ -39,13 +39,14 @@ bash refs/fetch.sh || echo "  (some references are paywalled; see refs/README.md
 
 say "2. build the independent C brute forces and the quadratic-residue generator"
 cc -O3 -o src/verify_zp   src/verify_zp.c   || die "verify_zp"
+cc -O3 -o src/verify_zpx  src/verify_zpx.c  || die "verify_zpx"
 cc -O3 -o src/verify_n    src/verify_n.c    || die "verify_n"
 cc -O3 -o src/verify_two  src/verify_two.c  || die "verify_two"
 cc -O3 -o src/verify_zm   src/verify_zm.c   || die "verify_zm"
 cc -O3 -o src/verify_base src/verify_base.c || die "verify_base"
 cc -O3 -o src/rabung      src/rabung.c      || die "rabung"
 cc -O3 -o src/search      src/search.c -lm  || die "search"
-echo "built: verify_zp verify_n verify_two verify_zm verify_base rabung search"
+echo "built: verify_zp verify_zpx verify_n verify_two verify_zm verify_base rabung search"
 
 say "3. validate the exact evaluator"
 "$PY" src/final_check.py --fast --no-brute >/dev/null \

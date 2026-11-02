@@ -67,9 +67,9 @@ This reproduces **both** published constants exactly — $b=11,f=1\Rightarrow c_
 - $\delta_6 \le \mathbf{1/2280}$, from the zipped QR colouring of $\mathbb{Z}_{226}$ ($f=2$), 2.6 times below this repo's previous $k=6$ value $1807/1590140$.
 - $\delta_7 \le \mathbf{1/7416}$ and $\delta_8 \le \mathbf{1/23016}$, from the QR colouring of $\mathbb{Z}_{617}$ and the zipped one of $\mathbb{Z}_{1642}$. No published bound was found for $k \ge 6$.
 
-Over $\mathbb{F}_p$, block colourings improve $\tilde\delta_4$ by 2.8 % and $\tilde\delta_5$ by 10.6 %.
+Over $\mathbb{F}_p$, colourings of the circle whose colour changes are placed freely, then rounded to 496 and 600 equal blocks, improve the published $\tilde\delta_4$ by 3.22 % and $\tilde\delta_5$ by 13.06 %, and this repository's earlier equal-block values with them (NOTES §11).
 
-**The family is exhausted for $k \le 6$, subject to the remaining SAT caveat.** A base can be recoloured on $F$ to be cyclic AP-free, so $(k-1)b < W(k;2)$, the van der Waerden number, and an exact SAT scan up to that cap finds no base with larger $b+f$. So $1/72$, $1/384$ and $1/2280$ are the best this family gives for $k = 4, 5, 6$ (NOTES §5). The UNSAT answers are now LRAT-checked by `lrat-check` for every $k \le 5$ scan instance and for 68 of the 72 $k=6$ UNSAT instances; the four remaining $k=6$ instances are $(203,29)$, $(217,31)$, and the two symmetry-broken $b=221$ cases $(221,13)$ and $(221,17)$. The cap still uses $W(5;2)$ and $W(6;2)$ as reported in [RL12].
+**The family is exhausted for $k \le 6$, subject to the caveats below.** A base can be recoloured on $F$ to be cyclic AP-free, so $(k-1)b < W(k;2)$, the van der Waerden number, and an exact SAT scan up to that cap finds no base with larger $b+f$. So $1/72$, $1/384$ and $1/2280$ are the best this family gives for $k = 4, 5, 6$ (NOTES §5). Every UNSAT answer of the scan, all 72 for $k=6$ included, is now LRAT-checked by `lrat-check`. Two caveats remain. The two $b=221$ instances were decided with symmetry-breaking clauses, whose soundness rests on the symmetry argument of NOTES §5 rather than on the proof check. And the cap uses $W(5;2)$ and $W(6;2)$ as reported in [RL12].
 
 **$\delta_3$ and $\delta_4$ were not improved.** $\delta_3$ reproduces [PRS08] exactly. $\delta_4 \le 1/72$ is Lu and Peng's bound, reproduced exactly and now a theorem, and NOTES §6 shows this family cannot beat it, consistent with [LuPe12, Conjecture 1]. Bases for $k = 9, \dots, 12$ are in NOTES §4; they are checked by `src/verify_base.c` but are not in `results/claims.json`.
 
@@ -85,8 +85,8 @@ All exact rationals, re-derived by `src/final_check.py` from the stored colourin
 | $\delta_6$ | $\mathbf{1/2280}$ | 0.00043860 | recursion limit, zipped QR base $\mathbb{Z}_{226}$, $f=2$ | 0.140× | no published bound found |
 | $\delta_7$ | $\mathbf{1/7416}$ | 0.00013484 | recursion limit, QR base $\mathbb{Z}_{617}$, $f=1$ | 0.104× | no published bound found |
 | $\delta_8$ | $\mathbf{1/23016}$ | 0.00004345 | recursion limit, zipped QR base $\mathbb{Z}_{1642}$, $f=2$ | 0.078× | no published bound found |
-| $\tilde\delta_4$ | $\mathbf{159/2888}$ | 0.05505540 | $\mathbb{F}_p$ blocks, $m=152$ | 0.881× | **beats $17/300$ by 2.84 %** |
-| $\tilde\delta_5$ | $\mathbf{1283/51984}$ | 0.02468067 | $\mathbb{F}_p$ blocks, $m=114$ | 0.790× | **beats $3629/131424$ by 10.62 %** |
+| $\tilde\delta_4$ | $\mathbf{20237/369024}$ | 0.05483925 | $\mathbb{F}_p$, free breakpoints rounded to $m=496$ | 0.877× | **beats $17/300$ by 3.22 %** |
+| $\tilde\delta_5$ | $\mathbf{20741/864000}$ | 0.02400579 | $\mathbb{F}_p$, free breakpoints rounded to $m=600$ | 0.768× | **beats $3629/131424$ by 13.06 %** |
 | $\tilde\delta_6$ | $2821/216000$ | 0.01306019 | $\mathbb{F}_p$ blocks, $m=60$ | 0.836× | no published bound found |
 | $\tilde\delta_7$ | $1517/230640$ | 0.00657735 | $\mathbb{F}_p$ blocks, $m=62$ | 0.842× | no published bound found |
 
@@ -97,11 +97,11 @@ The $\delta_4$ to $\delta_8$ rows are limits of the recursion theorem: each is a
 Certification is separated from search, and no self-reported score is accepted.
 
 - Every bound is recomputed in exact `Fraction` arithmetic (`src/exact.py`), and a stored value is never read as a result. A recursion limit is recomputed from its base's $b$ and $f$, after the base itself is re-verified.
-- Headline values are confirmed by code sharing nothing with the search: `src/verify_zm.c` (direct double loop over $\mathbb{Z}_m$, no weight table), `src/verify_two.c` (brute force over $\{1,\dots,n\}$), and `src/verify_base.c` (the two base conditions; it agrees with the Python check on all 21 cases of a planted cross-check).
+- Headline values are confirmed by code sharing nothing with the search: `src/verify_zm.c` (direct double loop over $\mathbb{Z}_m$, no weight table), `src/verify_two.c` (brute force over $\{1,\dots,n\}$), `src/verify_base.c` (the two base conditions; it agrees with the Python check on all 21 cases of a planted cross-check), and `src/verify_zpx.c`, which recovers each $\mathbb{F}_p$ value exactly from brute-force counts over $\mathbb{Z}_{mt}$ by Ehrhart interpolation in $t$ and must equal `exact.py` digit for digit; it tests that interpolation's structure on every residue for $k \le 5$ and on two of 60 for $k = 6, 7$ (NOTES §11).
 - The periodic-to-integer step is measured, not assumed: the boundary term is $1/(2n)$, so (measured $-$ claimed) $\times n$ must stay flat at $\approx0.50$. For the 6-AP-free $\mathbb{Z}_{226}$ word at $n=20000,60000,120000$ it is **0.506, 0.501, 0.501**.
 - Published values are reproduced first — six reproductions, including Lu–Peng's $B_{74}$ with its exact $d$-breakdown (74 APs at $d=0$, 72 at $d=37$) and the six two-colour lower bounds of [RL12, Table 1].
 - The gate is tested against planted defects, not merely observed to pass. Six defects each make it exit 1: two overclaims, a one-bit corruption of a stored word, and three corruptions of the $\mathbb{Z}_{226}$ base. `src/safesat.py --self-test` likewise fails when its symmetry group is replaced by random permutations (NOTES §10).
-- The SAT solvers' UNSAT answers support only the statement that the family is exhausted; no bound depends on them. `src/prove_unsat.py` rebuilds the CNFs with `safesat.encode_cnf`, runs Homebrew CaDiCaL 3.0.1 with LRAT output, and checks with `lrat-check` from `drat-trim` commit `2e3b2dc0ecf938addbd779d42877b6ed69d9a985`. `results/lrat_check.json` records 1118 accepted proofs and 4 timeouts: all UNSAT instances for $k=3,4,5$ are checked, and $k=6$ has 68 checked and 4 unchecked. The two $b=221$ cases use symmetry-breaking clauses; LRAT checks the encoded CNF, while soundness of those extra clauses rests on the symmetry argument in NOTES §5.
+- The SAT solvers' UNSAT answers support only the statement that the family is exhausted; no bound depends on them. `src/prove_unsat.py` rebuilds the CNFs with `safesat.encode_cnf`, runs Homebrew CaDiCaL 3.0.1 with LRAT output, and checks with `lrat-check` from `drat-trim` commit `2e3b2dc0ecf938addbd779d42877b6ed69d9a985`. `results/lrat_check.json` records 1122 accepted proofs, one for every UNSAT instance for $k=3,4,5,6$, and no rejections or timeouts. The gate checks the counts and that each UNSAT scan record has an accepted proof under its own key. The four hardest $k=6$ instances were proved without CaDiCaL's `--plain` flag, with the proof streamed into the checker rather than stored (NOTES §8). The two $b=221$ cases use symmetry-breaking clauses; LRAT checks the encoded CNF, while soundness of those extra clauses rests on the symmetry argument in NOTES §5.
 
 ## Try it
 
@@ -115,6 +115,7 @@ python src/final_check.py          # re-derive every claim; exit 0 = pass
 |---|---|
 | `src/exact.py` | exact rational evaluator — the certification path |
 | `src/periodic.py`, `src/blocks.py`, `src/twoscale.py` | the three colouring families |
+| `src/circle.py`, `src/circleopt.py` | $\Phi_k$ over $\mathbb{F}_p$ from free breakpoints, and the breakpoint search that rounds to an equal-block word |
 | `src/bigm.py` | tiling-seeded search at large $m$ |
 | `src/cosetprobe.py` | finds the wildcard coset; exact safety test + positive control |
 | `src/chain.py` | builds and certifies one level of the recursion |
@@ -123,7 +124,7 @@ python src/final_check.py          # re-derive every claim; exit 0 = pass
 | `src/wildcard.py` | the $k=5$ restricted search |
 | `src/apfree.py` | SAT search for cyclic AP-free moduli |
 | `src/safesat.py` | exact SAT scan for bases, with symmetry breaking and a self-test |
-| `src/verify_zm.c`, `src/verify_two.c`, `src/verify_zp.c`, `src/verify_base.c` | independent C cross-checks |
+| `src/verify_zm.c`, `src/verify_two.c`, `src/verify_zp.c`, `src/verify_zpx.c`, `src/verify_base.c` | independent C cross-checks |
 | `src/final_check.py` | re-derives every claim; exit 0 = pass |
 | `results/claims.json` | the asserted bounds, machine-checked |
 | `results/` | certified colourings and search logs |

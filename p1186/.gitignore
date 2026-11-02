@@ -18,6 +18,7 @@ src/verify_n
 src/verify_two
 src/verify_zm
 src/verify_zp
+src/verify_zpx
 
 __pycache__/
 
