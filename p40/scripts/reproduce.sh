@@ -7,7 +7,7 @@
 #   thmb    src/theorem_b_check.py, then its two planted defects, each of which must exit 1
 #   greedy  src/greedy_check.py, then its three planted defects, each of which must exit 1
 #   lean    lean/verify.sh under /usr/bin/time, logged to results/lean_verify.log with the date, the Lean release, the platform and the hashes of the files it checked
-#   plants  lean/plants.py: verify.sh on an unmodified copy and on eleven planted defects, which takes about a quarter of an hour
+#   plants  lean/plants.py: verify.sh on an unmodified copy and on fourteen planted defects
 #   final   src/final_check.py --write regenerates the tables in the documentation from results/; src/final_check.py then checks everything, logging to results/final_check.log; last, a planted wrong number must make it exit 1. It runs with --strict when the fetch stage succeeded in the same invocation, or when STRICT=--strict is set because refs/ was populated earlier.
 #
 # Needs bash, curl, a C compiler, poppler's pdftotext, elan (for lake and lean) and a python3 with numpy and mpmath. $PY overrides the interpreter; otherwise ~/.venvs/main/bin/python is used when present, and python3 from $PATH otherwise.

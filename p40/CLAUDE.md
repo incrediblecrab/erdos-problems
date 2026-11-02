@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) and GitHub Copilot CLI when working in this repository.
 
-This repository studies Erdős problem 40 (how dense a set must be to force unbounded representation counts $1_A\ast 1_A$). The problem is open and nothing here solves it; the results are Lean-checked reductions to the strong Erdős–Turán form and to $B_2[g]$ sets (problem 158 is $g=2$), a written reconstruction of the Erdős–Rényi exclusion with explicit constants, and a checked greedy $B_2[2]$ computation. The repository is public. `NOTES.md` is the full write-up; `README.md` is the summary and file reference.
+This repository studies Erdős problem 40 (how dense a set must be to force unbounded representation counts $1_A\ast 1_A$). The problem is open and nothing here solves it; the results are Lean-checked reductions to the strong Erdős–Turán form and to $B_2[g]$ sets (problem 158 is $g=2$), a Lean-checked exclusion of every power of $N$ from the answer set (Theorem B) beside a written reconstruction of the Erdős–Rényi exclusion with explicit constants, and a checked greedy $B_2[2]$ computation. The repository is public. `NOTES.md` is the full write-up; `README.md` is the summary and file reference.
 
 ## Commands
 

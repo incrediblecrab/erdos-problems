@@ -14,7 +14,7 @@ Each claim carries one of four labels:
 | 1 | the statement, the formal statement, and how they correspond | [source], [written] |
 | 2 | Theorem A: some $g\to\infty$ works if and only if $g=1$ works | [Lean] |
 | 3 | the same question for $B_2[g]$ sets; problems 28 and 158 | [Lean], [source] |
-| 4 | Theorem B: no $g\ge cN^{\epsilon}$ works (after Erdős and Rényi) | [written] |
+| 4 | Theorem B: no $g\ge cN^{\epsilon}$ works (after Erdős and Rényi) | [Lean], [written] |
 | 5 | what is known about the answer set | all four |
 | 6 | the greedy $B_2[2]$ computation from the problem 158 thread | [computation] |
 | 7 | status and the blocking question | |
@@ -163,13 +163,52 @@ What is known about the right side of `strong_iff_forall_B2` [source]:
 
 Consequences [Lean]: one $B_2[g]$ set, for any $g$, with $\liminf A(N)/\sqrt N>0$ would refute the strong form and make $\mathcal{G}$ empty; a negative answer to problem 158 is such a set. A proof that $\mathcal{G}$ is nonempty would answer problems 28 and 158 positively.
 
-## 4. Theorem B: no power of $N$ is in the answer set [written]
+## 4. Theorem B: no power of $N$ is in the answer set [Lean]
 
-**Theorem B.** For every $0<\epsilon<1/2$ there is a set $A\subseteq\mathbb{N}$ with $r_A$ bounded and
+**Theorem B** (`exists_dense_bounded`, `not_erdos40For_rpow`, `rpow_not_mem_answerSet`) [Lean]. For every $\epsilon>0$ there is a set $A\subseteq\mathbb{N}$ with $r_A$ bounded and $A(N)\gg N^{1/2-\epsilon}$. So $g(N)=N^{\epsilon}$ is not in $\mathcal{G}$:
+
+<!-- src: lean/Erdos40/TheoremB.lean -->
+```lean
+theorem exists_dense_bounded {ε : ℝ} (hε : 0 < ε) : ∃ A : Set ℕ, (∃ C, ∀ n, sumRep A n ≤ C) ∧
+    (fun N : ℕ ↦ √(N : ℝ) / (N : ℝ) ^ ε) =O[atTop] (fun N ↦ ((A ∩ Icc 1 N).ncard : ℝ))
+```
+
+<!-- src: lean/Erdos40/TheoremB.lean -->
+```lean
+theorem rpow_not_mem_answerSet : ∀ ε : ℝ, 0 < ε →
+    (fun N : ℕ ↦ (N : ℝ) ^ ε) ∉ {g : ℕ → ℝ | Tendsto g atTop atTop ∧ Erdos40For g}
+```
+
+The audit of §8 checks that the set here is, as a Lean `Expr`, the set in formal-conjectures' `erdos_40`, and that `not_erdos40For_rpow` states `¬ Erdos40For (fun N ↦ (N : ℝ) ^ ε)` for every $\epsilon>0$. The second half of the claim, every $g$ with $g(N)\ge cN^{\epsilon}$ for large $N$, is the Corollary below.
+
+### 4.1 The proof that Lean checks
+
+The Lean proof, in `lean/Erdos40/TheoremB.lean`, is a probabilistic construction of the Erdős–Rényi kind, changed so that the counting function is not random. Instead of putting each integer in $A$ independently, it cuts $[1,\infty)$ into blocks and takes exactly one point, uniformly and independently, from each block. All the constants below are the ones in the Lean file.
+
+*The construction.* Given $\epsilon>0$, take $d=\lceil 1/\epsilon\rceil+1$, so that $d\ge1$ and $1/(2d+2)\le\epsilon$. Put $b=2^{2d+2}$ and $\ell_j=2^{(d+2)j}$. Level $j$ is $[b^j,b^{j+1})$; since $\ell_j$ divides $b^j$, it is the union of the $(b-1)2^{dj}$ blocks $[c\,\ell_j,(c+1)\ell_j)$ with $2^{dj}\le c<b\,2^{dj}$. The random set $S$ contains, for each block, the point $c\,\ell_j+\omega_{j,c}$, where the offsets $\omega_{j,c}$ are independent and uniform on $\{0,\ldots,\ell_j-1\}$. The probability space is Mathlib's `Measure.infinitePi` of the uniform measures. A point $x$ of level $j$ is in $S$ with probability $p(x)=1/\ell_j$.
+
+*The count is deterministic* (`count_ge`, `rpow_le_count`). For every outcome, the $2^{dJ}$ blocks of level $J$ with $2^{dJ}\le c<2^{dJ+1}$ each give a point of $S$ in $[1,b^{J+1})$. So if $b^{J+1}\le N<b^{J+2}$, then $S(N)\ge2^{dJ}$, while $N^{d/(2d+2)}<b^{(J+2)d/(2d+2)}=2^{d(J+2)}$. Hence $N^{d/(2d+2)}\le4^d\,S(N)$ for every $N\ge b$, and since $1/2-\epsilon\le d/(2d+2)$, $\sqrt N/N^{\epsilon}\le4^d\,S(N)$ for those $N$.
+
+*Independence* (`measure_subset_le`). For a finite set $F$ of positive integers, $P(F\subseteq S)\le\prod_{x\in F}p(x)$. The event is contained in a cylinder over the blocks that $F$ meets: if two points of $F$ share a block, at most one of them can be chosen and the bound holds with left side $0$; otherwise the blocks are distinct, the offsets are independent, and each block contributes $1/\ell_j$.
+
+*Many representations are unlikely* (`measure_E_le`, `sum_powersetCard_prod_le`). Let $E_n$ be the event that some $2d+2$ distinct $a$ with $1\le a$ and $2a<n$ have $a\in S$ and $n-a\in S$. The $4d+4$ numbers involved are distinct, so by the union bound over the $(2d+2)$-subsets of the candidates and the independence bound, $P(E_n)\le e_{2d+2}\le\sigma_n^{2d+2}$, where $\sigma_n=\sum_{1\le a<n/2}p(a)p(n-a)$ and $e_k$ is the $k$-th elementary symmetric polynomial of the terms of $\sigma_n$, which is at most the $k$-th power of their sum.
+
+*The mean is small* (`sum_p_le`, `σ_le`). By induction over the levels, $\sum_{1\le a<b^{J+1}}p(a)\le 2b\,2^{dJ}$; this uses $d\ge1$. If $n$ is in level $J+1$ and $2a<n$, then $n-a>b^J$, so $p(n-a)\le1/\ell_J$, and
+$$\sigma_n\le\frac{2b\,2^{d(J+1)}}{2^{(d+2)J}}=\frac{2b\,2^{d}}{4^J}.$$
+
+*The bad events have small total probability* (`level_sum_le`, `exists_good`). Level $J+1$ holds fewer than $b^{J+2}$ values of $n$ and $(4^J)^{2d+2}=b^{2J}$, so the events $E_n$ of level $J+1$ have total probability at most $K/b^J$ with $K=b^2(2b\,2^{d})^{2d+2}$. Choose $J_0=4K$, so that $b^{J_0}\ge 2^{J_0}>4K$. Summing over the levels from $J_0+1$ on, a geometric series, the union of the $E_n$ with $n\ge b^{J_0+1}$ has probability at most $2K/b^{J_0}<1$, so some outcome avoids all of them. For that outcome, $r_S(n)\le 2(2d+1)+1$ for $n\ge b^{J_0+1}$, since each representation $n=a+(n-a)$ with $a<n-a$ counts twice and $a=n/2$ once; and $r_S(n)\le n+1$ below (`sumRep_le`). So $r_S$ is bounded, and $A=S$ for that outcome proves Theorem B. ∎
+
+The construction is not optimised: it gives $r_A(n)\le 4d+3$ for large $n$, against $2k-1$ with $k=\lfloor 1/(2\epsilon)\rfloor+1$ in §4.2, and the constant in $A(N)\gg N^{1/2-\epsilon}$ is $4^{-d}$. Nothing here uses the Borel–Cantelli lemma or a tail bound for the count; the union bound and the independence of the offsets suffice.
+
+### 4.2 The Erdős–Rényi reconstruction with explicit constants [written]
+
+This is the written proof these notes gave before §4.1 was machine-checked. It is kept for its explicit constants, which the Lean proof does not reproduce.
+
+**Theorem B with explicit constants** [written]. For every $0<\epsilon<1/2$ there is a set $A\subseteq\mathbb{N}$ with $r_A$ bounded and
 $$A(N)>\frac{(N+1)^{1/2-\epsilon}-1}{1-2\epsilon}\quad\text{for all large }N.$$
 More precisely, with $k=\lfloor 1/(2\epsilon)\rfloor+1$, $r_A(n)\le 2k-1$ for all large $n$.
 
-*Attribution.* This is a version of the construction the problem 39 page reports: "Erdős and Rényi have constructed, for any $\epsilon>0$, a set $A$ such that" $A(N)\gg_\epsilon N^{1/2-\epsilon}$ "for all large $N$ and $1_A\ast 1_A(n)\ll_\epsilon 1$ for all $n$." O'Bryant's bibliography calls their paper "The seminal paper of Erdős & Rényi [13] introducing the probabilistic method to combinatorial number theory" and cites it as "P. Erdős and A. Rényi, Additive properties of random sequences of positive integers, Acta Arith. 6 (1960), 83–110." Cilleruelo describes their method: each $n$ is put in $A$ independently with a probability $p_n$; they check that $\sum_n P(r_A(n)\ge g+1)<\infty$, with his $r_A$ counting unordered representations, and then finish by "applying the Borel-Cantelli lemma to conclude that with probability 1, the sequences satisfy the B2[g] property after removing a finite number of elements." I did not read their paper. The proof below is my reconstruction of that method with explicit constants, not a transcription.
+*Attribution.* This is a version of the construction the problem 39 page reports: "Erdős and Rényi have constructed, for any $\epsilon>0$, a set $A$ such that" $A(N)\gg_\epsilon N^{1/2-\epsilon}$ "for all large $N$ and $1_A\ast 1_A(n)\ll_\epsilon 1$ for all $n$." O'Bryant's bibliography calls their paper "The seminal paper of Erdős & Rényi [13] introducing the probabilistic method to combinatorial number theory" and cites it as "P. Erdős and A. Rényi, Additive properties of random sequences of positive integers, Acta Arith. 6 (1960), 83–110." Cilleruelo describes their method: each $n$ is put in $A$ independently with a probability $p_n$; they check that $\sum_n P(r_A(n)\ge g+1)<\infty$, with his $r_A$ counting unordered representations, and then finish by "applying the Borel-Cantelli lemma to conclude that with probability 1, the sequences satisfy the B2[g] property after removing a finite number of elements." I did not read their paper. The proof below is my reconstruction of that method with explicit constants, not a transcription, and the block variant of §4.1 is my own adaptation of it for the machine check.
 
 *Proof.* Fix $\epsilon$, put $\alpha=1/2+\epsilon$, and put each $a\ge1$ in $A$ independently with probability $p_a=a^{-\alpha}$. For $n\ge2$,
 $$r_A(n)=2U_n+[\,n/2\in A\,],\qquad U_n=\sum_{1\le a<n/2}[\,a\in A\,][\,n-a\in A\,].$$
@@ -192,11 +231,17 @@ For $t>0$, Markov's inequality applied to $e^{-tX_N}$ and $1-p+pe^{-t}\le\exp(-p
 
 Both events have probability $1$, so some $A$ has both properties. ∎
 
-**Corollary.** If $g(N)\ge cN^{\epsilon}$ for all large $N$, for some $c>0$ and $\epsilon>0$, then $g\notin\mathcal{G}$. Equivalently, every $g\in\mathcal{G}$ has $\liminf_N g(N)/N^{\epsilon}=0$ for every $\epsilon>0$.
+**Corollary** (`not_erdos40For_of_rpow_isBigO`) [Lean]. If $g(N)\ge cN^{\epsilon}$ for all large $N$, for some $c>0$ and $\epsilon>0$, then $g\notin\mathcal{G}$. Equivalently, every $g\in\mathcal{G}$ has $\liminf_N g(N)/N^{\epsilon}=0$ for every $\epsilon>0$.
 
-*Proof.* If $\epsilon\ge1/2$ then $\sqrt N=O(g)$, and `not_erdos40For_of_sqrt_isBigO` applies [Lean]. If $\epsilon<1/2$, take $A$ from Theorem B with the same $\epsilon$. For large $N$, $A(N)\ge c'N^{1/2-\epsilon}$ for some $c'>0$, and $\sqrt N/g(N)\le N^{1/2-\epsilon}/c\le A(N)/(cc')$. So $A$ satisfies the hypothesis of problem 40 for $g$, while $r_A$ is bounded. ∎
+<!-- src: lean/Erdos40/TheoremB.lean -->
+```lean
+theorem not_erdos40For_of_rpow_isBigO {g : ℕ → ℝ} {ε : ℝ} (hε : 0 < ε)
+    (hg : (fun N : ℕ ↦ (N : ℝ) ^ ε) =O[atTop] g) : ¬ Erdos40For g
+```
 
-*Numerical check of the constants.* `src/theorem_b_check.py` evaluates Lemmas 1 and 2 at every $n$ up to a bound, in floating point with a margin, and recomputes the table of $k$ in exact rational arithmetic. It guards against a slip in a constant and proves nothing asymptotic. The last column of the first table is the limit of the ratio as $n\to\infty$, $2^{2\alpha}/((1-\alpha)\,B(1-\alpha,1-\alpha))$ with $B$ the Beta function, which shows the slack in Lemma 1.
+*Proof.* A lower bound $g(N)\ge cN^{\epsilon}$ for large $N$ gives $N^{\epsilon}=O(g)$. If $g$ had the property, then by `Erdos40For.of_isBigO` so would $N^{\epsilon}$, which is eventually nonzero, against `not_erdos40For_rpow`. The Lean proof covers every $\epsilon>0$ at once; the written proof with the constants of §4.2 needs `not_erdos40For_of_sqrt_isBigO` for $\epsilon\ge1/2$. ∎
+
+*Numerical check of the constants.* `src/theorem_b_check.py` checks the constants of §4.2, not those of the Lean proof. It evaluates Lemmas 1 and 2 at every $n$ up to a bound, in floating point with a margin, and recomputes the table of $k$ in exact rational arithmetic. It guards against a slip in a constant and proves nothing asymptotic. The last column of the first table is the limit of the ratio as $n\to\infty$, $2^{2\alpha}/((1-\alpha)\,B(1-\alpha,1-\alpha))$ with $B$ the Beta function, which shows the slack in Lemma 1.
 
 <!-- generated: theorem_b -->
 Lemma 1 at every $2\le n\le 20{,}000$:
@@ -250,7 +295,7 @@ Every inequality held with the relative float64 margin of 1e-10 that the script 
 | $\mathcal{G}\ne\emptyset$ implies positive answers to problems 28 and 158 | [Lean] | `strong_implies_erdos_28`, `strong_implies_erdos_158` |
 | $\mathcal{G}$ is closed downward: $g\in\mathcal{G}$, $g'\to\infty$ and $g'=O(g)$ give $g'\in\mathcal{G}$ | [Lean] | `Erdos40For.of_isBigO` |
 | no $g$ with $\sqrt N=O(g)$ is in $\mathcal{G}$ | [Lean] | `not_erdos40For_of_sqrt_isBigO` |
-| no $g$ with $g(N)\ge cN^{\epsilon}$ for large $N$ is in $\mathcal{G}$ | [written] | Theorem B, §4 |
+| no $g$ with $g(N)\ge cN^{\epsilon}$ for large $N$ is in $\mathcal{G}$ | [Lean] | `rpow_not_mem_answerSet`, `not_erdos40For_of_rpow_isBigO`; Theorem B, §4 |
 | whether $\mathcal{G}$ is empty; which $g$ that grow more slowly than every power of $N$ it contains | open | |
 
 `Erdos40For.of_isBigO` needs $g'$ to be eventually nonzero, which $g'\to\infty$ provides.
@@ -306,21 +351,21 @@ A negative answer for any one $g$ empties $\mathcal{G}$. A positive answer for a
 *The Lean proofs.* `lean/verify.sh` runs five steps and stops at the first failure.
 
 0. The formal-conjectures checkout is the commit pinned in `lean/lakefile.toml`, with no local changes. The statement checks compare against formal-conjectures as built here, so this comes first.
-1. `lake build`, which includes `lean/Erdos40/Audit.lean`. There, `#assert_axioms` fails the build if a listed theorem depends, transitively, on any axiom outside `propext`, `Classical.choice` and `Quot.sound`, `sorryAx` included; and a `run_cmd` block compares six statements, as `Expr`s, with the formal-conjectures declarations they are meant to match.
+1. `lake build`, which includes `lean/Erdos40/Audit.lean`. There, `#assert_axioms` fails the build if a listed theorem depends, transitively, on any axiom outside `propext`, `Classical.choice` and `Quot.sound`, `sorryAx` included; and a `run_cmd` block compares eight statements, as `Expr`s, with the formal-conjectures declarations they are meant to match.
 2. Re-elaborates `Audit.lean` and requires one clean axiom report per listed theorem and the statement check's pass message.
-3. Runs `lean/Probe.lean`, which imports only `Lean` and loads the compiled modules at runtime, so nothing they define can change how it runs. It checks the axioms of every constant the three modules add, auxiliary ones included, requires the main theorems to exist, and repeats the statement comparisons.
-4. Replays `Erdos40.Basic`, `Erdos40.Equivalence` and `Erdos40.Problem158` through the kernel with `leanchecker`, one module per call, in a separate process.
+3. Runs `lean/Probe.lean`, which imports only `Lean` and loads the compiled modules at runtime, so nothing they define can change how it runs. It checks the axioms of every constant the four modules add, auxiliary ones included, requires the main theorems to exist, and repeats the statement comparisons.
+4. Replays `Erdos40.Basic`, `Erdos40.Equivalence`, `Erdos40.Problem158` and `Erdos40.TheoremB` through the kernel with `leanchecker`, one module per call, in a separate process.
 
 The last committed run, from `results/lean_verify.log`:
 
 <!-- generated: lean_summary -->
-Run on September 28, 2026 at 11:25:03 (UTC−04:00) with Lean 4.33.1 on Darwin arm64: `verify.sh` exited 0. All 26 listed theorems depend on no axiom beyond `propext`, `Classical.choice` and `Quot.sound`; the statements of `exists_iff`, `answerSet_nonempty_iff`, `strong_implies_erdos_28`, `strong_implies_erdos_158`, `strong_iff_forall_B2`, `weaker_iff_forall_B2` match formal-conjectures at the pin; the probe checked 74 constants and found 0 problems; and the kernel replayed `Erdos40.Basic`, `Erdos40.Equivalence` and `Erdos40.Problem158`. Wall time 422.98 s; maximum resident set size 5,275,664,384 bytes, as `/usr/bin/time -l` reports it.
+Run on November 1, 2026 at 17:44:04 (UTC−05:00) with Lean 4.33.1 on Darwin arm64: `verify.sh` exited 0. All 36 listed theorems depend on no axiom beyond `propext`, `Classical.choice` and `Quot.sound`; the statements of `exists_iff`, `answerSet_nonempty_iff`, `strong_implies_erdos_28`, `strong_implies_erdos_158`, `strong_iff_forall_B2`, `weaker_iff_forall_B2`, `rpow_not_mem_answerSet`, `not_erdos40For_rpow` match formal-conjectures at the pin; the probe checked 150 constants and found 0 problems; and the kernel replayed `Erdos40.Basic`, `Erdos40.Equivalence`, `Erdos40.Problem158` and `Erdos40.TheoremB`. Wall time 197.56 s; maximum resident set size 6,201,802,752 bytes, as `/usr/bin/time -l` reports it.
 <!-- end generated -->
 
-*Planted defects.* `lean/plants.py` tests `verify.sh`. For each case it copies the project to a scratch directory, links the built packages (a private copy of formal-conjectures for the two cases that alter it), applies one defect, and runs `verify.sh` there. A case passes only if `verify.sh` exits 1 at the expected step with the expected message; the control, an unmodified copy, must exit 0 and print `PASS:`. The four statement cases also run the probe alone and require it to catch the change. `results/lean_plants.json` records each case, with the hashes of the sources it tested.
+*Planted defects.* `lean/plants.py` tests `verify.sh`. For each case it copies the project to a scratch directory, links the built packages (a private copy of formal-conjectures for the two cases that alter it), applies one defect, and runs `verify.sh` there. A case passes only if `verify.sh` exits 1 at the expected step with the expected message; the control, an unmodified copy, must exit 0 and print `PASS:`. The six statement cases also run the probe alone and require it to catch the change. `results/lean_plants.json` records each case, with the hashes of the sources it tested.
 
 <!-- generated: plants_table -->
-Run on September 28, 2026 at 11:32:11 (UTC−04:00) with Lean 4.33.1 on macOS-27.0-arm64-arm-64bit-Mach-O: 12 of 12 cases behaved as expected.
+Run on November 1, 2026 at 18:20:03 (UTC−05:00) with Lean 4.33.1 on macOS-27.2-arm64-arm-64bit-Mach-O: 15 of 15 cases behaved as expected.
 
 | case | planted | expected | observed | probe alone |
 |---|---|---|---|---|
@@ -335,10 +380,13 @@ Run on September 28, 2026 at 11:32:11 (UTC−04:00) with Lean 4.33.1 on macOS-27
 | `statement_rhs` | `exists_iff` restated with `1 * 1` for `1`, still fully proved | exit 1 at step 1 | exit 1 at step 1 | exit 1 |
 | `statement_158` | `strong_implies_erdos_158` restated for `B2 3` sets, still fully proved | exit 1 at step 1 | exit 1 at step 1 | exit 1 |
 | `statement_forall_B2` | `strong_iff_forall_B2` restated with `B2 (g + 0)`, definitionally the same, still fully proved | exit 1 at step 1 | exit 1 at step 1 | exit 1 |
+| `sorry_theorem_b` | `sorry` for the proof of `TheoremB.uniform_le`, the probability of one point of a block, which the audit does not list but Theorem B uses | exit 1 at step 1 | exit 1 at step 1 |  |
+| `statement_theorem_b_weak` | `rpow_not_mem_answerSet` restated for `1 / 2 < ε` only, a weaker statement, still fully proved | exit 1 at step 1 | exit 1 at step 1 | exit 1 |
+| `statement_theorem_b_set` | `rpow_not_mem_answerSet` restated with the conjunction in the set swapped, still fully proved | exit 1 at step 1 | exit 1 at step 1 | exit 1 |
 | `statement_hijack` | the swapped statement plus a macro that replaces the audit's `run_cmd` with one printing the pass message | exit 1 at step 3 | exit 1 at step 3 |  |
 <!-- end generated -->
 
-`sorry_unlisted`, `axiom_unlisted` and `statement_hijack` pass steps 1 and 2, which only see what the audit lists or can be subverted from inside the build, and are caught by the probe. `kernel_off` passes steps 1 to 3 and is caught only by the kernel replay.
+`sorry_unlisted`, `axiom_unlisted` and `statement_hijack` pass steps 1 and 2, which only see what the audit lists or can be subverted from inside the build, and are caught by the probe. `kernel_off` passes steps 1 to 3 and is caught only by the kernel replay. `sorry_theorem_b` puts its `sorry` in a lemma that the audit does not list, and the audit in the build catches it through the listed theorems that depend on that lemma, Theorem B among them.
 
 *Environment.*
 
@@ -360,9 +408,9 @@ Run on September 28, 2026 at 11:32:11 (UTC−04:00) with Lean 4.33.1 on macOS-27
 
 `lean/lake-manifest.json` is committed, so these revisions are fixed. A fresh clone has not been tested here: `lake build` fetches the packages the manifest pins, and Mathlib's `lake exe cache get` downloads its compiled files instead of rebuilding them.
 
-*What is trusted.* The kernel replay covers this project's three modules, not their imports: `leanchecker` ran without `--fresh`, so Mathlib and formal-conjectures are trusted as compiled at the pin. The informal-to-formal correspondence of §1.2 is argued, not machine-checked, and the Lean statements are checked against formal-conjectures' statements, not against the site's. Theorem B, the two readings of $\gg$, and the remarks on `erdos_158` in §3 are written proofs.
+*What is trusted.* The kernel replay covers this project's four modules, not their imports: `leanchecker` ran without `--fresh`, so Mathlib and formal-conjectures are trusted as compiled at the pin. The informal-to-formal correspondence of §1.2 is argued, not machine-checked, and the Lean statements are checked against formal-conjectures' statements, not against the site's. The explicit constants of Theorem B in §4.2, the two readings of $\gg$, and the remarks on `erdos_158` in §3 are written proofs. Theorem B and its Corollary are machine-checked by the proof of §4.1.
 
-*The gate.* `src/final_check.py` is the gate for everything else. It recomputes the greedy checkpoints and the note's table from the committed list, rechecks that the list is a $B_2[2]$ set and that its first terms follow the greedy rule, recomputes the Theorem B constants in exact and multi-precision arithmetic, and checks the Lean records against the current sources. In the documentation it checks the statement against the site, each Lean excerpt and each quotation against its source, and every numeral in the prose. A numeral passes if it agrees with a freshly computed value, lies in a passage that a fetched source or a committed record backs, or names a problem, section, lemma, step, exit status, release or identifier that exists. Small integers inside formulas are mathematics and are left to the proofs, ordered-list markers are structure, and the model, the CLI version and the session's date named in §10 cannot be checked, so the gate prints them. It also regenerates the tables above. Before it reports a pass it plants a defect for each check and requires each to be caught.
+*The gate.* `src/final_check.py` is the gate for everything else. It recomputes the greedy checkpoints and the note's table from the committed list, rechecks that the list is a $B_2[2]$ set and that its first terms follow the greedy rule, recomputes the constants of §4.2 in exact and multi-precision arithmetic, and checks the Lean records against the current sources. In the documentation it checks the statement against the site, each Lean excerpt and each quotation against its source, and every numeral in the prose. A numeral passes if it agrees with a freshly computed value, lies in a passage that a fetched source or a committed record backs, or names a problem, section, lemma, step, exit status, release or identifier that exists. Small integers inside formulas are mathematics and are left to the proofs, ordered-list markers are structure, and the model, the CLI version and the sessions' dates named in §10 cannot be checked, so the gate prints them. It also regenerates the tables above. Before it reports a pass it plants a defect for each check and requires each to be caught.
 
 ## 9. Sources
 
@@ -386,5 +434,7 @@ Not read. Everything attributed to these comes from the sources above.
 ## 10. Provenance
 
 The work was done by Claude Opus 5.5 in GitHub Copilot CLI 1.0.88 on September 23, 2026 (US Eastern time), in one session at the direction of the repository owner, who supplied the problem and the working instructions but no mathematical hints. The session's own event log records the tools it ran: a shell, file views, searches and edits, a session database for the task contract, a scheduler for check-ins against that contract, and the web search and web fetch tools. The downloads in `refs/fetch.sh` ran in the shell. The web search tool answers with a model-written summary, so it served only to find sources; every source cited here was then fetched and read. No subagent was used. The session itself ran every checker whose results are committed: `lean/verify.sh`, `lean/plants.py`, `src/greedy_check.py`, `src/theorem_b_check.py` and `src/final_check.py`.
+
+The Lean proof of Theorem B, §4.1, was added later, on November 1, 2026, by Claude Opus 5.5 in Claude Code, again at the direction of the repository owner, who asked for Theorem B to be formalised and suggested looking for a deterministic construction first. None was found in the sources of §9, and O'Bryant's bibliography still lists among its most wanted problems a construction of dense $B_h^*[g]$ sequences that are not merely several $B_h$ sets woven together. The block variant of the random construction was chosen instead because its count is deterministic, which leaves only a union bound to formalise. That session reran `lean/verify.sh`, `lean/plants.py` and `src/final_check.py`; the other committed results are unchanged from the first session.
 
 Failures on the way, all fixed before the committed runs: a plant in `lean/plants.py` that restated a theorem while another file still used its original name, so the plant failed for the wrong reason; an interrupted plant run that left its Lean process group running; quotation checks that missed because PDF text layers write ő with a combining accent, fixed by normalising both sides to NFC; a gate check that backed the session's date with the site's own access stamp, which is not in US Eastern time and changes with every fetch, so the end-to-end run failed on it; an excerpt check that passed, rather than skipping, on a copy of the repository without the formal-conjectures files; and the capped exploratory run of §6. The cost in model credits was not available to the session when this was written.

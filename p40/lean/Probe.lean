@@ -5,20 +5,20 @@ import Lean
 
 `verify.sh` runs this with `lake env lean --run Probe.lean`. The probe imports only `Lean`, so this code is elaborated without the modules it audits and loads them at runtime with `importModules`, which does not run their initializers. No instance, macro or elaborator they define can change how this code runs. `Erdos40/Audit.lean` makes the same statement checks during the build, but it runs inside the environment it audits.
 
-Axioms: for every constant that `Erdos40.Basic`, `Erdos40.Equivalence` or `Erdos40.Problem158` adds, auxiliary ones included, it collects the axioms the constant depends on and flags any outside `propext`, `Classical.choice`, `Quot.sound`.
+Axioms: for every constant that `Erdos40.Basic`, `Erdos40.Equivalence`, `Erdos40.Problem158` or `Erdos40.TheoremB` adds, auxiliary ones included, it collects the axioms the constant depends on and flags any outside `propext`, `Classical.choice`, `Quot.sound`.
 
-Statements: it compares elaborated types, as `Expr`s, with the declarations in `FormalConjectures`, making the same comparisons as `Erdos40/Audit.lean`. `strong` below is `Erdos40.Erdos40For (fun _ : ℕ ↦ (1 : ℝ))` written out by hand, in the form Lean elaborates it to.
+Statements: it compares elaborated types, as `Expr`s, with the declarations in `FormalConjectures`, making the same comparisons as `Erdos40/Audit.lean`. `strong` below is `Erdos40.Erdos40For (fun _ : ℕ ↦ (1 : ℝ))` written out by hand, in the form Lean elaborates it to, and `rpowFn` is `fun N : ℕ ↦ (N : ℝ) ^ ε` written out the same way.
 
 Exit 0 means nothing was flagged.
 -/
 
 open Lean
 
-def targets : Array Name := #[`Erdos40.Basic, `Erdos40.Equivalence, `Erdos40.Problem158]
+def targets : Array Name := #[`Erdos40.Basic, `Erdos40.Equivalence, `Erdos40.Problem158, `Erdos40.TheoremB]
 
 def standardAxioms : Array Name := #[`propext, `Classical.choice, `Quot.sound]
 
-def required : Array Name := #[`ErdosProblem40.exists_iff, `ErdosProblem40.answerSet_nonempty_iff, `ErdosProblem40.strong_implies_erdos_28, `ErdosProblem40.uniform_dip, `ErdosProblem40.Erdos40For.of_isBigO, `ErdosProblem40.not_erdos40For_sqrt, `ErdosProblem40.not_erdos40For_of_sqrt_isBigO, `ErdosProblem40.univ_hypothesis_and_conclusion, `ErdosProblem40.sumRep_le_of_B2, `ErdosProblem40.B2_of_sumRep_le, `ErdosProblem40.count_sq_le, `ErdosProblem40.liminf_eq_zero_of_bound, `ErdosProblem40.strong_iff_forall_B2, `ErdosProblem40.weaker_iff_forall_B2, `ErdosProblem40.strong_implies_erdos_158]
+def required : Array Name := #[`ErdosProblem40.exists_iff, `ErdosProblem40.answerSet_nonempty_iff, `ErdosProblem40.strong_implies_erdos_28, `ErdosProblem40.uniform_dip, `ErdosProblem40.Erdos40For.of_isBigO, `ErdosProblem40.not_erdos40For_sqrt, `ErdosProblem40.not_erdos40For_of_sqrt_isBigO, `ErdosProblem40.univ_hypothesis_and_conclusion, `ErdosProblem40.sumRep_le_of_B2, `ErdosProblem40.B2_of_sumRep_le, `ErdosProblem40.count_sq_le, `ErdosProblem40.liminf_eq_zero_of_bound, `ErdosProblem40.strong_iff_forall_B2, `ErdosProblem40.weaker_iff_forall_B2, `ErdosProblem40.strong_implies_erdos_158, `ErdosProblem40.TheoremB.exists_good, `ErdosProblem40.exists_dense_bounded, `ErdosProblem40.not_erdos40For_rpow, `ErdosProblem40.rpow_not_mem_answerSet, `ErdosProblem40.not_erdos40For_of_rpow_isBigO]
 
 /-- `(1 : ℝ)` as Mathlib elaborates it. -/
 def realOne : Expr :=
@@ -27,6 +27,29 @@ def realOne : Expr :=
 
 /-- `Erdos40.Erdos40For (fun _ : ℕ ↦ (1 : ℝ))`. -/
 def strong : Expr := mkApp (mkConst `Erdos40.Erdos40For) (.lam `x (mkConst `Nat) realOne .default)
+
+/-- `(0 : ℝ)` as Mathlib elaborates it. -/
+def realZero : Expr :=
+  mkApp3 (mkConst `OfNat.ofNat [Level.zero]) (mkConst `Real) (mkRawNatLit 0)
+    (mkApp2 (mkConst `Zero.toOfNat0 [Level.zero]) (mkConst `Real) (mkConst `Real.instZero))
+
+/-- `0 < ε`. -/
+def posHyp (ε : Expr) : Expr := mkApp4 (mkConst `LT.lt [Level.zero]) (mkConst `Real) (mkConst `Real.instLT) realZero ε
+
+/-- `fun N : ℕ ↦ (N : ℝ) ^ ε`, the real power, for a closed `ε`. -/
+def rpowFn (ε : Expr) : Expr :=
+  .lam `N (mkConst `Nat)
+    (mkApp6 (mkConst `HPow.hPow [Level.zero, Level.zero, Level.zero]) (mkConst `Real) (mkConst `Real) (mkConst `Real)
+      (mkApp3 (mkConst `instHPow [Level.zero, Level.zero]) (mkConst `Real) (mkConst `Real) (mkConst `Real.instPow))
+      (mkApp3 (mkConst `Nat.cast [Level.zero]) (mkConst `Real) (mkConst `Real.instNatCast) (.bvar 0)) ε) .default
+
+/-- For a type `∀ ε : ℝ, 0 < ε → B ε`, the body `B` at a placeholder constant for `ε`, if the hypothesis is `0 < ε` and `B` does not use it. -/
+def posBody? (t : Expr) : Option Expr :=
+  let eps := mkConst `ProbeEpsilon
+  match t with
+  | .forallE _ (.const `Real []) (.forallE _ hyp body _) _ =>
+    if hyp.instantiate1 eps == posHyp eps && !body.hasLooseBVar 0 then some ((body.lowerLooseBVars 1 1).instantiate1 eps) else none
+  | _ => none
 
 /-- The problems found in the statements, as messages; empty means all checks passed. -/
 def statementProblems (env : Environment) : Array String := Id.run do
@@ -76,6 +99,24 @@ def statementProblems (env : Environment) : Array String := Id.run do
       unless lhs6 == fcRhs && rhs6 == rhs do out := out.push "weaker_iff_forall_B2: a side is not the right side of erdos_40.variants.weaker or of strong_iff_forall_B2"
     | _, _ => out := out.push "weaker_iff_forall_B2 is missing or not an ↔"
   | _, _ => out := out.push "strong_iff_forall_B2 or erdos_158 is missing or has another shape"
+  let eps := mkConst `ProbeEpsilon
+  -- rpow_not_mem_answerSet : ∀ ε : ℝ, 0 < ε → ¬ (fun N ↦ (N : ℝ) ^ ε) ∈ (the set in erdos_40)
+  match (typeOf `Erdos40.erdos_40).bind Expr.eq?, typeOf `ErdosProblem40.rpow_not_mem_answerSet with
+  | some (_, fcSet, _), some t =>
+    match posBody? t with
+    | some body =>
+      let ok := body.isAppOfArity `Not 1 && (let m := body.appArg!; m.isAppOfArity `Membership.mem 5 && (m.getArg! 2).isAppOf `Set.instMembership && m.getArg! 3 == fcSet && m.getArg! 4 == rpowFn eps)
+      unless ok do out := out.push "rpow_not_mem_answerSet: conclusion is not (fun N ↦ (N : ℝ) ^ ε) ∉ the set of erdos_40"
+    | none => out := out.push "rpow_not_mem_answerSet: not of the form ∀ ε : ℝ, 0 < ε → _"
+  | _, _ => out := out.push "rpow_not_mem_answerSet or erdos_40 is missing or has another shape"
+  -- not_erdos40For_rpow : ∀ {ε : ℝ}, 0 < ε → ¬ Erdos40For (fun N ↦ (N : ℝ) ^ ε)
+  match typeOf `ErdosProblem40.not_erdos40For_rpow with
+  | some t =>
+    match posBody? t with
+    | some body =>
+      unless body == mkApp (mkConst `Not) (mkApp (mkConst `Erdos40.Erdos40For) (rpowFn eps)) do out := out.push "not_erdos40For_rpow: conclusion is not ¬ Erdos40For (fun N ↦ (N : ℝ) ^ ε)"
+    | none => out := out.push "not_erdos40For_rpow: not of the form ∀ ε : ℝ, 0 < ε → _"
+  | none => out := out.push "not_erdos40For_rpow is missing"
   return out
 
 unsafe def main : IO UInt32 := do
@@ -105,6 +146,6 @@ unsafe def main : IO UInt32 := do
     IO.println s!"STATEMENT {s}"
   problems := problems + stmt.size
   if stmt.isEmpty then
-    IO.println "statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures"
+    IO.println "statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures"
   IO.println s!"probe: {checked} constants checked, {problems} problems"
   return if problems == 0 then 0 else 1

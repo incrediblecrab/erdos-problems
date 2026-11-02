@@ -1,6 +1,6 @@
 # `lean/` — Lean proofs for Erdős #40
 
-**Objective.** Machine-check Theorem A and the $B_2[g]$ reductions of [`../NOTES.md`](../NOTES.md) §2 and §3 against formal-conjectures' own definitions, using no axiom beyond `propext`, `Classical.choice` and `Quot.sound`. Neither `erdos_40` nor its weaker variant is proved or disproved here, and Theorem B is not formalised.
+**Objective.** Machine-check Theorem A, the $B_2[g]$ reductions and Theorem B of [`../NOTES.md`](../NOTES.md) §2 to §4 against formal-conjectures' own definitions, using no axiom beyond `propext`, `Classical.choice` and `Quot.sound`. Neither `erdos_40` nor its weaker variant is proved or disproved here; Theorem B excludes only the powers $N^{\epsilon}$ and what dominates them from the answer set.
 
 **Inputs.** formal-conjectures at the commit pinned in `lakefile.toml`, whose `FormalConjectures/ErdosProblems/40.lean` states the problem; that commit fixes Mathlib. The Lean release is in `lean-toolchain`.
 

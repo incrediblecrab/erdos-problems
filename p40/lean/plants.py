@@ -26,6 +26,7 @@ SOURCES = ["lakefile.toml", "lake-manifest.json", "lean-toolchain", "Erdos40.lea
 BASIC = "Erdos40/Basic.lean"
 EQ = "Erdos40/Equivalence.lean"
 P158 = "Erdos40/Problem158.lean"
+TB = "Erdos40/TheoremB.lean"
 AUDIT = "Erdos40/Audit.lean"
 FC40 = ".lake/packages/formal_conjectures/FormalConjectures/ErdosProblems/40.lean"
 END = "end ErdosProblem40\n"
@@ -50,6 +51,9 @@ def restate(statement: str, proof: str) -> list:
 SWAPPED = restate("(∃ g : ℕ → ℝ, Erdos40For g ∧ Tendsto g atTop atTop) ↔ Erdos40For (fun _ ↦ 1)", "(exists_congr fun _ ↦ and_comm).trans exists_iff_orig")
 HIJACK = ("macro_rules\n"
           f"  | `(command| run_cmd $_:doSeq) => `(command| #eval (Lean.logInfo \"{PASS_MSG}\" : Lean.Elab.Command.CommandElabM Unit))\n\n")
+UNIFORM_PROOF = ("  rcases ht.eq_empty_or_singleton with rfl | ⟨a, rfl⟩\n  · simp\n"
+                 "  · rw [PMF.toMeasure_apply_singleton _ _ (MeasurableSet.singleton a), PMF.uniformOfFintype_apply,\n      Fintype.card_fin]\n")
+TB_STATEMENT = "theorem rpow_not_mem_answerSet : ∀ ε : ℝ, 0 < ε →\n    (fun N : ℕ ↦ (N : ℝ) ^ ε) ∉ {g : ℕ → ℝ | Tendsto g atTop atTop ∧ Erdos40For g} :=\n  fun _ hε hg ↦ not_erdos40For_rpow hε hg.2\n"
 KERNEL_OFF = ("open Lean Elab Command in\n"
               "elab \"plant_unchecked\" : command => liftCoreM do\n"
               "  let opt : Name := .str (.str .anonymous \"debug\") (\"skipKernel\" ++ \"TC\")\n"
@@ -70,6 +74,9 @@ CASES = [
     ("statement_rhs", "`exists_iff` restated with `1 * 1` for `1`, still fully proved", restate("(∃ g : ℕ → ℝ, Tendsto g atTop atTop ∧ Erdos40For g) ↔ Erdos40For (fun _ ↦ (1 : ℝ) * 1)", "by simpa only [mul_one] using exists_iff_orig"), False, 1, 1, "exists_iff: right side is not Erdos40For (fun _ ↦ 1)", "STATEMENT exists_iff: right side is not Erdos40For (fun _ ↦ 1)"),
     ("statement_158", "`strong_implies_erdos_158` restated for `B2 3` sets, still fully proved", [(P158, "    ∀ A : Set ℕ, A.Infinite → Erdos158.B2 2 A →\n", "    ∀ A : Set ℕ, A.Infinite → Erdos158.B2 3 A →\n"), (P158, "strong_iff_forall_B2.1 hS 2 A hB", "strong_iff_forall_B2.1 hS 3 A hB")], False, 1, 1, "strong_implies_erdos_158: conclusion differs from Erdos158.erdos_158", "STATEMENT strong_implies_erdos_158: conclusion is not the right side of erdos_158"),
     ("statement_forall_B2", "`strong_iff_forall_B2` restated with `B2 (g + 0)`, definitionally the same, still fully proved", [(P158, "theorem strong_iff_forall_B2 : Erdos40For (fun _ ↦ 1) ↔ ∀ (g : ℕ) (A : Set ℕ), Erdos158.B2 g A →", "theorem strong_iff_forall_B2 : Erdos40For (fun _ ↦ 1) ↔ ∀ (g : ℕ) (A : Set ℕ), Erdos158.B2 (g + 0) A →")], False, 1, 1, "strong_iff_forall_B2: right side at g = 2 differs from Erdos158.erdos_158 without A.Infinite", "STATEMENT strong_iff_forall_B2: right side at g = 2 is not the right side of erdos_158 without A.Infinite"),
+    ("sorry_theorem_b", "`sorry` for the proof of `TheoremB.uniform_le`, the probability of one point of a block, which the audit does not list but Theorem B uses", [(TB, UNIFORM_PROOF, "  sorry\n")], False, 1, 1, "ErdosProblem40.rpow_not_mem_answerSet depends on non-standard axioms [sorryAx]", None),
+    ("statement_theorem_b_weak", "`rpow_not_mem_answerSet` restated for `1 / 2 < ε` only, a weaker statement, still fully proved", [(TB, TB_STATEMENT, TB_STATEMENT.replace("0 < ε →", "1 / 2 < ε →").replace("not_erdos40For_rpow hε hg.2", "not_erdos40For_rpow (by linarith) hg.2"))], False, 1, 1, "rpow_not_mem_answerSet: statement differs", "STATEMENT rpow_not_mem_answerSet: not of the form ∀ ε : ℝ, 0 < ε → _"),
+    ("statement_theorem_b_set", "`rpow_not_mem_answerSet` restated with the conjunction in the set swapped, still fully proved", [(TB, TB_STATEMENT, TB_STATEMENT.replace("Tendsto g atTop atTop ∧ Erdos40For g", "Erdos40For g ∧ Tendsto g atTop atTop").replace("hg.2\n", "hg.1\n"))], False, 1, 1, "rpow_not_mem_answerSet: statement differs", "STATEMENT rpow_not_mem_answerSet: conclusion is not (fun N ↦ (N : ℝ) ^ ε) ∉ the set of erdos_40"),
     ("statement_hijack", "the swapped statement plus a macro that replaces the audit's `run_cmd` with one printing the pass message", SWAPPED + [(EQ, END, HIJACK + END)], False, 1, 3, "STATEMENT exists_iff: left side is not the right side of erdos_40.variants.weaker", None),
 ]
 
@@ -170,7 +177,7 @@ def main() -> int:
         "lean": lean_version,
         "platform": platform.platform(),
         "formal_conjectures": re.search(r'^rev = "([0-9a-f]{40})"$', (HERE / "lakefile.toml").read_text(), flags=re.M).group(1),
-        "sources_sha256": {f: hashlib.sha256((HERE / f).read_bytes()).hexdigest() for f in SOURCES + [BASIC, EQ, P158, AUDIT, "plants.py"]},
+        "sources_sha256": {f: hashlib.sha256((HERE / f).read_bytes()).hexdigest() for f in SOURCES + [BASIC, EQ, P158, TB, AUDIT, "plants.py"]},
         "timeout_seconds": args.timeout,
         "cases": [],
     }

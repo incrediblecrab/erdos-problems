@@ -1,8 +1,8 @@
 # erdos-40
 
-This repository studies Erdős problem 40, how dense a set must be to force unbounded representation counts, with Lean reductions, a written reconstruction of a negative result and a checked greedy-set computation. The problem is open and is not solved here.
+This repository studies Erdős problem 40, how dense a set must be to force unbounded representation counts, with Lean reductions, a Lean proof of a negative result and a checked greedy-set computation. The problem is open and is not solved here.
 
-**Objective:** pin down what the problem asks, in its formal-conjectures form; prove what can be proved about the answer set, with a machine check wherever the claim is formal; reconstruct the known negative result with explicit constants; and check the one computation posted on the closely related problem 158.
+**Objective:** pin down what the problem asks, in its formal-conjectures form; prove what can be proved about the answer set, with a machine check wherever the claim is formal; reconstruct the known negative result with explicit constants and machine-check it; and check the one computation posted on the closely related problem 158.
 
 **Inputs:** the problem's page on erdosproblems.com; the pages or threads of problems 28, 39, 158 and 1191; formal-conjectures at the commit pinned in `lean/lakefile.toml`; Pliego; Cilleruelo; O'Bryant's Sidon bibliography; Zeraoulia's note; and OEIS A005282. `refs/fetch.sh` downloads them, and nothing is redistributed.
 
@@ -33,7 +33,7 @@ A set whose counts stay bounded cannot be very dense. If no count is above $C$, 
 
 1. Some $g$ works if and only if $g=1$ works. So the first half of the question, whether $\mathcal{G}$ is empty, is exactly the $g=1$ question, and a positive answer would also answer problems 28 and 158. Proved in Lean.
 2. That question in turn is whether every set with bounded counts has $A(N)/\sqrt N$ dipping toward $0$ along some sequence of $N$. For sets in which each number has at most two representations $n=a+b$ with $a\le b$, this is problem 158, which is open. Proved in Lean.
-3. No $g$ that grows like a power of $N$ works. Random sets of the kind Erdős and Rényi used have bounded counts and more than a constant times $N^{1/2-\epsilon}$ elements up to $N$. This is a written proof, a reconstruction of their method with explicit constants, not machine-checked.
+3. No $g$ that grows like a power of $N$ works. Random sets of the kind Erdős and Rényi used have bounded counts and more than a constant times $N^{1/2-\epsilon}$ elements up to $N$. Proved in Lean, for a variant of their construction that takes one random point from each of a sequence of blocks; a reconstruction of their own method with explicit constants is kept as a written proof.
 4. A computation posted in the problem 158 thread, on the greedy set of that kind, is reproduced and carried to five times as many elements. Its ratio $A(N)/\sqrt N$ keeps falling. That decides nothing either way.
 
 **The catch.** None of this touches the open part. Whether $\mathcal{G}$ is empty is exactly as open as the $g=1$ question, and nothing here decides whether a slowly growing function such as $\log N$ is in $\mathcal{G}$. The first result is a reduction, not progress on either question.
@@ -45,11 +45,11 @@ Labels as in `NOTES.md`: [Lean] is machine-checked, [written] is a written proof
 * **Theorem A** [Lean]. $\mathcal{G}$ is nonempty if and only if the strong form holds, the statement that $\lvert A\cap\{1,\ldots,N\}\rvert\gg N^{1/2}$ already implies $\limsup 1_A\ast 1_A(n)=\infty$. So formal-conjectures' `erdos_40.variants.weaker` is equivalent to the strong form. The statements are checked, as Lean expressions, against formal-conjectures' `erdos_40` and `erdos_40.variants.weaker`, and the strong form implies its `erdos_28` (§2).
 * **The $B_2[g]$ form** [Lean]. The strong form holds if and only if every $B_2[g]$ set, for every $g$, has $\liminf A(N)/\sqrt N=0$; at $g=2$ that is the right side of formal-conjectures' `erdos_158`, less the hypothesis that $A$ is infinite (§3).
 * **Closure** [Lean]. $\mathcal{G}$ is closed downward under $O(\cdot)$, and no $g$ with $\sqrt N=O(g)$ is in it (§2).
-* **Theorem B** [written]. No $g$ with $g(N)\ge cN^{\epsilon}$ for large $N$ is in $\mathcal{G}$. The proof follows Erdős and Rényi's probabilistic method with explicit constants, and a script checks the constants numerically (§4).
+* **Theorem B** [Lean]. No $g$ with $g(N)\ge cN^{\epsilon}$ for large $N$ is in $\mathcal{G}$: for every $\epsilon>0$ some set with bounded $r_A$ has $A(N)\gg N^{1/2-\epsilon}$. The machine-checked proof is a block variant of Erdős and Rényi's probabilistic method, and the statement is checked against the set of formal-conjectures' `erdos_40` (§4). A reconstruction of their method with explicit constants is a written proof, and a script checks its constants numerically.
 * **The greedy $B_2[2]$ set** [computation]. The numbers posted in the problem 158 thread and the table of the Zenodo note are right. Carried to the 10,000th term the ratio falls to 0.515, and the local growth exponent of the terms is above $2$ at every checkpoint (§6).
 * **A conflict in the literature**, left unresolved: a sharper liminf for Sidon sets is reported as $\le c$ on the problem 1191 page, as finite in formal-conjectures, and as $=0$ by Pliego. Problem 40 does not depend on it (§3).
 
-**Stated plainly.** Problem 40 is open. The machine-checked results are reductions: the existence half of problem 40 is the strong form of the Erdős–Turán conjecture, which in turn is a statement about $B_2[g]$ sets of which problem 158 is the case $g=2$. The exclusion of powers of $N$ is a written reconstruction, and the computation is illustrative. I did not look for Theorem A beyond the sources in `NOTES.md` §9, so no claim of novelty is made.
+**Stated plainly.** Problem 40 is open. The machine-checked results are reductions and one exclusion: the existence half of problem 40 is the strong form of the Erdős–Turán conjecture, which in turn is a statement about $B_2[g]$ sets of which problem 158 is the case $g=2$; and no power of $N$ is in $\mathcal{G}$, a known result of Erdős and Rényi checked here in a variant form. The computation is illustrative. I did not look for Theorem A beyond the sources in `NOTES.md` §9, so no claim of novelty is made.
 
 Read [`NOTES.md`](NOTES.md).
 
@@ -58,8 +58,8 @@ Read [`NOTES.md`](NOTES.md).
 | path | contents |
 |---|---|
 | `NOTES.md` | the statement and its formal version, the proofs, the literature, the computation, and how each claim was checked |
-| `lean/` | Lean 4 proofs of Theorem A and the $B_2[g]$ reductions against formal-conjectures' definitions; `verify.sh`, and `plants.py`, which plants defects to test it |
-| `src/theorem_b_check.py` | a numerical check of the constants in Theorem B |
+| `lean/` | Lean 4 proofs of Theorem A, the $B_2[g]$ reductions and Theorem B against formal-conjectures' definitions; `verify.sh`, and `plants.py`, which plants defects to test it |
+| `src/theorem_b_check.py` | a numerical check of the constants in the written reconstruction of Theorem B |
 | `src/greedy_b2g.c`, `src/greedy_check.py` | the greedy $B_2[g]$ computation, and the checks that do not share its code |
 | `src/final_check.py` | the gate: rechecks the results and Lean records, the statement, the Lean excerpts, every quotation, and every numeral in the prose of the documentation; plants a defect for each check; exit 0 = pass |
 | `scripts/reproduce.sh` | reruns everything, then `src/final_check.py` |

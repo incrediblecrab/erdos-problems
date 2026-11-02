@@ -1,39 +1,49 @@
 ### control: nothing: an unmodified copy
-### verify.sh exit 0 after 72.4 s
+### verify.sh exit 0 after 121.8 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-ℹ [8921/8923] Replayed Erdos40.Audit
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-Build completed successfully (8923 jobs).
+ℹ [8922/8924] Replayed Erdos40.Audit
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+Build completed successfully (8924 jobs).
 == 2. re-elaborating Erdos40/Audit.lean ==
-26 axiom reports clean; statement check passed
+36 axiom reports clean; statement check passed
 == 3. axiom probe, compiled without the library and loading it at runtime ==
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
@@ -50,14 +60,20 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
-statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-probe: 74 constants checked, 0 problems
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+probe: 150 constants checked, 0 problems
 == 4. kernel replay with leanchecker ==
 replayed Erdos40.Basic
 replayed Erdos40.Equivalence
 replayed Erdos40.Problem158
+replayed Erdos40.TheoremB
 
-PASS: 26 theorems on {propext, Classical.choice, Quot.sound}; statements match FormalConjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434; probe clean; Erdos40.Basic Erdos40.Equivalence Erdos40.Problem158 replayed by the kernel.
+PASS: 36 theorems on {propext, Classical.choice, Quot.sound}; statements match FormalConjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434; probe clean; Erdos40.Basic Erdos40.Equivalence Erdos40.Problem158 Erdos40.TheoremB replayed by the kernel.
 
 ### pin: lakefile.toml pins a different formal-conjectures commit
 ### verify.sh exit 1 after 0.0 s
@@ -65,49 +81,60 @@ PASS: 26 theorems on {propext, Classical.choice, Quot.sound}; statements match F
 FAIL: formal_conjectures is at e5f428182a3ee32dde401eceb4a94ba0382e8434, lakefile.toml pins 0000000000000000000000000000000000000000
 
 ### fc_edited: a comment appended to formal-conjectures' 40.lean
-### verify.sh exit 1 after 0.2 s
+### verify.sh exit 1 after 0.3 s
 == 0. formal-conjectures checkout ==
  M FormalConjectures/ErdosProblems/40.lean
 FAIL: formal_conjectures has local changes
 
 ### sorry_listed: `sorry` for the proof of `sumRep_le`, which the audit lists
-### verify.sh exit 1 after 46.9 s
+### verify.sh exit 1 after 38.7 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-⚠ [8918/8923] Built Erdos40.Basic (20s)
+⚠ [8918/8924] Built Erdos40.Basic (12s)
 warning: Erdos40/Basic.lean:22:8: declaration uses `sorry`
-✔ [8919/8923] Built Erdos40.Equivalence (5.6s)
-✔ [8920/8923] Built Erdos40.Problem158 (5.7s)
-✖ [8921/8923] Building Erdos40.Audit (4.6s)
-trace: .> LEAN_PATH=<lean>/.lake/packages/Cli/.lake/build/lib/lean:<lean>/.lake/packages/batteries/.lake/build/lib/lean:<lean>/.lake/packages/Qq/.lake/build/lib/lean:<lean>/.lake/packages/aesop/.lake/build/lib/lean:<lean>/.lake/packages/proofwidgets/.lake/build/lib/lean:<lean>/.lake/packages/importGraph/.lake/build/lib/lean:<lean>/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<lean>/.lake/packages/plausible/.lake/build/lib/lean:<lean>/.lake/packages/mathlib/.lake/build/lib/lean:<lean>/.lake/packages/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
-error: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on non-standard axioms [sorryAx]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on non-standard axioms [sorryAx]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on non-standard axioms [sorryAx]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on non-standard axioms [sorryAx]
-error: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on non-standard axioms [sorryAx]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
+✔ [8919/8924] Built Erdos40.Equivalence (5.9s)
+✔ [8920/8924] Built Erdos40.Problem158 (8.3s)
+✔ [8921/8924] Built Erdos40.TheoremB (8.5s)
+✖ [8922/8924] Building Erdos40.Audit (5.6s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+error: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
 error: Lean exited with code 1
 Some required targets logged failures:
 - Erdos40.Audit
@@ -115,45 +142,56 @@ error: build failed
 FAIL: lake build exited non-zero
 
 ### sorry_unlisted: a new theorem proved by `sorry`, not listed in the audit
-### verify.sh exit 1 after 53.5 s
+### verify.sh exit 1 after 78.8 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-⚠ [8919/8923] Built Erdos40.Equivalence (9.6s)
+⚠ [8919/8924] Built Erdos40.Equivalence (6.5s)
 warning: Erdos40/Equivalence.lean:274:8: declaration uses `sorry`
-✔ [8920/8923] Built Erdos40.Problem158 (5.8s)
-ℹ [8921/8923] Built Erdos40.Audit (4.8s)
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-✔ [8922/8923] Built Erdos40 (4.4s)
-Build completed successfully (8923 jobs).
+✔ [8920/8924] Built Erdos40.Problem158 (7.8s)
+✔ [8921/8924] Built Erdos40.TheoremB (8.0s)
+ℹ [8922/8924] Built Erdos40.Audit (8.0s)
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+✔ [8923/8924] Built Erdos40 (4.9s)
+Build completed successfully (8924 jobs).
 == 2. re-elaborating Erdos40/Audit.lean ==
-26 axiom reports clean; statement check passed
+36 axiom reports clean; statement check passed
 == 3. axiom probe, compiled without the library and loading it at runtime ==
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
@@ -171,49 +209,65 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
-statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-probe: 75 constants checked, 1 problems
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+probe: 151 constants checked, 1 problems
 FAIL: probe exited 1
 
 ### axiom_unlisted: a new axiom and a theorem that uses it, not listed in the audit
-### verify.sh exit 1 after 61.8 s
+### verify.sh exit 1 after 91.2 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8919/8923] Built Erdos40.Equivalence (6.9s)
-✔ [8920/8923] Built Erdos40.Problem158 (6.1s)
-ℹ [8921/8923] Built Erdos40.Audit (5.0s)
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-✔ [8922/8923] Built Erdos40 (5.5s)
-Build completed successfully (8923 jobs).
+✔ [8919/8924] Built Erdos40.Equivalence (18s)
+✔ [8920/8924] Built Erdos40.Problem158 (8.4s)
+✔ [8921/8924] Built Erdos40.TheoremB (8.6s)
+ℹ [8922/8924] Built Erdos40.Audit (6.1s)
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+✔ [8923/8924] Built Erdos40 (5.0s)
+Build completed successfully (8924 jobs).
 == 2. re-elaborating Erdos40/Audit.lean ==
-26 axiom reports clean; statement check passed
+36 axiom reports clean; statement check passed
 == 3. axiom probe, compiled without the library and loading it at runtime ==
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
@@ -232,49 +286,65 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
-statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-probe: 76 constants checked, 2 problems
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+probe: 152 constants checked, 2 problems
 FAIL: probe exited 1
 
 ### kernel_off: a proof of False added with the kernel check switched off, the option name built at runtime, and a theorem using it
-### verify.sh exit 1 after 130.2 s
+### verify.sh exit 1 after 125.0 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8919/8923] Built Erdos40.Equivalence (13s)
-✔ [8920/8923] Built Erdos40.Problem158 (6.9s)
-ℹ [8921/8923] Built Erdos40.Audit (5.5s)
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-✔ [8922/8923] Built Erdos40 (5.4s)
-Build completed successfully (8923 jobs).
+✔ [8919/8924] Built Erdos40.Equivalence (18s)
+✔ [8920/8924] Built Erdos40.Problem158 (16s)
+✔ [8921/8924] Built Erdos40.TheoremB (16s)
+ℹ [8922/8924] Built Erdos40.Audit (7.3s)
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+✔ [8923/8924] Built Erdos40 (4.5s)
+Build completed successfully (8924 jobs).
 == 2. re-elaborating Erdos40/Audit.lean ==
-26 axiom reports clean; statement check passed
+36 axiom reports clean; statement check passed
 == 3. axiom probe, compiled without the library and loading it at runtime ==
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
@@ -291,8 +361,13 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
-statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-probe: 78 constants checked, 0 problems
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+statements: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+probe: 154 constants checked, 0 problems
 == 4. kernel replay with leanchecker ==
 replayed Erdos40.Basic
 leanchecker found a problem in Erdos40.Equivalence
@@ -304,41 +379,52 @@ but it is expected to have type
 FAIL: leanchecker rejected Erdos40.Equivalence
 
 ### statement_lhs: `exists_iff` restated with its conjunction swapped, still fully proved
-### verify.sh exit 1 after 40.0 s
+### verify.sh exit 1 after 36.0 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8919/8923] Built Erdos40.Equivalence (13s)
-✔ [8920/8923] Built Erdos40.Problem158 (7.2s)
-✖ [8921/8923] Building Erdos40.Audit (6.4s)
-trace: .> LEAN_PATH=<lean>/.lake/packages/Cli/.lake/build/lib/lean:<lean>/.lake/packages/batteries/.lake/build/lib/lean:<lean>/.lake/packages/Qq/.lake/build/lib/lean:<lean>/.lake/packages/aesop/.lake/build/lib/lean:<lean>/.lake/packages/proofwidgets/.lake/build/lib/lean:<lean>/.lake/packages/importGraph/.lake/build/lib/lean:<lean>/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<lean>/.lake/packages/plausible/.lake/build/lib/lean:<lean>/.lake/packages/mathlib/.lake/build/lib/lean:<lean>/.lake/packages/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:59:0: exists_iff: left side differs from FormalConjectures.
+✔ [8919/8924] Built Erdos40.Equivalence (11s)
+✔ [8920/8924] Built Erdos40.Problem158 (10s)
+✔ [8921/8924] Built Erdos40.TheoremB (10s)
+✖ [8922/8924] Building Erdos40.Audit (7.7s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: exists_iff: left side differs from FormalConjectures.
   ours: ∃ g, Erdos40.Erdos40For g ∧ Filter.Tendsto g Filter.atTop Filter.atTop
   theirs: ∃ g, Filter.Tendsto g Filter.atTop Filter.atTop ∧ Erdos40.Erdos40For g
 error: Lean exited with code 1
@@ -347,7 +433,7 @@ Some required targets logged failures:
 error: build failed
 FAIL: lake build exited non-zero
 
-### statement_lhs: Probe.lean run directly, exit 1 after 24.0 s
+### statement_lhs: Probe.lean run directly, exit 1 after 38.2 s
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
@@ -363,45 +449,61 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
 STATEMENT exists_iff: left side is not the right side of erdos_40.variants.weaker
-probe: 75 constants checked, 1 problems
+probe: 151 constants checked, 1 problems
 
 ### statement_rhs: `exists_iff` restated with `1 * 1` for `1`, still fully proved
-### verify.sh exit 1 after 46.2 s
+### verify.sh exit 1 after 38.7 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8919/8923] Built Erdos40.Equivalence (19s)
-✔ [8920/8923] Built Erdos40.Problem158 (7.5s)
-✖ [8921/8923] Building Erdos40.Audit (6.3s)
-trace: .> LEAN_PATH=<lean>/.lake/packages/Cli/.lake/build/lib/lean:<lean>/.lake/packages/batteries/.lake/build/lib/lean:<lean>/.lake/packages/Qq/.lake/build/lib/lean:<lean>/.lake/packages/aesop/.lake/build/lib/lean:<lean>/.lake/packages/proofwidgets/.lake/build/lib/lean:<lean>/.lake/packages/importGraph/.lake/build/lib/lean:<lean>/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<lean>/.lake/packages/plausible/.lake/build/lib/lean:<lean>/.lake/packages/mathlib/.lake/build/lib/lean:<lean>/.lake/packages/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:59:0: exists_iff: right side is not Erdos40For (fun _ ↦ 1).
+✔ [8919/8924] Built Erdos40.Equivalence (16s)
+✔ [8920/8924] Built Erdos40.Problem158 (7.7s)
+✔ [8921/8924] Built Erdos40.TheoremB (8.1s)
+✖ [8922/8924] Building Erdos40.Audit (5.4s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: exists_iff: right side is not Erdos40For (fun _ ↦ 1).
   ours: Erdos40.Erdos40For fun x ↦ 1 * 1
 error: Lean exited with code 1
 Some required targets logged failures:
@@ -409,7 +511,7 @@ Some required targets logged failures:
 error: build failed
 FAIL: lake build exited non-zero
 
-### statement_rhs: Probe.lean run directly, exit 1 after 31.3 s
+### statement_rhs: Probe.lean run directly, exit 1 after 39.1 s
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
@@ -425,44 +527,59 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
 STATEMENT exists_iff: right side is not Erdos40For (fun _ ↦ 1)
-probe: 75 constants checked, 1 problems
+probe: 151 constants checked, 1 problems
 
 ### statement_158: `strong_implies_erdos_158` restated for `B2 3` sets, still fully proved
-### verify.sh exit 1 after 34.8 s
+### verify.sh exit 1 after 32.2 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8920/8923] Built Erdos40.Problem158 (15s)
-✖ [8921/8923] Building Erdos40.Audit (6.6s)
-trace: .> LEAN_PATH=<lean>/.lake/packages/Cli/.lake/build/lib/lean:<lean>/.lake/packages/batteries/.lake/build/lib/lean:<lean>/.lake/packages/Qq/.lake/build/lib/lean:<lean>/.lake/packages/aesop/.lake/build/lib/lean:<lean>/.lake/packages/proofwidgets/.lake/build/lib/lean:<lean>/.lake/packages/importGraph/.lake/build/lib/lean:<lean>/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<lean>/.lake/packages/plausible/.lake/build/lib/lean:<lean>/.lake/packages/mathlib/.lake/build/lib/lean:<lean>/.lake/packages/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:59:0: strong_implies_erdos_158: conclusion differs from Erdos158.erdos_158.
+✔ [8921/8924] Built Erdos40.Problem158 (16s)
+✖ [8922/8924] Building Erdos40.Audit (7.8s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: strong_implies_erdos_158: conclusion differs from Erdos158.erdos_158.
   ours: ∀ (A : Set ℕ),
   A.Infinite → Erdos158.B2 3 A → Filter.liminf (fun N ↦ ↑(A ∩ Set.Iio N).ncard * ↑N ^ (-1 / 2)) Filter.atTop = 0
   theirs: ∀ (A : Set ℕ),
@@ -473,7 +590,7 @@ Some required targets logged failures:
 error: build failed
 FAIL: lake build exited non-zero
 
-### statement_158: Probe.lean run directly, exit 1 after 31.2 s
+### statement_158: Probe.lean run directly, exit 1 after 45.9 s
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
@@ -489,44 +606,59 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
 STATEMENT strong_implies_erdos_158: conclusion is not the right side of erdos_158
-probe: 74 constants checked, 1 problems
+probe: 150 constants checked, 1 problems
 
 ### statement_forall_B2: `strong_iff_forall_B2` restated with `B2 (g + 0)`, definitionally the same, still fully proved
-### verify.sh exit 1 after 34.8 s
+### verify.sh exit 1 after 38.5 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8920/8923] Built Erdos40.Problem158 (15s)
-✖ [8921/8923] Building Erdos40.Audit (6.5s)
-trace: .> LEAN_PATH=<lean>/.lake/packages/Cli/.lake/build/lib/lean:<lean>/.lake/packages/batteries/.lake/build/lib/lean:<lean>/.lake/packages/Qq/.lake/build/lib/lean:<lean>/.lake/packages/aesop/.lake/build/lib/lean:<lean>/.lake/packages/proofwidgets/.lake/build/lib/lean:<lean>/.lake/packages/importGraph/.lake/build/lib/lean:<lean>/.lake/packages/LeanSearchClient/.lake/build/lib/lean:<lean>/.lake/packages/plausible/.lake/build/lib/lean:<lean>/.lake/packages/mathlib/.lake/build/lib/lean:<lean>/.lake/packages/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-error: Erdos40/Audit.lean:59:0: strong_iff_forall_B2: right side at g = 2 differs from Erdos158.erdos_158 without A.Infinite.
+✔ [8921/8924] Built Erdos40.Problem158 (22s)
+✖ [8922/8924] Building Erdos40.Audit (7.3s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: strong_iff_forall_B2: right side at g = 2 differs from Erdos158.erdos_158 without A.Infinite.
   ours: ∀ (a : Erdos158.B2 (2 + 0) #0), Filter.liminf (fun N ↦ ↑(#0 ∩ Set.Iio N).ncard * ↑N ^ (-1 / 2)) Filter.atTop = 0
   theirs: ∀ (a : Erdos158.B2 2 #1), Filter.liminf (fun N ↦ ↑(#1 ∩ Set.Iio N).ncard * ↑N ^ (-1 / 2)) Filter.atTop = 0
 error: Lean exited with code 1
@@ -535,7 +667,7 @@ Some required targets logged failures:
 error: build failed
 FAIL: lake build exited non-zero
 
-### statement_forall_B2: Probe.lean run directly, exit 1 after 27.5 s
+### statement_forall_B2: Probe.lean run directly, exit 1 after 61.1 s
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
@@ -551,49 +683,274 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
 STATEMENT strong_iff_forall_B2: right side at g = 2 is not the right side of erdos_158 without A.Infinite
 STATEMENT weaker_iff_forall_B2: a side is not the right side of erdos_40.variants.weaker or of strong_iff_forall_B2
-probe: 74 constants checked, 2 problems
+probe: 150 constants checked, 2 problems
 
-### statement_hijack: the swapped statement plus a macro that replaces the audit's `run_cmd` with one printing the pass message
-### verify.sh exit 1 after 75.4 s
+### sorry_theorem_b: `sorry` for the proof of `TheoremB.uniform_le`, the probability of one point of a block, which the audit does not list but Theorem B uses
+### verify.sh exit 1 after 32.6 s
 == 0. formal-conjectures checkout ==
 formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
 == 1. lake build (includes Erdos40/Audit.lean) ==
-✔ [8919/8923] Built Erdos40.Equivalence (15s)
-✔ [8920/8923] Built Erdos40.Problem158 (6.9s)
-ℹ [8921/8923] Built Erdos40.Audit (5.3s)
-info: Erdos40/Audit.lean:31:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:32:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:33:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:34:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:35:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:36:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:37:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:38:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:40:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:41:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:42:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:43:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:44:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:45:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:46:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:48:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:49:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:50:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:51:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:52:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:53:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:54:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:55:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:56:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
-info: Erdos40/Audit.lean:59:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures
-✔ [8922/8923] Built Erdos40 (5.7s)
-Build completed successfully (8923 jobs).
+⚠ [8921/8924] Built Erdos40.TheoremB (18s)
+warning: Erdos40/TheoremB.lean:66:8: declaration uses `sorry`
+✖ [8922/8924] Building Erdos40.Audit (5.7s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on non-standard axioms [sorryAx]
+error: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on non-standard axioms [sorryAx]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+error: Lean exited with code 1
+Some required targets logged failures:
+- Erdos40.Audit
+error: build failed
+FAIL: lake build exited non-zero
+
+### statement_theorem_b_weak: `rpow_not_mem_answerSet` restated for `1 / 2 < ε` only, a weaker statement, still fully proved
+### verify.sh exit 1 after 35.3 s
+== 0. formal-conjectures checkout ==
+formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
+== 1. lake build (includes Erdos40/Audit.lean) ==
+✔ [8921/8924] Built Erdos40.TheoremB (11s)
+✖ [8922/8924] Building Erdos40.Audit (18s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: rpow_not_mem_answerSet: statement differs from `∀ ε > 0, N ^ ε ∉` the set of Erdos40.erdos_40.
+  ours: ∀ (ε : ℝ),
+  1 / 2 < ε → (fun N ↦ ↑N ^ ε) ∉ {g | Filter.Tendsto g Filter.atTop Filter.atTop ∧ Erdos40.Erdos40For g}
+  expected: ∀ (ε : ℝ),
+  0 < ε → (fun N ↦ ↑N ^ ε) ∉ {g | Filter.Tendsto g Filter.atTop Filter.atTop ∧ Erdos40.Erdos40For g}
+error: Lean exited with code 1
+Some required targets logged failures:
+- Erdos40.Audit
+error: build failed
+FAIL: lake build exited non-zero
+
+### statement_theorem_b_weak: Probe.lean run directly, exit 1 after 51.8 s
+ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_sqrt_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.univ_hypothesis_and_conclusion: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.answerSet_nonempty_iff: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_sqrt: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.Erdos40For.of_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.liminf_eq_zero_of_bound: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.sumRep_le_of_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.strong_implies_erdos_158: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+STATEMENT rpow_not_mem_answerSet: not of the form ∀ ε : ℝ, 0 < ε → _
+probe: 150 constants checked, 1 problems
+
+### statement_theorem_b_set: `rpow_not_mem_answerSet` restated with the conjunction in the set swapped, still fully proved
+### verify.sh exit 1 after 102.3 s
+== 0. formal-conjectures checkout ==
+formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
+== 1. lake build (includes Erdos40/Audit.lean) ==
+✔ [8921/8924] Built Erdos40.TheoremB (37s)
+✖ [8922/8924] Building Erdos40.Audit (56s)
+trace: .> LEAN_PATH=~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Cli/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/batteries/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/Qq/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/aesop/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/proofwidgets/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/importGraph/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/LeanSearchClient/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/plausible/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/mathlib/.lake/build/lib/lean:~/.cache/lean-packages/v4.33.1-mathlib-0df444a360ea-fc-e5f428182a3e/formal_conjectures/.lake/build/lib/lean:<scratch>/.lake/build/lib/lean ~/.elan/toolchains/leanprover--lean4---v4.33.1/bin/lean <scratch>/Erdos40/Audit.lean -o <scratch>/.lake/build/lib/lean/Erdos40/Audit.olean -i <scratch>/.lake/build/lib/lean/Erdos40/Audit.ilean -c <scratch>/.lake/build/ir/Erdos40/Audit.c --setup <scratch>/.lake/build/ir/Erdos40/Audit.setup.json --json
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+error: Erdos40/Audit.lean:70:0: rpow_not_mem_answerSet: statement differs from `∀ ε > 0, N ^ ε ∉` the set of Erdos40.erdos_40.
+  ours: ∀ (ε : ℝ), 0 < ε → (fun N ↦ ↑N ^ ε) ∉ {g | Erdos40.Erdos40For g ∧ Filter.Tendsto g Filter.atTop Filter.atTop}
+  expected: ∀ (ε : ℝ),
+  0 < ε → (fun N ↦ ↑N ^ ε) ∉ {g | Filter.Tendsto g Filter.atTop Filter.atTop ∧ Erdos40.Erdos40For g}
+error: Lean exited with code 1
+Some required targets logged failures:
+- Erdos40.Audit
+error: build failed
+FAIL: lake build exited non-zero
+
+### statement_theorem_b_set: Probe.lean run directly, exit 1 after 108.5 s
+ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_iff: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_sqrt_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.univ_hypothesis_and_conclusion: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.answerSet_nonempty_iff: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_sqrt: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.Erdos40For.of_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.liminf_eq_zero_of_bound: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.sumRep_le_of_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.strong_implies_erdos_158: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
+STATEMENT rpow_not_mem_answerSet: conclusion is not (fun N ↦ (N : ℝ) ^ ε) ∉ the set of erdos_40
+probe: 150 constants checked, 1 problems
+
+### statement_hijack: the swapped statement plus a macro that replaces the audit's `run_cmd` with one printing the pass message
+### verify.sh exit 1 after 155.4 s
+== 0. formal-conjectures checkout ==
+formal_conjectures at e5f428182a3ee32dde401eceb4a94ba0382e8434, no local changes
+== 1. lake build (includes Erdos40/Audit.lean) ==
+✔ [8919/8924] Built Erdos40.Equivalence (29s)
+✔ [8920/8924] Built Erdos40.Problem158 (6.7s)
+✔ [8921/8924] Built Erdos40.TheoremB (7.0s)
+ℹ [8922/8924] Built Erdos40.Audit (4.8s)
+info: Erdos40/Audit.lean:32:0: ErdosProblem40.sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:33:0: ErdosProblem40.exists_bound_of_limsup_ne_top depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:34:0: ErdosProblem40.limsup_ne_top_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:35:0: ErdosProblem40.sumRep_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:36:0: ErdosProblem40.count_congr depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:37:0: ErdosProblem40.isClopen_of_local depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:38:0: ErdosProblem40.uniform_dip depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:39:0: ErdosProblem40.exists_of_strong depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:40:0: ErdosProblem40.exists_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:41:0: ErdosProblem40.answerSet_nonempty_iff depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:42:0: ErdosProblem40.strong_implies_erdos_28 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:43:0: ErdosProblem40.Erdos40For.of_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:44:0: ErdosProblem40.sumRep_univ depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:45:0: ErdosProblem40.univ_hypothesis_and_conclusion depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:46:0: ErdosProblem40.sumRep_singleton_one_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:47:0: ErdosProblem40.not_erdos40For_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:48:0: ErdosProblem40.not_erdos40For_of_sqrt_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:49:0: ErdosProblem40.sumRep_le_of_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:50:0: ErdosProblem40.B2_of_sumRep_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:51:0: ErdosProblem40.count_sq_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:52:0: ErdosProblem40.rpow_neg_half depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:53:0: ErdosProblem40.tendsto_inv_sqrt depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:54:0: ErdosProblem40.liminf_eq_zero_of_bound depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:55:0: ErdosProblem40.strong_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:56:0: ErdosProblem40.weaker_iff_forall_B2 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:57:0: ErdosProblem40.strong_implies_erdos_158 depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:58:0: ErdosProblem40.TheoremB.measure_subset_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:59:0: ErdosProblem40.TheoremB.sum_powersetCard_prod_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:60:0: ErdosProblem40.TheoremB.measure_E_le depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:61:0: ErdosProblem40.TheoremB.sumRep_le_of_not_mem depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:62:0: ErdosProblem40.TheoremB.count_ge depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:63:0: ErdosProblem40.TheoremB.exists_good depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:64:0: ErdosProblem40.exists_dense_bounded depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:65:0: ErdosProblem40.not_erdos40For_rpow depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:66:0: ErdosProblem40.rpow_not_mem_answerSet depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:67:0: ErdosProblem40.not_erdos40For_of_rpow_isBigO depends on: [propext, Classical.choice, Quot.sound]
+info: Erdos40/Audit.lean:70:0: statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures
+✔ [8923/8924] Built Erdos40 (4.9s)
+Build completed successfully (8924 jobs).
 == 2. re-elaborating Erdos40/Audit.lean ==
-26 axiom reports clean; statement check passed
+36 axiom reports clean; statement check passed
 == 3. axiom probe, compiled without the library and loading it at runtime ==
 ErdosProblem40.strong_implies_erdos_28: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.uniform_dip: [propext, Classical.choice, Quot.sound]
@@ -610,6 +967,11 @@ ErdosProblem40.B2_of_sumRep_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.count_sq_le: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.weaker_iff_forall_B2: [propext, Classical.choice, Quot.sound]
 ErdosProblem40.strong_iff_forall_B2: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.TheoremB.exists_good: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_rpow: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.not_erdos40For_of_rpow_isBigO: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.exists_dense_bounded: [propext, Classical.choice, Quot.sound]
+ErdosProblem40.rpow_not_mem_answerSet: [propext, Classical.choice, Quot.sound]
 STATEMENT exists_iff: left side is not the right side of erdos_40.variants.weaker
-probe: 76 constants checked, 1 problems
+probe: 152 constants checked, 1 problems
 FAIL: probe exited 1

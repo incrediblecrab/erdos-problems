@@ -3,6 +3,7 @@ Copyright (c) 2026 Max Marquardt.
 Released under the MIT licence; see LICENSE at the repository root.
 -/
 import Erdos40.Problem158
+import Erdos40.TheoremB
 
 /-!
 # Axiom and statement audit
@@ -11,7 +12,7 @@ Two ways a compiled theorem can still fail to prove what it claims: it can rest 
 
 `#assert_axioms` walks the transitive dependency graph with `Lean.collectAxioms` and fails unless every axiom found is one of `propext`, `Classical.choice`, `Quot.sound`.
 
-The `run_cmd` block below compares elaborated statements, as `Expr`s, against the declarations in `FormalConjectures` at the pinned commit. It checks the left side of `exists_iff` against the right side of `Erdos40.erdos_40.variants.weaker`, the set in `answerSet_nonempty_iff` against the set in `Erdos40.erdos_40`, and the conclusion of `strong_implies_erdos_28` against the type of `Erdos28.erdos_28`. For problem 158 it checks the conclusion of `strong_implies_erdos_158` against the right side of `Erdos158.erdos_158`, the right side of `strong_iff_forall_B2` with `g := 2` against that same right side less its hypothesis `A.Infinite`, and both sides of `weaker_iff_forall_B2` against those two anchors.
+The `run_cmd` block below compares elaborated statements, as `Expr`s, against the declarations in `FormalConjectures` at the pinned commit. It checks the left side of `exists_iff` against the right side of `Erdos40.erdos_40.variants.weaker`, the set in `answerSet_nonempty_iff` against the set in `Erdos40.erdos_40`, and the conclusion of `strong_implies_erdos_28` against the type of `Erdos28.erdos_28`. For problem 158 it checks the conclusion of `strong_implies_erdos_158` against the right side of `Erdos158.erdos_158`, the right side of `strong_iff_forall_B2` with `g := 2` against that same right side less its hypothesis `A.Infinite`, and both sides of `weaker_iff_forall_B2` against those two anchors. For Theorem B it checks that `rpow_not_mem_answerSet` says, for every `ε > 0`, that `fun N ↦ (N : ℝ) ^ ε` is not in the set of `Erdos40.erdos_40`, and that `not_erdos40For_rpow` says that it lacks `Erdos40.Erdos40For`.
 
 These checks run inside the environment they audit. `../verify.sh` repeats the axiom check from a separate process that loads the compiled modules at runtime, and replays them through the kernel with `leanchecker`.
 -/
@@ -54,6 +55,16 @@ namespace ErdosProblem40
 #assert_axioms strong_iff_forall_B2
 #assert_axioms weaker_iff_forall_B2
 #assert_axioms strong_implies_erdos_158
+#assert_axioms TheoremB.measure_subset_le
+#assert_axioms TheoremB.sum_powersetCard_prod_le
+#assert_axioms TheoremB.measure_E_le
+#assert_axioms TheoremB.sumRep_le_of_not_mem
+#assert_axioms TheoremB.count_ge
+#assert_axioms TheoremB.exists_good
+#assert_axioms exists_dense_bounded
+#assert_axioms not_erdos40For_rpow
+#assert_axioms rpow_not_mem_answerSet
+#assert_axioms not_erdos40For_of_rpow_isBigO
 
 open Lean Elab Command Term Meta in
 run_cmd do
@@ -115,6 +126,19 @@ run_cmd do
   let some (lhs6, rhs6) := ours6.type.iff? | throwError "weaker_iff_forall_B2 is not an ↔"
   unless lhs6 == fcRhs && rhs6 == rhs5 do
     throwError "weaker_iff_forall_B2: a side differs from erdos_40.variants.weaker or strong_iff_forall_B2."
-  logInfo "statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures"
+  -- rpow_not_mem_answerSet : ∀ ε : ℝ, 0 < ε → (fun N ↦ (N : ℝ) ^ ε) ∉ (the set in FC's erdos_40)
+  let ours7 ← get ``ErdosProblem40.rpow_not_mem_answerSet
+  let expected7 ← liftTermElabM do
+    let lam ← elabTerm (← `(fun S : Set (ℕ → ℝ) ↦ ∀ ε : ℝ, 0 < ε → (fun N : ℕ ↦ (N : ℝ) ^ ε) ∉ S)) none
+    instantiateMVars (lam.beta #[fcSet])
+  unless ours7.type == expected7 do
+    throwError "rpow_not_mem_answerSet: statement differs from `∀ ε > 0, N ^ ε ∉` the set of Erdos40.erdos_40.\n  ours: {ours7.type}\n  expected: {expected7}"
+  -- not_erdos40For_rpow : ∀ {ε : ℝ}, 0 < ε → ¬ Erdos40For (fun N ↦ (N : ℝ) ^ ε)
+  let ours8 ← get ``ErdosProblem40.not_erdos40For_rpow
+  let expected8 ← liftTermElabM do
+    instantiateMVars (← elabTerm (← `(∀ {ε : ℝ}, 0 < ε → ¬ Erdos40.Erdos40For (fun N : ℕ ↦ (N : ℝ) ^ ε))) none)
+  unless ours8.type == expected8 do
+    throwError "not_erdos40For_rpow: statement differs from `∀ ε > 0, ¬ Erdos40For (N ^ ε)`.\n  ours: {ours8.type}"
+  logInfo "statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures"
 
 end ErdosProblem40

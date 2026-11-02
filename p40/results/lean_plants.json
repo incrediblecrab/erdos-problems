@@ -1,20 +1,21 @@
 {
-  "date": "2026-09-28T11:32:11-04:00",
+  "date": "2026-11-01T18:20:03-05:00",
   "lean": "Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
-  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
   "formal_conjectures": "e5f428182a3ee32dde401eceb4a94ba0382e8434",
   "sources_sha256": {
     "lakefile.toml": "54fd32d7d6c684cff2ae165eb989db5313836496c391db43f7fa93b32767040a",
     "lake-manifest.json": "01e5bca58f81ad577f319d889b790ad0f49c8d14ff0e11bc95426a7468e17bb4",
     "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
-    "Erdos40.lean": "c5b38106155f86357e41e9f6adf949a56f2ad4fcca23e26b064b2edfcc5ca352",
-    "Probe.lean": "88ba4b9eae9ac1491307b899b249e978480db78d660373c29bd9c05c635aded3",
-    "verify.sh": "c275af1b957e7781dd5fbf8c3b984be6bf847e87b94440e50801faf8de608c5d",
+    "Erdos40.lean": "839be8b3ea2753c7e4d5348dde43069e77f98c2834da08d16f257e19cd57a085",
+    "Probe.lean": "7596b6ffa4f5a7258bd01f9e2816a3302a29f0b6f9f41922689bb78ed008cb00",
+    "verify.sh": "aa4a21f6d118acd1196d1dc0f5e98af7f28b8536d65f33fadaa291d8f8c37756",
     "Erdos40/Basic.lean": "c0d71af1f9d181ae41c76dad29299f09ec3f823fdde0699e73c4c704ff239a24",
     "Erdos40/Equivalence.lean": "e76bf76e8c99abd2297758de27616def78d6d0529f2645662cf82b8d7fd95bfb",
     "Erdos40/Problem158.lean": "47931037ef3e905d33ea323a320af8ddf452e94c740125a6884a36d070ca3d29",
-    "Erdos40/Audit.lean": "2442652bd2256dec9b5ba55db6650a53a8b9bde3899978cdd9e59d26ed23ab7f",
-    "plants.py": "21068beef2770ed08aa81835226e349f72b2b9b58ade8a92b4ebaa1b232c9318"
+    "Erdos40/TheoremB.lean": "6ad5464619969d42ca1709655b2594d1acf194c29a00fceef65e1aca3fc2a107",
+    "Erdos40/Audit.lean": "7e82d69bb205aa44747a3c206eefd58ac717c441b0f1788df387169fb951d150",
+    "plants.py": "c70f8aa689f914a642f0bb306f499971e8e5bd95059f85a8bab77209ad794729"
   },
   "timeout_seconds": 1800,
   "cases": [
@@ -28,7 +29,7 @@
       "step": null,
       "fail_line": null,
       "message_found": true,
-      "seconds": 72.4,
+      "seconds": 121.8,
       "ok": true
     },
     {
@@ -54,7 +55,7 @@
       "step": 0,
       "fail_line": "FAIL: formal_conjectures has local changes",
       "message_found": true,
-      "seconds": 0.2,
+      "seconds": 0.3,
       "ok": true
     },
     {
@@ -67,7 +68,7 @@
       "step": 1,
       "fail_line": "FAIL: lake build exited non-zero",
       "message_found": true,
-      "seconds": 46.9,
+      "seconds": 38.7,
       "ok": true
     },
     {
@@ -80,7 +81,7 @@
       "step": 3,
       "fail_line": "FAIL: probe exited 1",
       "message_found": true,
-      "seconds": 53.5,
+      "seconds": 78.8,
       "ok": true
     },
     {
@@ -93,7 +94,7 @@
       "step": 3,
       "fail_line": "FAIL: probe exited 1",
       "message_found": true,
-      "seconds": 61.8,
+      "seconds": 91.2,
       "ok": true
     },
     {
@@ -106,7 +107,7 @@
       "step": 4,
       "fail_line": "FAIL: leanchecker rejected Erdos40.Equivalence",
       "message_found": true,
-      "seconds": 130.2,
+      "seconds": 125.0,
       "ok": true
     },
     {
@@ -119,12 +120,12 @@
       "step": 1,
       "fail_line": "FAIL: lake build exited non-zero",
       "message_found": true,
-      "seconds": 40.0,
+      "seconds": 36.0,
       "probe": {
         "exit": 1,
         "expect_message": "STATEMENT exists_iff: left side is not the right side of erdos_40.variants.weaker",
         "message_found": true,
-        "seconds": 24.0
+        "seconds": 38.2
       },
       "ok": true
     },
@@ -138,12 +139,12 @@
       "step": 1,
       "fail_line": "FAIL: lake build exited non-zero",
       "message_found": true,
-      "seconds": 46.2,
+      "seconds": 38.7,
       "probe": {
         "exit": 1,
         "expect_message": "STATEMENT exists_iff: right side is not Erdos40For (fun _ ↦ 1)",
         "message_found": true,
-        "seconds": 31.3
+        "seconds": 39.1
       },
       "ok": true
     },
@@ -157,12 +158,12 @@
       "step": 1,
       "fail_line": "FAIL: lake build exited non-zero",
       "message_found": true,
-      "seconds": 34.8,
+      "seconds": 32.2,
       "probe": {
         "exit": 1,
         "expect_message": "STATEMENT strong_implies_erdos_158: conclusion is not the right side of erdos_158",
         "message_found": true,
-        "seconds": 31.2
+        "seconds": 45.9
       },
       "ok": true
     },
@@ -176,12 +177,63 @@
       "step": 1,
       "fail_line": "FAIL: lake build exited non-zero",
       "message_found": true,
-      "seconds": 34.8,
+      "seconds": 38.5,
       "probe": {
         "exit": 1,
         "expect_message": "STATEMENT strong_iff_forall_B2: right side at g = 2 is not the right side of erdos_158 without A.Infinite",
         "message_found": true,
-        "seconds": 27.5
+        "seconds": 61.1
+      },
+      "ok": true
+    },
+    {
+      "name": "sorry_theorem_b",
+      "planted": "`sorry` for the proof of `TheoremB.uniform_le`, the probability of one point of a block, which the audit does not list but Theorem B uses",
+      "expect_exit": 1,
+      "expect_step": 1,
+      "expect_message": "ErdosProblem40.rpow_not_mem_answerSet depends on non-standard axioms [sorryAx]",
+      "exit": 1,
+      "step": 1,
+      "fail_line": "FAIL: lake build exited non-zero",
+      "message_found": true,
+      "seconds": 32.6,
+      "ok": true
+    },
+    {
+      "name": "statement_theorem_b_weak",
+      "planted": "`rpow_not_mem_answerSet` restated for `1 / 2 < ε` only, a weaker statement, still fully proved",
+      "expect_exit": 1,
+      "expect_step": 1,
+      "expect_message": "rpow_not_mem_answerSet: statement differs",
+      "exit": 1,
+      "step": 1,
+      "fail_line": "FAIL: lake build exited non-zero",
+      "message_found": true,
+      "seconds": 35.3,
+      "probe": {
+        "exit": 1,
+        "expect_message": "STATEMENT rpow_not_mem_answerSet: not of the form ∀ ε : ℝ, 0 < ε → _",
+        "message_found": true,
+        "seconds": 51.8
+      },
+      "ok": true
+    },
+    {
+      "name": "statement_theorem_b_set",
+      "planted": "`rpow_not_mem_answerSet` restated with the conjunction in the set swapped, still fully proved",
+      "expect_exit": 1,
+      "expect_step": 1,
+      "expect_message": "rpow_not_mem_answerSet: statement differs",
+      "exit": 1,
+      "step": 1,
+      "fail_line": "FAIL: lake build exited non-zero",
+      "message_found": true,
+      "seconds": 102.3,
+      "probe": {
+        "exit": 1,
+        "expect_message": "STATEMENT rpow_not_mem_answerSet: conclusion is not (fun N ↦ (N : ℝ) ^ ε) ∉ the set of erdos_40",
+        "message_found": true,
+        "seconds": 108.5
       },
       "ok": true
     },
@@ -195,7 +247,7 @@
       "step": 3,
       "fail_line": "FAIL: probe exited 1",
       "message_found": true,
-      "seconds": 75.4,
+      "seconds": 155.4,
       "ok": true
     }
   ],

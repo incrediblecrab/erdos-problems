@@ -8,5 +8,5 @@
 |---|---|
 | `greedy_b2g.c` | the greedy $B_2[g]$ set, which keeps a table of representation counts and tries each candidate against it (§6) |
 | `greedy_check.py` | runs that program under a CPU-time limit and checks its output without sharing its code; writes `../results/greedy_b2g.json` and `../results/greedy_b2g_g2.txt` |
-| `theorem_b_check.py` | the numerical check of the constants in Theorem B; writes `../results/theorem_b_check.json` (§4) |
+| `theorem_b_check.py` | the numerical check of the constants in the written reconstruction of Theorem B; writes `../results/theorem_b_check.json` (§4.2) |
 | `final_check.py` | the gate of §8. `--write` regenerates the tables in the documentation, `--strict` counts any skip as a failure, and `--plant NAME` runs one planted defect, which must exit 1 |

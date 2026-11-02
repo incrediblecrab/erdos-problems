@@ -6,8 +6,8 @@ cd "$(dirname "$0")"
 export PATH="$HOME/.elan/bin:$PATH"
 command -v lake >/dev/null || { echo "FAIL: lake not on PATH (install elan)"; exit 1; }
 
-EXPECTED_AXIOM_LINES=26
-MODULES="Erdos40.Basic Erdos40.Equivalence Erdos40.Problem158"
+EXPECTED_AXIOM_LINES=36
+MODULES="Erdos40.Basic Erdos40.Equivalence Erdos40.Problem158 Erdos40.TheoremB"
 fail() { echo "FAIL: $*"; exit 1; }
 
 echo "== 0. formal-conjectures checkout =="
@@ -37,7 +37,7 @@ echo "== 2. re-elaborating Erdos40/Audit.lean =="
 out=$(lake env lean Erdos40/Audit.lean 2>&1) || { echo "$out"; fail "Audit.lean did not elaborate"; }
 n=$(grep -c 'depends on: \[propext, Classical.choice, Quot.sound\]' <<<"$out")
 [ "$n" -eq "$EXPECTED_AXIOM_LINES" ] || { echo "$out"; fail "expected $EXPECTED_AXIOM_LINES clean axiom reports, got $n"; }
-grep -q '^.*statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2 match FormalConjectures$' <<<"$out" || { echo "$out"; fail "statement check did not report success"; }
+grep -q '^.*statement check passed: exists_iff, answerSet_nonempty_iff, strong_implies_erdos_28, strong_implies_erdos_158, strong_iff_forall_B2, weaker_iff_forall_B2, rpow_not_mem_answerSet, not_erdos40For_rpow match FormalConjectures$' <<<"$out" || { echo "$out"; fail "statement check did not report success"; }
 echo "$n axiom reports clean; statement check passed"
 
 echo "== 3. axiom probe, compiled without the library and loading it at runtime =="

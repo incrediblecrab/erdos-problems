@@ -47,7 +47,7 @@ FC_FILES = {
 # The tracker database of the collection this repository came from; not part of the repository, compared only when present.
 TRACKER_DB = ROOT.parent / "tracker-and-solver" / "data" / "erdos.db"
 RULE_TERMS = 1000
-PLANT_CASES = ("control", "pin", "fc_edited", "sorry_listed", "sorry_unlisted", "axiom_unlisted", "kernel_off", "statement_lhs", "statement_rhs", "statement_158", "statement_forall_B2", "statement_hijack")
+PLANT_CASES = ("control", "pin", "fc_edited", "sorry_listed", "sorry_unlisted", "axiom_unlisted", "kernel_off", "statement_lhs", "statement_rhs", "statement_158", "statement_forall_B2", "sorry_theorem_b", "statement_theorem_b_weak", "statement_theorem_b_set", "statement_hijack")
 MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 EXCLUDED_DIRS = {".git", ".lake", "__pycache__"}
 
@@ -288,8 +288,8 @@ ANCHORS = [
     ("NOTES.md", "0.515 at the ", "terms"),
 ]
 
-# The session that did the work: the model, the CLI and the date. No script can check them, so the gate prints them. The date has no lasting record: a rerun of scripts/reproduce.sh overwrites the logs, and the site stamps each page with the date of the fetch in its own time zone, which read 2026-09-24 for a fetch at 20:57 on September 23, US Eastern time.
-PROVENANCE = ["Claude Opus 5.5", "Copilot CLI 1.0.88", "September 23, 2026"]
+# The sessions that did the work: the model, the CLI of the first session, and the dates of both; the second added the Lean proof of Theorem B. No script can check them, so the gate prints them. The date has no lasting record: a rerun of scripts/reproduce.sh overwrites the logs, and the site stamps each page with the date of the fetch in its own time zone, which read 2026-09-24 for a fetch at 20:57 on September 23, US Eastern time.
+PROVENANCE = ["Claude Opus 5.5", "Copilot CLI 1.0.88", "September 23, 2026", "November 1, 2026"]
 
 
 def fresh_values(ctx):
@@ -300,7 +300,7 @@ def fresh_values(ctx):
     return {"terms": Decimal(len(a)), "last_ratio": last_ratio}
 
 
-NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12}
+NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15}
 
 
 def phrase_count(phrase):
@@ -386,16 +386,16 @@ CLAIMS = [
     ("NOTES.md", "within each window the smallest ratio is close to the ratio at the window's right end", "holds", lambda c, p: all(x["min_ratio_in_window"] >= 0.97 * x["ratio_at_a_k"] for x in _greedy(c)["g2"]["checkpoints"]), "each window minimum is at least 0.97 times the ratio at a_k"),
     ("NOTES.md", "when lowered to one second", "count", lambda c: _greedy(c)["checks"]["cpu_limit"]["trip_limit_s"] if _greedy(c)["checks"]["cpu_limit"]["ok"] else None, "cpu_limit.trip_limit_s, if the lowered limit stopped the run"),
     ("NOTES.md", "`lean/verify.sh` runs five steps", "count", _step_count, "the steps verify.sh echoes, numbered from 0 as the list in NOTES.md is"),
-    ("NOTES.md", "compares six statements", "count", lambda c: len(parse_verify_log(c)["statements"]), "the statements line of results/lean_verify.log"),
-    ("NOTES.md", "every constant the three modules add", "count", lambda c: len(_modules(c)), "MODULES in lean/verify.sh"),
-    ("NOTES.md", "covers this project's three modules", "count", lambda c: len(_modules(c)), "MODULES in lean/verify.sh"),
+    ("NOTES.md", "compares eight statements", "count", lambda c: len(parse_verify_log(c)["statements"]), "the statements line of results/lean_verify.log"),
+    ("NOTES.md", "every constant the four modules add", "count", lambda c: len(_modules(c)), "MODULES in lean/verify.sh"),
+    ("NOTES.md", "covers this project's four modules", "count", lambda c: len(_modules(c)), "MODULES in lean/verify.sh"),
     ("NOTES.md", "for the two cases that alter it", "count", lambda c: sum(1 for x in _cases(c).values() if x["expect_step"] == 0), "the cases expected to stop at step 0"),
-    ("NOTES.md", "The four statement cases also run the probe alone", "count", lambda c: sum(1 for x in _cases(c).values() if "probe" in x), "the cases with a probe run"),
+    ("NOTES.md", "The six statement cases also run the probe alone", "count", lambda c: sum(1 for x in _cases(c).values() if "probe" in x), "the cases with a probe run"),
     ("NOTES.md", "`sorry_unlisted`, `axiom_unlisted` and `statement_hijack` pass steps 1 and 2", "holds", lambda c, p: _passes_steps(c, p, ("sorry_unlisted", "axiom_unlisted", "statement_hijack")), "each case stopped at the step after the phrase's last"),
     ("NOTES.md", "`kernel_off` passes steps 1 to 3 and is caught only by the kernel replay", "holds", lambda c, p: _passes_steps(c, p, ("kernel_off",)), "the case stopped at the step after the phrase's last"),
     ("NOTES.md", "the four formal-conjectures files these notes rely on", "count", _fc_count, "the formal-conjectures files refs/fetch.sh downloads, if they are the ones FC_FILES names"),
     ("NOTES.md", "the note prints its ratios to four places", "count", _note_places, "the decimal places of the ratios in the note's Table 1"),
-    ("scripts/reproduce.sh", "on eleven planted defects", "count", lambda c: len(_cases(c)) - 1, "the cases in results/lean_plants.json besides the control"),
+    ("scripts/reproduce.sh", "on fourteen planted defects", "count", lambda c: len(_cases(c)) - 1, "the cases in results/lean_plants.json besides the control"),
 ]
 
 
