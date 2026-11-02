@@ -11,4 +11,4 @@
 | [RaSh17] Raz, Sharir | [arXiv:1501.00379](https://arxiv.org/abs/1501.00379) | $O(n^{20/9})$ (Thm 1), the current upper bound |
 | [Gr13] Gronwall | [DOI](https://doi.org/10.1090/S0002-9947-1913-1500940-6) | Mertens' product (p. 117) and $\limsup\sigma(N)/(N\log\log N)=e^\gamma$ (eq. 25) |
 
-Not read, so their bounds are as later papers report them: [PaSh92], [Pu74], and [Ap13], for which no copy was found. `fetch.sh` also saves the problem page as `erdos1086.html`, unhashed because the page embeds the access date.
+Not read, so their bounds are as later papers report them: [PaSh92], [Pu74], and [Ap13], for which no copy was found. `fetch.sh` also saves the problem page as `erdos1086.html`, unhashed because the page embeds the access date. It also clones drat-trim (https://github.com/marijnheule/drat-trim) at commit 2e3b2dc0ecf938addbd779d42877b6ed69d9a985 and builds its `lrat-check`, the proof checker used by `src/g10_certify.py`; `sh refs/fetch.sh drat-trim` does only that.

@@ -1,0 +1,465 @@
+{
+ "records": [
+  {
+   "name": "check-codegree-4",
+   "cnf_sha256": "ed977e318686d1174bfe130b83c2ddd6fc0efc1d97d4a77cfa0ccedaacff87b7",
+   "cnf_bytes": 1967552,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 56.2,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 409141626,
+    "lines": 1789017
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 56.2,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 77349 variables and 117809 clauses\nc VERIFIED\nc allocated 1024 795210 773490\nc Added clauses = 1718824.  Deleted clauses = 1684180.  Max live clauses = 117809\nc verification time = 55.50 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-codegree-5",
+   "cnf_sha256": "a3112cb03d15ad1d2cd2496e59784ed94620939d321f7a3e6771c6599c6fdaa8",
+   "cnf_bytes": 1967551,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 28.1,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 213316952,
+    "lines": 993186
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 28.1,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 77349 variables and 117809 clauses\nc VERIFIED\nc allocated 1024 795210 773490\nc Added clauses = 997702.  Deleted clauses = 928485.  Max live clauses = 117809\nc verification time = 26.44 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-codegree-6",
+   "cnf_sha256": "e9973e8a20ceb633c808d299eb873bf42171539dbceb500be2565add67da6f60",
+   "cnf_bytes": 1967550,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 18.1,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 151020723,
+    "lines": 708209
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 18.1,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 77349 variables and 117809 clauses\nc VERIFIED\nc allocated 1024 795210 773490\nc Added clauses = 724512.  Deleted clauses = 689297.  Max live clauses = 117809\nc verification time = 16.30 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-00",
+   "cnf_sha256": "4c6753462253262fbcfffcadd205a52a74e5d9c33f30ead12093398645ef1b02",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 11829519,
+    "lines": 115786
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 201239.  Deleted clauses = 169295.  Max live clauses = 119140\nc verification time = 1.27 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-01",
+   "cnf_sha256": "c26be56654cc36c0ab0e2d7e3a0ed3d06f8dde2fa9d5dcd23e08f0c6e5b9e338",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 9356134,
+    "lines": 108248
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 194720.  Deleted clauses = 171305.  Max live clauses = 119140\nc verification time = 0.99 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-02",
+   "cnf_sha256": "adb7502b3908d19c751a41e91d14f2383bbccce5354a635492cf1f7f1d971935",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 7250201,
+    "lines": 95710
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 185129.  Deleted clauses = 158625.  Max live clauses = 119140\nc verification time = 0.72 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-03",
+   "cnf_sha256": "c677e764771a52459fbb0b48ba11d3178129adf4e1a85d65d7106480baa8a937",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 7406774,
+    "lines": 98179
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 186796.  Deleted clauses = 162022.  Max live clauses = 119140\nc verification time = 0.74 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-04",
+   "cnf_sha256": "ac6efefb64fb767b3da1089439ed444b2becd0b377fd05cb01cdf14db196d8fd",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 11894774,
+    "lines": 116611
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 201751.  Deleted clauses = 172636.  Max live clauses = 119140\nc verification time = 1.31 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-05",
+   "cnf_sha256": "6cb3de7614651634898233bfce040046233218cd4a130ab341a978db29f153bc",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 6782674,
+    "lines": 92333
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 182404.  Deleted clauses = 156819.  Max live clauses = 119140\nc verification time = 0.70 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-06",
+   "cnf_sha256": "ddeba756bbc352672bbad98e969034618e150e2151b05356b5a990260fe52dc0",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8590772,
+    "lines": 102586
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 190392.  Deleted clauses = 161364.  Max live clauses = 119140\nc verification time = 0.91 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-07",
+   "cnf_sha256": "e21d24e2b9cfa6ce5fb5ed6017ef2a0a1a8daf6409756c78aa0ac2959e7d0aa3",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 6282418,
+    "lines": 82739
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 173752.  Deleted clauses = 142472.  Max live clauses = 119140\nc verification time = 0.75 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-08",
+   "cnf_sha256": "4a5e95fe11a752dcd5a450939bdb4a05aea865a31675890e00d9431343805eaa",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8678134,
+    "lines": 100620
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 189040.  Deleted clauses = 158808.  Max live clauses = 119140\nc verification time = 0.93 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-09",
+   "cnf_sha256": "a71c2d258bf882ca1cded841ac01313d5bb43c19b40504aec1c886fe414af659",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8168216,
+    "lines": 98597
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 187882.  Deleted clauses = 158447.  Max live clauses = 119140\nc verification time = 0.82 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-10",
+   "cnf_sha256": "49f03210f1d5ad5fae561c07b11bf956e3445f09cb2e693822df2aedfa1e9d26",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8771169,
+    "lines": 102608
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 191114.  Deleted clauses = 160238.  Max live clauses = 119140\nc verification time = 1.05 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-11",
+   "cnf_sha256": "bad0b12f798f8a4bfffb6f3beeccc978738d1a20ed71694afaed6c1be7c87847",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 6656515,
+    "lines": 93231
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 182385.  Deleted clauses = 156557.  Max live clauses = 119140\nc verification time = 0.71 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-12",
+   "cnf_sha256": "63b6b62cd0186d2cae5e205427e57067fc1ba2c901d6249329aacb111d86bc68",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8500915,
+    "lines": 101876
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 190362.  Deleted clauses = 163993.  Max live clauses = 119140\nc verification time = 0.95 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-13",
+   "cnf_sha256": "a2f7dcd157761a36c33b337445f96025c802276768c4b4624a25cc3b1320aa9d",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 5891829,
+    "lines": 83419
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 175173.  Deleted clauses = 144367.  Max live clauses = 119140\nc verification time = 0.61 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-14",
+   "cnf_sha256": "689b61421c9ab722d9fc23a5964cce93f508ba009b503c964bdddf23ae9efa80",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 7317077,
+    "lines": 97471
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 186195.  Deleted clauses = 162367.  Max live clauses = 119140\nc verification time = 0.78 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-15",
+   "cnf_sha256": "1bb1b6c61647edb12135917aec6715ee5b4e576d3a72f8875cde2a2986018f9d",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 7570754,
+    "lines": 96976
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 187105.  Deleted clauses = 157574.  Max live clauses = 119140\nc verification time = 0.84 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-16",
+   "cnf_sha256": "101f7532b5b97d9bd6de94d5d58145a079597820a7a7f4b229f48eb3192653d4",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 8791131,
+    "lines": 104954
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 192036.  Deleted clauses = 163333.  Max live clauses = 119140\nc verification time = 0.98 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "check-link-17",
+   "cnf_sha256": "5e9e46ce6ef052d6399356967efe6e2b7038efdd7d4d67458e91659908460f39",
+   "cnf_bytes": 1989878,
+   "solver": "cadical",
+   "solver_args": "-q --no-binary --lrat",
+   "solver_exit": 20,
+   "solver_seconds": 2.0,
+   "abort": null,
+   "proof_mode": "stream",
+   "proof": {
+    "bytes": 10073303,
+    "lines": 110365
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds_after_start": 2.0,
+   "checker_output_tail": "c expecting proof in stdin\nc parsed a formula with 78357 variables and 119140 clauses\nc VERIFIED\nc allocated 1024 804195 783570\nc Added clauses = 196526.  Deleted clauses = 168479.  Max live clauses = 119140\nc verification time = 1.14 secs\n",
+   "status": "accepted"
+  },
+  {
+   "name": "exact",
+   "cnf_sha256": "c63d777fbec1ba1dc690d97c11ca7d44a2b45605972ea01d60d41aeafc29ee0d",
+   "cnf_bytes": 1033485,
+   "route": "kissat DRAT, checked by drat-trim, whose LRAT output is checked by lrat-check",
+   "solver": "kissat",
+   "solver_args": "-q --no-binary",
+   "solver_exit": 20,
+   "solver_seconds": 23.2,
+   "proof": {
+    "format": "DRAT",
+    "bytes": 96619305,
+    "lines": 1450382
+   },
+   "drat_trim_exit": 0,
+   "drat_trim_seconds": 16.1,
+   "drat_trim_output_tail": "ted empty clause; start verification via backward checking\n\nc 24881 of 59896 clauses in core                            \n\nc 264829 of 714206 lemmas in core using 8205888 resolution steps\n\nc 5948 RAT lemmas in core; 0 redundant literals in core lemmas\n\ns VERIFIED\n\nc verification time: 16.128 seconds\n",
+   "lrat_from_drat_trim": {
+    "bytes": 76827961,
+    "lines": 414310
+   },
+   "checker": "lrat-check",
+   "checker_exit": 0,
+   "checker_seconds": 1.0,
+   "checker_output_tail": "c parsed a formula with 23813 variables and 59896 clauses\nc VERIFIED\nc allocated 1024 404298 238130\nc Added clauses = 324725.  Deleted clauses = 324624.  Max live clauses = 59896\nc verification time = 0.89 secs\n",
+   "abort": null,
+   "status": "accepted"
+  }
+ ],
+ "tools": {
+  "cadical": "3.0.1",
+  "kissat": "4.0.4",
+  "drat_trim_commit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985"
+ },
+ "control": {
+  "case": "check-link-09",
+  "solver_exit": 20,
+  "proof_lines": 98597,
+  "deleted_line": 61378,
+  "intact_accepted": true,
+  "corrupted_accepted": false
+ }
+}

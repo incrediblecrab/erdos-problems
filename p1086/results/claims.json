@@ -36,43 +36,43 @@
    "n": 9,
    "g": 36,
    "evidence": "upper: src/g9_exact.py with src/g9_box_check.py, NOTES.md section 4; lower: stored configuration"
+  },
+  {
+   "n": 10,
+   "g": 48,
+   "evidence": "upper: src/g10_exact.py with src/g10_check.py, NOTES.md section 4; lower: stored configuration"
   }
  ],
  "small_n": [
   {
-   "n": 10,
-   "lower": 48,
-   "upper": 51
-  },
-  {
    "n": 11,
    "lower": 60,
-   "upper": 70
+   "upper": 66
   },
   {
    "n": 12,
    "lower": 74,
-   "upper": 93
+   "upper": 88
   },
   {
    "n": 13,
    "lower": 91,
-   "upper": 120
+   "upper": 114
   },
   {
    "n": 14,
    "lower": 108,
-   "upper": 152
+   "upper": 145
   },
   {
    "n": 15,
    "lower": 128,
-   "upper": 190
+   "upper": 181
   },
   {
    "n": 16,
    "lower": 148,
-   "upper": 233
+   "upper": 222
   }
  ],
  "lattice": [

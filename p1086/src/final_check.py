@@ -3,7 +3,8 @@
     python src/final_check.py
 
 Needs src/grid_count, src/brute_count, src/small_search and src/box_scan built (see README.md), results/raw/ as
-written by src/lattice_table.py, and numpy, sympy and z3. Takes 3.5 to 7 minutes on a shared machine.
+written by src/lattice_table.py, numpy, sympy, z3, python-sat, networkx, and kissat and cadical on PATH. Takes about 7.5
+minutes on a shared machine.
 """
 import hashlib
 import json
@@ -165,6 +166,56 @@ def main():
         check("planted: g9_box_check rejects a classification with one 8-point configuration dropped",
               r.returncode == 1)
 
+        # 3c. g(10) = 48
+        r = run([PY, SRC / "g10_exact.py", "--write-to", tmp / "g10_classes.json"])
+        g10_ok = g9_ok and r.returncode == 0 and "g(10) = 48" in r.stdout
+        check("g10_exact: no 10-point set has 49 triangles of one nonzero area, so g(10) = 48", g10_ok, last(r))
+        stored_g10 = (ROOT / "results" / "g10_classes.json").read_text()
+        check("g10_exact: results/g10_classes.json is what the enumeration writes",
+              g10_ok and (tmp / "g10_classes.json").read_text() == stored_g10)
+        r = run([PY, SRC / "g10_check.py"])
+        g10_ok &= r.returncode == 0
+        check("g10_check: integer re-derivation of the growth rules and an independent encoding of the hypergraph "
+              "lemma agree with g10_classes.json", r.returncode == 0, last(r))
+        source = (SRC / "g10_exact.py").read_text()
+        for name, old, new in (("rule b4 left out of the hypergraph lemma", 'LEMMA_RULES = ("a3", "b5", "b4")',
+                                'LEMMA_RULES = ("a3", "b5")'),
+                               ("a 10-point enumeration run at threshold 48 instead of 49",
+                                'ten = grow(list(nine), 0, TEN, f"C(10, {TEN})")',
+                                'ten = grow(list(nine), 0, TEN - 1, f"C(10, {TEN})")')):
+            wrong = SRC / f"_planted_g10_{len(name)}.py"  # in src/ so that its imports resolve
+            try:
+                wrong.write_text(source.replace(old, new, 1))
+                r = run([PY, wrong, "--write-to", tmp / "g10_planted.json"])
+            finally:
+                wrong.unlink()
+            check(f"planted: g10_exact rejects {name}", source.count(old) == 1 and r.returncode == 1)
+        doctored = json.loads(stored_g10)
+        doctored["eight_points_at_least_24"] = doctored["eight_points_at_least_24"][:-1]
+        (tmp / "g10_classes_short.json").write_text(json.dumps(doctored))
+        r = run([PY, SRC / "g10_check.py", tmp / "g10_classes_short.json", "--skip-lemma"])
+        check("planted: g10_check rejects a classification with one 24-edge eight-point configuration dropped",
+              r.returncode == 1 and json.loads(stored_g10)["eight_points_at_least_24"][-1]["edges"] == 24)
+
+        # 3d. LRAT certificates for the hypergraph lemma, and the box_scan argument guard
+        r = run([PY, SRC / "g10_certify.py", "--verify"])
+        g10_ok &= r.returncode == 0
+        check("g10_certify --verify: every lemma CNF that g10_exact and g10_check generate has an accepted LRAT proof "
+              "record, and the checker control rejected a corrupted proof", r.returncode == 0, last(r))
+        lrat = json.loads((ROOT / "results" / "g10_lrat.json").read_text())
+        for name, mutate in (("one proof record missing", lambda d: d["records"].pop()),
+                             ("a recorded CNF hash that does not match the generated formula",
+                              lambda d: d["records"][0].update(cnf_sha256="0" * 64))):
+            doctored = json.loads(json.dumps(lrat))
+            mutate(doctored)
+            (tmp / "g10_lrat_bad.json").write_text(json.dumps(doctored))
+            r = run([PY, SRC / "g10_certify.py", "--verify", tmp / "g10_lrat_bad.json"])
+            check(f"planted: g10_certify --verify rejects {name}", r.returncode == 1)
+        for args, what in (([6, 6, "8 24", 1], "a size and threshold passed as one argument"),
+                           ([6, 6, 8, 1], "a threshold below the subset size")):
+            r = run([SRC / "box_scan", *args])
+            check(f"planted: box_scan refuses {what}", r.returncode == 1 and not r.stdout)
+
         # 4. small-n configurations
         small = json.loads((ROOT / "results" / "small_n.json").read_text())
         r = run([PY, SRC / "recount.py", ROOT / "results" / "small_n.json"])
@@ -176,6 +227,9 @@ def main():
         check("planted: recount rejects an overstated count", r.returncode == 1)
         r = run([PY, SRC / "recount.py", ROOT / "results" / "lower_search.json"])
         check("recount: every configuration kept by lower_search", r.returncode == 0, last(r))
+        r = run([PY, SRC / "recount.py", ROOT / "results" / "constructions.json"])
+        check("recount: every configuration kept by constructions", r.returncode == 0, last(r))
+        built = json.loads((ROOT / "results" / "constructions.json").read_text())["best"]
         searched = json.loads((ROOT / "results" / "lower_search.json").read_text())["best"]
         doctored = json.loads((ROOT / "results" / "lower_search.json").read_text())
         doctored["best"][3]["count"] += 1
@@ -191,12 +245,14 @@ def main():
             upper[n] = upper[n - 1] * n // (n - 3)
             if n == 9 and g9_ok:
                 upper[9] = min(upper[9], 36)
+            if n == 10 and g10_ok:
+                upper[10] = min(upper[10], 48)
         for e in claims["exact"]:
             n, g = e["n"], e["g"]
             ok = best[n]["count"] == g if n in best else (n, g) == (3, 1)
             check(f"claim g({n}) = {g}: lower bound attained by a stored configuration", ok)
             if n >= 7:
-                check(f"claim g({n}) = {g}: upper bound {upper[n]} from g(7) = 18, g(9) <= 36 and averaging",
+                check(f"claim g({n}) = {g}: upper bound {upper[n]} from g(7) = 18, g(9) <= 36, g(10) <= 48 and averaging",
                       upper[n] == g)
         for e in claims["small_n"]:
             n = e["n"]
@@ -209,6 +265,12 @@ def main():
             claimed = claimed if claimed is not None else next(c["lower"] for c in claims["small_n"] if c["n"] == n)
             check(f"lower_search at n = {n}: best {e['count']}, not above the claimed lower bound {claimed}",
                   e["count"] <= claimed and e["improved"] == (e["count"] > e["previous"]))
+        for e in built:
+            n = e["n"]
+            claimed = next((c["g"] for c in claims["exact"] if c["n"] == n), None)
+            claimed = claimed if claimed is not None else next(c["lower"] for c in claims["small_n"] if c["n"] == n)
+            check(f"constructions at n = {n}: {e['method'].split()[0]} best {e['count']}, not above the claimed lower "
+                  f"bound {claimed}", e["count"] <= claimed and e["improved"] == (e["count"] > e["table"]))
         for e in claims["lattice"]:
             h = histogram(ROOT / "results" / "raw" / f"grid_{e['a']}x{e['b']}.txt")
             ok = h.get(e["D"], 0) == e["count"] and max(h.values()) == e["count"] and e["n"] == e["a"] * e["b"]

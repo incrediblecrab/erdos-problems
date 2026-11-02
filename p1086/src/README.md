@@ -1,6 +1,6 @@
 # src/
 
-**Objective.** Compute and check every number in `results/claims.json`. **Inputs.** None beyond the problem statement; no script reads `refs/`. Python scripts run under `~/.venvs/main/bin/python` (numpy, sympy, z3) from any directory.
+**Objective.** Compute and check every number in `results/claims.json`. **Inputs.** None beyond the problem statement; no script reads `refs/`. Python scripts run under `~/.venvs/main/bin/python` (numpy, sympy, z3, python-sat, networkx) from any directory. `g10_exact.py` and `g10_check.py` also need the SAT solvers kissat and cadical on `PATH` (Homebrew).
 
 Build the C programs first (no warnings under Apple clang 21):
 
@@ -20,8 +20,12 @@ cd src && for p in grid_count brute_count small_search box_scan; do clang -O2 -W
 | `g7_exact.py` | $g(7)=18$: classifies the 5-point sets with $\ge6$ and the 6-point sets with $\ge11$ equal-area triangles by a finite enumeration, then shows no 7-point set has 19; `--write` stores the classes in `results/g7_classes.json` |
 | `g7_box_check.py` | cross-checks that classification against an exhaustive scan of the $6\times6$ box, sharing no code with it |
 | `g9_exact.py` | $g(9)=36$: classifies the 6-point sets with $\ge10$, 7-point sets with $\ge16$ and 8-point sets with $\ge25$ equal-area triangles (Gröbner bases for the Type II six-point case) and shows no 9-point set has 37; `--write` stores the classes in `results/g9_classes.json` |
-| `box_scan.c`, `g9_box_check.py` | cross-check of `g9_exact.py` sharing no code with it: $6\times6$ box scans, the extension steps redone in integer arithmetic, and z3 on the Type II hypergraphs |
+| `g10_exact.py` | $g(10)=48$: classifies the 8-point sets with $\ge24$ and 9-point sets with $\ge35$ equal-area triangles by growth rules, with a hypergraph lemma checked by kissat, and shows no 10-point set has 49; `--write` stores the classes in `results/g10_classes.json` |
+| `g10_check.py` | cross-check of `g10_exact.py` sharing no code with it: the growth rules redone in integer arithmetic, and the lemma with its own CNF encoding and cadical; `--box` adds a $6\times6$ box scan, not part of the gate |
+| `g10_certify.py` | certificates for the lemma's 22 CNFs, written to `results/g10_lrat.json`: CaDiCaL LRAT proofs streamed into drat-trim's `lrat-check` for the 21 cross-check cases, and for the gate's CNF a kissat DRAT proof checked by drat-trim, whose LRAT output `lrat-check` checks (build both: `sh refs/fetch.sh drat-trim`); `--verify`, run by the gate, rebuilds the CNFs and matches their hashes to accepted records |
+| `constructions.py` | exhaustive scans of row and lattice-section constructions for $n=10,\dots,16$ (about 30 s), writing `results/constructions.json` |
+| `box_scan.c`, `g9_box_check.py` | `box_scan` refuses non-integer arguments and thresholds below the subset size and stops after 1,000,000 output lines; cross-check of `g9_exact.py` sharing no code with it: $6\times6$ box scans, the extension steps redone in integer arithmetic, and z3 on the Type II hypergraphs |
 | `small_search.c`, `small_table.py` | exhaustive and annealing search for $n\le16$ (about 7 min on 3 threads), writing `results/small_n.json` |
 | `lower_search.py` | strip, $7\times7$, large-box annealing and box-free exact beam searches for $n=10,\dots,16$ (about 40 min on 3 threads), writing `results/lower_search.json` |
 | `recount.py` | recounts every stored small-$n$ configuration |
-| `final_check.py` | re-derives every claim, planted defects included; exit 0 = pass (3.5 to 7 min on a shared machine) |
+| `final_check.py` | re-derives every claim, planted defects included; exit 0 = pass (about 7.5 min on a shared machine) |

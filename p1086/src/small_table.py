@@ -3,7 +3,7 @@
 Runs src/small_search (build: clang -O2 -o src/small_search src/small_search.c -lpthread -lm) exhaustively over the
 5 x 5 box for n <= 10 and the 6 x 6 box for n <= 12, and by simulated annealing in the 10 x 10 box for n <= 16 with
 several target areas and seeds, plus a longer pass in the 12 x 12 box for n >= 11. Keeps the best configuration per n, recounts it with recount.py, and adds the
-averaging upper bound g(n) <= floor(g(n-1) n / (n-3)) started from g(9) = 36 (src/g9_exact.py).
+averaging upper bound g(n) <= floor(g(n-1) n / (n-3)) started from g(10) = 48 (src/g10_exact.py).
 
     python src/small_table.py
 """
@@ -23,7 +23,7 @@ TARGETS = (1, 2, 3, 4, 6, 8, 12)
 ANNEAL = ([(n, 10, D, 1_000_000, seed) for n in range(4, 17) for D in TARGETS for seed in (1, 2, 3)]
           + [(n, 12, D, 4_000_000, seed) for n in range(11, 17) for D in TARGETS for seed in (4, 5, 6)])
 RESTARTS = 4
-EXACT = {3: 1, 4: 4, 5: 7, 6: 12, 7: 18, 8: 28, 9: 36}  # g(9) = 36 is src/g9_exact.py
+EXACT = {3: 1, 4: 4, 5: 7, 6: 12, 7: 18, 8: 28, 9: 36, 10: 48}  # g(9) is src/g9_exact.py, g(10) src/g10_exact.py
 THREADS = 3
 
 

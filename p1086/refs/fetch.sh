@@ -10,6 +10,13 @@
 set -e
 cd "$(dirname "$0")"
 
+# drat-trim and its lrat-check, the UNSAT proof checkers used by src/g10_certify.py (results/g10_lrat.json), pinned to the commit
+# that run used and built here rather than shared with another problem folder. `sh refs/fetch.sh drat-trim` builds only this.
+if [ ! -d drat-trim ]; then git clone -q https://github.com/marijnheule/drat-trim drat-trim; fi
+git -C drat-trim checkout -q 2e3b2dc0ecf938addbd779d42877b6ed69d9a985
+(cd drat-trim && clang drat-trim.c -std=c99 -O2 -o drat-trim && clang lrat-check.c -std=c99 -DLONGTYPE -O2 -o lrat-check)
+if [ "$1" = "drat-trim" ]; then echo "built $(pwd)/drat-trim/lrat-check"; exit 0; fi
+
 # [ErPu71] Erdős, Purdy, "Some extremal problems in geometry", JCTA 10 (1971) 246-252, DOI 10.1016/0097-3165(71)90028-8. Scan from the Rényi Institute's Erdős archive. Theorem 2 (p. 249) is the n^2 log log n lattice construction; p. 248 has the Lenz construction and the misprinted conjecture.
 curl -sL "https://users.renyi.hu/~p_erdos/1971-20.pdf" -o erpu71.pdf
 
