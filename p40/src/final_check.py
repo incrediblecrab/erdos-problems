@@ -7,6 +7,10 @@ The greedy list is rechecked here in a third implementation, sharing no code wit
 
 In the prose of the documentation every numeral must be accounted for: decimals and integers of three or more digits everywhere, formulas included, and smaller integers outside formulas. A numeral is accounted for when it is compared with a fresh value (ANCHORS); lies inside a text that a source backs (FACTS, QUOTES) or a worded claim that the records back (CLAIMS, whose number word is compared with a count); names a problem that refs/fetch.sh downloads, a section of NOTES.md, or a lemma or step that NOTES.md defines; is an exit status, 0 or 1; is the major version of Lean in lean/lean-toolchain or of the Python running this script; is an identifier that refs/fetch.sh fetches; is an ordered-list marker; or lies in one of the PROVENANCE labels, which are printed as unchecked. Small integers inside formulas are mathematics, which the proofs check and this scan does not. Code, links and generated tables are exempt from the scan; the generated tables must equal a fresh rendering instead.
 
+Problem statuses are not read from the site, which has shown none since October 6, 2026: check_status compares each status the documentation claims (STATUS_CLAIMS) with teorth/erdosproblems' data/problems.yaml and, when present, the tracker database.
+
+formal-conjectures is read at two commits: the pin, which lean/ builds against, and the later main-branch commit FC_HEAD that refs/fetch.sh downloads beside it for NOTES.md §1.2. An excerpt marked fc: must be in the pinned file, one marked fchead: in the main-branch file, and check_upstream compares the two sets of files.
+
 Usage: python src/final_check.py [--write] [--strict] [--plant NAME] [--list]
   --write       regenerate the generated tables in the documentation, then exit
   --strict      count a skipped check as a failure; use it once refs/ is populated
@@ -44,6 +48,9 @@ FC_FILES = {
     "fc_158.lean": "FormalConjectures/ErdosProblems/158.lean",
     "fc_Convolution.lean": "FormalConjecturesForMathlib/Combinatorics/Additive/Convolution.lean",
 }
+# formal-conjectures' main branch at FC_HEAD in refs/fetch.sh, against the pinned files: NOTES.md §1.2 says the first two are unchanged and the last two changed.
+FCHEAD_SAME = {"fchead_28.lean": "fc_28.lean", "fchead_Convolution.lean": "fc_Convolution.lean"}
+FCHEAD_CHANGED = {"fchead_40.lean": "fc_40.lean", "fchead_158.lean": "fc_158.lean"}
 # The tracker database of the collection this repository came from; not part of the repository, compared only when present.
 TRACKER_DB = ROOT.parent / "tracker-and-solver" / "data" / "erdos.db"
 RULE_TERMS = 1000
@@ -114,6 +121,7 @@ class Ctx:
         self.json = {}
         self.refs = {}
         self.extra_files = []  # planted paths, for the hygiene check
+        self.tracker = None  # problem statuses from the tracker database, read on first use
 
     def file(self, rel):
         if rel not in self.files:
@@ -159,6 +167,7 @@ class Ctx:
         c.json = copy.deepcopy(self.json)
         c.refs = dict(self.refs)
         c.extra_files = list(self.extra_files)
+        c.tracker = dict(self.tracker) if self.tracker is not None else None
         return c
 
     # derived data
@@ -171,6 +180,18 @@ class Ctx:
     def fc_pin(self):
         m = re.search(r'^rev = "([0-9a-f]{40})"$', self.text("lean/lakefile.toml"), re.M)
         return m.group(1)
+
+    def fc_head(self):
+        """The later formal-conjectures commit that refs/fetch.sh downloads beside the pin, or None."""
+        m = re.search(r"^FC_HEAD=([0-9a-f]{40})$", self.text("refs/fetch.sh"), re.M)
+        return m.group(1) if m else None
+
+    def ref_bytes(self, name):
+        """A file in refs/ as bytes, through the planted-file cache; Skip if it was never fetched."""
+        rel = f"refs/{name}"
+        if rel not in self.files and not (ROOT / rel).exists():
+            raise Skip(f"{rel} missing; run sh refs/fetch.sh")
+        return self.file(rel)
 
     def manifest(self):
         return self.js("lean/lake-manifest.json")["packages"]
@@ -208,7 +229,7 @@ def repo_files(ctx):
 
 # (document, source in refs/, quotation). Each must appear in the document in straight double quotes and, squashed, in the source.
 QUOTES = [
-    ("NOTES.md", "site_40.html", "This is open, and cannot be resolved with a finite computation."),
+    ("NOTES.md", "blog_9.html", "The site will not display the statuses of any problems"),
     ("NOTES.md", "site_40.html", r"This is a stronger form of the Erdős-Turán conjecture [28] (since establishing this for any function $g(N)\to \infty$ would imply a positive solution to [28])."),
     ("NOTES.md", "site_28.html", r"If $A\subseteq \mathbb{N}$ is such that $A+A$ contains all but finitely many integers then $\limsup 1_A\ast 1_A(n)=\infty$."),
     ("NOTES.md", "site_28.html", r"Another stronger conjecture would be that the hypothesis $\lvert A\cap [1,N]\rvert \gg N^{1/2}$ for all large $N$ suffices."),
@@ -219,6 +240,10 @@ QUOTES = [
     ("NOTES.md", "site_1191.html", "Erdős proved (see for example [HaRo66]) that if $A$ is an infinite Sidon set then"),
     ("NOTES.md", "site_1191.html", "for some constant $c>0$."),
     ("NOTES.md", "pliego_2405.04154v1.pdf", "The above though was proved when g = 1 by Erdős [18, §2 Theorem 8] by showing that in fact any Sidon sequence A satisfies"),
+    ("NOTES.md", "obryant_math0407117v1.tex", "can be made more precise: Every infinite Sidon set has a counting function $A(n)$ satisfying"),
+    ("NOTES.md", "obryant_math0407117v1.pdf", "These results are also reported as Theorems 8 and 9 of [31, Chapter II]."),
+    ("NOTES.md", "obryant_math0407117v1.tex", "The first author has proved that if $A$ is a Sidon sequence then"),
+    ("NOTES.md", "obryant_math0407117v1.tex", "showed that the counting function $A(n)$ of these sequences satisfies"),
     ("NOTES.md", "pliego_2405.04154v1.pdf", "would in turn follow from the stronger conjectural statement (see Erdős and Fuchs [11])"),
     ("NOTES.md", "pliego_2405.04154v1.pdf", "for any g ≥ 2 then every B2[g] sequence A ⊂ N has the property that"),
     ("NOTES.md", "pliego_2405.04154v1.pdf", "since asymptotic bases of order 2 cannot satisfy (1.4)"),
@@ -240,6 +265,15 @@ QUOTES = [
     ("NOTES.md", "oeis_A005282.txt", "Mian-Chowla sequence (a B_2 sequence)"),
 ]
 
+# Needles shared by several facts: the Halberstam–Roth entries of Pliego's and O'Bryant's bibliographies; GitHub's record of the October 14, 2026 commits to formal-conjectures' 40.lean and 158.lean, each the commit date followed by the first line of the message; and the Mathlib entry of a lake manifest.
+PLIEGO_18 = "[18] H. Halberstam, K. F. Roth, Sequences, Springer-Verlag, New York, 1983."
+OBRYANT_31 = "[31] Heini Halberstam and Klaus Friedrich Roth, Sequences, Second, Springer-Verlag, New York, 1983"
+PR_6740 = '"date": "2026-10-14T09:23:28Z"}, "message": " chore: tag every yes-or-no question with the question attribute  (#6740)'
+PR_6762 = '"date": "2026-10-14T11:54:29Z"}, "message": "chore: remove prop valued `answer(...)`s (#6762)'
+PR_7319 = '"date": "2026-10-14T16:27:22Z"}, "message": "feat(Util): write value questions as `@[question value]` (#7319)'
+PR_7327 = '"date": "2026-10-14T21:52:28Z"}, "message": "feat(Util) replace answer(sorry) with `def answer` (#7327)'
+MATHLIB_REV = '"rev": "0df444a360eaa60ab8c11dca51a86af692955474", "name": "mathlib"'
+
 # (document or "*", text in the document, [(source, needles, absent)]). A needle prefixed raw: is searched in the unnormalised file, and one prefixed page:N: only in page N of a PDF; a source prefixed repo: is read from the repository. The numbers inside the document text are accounted for by the fact.
 FACTS = [
     ("NOTES.md", r"offers a prize of \$500", [("site_40.html", ["$500"], [])]),
@@ -248,7 +282,7 @@ FACTS = [
     ("NOTES.md", "The files for problems 28, 40 and 158 carry no `formal_proof` attribute", [("fc_28.lean", [], ["formal_proof"]), ("fc_40.lean", [], ["formal_proof"]), ("fc_158.lean", [], ["formal_proof"])]),
     ("NOTES.md", "the site's page for problem 40 says its statement is formalised and links this file on the main branch", [("site_40.html", ["Formalised statement? Yes", "raw:formal-conjectures/blob/main/FormalConjectures/ErdosProblems/40.lean"], [])]),
     ("NOTES.md", "Thomas Bloom wrote in the problem 28 thread", [("thread_28.html", ["I'd be interested to know. Thomas Bloom —"], [])]),
-    ("NOTES.md", "the problem, which the page lists as open", [("site_1191.html", ["OPEN This is open"], [])]),
+    ("*", "October 6, 2026", [("blog_9.html", ["By Thomas Bloom on 6 October 2026", "No problem statuses : The site will not display the statuses of any problems (e.g. open, solved, etc.)."], [])]),
     ("NOTES.md", "his Conjecture 1.1", [("pliego_2405.04154v1.pdf", ["Conjecture 1.1"], [])]),
     ("NOTES.md", "(1.4)", [("pliego_2405.04154v1.pdf", ["(1.4)"], [])]),
     ("NOTES.md", "Pliego's Corollary 1.2", [("pliego_2405.04154v1.pdf", ["Corollary 1.2. For any g ≥ 2 there is a B2 [g] sequence"], [])]),
@@ -256,7 +290,23 @@ FACTS = [
     ("NOTES.md", "Pliego, p. 2:", [("pliego_2405.04154v1.pdf", ["page:2:The above though was proved when g = 1 by Erdős [18, §2 Theorem 8]"], [])]),
     ("NOTES.md", "I read (1.4) from a render of p. 2.", [("pliego_2405.04154v1.pdf", ["page:2:(1.4)", "page:2:since asymptotic bases of order 2 cannot satisfy (1.4)"], [])]),
     ("NOTES.md", "Cilleruelo, p. 1, writes", [("cilleruelo_2008_B2g.pdf", ["page:1:it is an old open problem to decide whether"], [])]),
-    ("NOTES.md", "Erdős's paper cited by Pliego as [18]", [("pliego_2405.04154v1.pdf", ["Erdős [18, §2 Theorem 8]"], [])]),
+    ("NOTES.md", "His reference [18] is Halberstam and Roth's *Sequences*, in the second edition of 1983; [HaRo66] is the first.", [("pliego_2405.04154v1.pdf", [PLIEGO_18], []), ("site_1191.html", ["[HaRo66]"], []), ("fchead_1191.lean", ["[HaRo66] Halberstam, H. and Roth, K. F., *Sequences. Vol. I*. (1966)"], [])]),
+    ("NOTES.md", "the first edition, [HaRo66] on the site, and the second, of 1983, which Pliego cites as [18] and O'Bryant as [31]", [("pliego_2405.04154v1.pdf", [PLIEGO_18, "Erdős [18, §2 Theorem 8]"], []), ("obryant_math0407117v1.pdf", [OBRYANT_31], [])]),
+    ("NOTES.md", "where Pliego's [18] had been taken for a paper of Erdős", [("pliego_2405.04154v1.pdf", [PLIEGO_18], [])]),
+    ("NOTES.md", "O'Bryant's annotation of Stöhr's survey of 1955 reports Stöhr's remark that Erdős's", [("obryant_math0407117v1.tex", ["\\bib{1955.Stohr}{article}{", "date={1955}", "Every infinite Sidon set has a counting function $A(n)$ satisfying\n$\\liminf \\frac{A(n)}{\\sqrt{n}}=0$", "He also notes that the second statement (and its\nproof) can be made more precise", "\\frac{A(n)\\sqrt{\\log n } }{\\sqrt{n}} \\ll 1$"], [])]),
+    ("NOTES.md", "His reference [31] is the edition of 1983 that Pliego cites", [("obryant_math0407117v1.pdf", [OBRYANT_31], []), ("pliego_2405.04154v1.pdf", [PLIEGO_18], [])]),
+    ("NOTES.md", "Two MathSciNet reviews that O'Bryant's LaTeX source carries, and that its PDF does not print", [("obryant_math0407117v1.tex", ["\\newcommand{\\mathreview}[2]{}%", "\\mathreview{B. Garrison}", "\\mathreview{Wen Peng Zhang}"], []), ("obryant_math0407117v1.pdf", [], ["Garrison", "Wen Peng Zhang"])]),
+    ("NOTES.md", "B. Garrison, reviewing a paper of Erdős and Freud", [("obryant_math0407117v1.tex", ["author={Freud, R\\'{o}bert}", "review={\\MR{85g:11018}},\n}\n\n\\mathreview{B. Garrison}{An infinite sequence $A$ of positive integers is called here a Sidon\nsequence", "$\\liminf\\sb {x\\to\\infty}A(x)/\\sqrt x=0$ and $\\liminf\\sb {x\\to\\infty}A(x)/\\sqrt{x/\\log x}<\\infty$", "[see A. St\\\"{o}hr , J. Reine Angew. Math. 194 (1955)"], [])]),
+    ("NOTES.md", "Wen Peng Zhang, reviewing a paper of Nash", [("obryant_math0407117v1.tex", ["\\bib{1989.Nash}{article}{", "review={\\MR{91e:11025}},\n}\n\n\\mathreview{Wen Peng Zhang}{", "P. Erdos (see a paper by A. St\\\"{o}hr", "$$\\liminf A(n)(\\log\\sp {1/2}n)/n\\sp {1/2}<\\infty.$$"], [])]),
+    ("NOTES.md", "added on October 19, 2026, after the pin", [("fchead_log_1191.json", ['"date": "2026-10-19T21:07:11Z"}, "message": "feat(ErdosProblems/1191): add Erdős Problem 1191 (#7167)'], [])]),
+    ("NOTES.md", "tags the bound $\\le c$ `research solved` in `erdos_1191.variants.liminf_le`, whose proof there is `sorry`, and tags the question whether the liminf is $0$ `research open` in `erdos_1191.parts.i`", [("fchead_1191.lean", ["@[category research solved, AMS 5 11]\ntheorem erdos_1191.variants.liminf_le", "ENNReal.ofReal c := by\n  sorry", "@[category research open, question, AMS 5 11]\ntheorem erdos_1191.parts.i", "log x ^ (1 / 2 : ℝ))) atTop = 0 := by"], [])]),
+    ("NOTES.md", "A MathSciNet review by Péter Kiss, of Cilleruelo's *$B_2[g]$ sequences whose terms are squares* (1995), which O'Bryant's LaTeX source carries, states their theorem in the form of Theorem B", [("obryant_math0407117v1.tex", ["\\bib{1995.Cilleruelo}{article}{", "title={$B\\sb 2[g]$ sequences whose terms are squares}", "\\mathreview{P\\'{e}ter Kiss}{", "P. Erdos and A. R\\'{e}nyi [Acta Arith. 6 (1960), 83--110;\nMR 22:10970] proved that for any $\\epsilon>0$ there exists a natural number $g$ and a $B\\sb 2[g]$ sequence\n${\\cal A}$ such that $a\\sb j\\ll j\\sp {2+\\epsilon}$"], [])]),
+    ("NOTES.md", "the statements of problems 40 and 158 changed on October 14, 2026: `40.lean` in pull requests 6740, 6762, 7319 and 7327, and `158.lean` in 6740 and 6762", [("fchead_log_40.json", [PR_6740, PR_6762, PR_7319, PR_7327], []), ("fchead_log_158.json", [PR_6740, PR_6762], [PR_7319, PR_7327])]),
+    ("NOTES.md", "The first and third add the attributes `question` and `question value`.", [("fchead_40.lean", ["@[category research open, question value, AMS 11]\ntheorem erdos_40 :", "@[category research open, question, AMS 11]\ntheorem erdos_40.variants.weaker"], []), ("fchead_log_40.json", ["with the question attribute (#6740)", "write value questions as `@[question value]` (#7319)"], [])]),
+    ("NOTES.md", "Pull request 6762 removes `answer(sorry) ↔` from the yes-or-no statements", [("fchead_log_40.json", [PR_6762], []), ("fc_40.lean", ["answer(sorry) ↔ ∃ g"], []), ("fc_158.lean", ["answer(sorry) ↔ ∀ A"], []), ("fchead_40.lean", [], ["answer(sorry)"]), ("fchead_158.lean", [], ["answer(sorry)"])]),
+    ("NOTES.md", "Pull request 7327 replaces the hole in `erdos_40` with a definition whose body is `sorry`", [("fchead_log_40.json", [PR_7327], [])]),
+    ("NOTES.md", "a descendant of the pin", [("fchead_compare.json", ['"status": "ahead"', '"behind_by": 0', '"sha": "e5f428182a3ee32dde401eceb4a94ba0382e8434"'], [])]),
+    ("NOTES.md", "The new commit's `lake-manifest.json` pins the same Mathlib revision as `lean/lake-manifest.json`.", [("fchead_lake-manifest.json", [MATHLIB_REV], []), ("repo:lean/lake-manifest.json", [MATHLIB_REV], [])]),
     ("NOTES.md", "note's Table 1", [("zenodo_18452185_v7.pdf", ["Table 1: Greedy B2 [2] set"], [])]),
     ("NOTES.md", "on February 1, 2026, R. Zeraoulia wrote", [("thread_158.html", ["counterexample to Problem 158 may exist. Zeraoulia Rafik — 23:05 on 01 Feb 2026"], [])]),
     ("NOTES.md", "linking a Zenodo record (DOI 10.5281/zenodo.18452185)", [("thread_158.html", ["raw:https://zenodo.org/records/18452185"], []), ("zenodo_18452185.json", ['"doi": "10.5281/zenodo.18452185"'], [])]),
@@ -288,8 +338,8 @@ ANCHORS = [
     ("NOTES.md", "0.515 at the ", "terms"),
 ]
 
-# The sessions that did the work: the model, the CLI of the first session, and the dates of both; the second added the Lean proof of Theorem B. No script can check them, so the gate prints them. The date has no lasting record: a rerun of scripts/reproduce.sh overwrites the logs, and the site stamps each page with the date of the fetch in its own time zone, which read 2026-09-24 for a fetch at 20:57 on September 23, US Eastern time.
-PROVENANCE = ["Claude Opus 5.5", "Copilot CLI 1.0.88", "September 23, 2026", "November 1, 2026"]
+# The sessions that did the work: the model, the CLI of the first session, and the dates of the three; the second added the Lean proof of Theorem B, the third a literature check and the reading of formal-conjectures' main branch. No script can check them, so the gate prints them. The date has no lasting record: a rerun of scripts/reproduce.sh overwrites the logs, and the site stamps each page with the date of the fetch in its own time zone, which read 2026-09-24 for a fetch at 20:57 on September 23, US Eastern time.
+PROVENANCE = ["Claude Opus 5.5", "Copilot CLI 1.0.88", "September 23, 2026", "November 1, 2026", "November 2, 2026"]
 
 
 def fresh_values(ctx):
@@ -397,6 +447,33 @@ CLAIMS = [
     ("NOTES.md", "the note prints its ratios to four places", "count", _note_places, "the decimal places of the ratios in the note's Table 1"),
     ("scripts/reproduce.sh", "on fourteen planted defects", "count", lambda c: len(_cases(c)) - 1, "the cases in results/lean_plants.json besides the control"),
 ]
+
+
+# (document, phrase, problem, state): statuses claimed in the documentation. The site has shown none since October 6, 2026, so each is compared with status.state in teorth/erdosproblems' data/problems.yaml and, when the tracker database is present, with its status_base and ext_status_state.
+STATUS_CLAIMS = [
+    ("README.md", "**Status: open.**", 40, "open"),
+    ("NOTES.md", "Problem 40 is open in the site's companion repository, teorth/erdosproblems, whose `data/problems.yaml` records `status.state: \"open\"` for it", 40, "open"),
+    ("NOTES.md", "the problem, which teorth/erdosproblems lists as open,", 1191, "open"),
+]
+
+
+def mirror_status(ctx, n):
+    """status.state of problem n in refs/teorth_problems.yaml, or None if the problem or the field is absent."""
+    raw = ctx.ref("teorth_problems.yaml", "raw")
+    m = re.search(r'^- number: "%d"\n(.*?)(?=^- number: |\Z)' % n, raw, re.M | re.S)
+    s = re.search(r'^  status:\n    state: "([^"]*)"', m.group(1), re.M) if m else None
+    return s.group(1) if s else None
+
+
+def tracker_status(ctx, n):
+    """(status_base, ext_status_state) of problem n in the tracker database, or None when the database is absent."""
+    if ctx.tracker is None:
+        if not TRACKER_DB.exists():
+            return None
+        con = sqlite3.connect(f"file:{TRACKER_DB}?mode=ro", uri=True)
+        ctx.tracker = {i: (b, e) for i, b, e in con.execute("SELECT id, status_base, ext_status_state FROM problems")}
+        con.close()
+    return ctx.tracker.get(n, (None, None))
 
 
 # ---------------------------------------------------------------- renderers
@@ -536,6 +613,20 @@ def check_statement_site(ctx):
     return []
 
 
+def check_status(ctx):
+    problems = []
+    for doc, phrase, n, state in STATUS_CLAIMS:
+        if phrase not in ctx.docs[doc]:
+            problems.append(f"{doc}: the status claim {phrase[:60]!r} is no longer there; update STATUS_CLAIMS")
+        got = mirror_status(ctx, n)
+        if got != state:
+            problems.append(f"{doc} says problem {n} is {state}, but refs/teorth_problems.yaml has status.state {got!r}")
+        tr = tracker_status(ctx, n)
+        if tr is not None and (str(tr[0]).lower() != state or tr[1] != state):
+            problems.append(f"{doc} says problem {n} is {state}, but the tracker database has status_base {tr[0]!r} and ext_status_state {tr[1]!r}")
+    return problems
+
+
 def check_excerpts(ctx):
     problems, unchecked = [], 0
     notes = ctx.docs["NOTES.md"]
@@ -544,13 +635,26 @@ def check_excerpts(ctx):
         ref = ROOT / "refs" / name
         if pkg.exists() and ref.exists() and pkg.read_bytes() != ctx.file(f"refs/{name}"):
             problems.append(f"refs/{name} differs from the built formal-conjectures {rel}")
-    for m in re.finditer(r"<!-- (fc|src): (\S+) -->\n```lean\n(.*?)```", notes, re.S):
+    for m in re.finditer(r"<!-- (fc|fchead|src): (\S+) -->\n```lean\n(.*?)```", notes, re.S):
         kind, name, block = m.groups()
         # an excerpt may stop before the end of its last line, as a statement does before `:= by`
         block = block.rstrip("\n")
         if kind == "src":
             if block not in ctx.text(name):
                 problems.append(f"a Lean block in NOTES.md is not in {name}")
+            continue
+        if kind == "fchead":
+            # formal-conjectures' main branch, which only refs/ holds: lean/ builds against the pin
+            if not re.fullmatch(r"fchead_\w+\.lean", name):
+                problems.append(f"an fchead excerpt names {name}, not a refs/fchead_*.lean file")
+                continue
+            try:
+                head = ctx.ref_bytes(name).decode("utf-8")
+            except Skip:
+                unchecked += 1
+                continue
+            if block not in head:
+                problems.append(f"a Lean excerpt marked {name} is not in refs/{name}: {block.splitlines()[0][:60]}")
             continue
         if name not in FC_FILES:
             problems.append(f"unknown formal-conjectures excerpt source {name}")
@@ -567,11 +671,11 @@ def check_excerpts(ctx):
             if block not in t:
                 problems.append(f"a Lean excerpt marked {name} is not in {where}: {block.splitlines()[0][:60]}")
     blocks = re.findall(r"```lean\n", notes)
-    marked = re.findall(r"<!-- (?:fc|src): \S+ -->\n```lean\n", notes)
+    marked = re.findall(r"<!-- (?:fc|fchead|src): \S+ -->\n```lean\n", notes)
     if len(blocks) != len(marked):
         problems.append(f"{len(blocks) - len(marked)} Lean block(s) in NOTES.md carry no source marker")
     if unchecked and not problems:
-        raise Skip(f"{unchecked} formal-conjectures excerpt(s) unchecked: neither refs/fc_*.lean nor the built formal-conjectures package is present")
+        raise Skip(f"{unchecked} formal-conjectures excerpt(s) unchecked: their refs/fc_*.lean or refs/fchead_*.lean file, or the built formal-conjectures package, is absent")
     return problems
 
 
@@ -616,20 +720,26 @@ def fact_source_text(ctx, src, needle):
 
 
 def check_facts(ctx):
-    problems = []
+    """Every fact whose sources are present is checked; a missing source skips only its own facts, and the check reports skip, not pass, if any was skipped and none failed."""
+    problems, skipped = [], set()
     for doc, text, sources in FACTS:
         docs = DOCS if doc == "*" else (doc,)
         if not any(text in ctx.docs[d] for d in docs):
             problems.append(f"{doc}: the registered text {text[:60]!r} is not in the document")
         for src, needles, absent in sources:
-            for needle in needles:
-                n, t, key = fact_source_text(ctx, src, needle)
-                if key not in t:
-                    problems.append(f"{src} does not contain {n[:70]!r} (for {text[:40]!r})")
-            for needle in absent:
-                n, t, key = fact_source_text(ctx, src, needle)
-                if key in t:
-                    problems.append(f"{src} contains {n[:70]!r}, which {text[:40]!r} says it does not")
+            try:
+                for needle in needles:
+                    n, t, key = fact_source_text(ctx, src, needle)
+                    if key not in t:
+                        problems.append(f"{src} does not contain {n[:70]!r} (for {text[:40]!r})")
+                for needle in absent:
+                    n, t, key = fact_source_text(ctx, src, needle)
+                    if key in t:
+                        problems.append(f"{src} contains {n[:70]!r}, which {text[:40]!r} says it does not")
+            except Skip:
+                skipped.add(src)
+    if skipped and not problems:
+        raise Skip(f"facts from {', '.join(sorted(skipped))} unchecked: not in refs/; run sh refs/fetch.sh")
     return problems
 
 
@@ -735,10 +845,27 @@ def check_numbers(ctx):
     return problems
 
 
+def check_upstream(ctx):
+    """NOTES.md §1.2: FC_HEAD is a commit other than the pin, at which 28.lean and Convolution.lean equal the pinned files and 40.lean and 158.lean do not."""
+    problems = []
+    head = ctx.fc_head()
+    if head is None:
+        return ["refs/fetch.sh sets no FC_HEAD"]
+    if head == ctx.fc_pin():
+        problems.append("FC_HEAD in refs/fetch.sh is the pin, but NOTES.md §1.2 describes a later commit")
+    for new, old in FCHEAD_SAME.items():
+        if ctx.ref_bytes(new) != ctx.ref_bytes(old):
+            problems.append(f"refs/{new} differs from refs/{old}, which NOTES.md §1.2 says is unchanged")
+    for new, old in FCHEAD_CHANGED.items():
+        if ctx.ref_bytes(new) == ctx.ref_bytes(old):
+            problems.append(f"refs/{new} equals refs/{old}, which NOTES.md §1.2 says changed")
+    return problems
+
+
 def check_hex_versions(ctx):
     problems = []
     pin = ctx.fc_pin()
-    revs = {pin} | {p["rev"] for p in ctx.manifest()}
+    revs = {pin} | {p["rev"] for p in ctx.manifest()} | ({ctx.fc_head()} - {None})
     inputs = {p["inputRev"] for p in ctx.manifest()} | {ctx.text("lean/lean-toolchain").strip().split(":")[-1]}
     recorded = set()
     for rel in ("results/greedy_b2g.json", "results/theorem_b_check.json", "results/lean_plants.json"):
@@ -752,7 +879,7 @@ def check_hex_versions(ctx):
                 continue
             ok = (len(h) == 40 and h in revs) or (len(h) == 64 and h in recorded) or (len(h) == 32 and h in fetch) or (len(h) < 40 and any(r.startswith(h) for r in revs))
             if not ok:
-                problems.append(f"{doc}:{line}: hex {h[:16]}… is not the pin, a manifest revision or a recorded hash")
+                problems.append(f"{doc}:{line}: hex {h[:16]}… is not the pin, FC_HEAD in refs/fetch.sh, a manifest revision or a recorded hash")
         for m in re.finditer(r"(?<![\w.])v(\d+\.\d+\.\d+)(?![\w.])", text):
             if f"v{m.group(1)}" not in inputs:
                 problems.append(f"{doc}:{text.count(chr(10), 0, m.start()) + 1}: version v{m.group(1)} is neither the Lean release nor a manifest input")
@@ -1093,9 +1220,9 @@ def check_hygiene(ctx):
 
 
 CHECKS = [
-    ("statement_docs", check_statement_docs), ("statement_site", check_statement_site), ("excerpts", check_excerpts),
+    ("statement_docs", check_statement_docs), ("statement_site", check_statement_site), ("status", check_status), ("excerpts", check_excerpts),
     ("quotes", check_quotes), ("quote_coverage", check_quote_coverage), ("facts", check_facts), ("numbers", check_numbers),
-    ("hex_versions", check_hex_versions), ("generated", check_generated), ("claims", check_claims),
+    ("upstream", check_upstream), ("hex_versions", check_hex_versions), ("generated", check_generated), ("claims", check_claims),
     ("greedy_hash", check_greedy_hash), ("greedy_b2", check_greedy_b2), ("greedy_rule", check_greedy_rule),
     ("greedy_numbers", check_greedy_numbers), ("claimed_numbers_source", check_claimed_numbers_source), ("theorem_b", check_theorem_b),
     ("lean_plants", check_lean_plants), ("lean_verify", check_lean_verify), ("hygiene", check_hygiene),
@@ -1152,8 +1279,8 @@ def plant_generated(ctx):
 
 def plant_quote(ctx):
     global QUOTES
-    q = "This is open, and cannot be resolved with a finite computation."
-    bad = "This is solved, and cannot be resolved with a finite computation."
+    q = "Mian-Chowla sequence (a B_2 sequence)"
+    bad = "Mian-Chowla sequence (a B_3 sequence)"
     _doc_sub(ctx, "NOTES.md", f'"{q}"', f'"{bad}"')
     QUOTES = [(d, s, bad if x == q else x) for d, s, x in QUOTES]
 
@@ -1172,8 +1299,49 @@ def plant_statement_site(ctx):
     ctx.refs[key] = ctx.refs[key].replace(r"\gg \frac{N^{1/2}}{g(N)}", r"\gg \frac{N^{1/3}}{g(N)}", 1)
 
 
+def plant_status_mirror(ctx):
+    """The mirror records problem 40 as solved."""
+    ctx.ref("teorth_problems.yaml", "raw")
+    key = ("teorth_problems.yaml", "raw")
+    m = re.search(r'^- number: "40"\n.*?^  status:\n    state: "open"', ctx.refs[key], re.M | re.S)
+    ctx.refs[key] = ctx.refs[key][:m.start()] + m.group()[:-len('"open"')] + '"solved"' + ctx.refs[key][m.end():]
+
+
+def plant_status_tracker(ctx):
+    """The tracker database records problem 1191 as solved. Where the database is absent, the plant supplies that one row, so the comparison is still exercised."""
+    if tracker_status(ctx, 1191) is None:
+        ctx.tracker = {}
+    ctx.tracker[1191] = ("SOLVED", "solved")
+
+
 def plant_excerpt(ctx):
     _doc_sub(ctx, "NOTES.md", "(fun N : ℕ ↦ √N / g N) =O[atTop]", "(fun N : ℕ ↦ √N / g N) =o[atTop]")
+
+
+def plant_excerpt_head(ctx):
+    """The main-branch excerpt restated as at the pin: it is in fc_40.lean but must be found in fchead_40.lean."""
+    _doc_sub(ctx, "NOTES.md", "Erdos40For g} = erdos_40.answer := by", "Erdos40For g} = answer(sorry) := by")
+
+
+def plant_upstream(ctx):
+    rel = "refs/fchead_28.lean"
+    ctx.files[rel] = ctx.ref_bytes("fchead_28.lean") + b"-- a line added upstream\n"
+
+
+def plant_upstream_changed(ctx):
+    ctx.files["refs/fchead_158.lean"] = ctx.ref_bytes("fc_158.lean")
+
+
+def plant_hex_head(ctx):
+    head = ctx.fc_head()
+    _doc_sub(ctx, "NOTES.md", f"the main branch was at `{head}`", f"the main branch was at `{head[:-1]}{'0' if head[-1] != '0' else '1'}`")
+
+
+def plant_fact_absent(ctx):
+    """formal-conjectures' main-branch 158.lean given back its answer(sorry), which a fact says it no longer has."""
+    ctx.ref("fchead_158.lean")
+    key = ("fchead_158.lean", "squash")
+    ctx.refs[key] = ctx.refs[key].replace(squash("theorem erdos_158 : ∀"), squash("theorem erdos_158 : answer(sorry) ↔ ∀"), 1)
 
 
 def plant_fact(ctx):
@@ -1274,7 +1442,8 @@ PLANTS = {
     "number": ("numbers", plant_number), "unregistered": ("numbers", plant_unregistered), "short_number": ("numbers", plant_short_number),
     "section": ("numbers", plant_section), "problem_ref": ("numbers", plant_problem_ref), "lemma_ref": ("numbers", plant_lemma_ref), "generated": ("generated", plant_generated),
     "quote": ("quotes", plant_quote), "unquoted": ("quote_coverage", plant_unquoted), "statement": ("statement_docs", plant_statement),
-    "statement_site": ("statement_site", plant_statement_site), "excerpt": ("excerpts", plant_excerpt), "fact": ("facts", plant_fact),
+    "statement_site": ("statement_site", plant_statement_site), "status_mirror": ("status", plant_status_mirror), "status_tracker": ("status", plant_status_tracker), "excerpt": ("excerpts", plant_excerpt), "excerpt_head": ("excerpts", plant_excerpt_head), "fact": ("facts", plant_fact), "fact_absent": ("facts", plant_fact_absent),
+    "upstream": ("upstream", plant_upstream), "upstream_changed": ("upstream", plant_upstream_changed), "hex_head": ("hex_versions", plant_hex_head),
     "hex": ("hex_versions", plant_hex), "claim": ("claims", plant_claim), "claim_numeral": ("claims", plant_claim_numeral), "page": ("facts", plant_page),
     "greedy_hash": ("greedy_hash", plant_greedy_hash),
     "greedy_b2": ("greedy_b2", plant_greedy_b2), "greedy_rule": ("greedy_rule", plant_greedy_rule), "greedy_numbers": ("greedy_numbers", plant_greedy_numbers),
@@ -1368,7 +1537,7 @@ def main():
             print(f"      … and {len(problems) - 20} more")
     print(f"not checked by any script, printed as written: {'; '.join(PROVENANCE)}")
     if TRACKER_DB.exists():
-        print("statement_docs also compared the tracker database")
+        print("statement_docs and status also compared the tracker database")
     else:
         verb = {"pass": "passed", "fail": "failed", "skip": "was skipped", "error": "failed"}[statuses["statement_site"]]
         print(f"statement_docs: no tracker database here, so the only comparison of the statement with a source is statement_site, which {verb}")
