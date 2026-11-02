@@ -15,6 +15,7 @@ Measured artifacts behind [`../NOTES.md`](../NOTES.md), which [`../src/final_che
 | `barrier.json` | `src/barrier.py` | $B(k,N)=2^kk!\,C_k(N)$, kept for NOTES §6.2 |
 | `sieve_limits.json` | `src/sieve_limits.py` | the sieve limits of NOTES §6 and the tracker survey of §8.1 |
 | `analysis.json` | `src/analysis.py` | the $L(N)$ tables |
+| `explicit_n0.json` | `src/explicit_n0.py` | rigorous enclosures of the singular series $\mathfrak S_k$ and the prime-power threshold $\log N_2(k)$ for $3\le k\le26$, the explicit pieces of NOTES §7.1 |
 | `thresholds.json` | no committed script | cached Hardy–Littlewood thresholds per $k$; `src/analysis.py` uses them if present and otherwise recomputes them with `heuristic.threshold_ak` |
 
 The record table everything is checked against, `../data/records.json`, is written by `src/verify_records.py`.

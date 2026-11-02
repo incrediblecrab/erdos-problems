@@ -4,7 +4,7 @@ This repository studies Erdős problem 200, the longest arithmetic progression o
 
 **Objective:** establish what is rigorously true, recompute $L(N)$ as far as compute allows, test the standard heuristic against measured counts, and quantify why sieve methods cannot close the gap.
 
-**Inputs:** a local mirror of erdosproblems.com problem 200, OEIS A005115, A113827, A093364 and A133277, Luhn's records page, Granville's *Prime Number Patterns* and the Green–Tao note. Run `refs/fetch.sh`; none are redistributed here.
+**Inputs:** a local mirror of erdosproblems.com problem 200, OEIS A005115, A113827, A093364 and A133277, Luhn's records page, Granville's *Prime Number Patterns*, the Green–Tao note, and five arXiv papers on quantitative Green–Tao (Tao–Teräväinen, Manners, Leng, Leng–Sah–Sawhney, Teräväinen–Wang). Run `refs/fetch.sh`; none are redistributed here.
 
 **Files:**
 
@@ -43,6 +43,7 @@ Read [`NOTES.md`](NOTES.md), and [`lean/README.md`](lean/README.md) and [`lean-p
 | `src/barrier.py` | $B(k,N)=2^kk!\,C_k(N)$, the formula behind the withdrawn sieve argument (NOTES §6.2) |
 | `src/sieve_limits.py` | what Selberg's sieve, the large sieve and the larger sieve can and cannot prove (NOTES §6), and the tracker survey (§8.1) |
 | `src/analysis.py` | the $L(N)$ tables |
+| `src/explicit_n0.py` | the explicit pieces ($\mathfrak S_k$, $N_2(k)$) of the conditional threshold $N_0(k)$ of NOTES §7.1 |
 | `src/final_check.py` | re-derives every claim; exit 0 = pass |
 | `lean/` | Lean 4 + Mathlib formalisation; `lean/verify.sh`, exit 0 = pass |
 | `lean-pnt/` | same bound without the PNT hypothesis, via `PrimeNumberTheoremAnd`; `lean-pnt/verify.sh`, exit 0 = pass |

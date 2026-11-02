@@ -33,4 +33,17 @@ curl -sL "https://people.maths.ox.ac.uk/greenbj/papers/back-of-an-envelope.pdf" 
 curl -sL "https://raw.githubusercontent.com/teorth/erdosproblems/main/README.md" -o erdos_readme.md
 curl -sL "https://raw.githubusercontent.com/google-deepmind/formal-conjectures/main/FormalConjectures/ErdosProblems/200.lean" -o ErdosProblem200.lean
 
+# Quantitative Green-Tao: the sources read for NOTES.md section 7.1.  Pinned to the arXiv
+# versions whose page and theorem numbers that section cites.
+# Tao & Teravainen, quantitative Gowers uniformity of mu and Lambda (JEMS 2023): Theorem 1.6.
+curl -sL "https://arxiv.org/pdf/2107.02158v4" -o tao_teravainen_2107.02158.pdf
+# Manners, quantitative inverse theorem for U^{s+1} over Z/NZ: Theorem 1.1.2 (read it from a render).
+curl -sL "https://arxiv.org/pdf/1811.00718v2" -o manners_1811.00718.pdf
+# Leng, efficient equidistribution of nilsequences: Theorems 5 and 7.
+curl -sL "https://arxiv.org/pdf/2312.10772v5" -o leng_2312.10772.pdf
+# Leng, Sah & Sawhney, quasipolynomial U^{s+1}[N] inverse theorem: Theorem 1.2.
+curl -sL "https://arxiv.org/pdf/2402.17994v3" -o lss_2402.17994.pdf
+# Teravainen & Wang, the Green-Tao theorem for sparse sets: Theorem 1.1.
+curl -sL "https://arxiv.org/pdf/2603.09281v1" -o teravainen_wang_2603.09281.pdf
+
 echo "done; see refs/README.md for what each file supports"

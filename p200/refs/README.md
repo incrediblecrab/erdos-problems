@@ -1,6 +1,6 @@
 # refs/
 
-Primary sources for every external claim in `NOTES.md`. **Nothing here is committed** — the Monthly article and the Green–Tao note are copyright their authors and publishers, and the OEIS and Luhn pages carry their own terms. Run `sh fetch.sh` to populate this directory locally; `.gitignore` excludes the downloads.
+Primary sources for every external claim in `NOTES.md`. **Nothing here is committed** — the Monthly article, the Green–Tao note and the five arXiv papers of NOTES §7.1 are copyright their authors and publishers, and the OEIS and Luhn pages carry their own terms. Run `sh fetch.sh` to populate this directory locally; `.gitignore` excludes the downloads.
 
 | File | Supports |
 |---|---|
@@ -12,6 +12,11 @@ Primary sources for every external claim in `NOTES.md`. **Nothing here is commit
 | `green_tao_envelope.pdf` | "an exponential tower in $k$ of height **seven**"; final display with 7 arrows; "$100k$ will certainly suffice" |
 | `erdos_readme.md` | problem 200 recorded as open |
 | `ErdosProblem200.lean` | the Lean statement — both declarations are `sorry` |
+| `tao_teravainen_2107.02158.pdf` | arXiv v4. NOTES §7.1: Theorem 1.6 and Example 1.7 (p. 5), "effective" (p. 1), Theorem 6.2 (p. 28), Theorems 8.1 and 8.3 (pp. 41, 44), the §9 sketch and footnote 13 (pp. 49–50), Theorem A.3 and its $C_d$ (p. 52) |
+| `manners_1811.00718.pdf` | arXiv v2. Theorem 1.1.2 (p. 2), with constants $O_s(1)$; read from a render, since the text layer flattens $\exp\exp(O_s(\delta)^{O_s(1)})$ |
+| `leng_2312.10772.pdf` | arXiv v5. Theorem 5 (p. 6), the log-power count, ineffective by Siegel's theorem; Theorem 7 (p. 32), the effective Gowers-norm bound |
+| `lss_2402.17994.pdf` | arXiv v3. Theorem 1.2 (p. 1), constants $O_s(1)$; its restatement of Manners' bound as $\exp\exp(\delta^{-O_s(1)})$ (p. 4) |
+| `teravainen_wang_2603.09281.pdf` | arXiv v1. Theorem 1.1 (p. 2), "for some $c_k>0$" |
 
 Two of these must be read from a **render, not the PDF text layer**, which mangles stacked exponents:
 

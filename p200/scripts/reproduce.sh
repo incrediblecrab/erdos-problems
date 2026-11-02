@@ -9,7 +9,7 @@
 #   4. assumption-free cross-check    ref_bruteforce.py, which shares no code with apsearch
 #   5. exhaustive re-derivation       k = 8..20, the last to B = a(20) = 5.73e11
 #   6. heuristic vs measurement       singular series, 30 count comparisons, KS calibration
-#   7. sieve limits and tables        barrier.py, sieve_limits.py (~70 s, ~3.1 GB peak memory), analysis.py
+#   7. sieve limits and tables        barrier.py, sieve_limits.py (~70 s, ~3.1 GB peak memory), analysis.py, explicit_n0.py
 #   8. final_check.py                 re-derives every claim from the artifacts; exit 0 = pass
 #   9. lean/verify.sh                 axiom audit + statement fidelity for the formal part
 #  10. lean-pnt/verify.sh             the same bound with the PNT hypothesis discharged
@@ -79,6 +79,7 @@ echo "== 7. sieve limits and tables"
 "$PY" src/barrier.py
 "$PY" src/sieve_limits.py
 "$PY" src/analysis.py
+"$PY" src/explicit_n0.py
 
 echo "== 8. final check"
 "$PY" src/final_check.py

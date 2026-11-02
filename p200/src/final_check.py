@@ -5,6 +5,8 @@ use heuristic.py; it re-tests primality independently, re-checks the structure t
 against all 26 known records, re-checks the rigorous upper bound against them, and
 re-derives the range of N over which L(N) has been independently determined here.
 
+Section H re-derives the explicit pieces of the conditional threshold N_0(k) of NOTES.md section 7.1 from results/explicit_n0.json, without importing src/explicit_n0.py or mpmath, checks the numerals that section prints, and, when refs/ is populated and pdftotext is installed, checks each quotation of that section against the cited page of the fetched PDF.
+
 Section G re-derives the sieve-limit claims of NOTES.md sections 6 and 8.1 from data/records.json, results/barrier.json and results/sieve_limits.json, without importing src/sieve_limits.py or numpy: it has its own prime sieve up to sqrt(a(26)), which makes it the slow part of this script.
 
 Exit code is nonzero if any check fails.
@@ -15,6 +17,8 @@ import itertools
 import json
 import math
 import os
+import re
+import subprocess
 import sys
 import time
 
@@ -331,6 +335,127 @@ def section_g():
     print("     section G took %.0fs" % (time.time() - t0))
 
 
+# Section H: (pdf in refs/, page of that PDF, text as pdftotext prints it, the same passage as NOTES.md section 7.1 prints it)
+QUOTES = [
+    ("tao_teravainen_2107.02158.pdf", 1, "The implied constants will be effective, except when otherwise stated",
+     "The implied constants will be effective, except when otherwise stated"),
+    ("tao_teravainen_2107.02158.pdf", 5, "depends only on t, d, L", "depends only on t, d, L"),
+    ("tao_teravainen_2107.02158.pdf", 12, "sufficiently large depending on k", "sufficiently large depending on k"),
+    ("tao_teravainen_2107.02158.pdf", 49, "In this section we sketch the derivation of Theorem 1.6 from Theorem 1.4",
+     "In this section we sketch the derivation of Theorem 1.6 from Theorem 1.4"),
+    ("tao_teravainen_2107.02158.pdf", 49, "for a sufficiently small η > 0 depending on s, d, t",
+     "for a sufficiently small η > 0 depending on s, d, t"),
+    ("tao_teravainen_2107.02158.pdf", 50, "after replacing all o(1) type terms with O((log log N )−c ) type terms",
+     "after replacing all o(1) type terms with O((log log N)^{−c}) type terms"),
+    ("tao_teravainen_2107.02158.pdf", 50, "we leave the details to the interested reader", "we leave the details to the interested reader"),
+    ("tao_teravainen_2107.02158.pdf", 28, "with at most k − 2 steps", "with at most k − 2 steps"),
+    ("tao_teravainen_2107.02158.pdf", 28, "are allowed to vary with each step", "are allowed to vary with each step"),
+    ("tao_teravainen_2107.02158.pdf", 41, "Let C0 be sufficiently large depending on k", "Let $C_0$ be sufficiently large depending on $k$"),
+    ("tao_teravainen_2107.02158.pdf", 52, "where Cd is a sufficiently large constant depending only on d",
+     "where $C_d$ is a sufficiently large constant depending only on d"),
+    ("tao_teravainen_2107.02158.pdf", 52,
+     "Henceforth we refine the polym notation by permitting the implied constants to depend on the constant Cd−1 , but not on Cd",
+     "Henceforth we refine the poly$_m$ notation by permitting the implied constants to depend on the constant $C_{d-1}$, but not on $C_d$"),
+    ("tao_teravainen_2107.02158.pdf", 49, "we can use the effective lower bounds on L(1, χ) in this case rather than Siegel’s theorem",
+     "we can use the effective lower bounds on L(1, χ) in this case rather than Siegel’s theorem"),
+    ("tao_teravainen_2107.02158.pdf", 7, "which provided a good quantitative dependence on all parameters in the inverse theory of Gowers norms",
+     "provided a good quantitative dependence on all parameters in the inverse theory of Gowers norms"),
+    ("manners_1811.00718.pdf", 1, "does not make use of regularity or non-standard analysis",
+     "does not make use of regularity or non-standard analysis"),
+    ("leng_2312.10772.pdf", 6, "is ineffective (as is standard) due to the use of Siegel’s theorem",
+     "is ineffective (as is standard) due to the use of Siegel’s theorem"),
+    ("leng_2312.10772.pdf", 32, "the bounds in Theorem 7 are effective", "the bounds in Theorem 7 are effective"),
+    ("teravainen_wang_2603.09281.pdf", 2, "for some ck > 0", "for some $c_k>0$"),
+]
+
+
+def section_h(notes):
+    """NOTES.md section 7.1: the explicit pieces of the conditional N_0(k), its numerals, and its quotations."""
+    print("\nH. the conditional threshold N_0(k) of NOTES.md section 7.1, re-derived without src/explicit_n0.py or mpmath")
+    path = os.path.join(ROOT, "results", "explicit_n0.json")
+    if not os.path.exists(path):
+        check("results/explicit_n0.json present", False, "missing")
+        return
+    J = json.load(open(path))
+    P = J["P"]
+    check("explicit_n0.json covers k = 3..26 with the tail cut at P = 10^6", J["ks"] == list(range(3, 27)) and P == 10 ** 6)
+    PR = primes_array(P)
+    mine, bad = {}, []
+    for r in J["rows"]:
+        k = r["k"]
+        lhi = math.fsum((-math.log(p) if p < k else math.log1p(-(k - 1) / p)) - (k - 1) * math.log1p(-1.0 / p) for p in PR)
+        llo = lhi - (k - 1) ** 2 / (2 * (1 - (k - 1) / P) * P)
+        rhs = math.log(32 * k * (k - 1)) - llo
+        h = lambda L: L / 2 - k * math.log(L) - rhs
+        lo = float(2 * k)
+        if h(lo) < 0:
+            hi = lo
+            while h(hi) < 0:
+                hi *= 2
+            for _ in range(200):
+                mid = (lo + hi) / 2
+                lo, hi = (mid, hi) if h(mid) < 0 else (lo, mid)
+            lo = hi
+        ln2 = max(30 * math.log(2), math.log(2 * k), lo)
+        mine[k] = (math.exp(llo), math.exp(lhi), ln2)
+        if (abs(math.exp(llo) - r["S_lo"]) > 1e-9 * r["S_lo"] or abs(math.exp(lhi) - r["S_hi"]) > 1e-9 * r["S_hi"]
+                or abs(ln2 - r["log_N2"]) > 1e-6):
+            bad.append(k)
+    check("S_k enclosures and log N_2(k) recomputed for k = 3..26 match explicit_n0.json", not bad, "mismatch at k = %s" % bad if bad else "")
+    check("log(1/S_k) <= 4 k log k holds on k = 3..26 (S_k >= 1 there)", all(mine[k][0] >= 1 for k in mine))
+    check("k log 4 + (k+1) log k + k/2 <= 4 k log k, and log 16k + 4 k log k <= e^(5k), for k = 3..10^5",
+          all(k * math.log(4) + (k + 1) * math.log(k) + k / 2 <= 4 * k * math.log(k) for k in range(3, 10 ** 5))
+          and all(math.log(16 * k) + 4 * k * math.log(k) <= math.exp(min(5 * k, 700)) for k in range(3, 10 ** 5)))
+    # log2 N <= N^(1/6) at N = 2^x means log x <= (x/6) log 2; the gap increases for x > 6/log 2, so x = 30 is the binding case
+    check("log2 N <= N^(1/6) at N = 2^30 but not at 2^29, so Pi_2(N) <= 2 sqrt N from 2^30 on",
+          math.log(30) <= 5 * math.log(2) and math.log(29) > 29 / 6 * math.log(2))
+    from fractions import Fraction as Fr
+    area = []
+    for N, k in ((10 ** 6, 3), (10 ** 9 + 7, 26), (1000, 10)):
+        v = [(Fr(1), Fr(1)), (Fr(N - k + 1), Fr(1)), (Fr(1), Fr(N - 1, k - 1))]
+        sh = abs(sum(v[i][0] * v[(i + 1) % 3][1] - v[(i + 1) % 3][0] * v[i][1] for i in range(3))) / 2
+        area.append(sh == Fr((N - k) ** 2, 2 * (k - 1)))
+    check("vol(Omega) = (N-k)^2/(2(k-1)), by the shoelace formula at three (N, k)", all(area))
+
+    sec = notes[notes.index("### 7.1"):notes.index("## 8. What would count")]
+    s3 = re.search(r"\\mathfrak S_3=([0-9.]+)", sec)
+    smin = re.search(r"\\mathfrak S_k\\ge([0-9.]+)\$ throughout", sec)
+    s26 = re.search(r"\\mathfrak S_\{26\}=([0-9.]+)\\times10\^([0-9]+)", sec)
+    n2 = re.search(r"from \$([0-9.]+)\$ at \$k=3\$ to \$([0-9.]+)\$ at \$k=26\$", sec)
+    if not (s3 and smin and s26 and n2):
+        check("NOTES 7.1: every numeral checked here was found", False, str([bool(x) for x in (s3, smin, s26, n2)]))
+        return
+    lo26 = mine[26][0]
+    e26 = math.floor(math.log10(lo26))
+    ok = ("%.4f" % mine[3][0] == "%.4f" % mine[3][1] == s3.group(1)
+          and math.floor(100 * min(v[0] for v in mine.values())) / 100 == float(smin.group(1))
+          and "%.2f" % (lo26 / 10 ** e26) == "%.2f" % (mine[26][1] / 10 ** e26) == s26.group(1) and str(e26) == s26.group(2)
+          and "%.2f" % mine[3][2] == n2.group(1) and "%.1f" % mine[26][2] == n2.group(2))
+    check("NOTES 7.1: S_3 = %s, S_k >= %s, S_26 = %s x 10^%s, log N_2 = %s .. %s, as recomputed"
+          % (s3.group(1), smin.group(1), s26.group(1), s26.group(2), n2.group(1), n2.group(2)), ok,
+          "recomputed S_3 = %.6f, min S_k = %.6f, S_26 = %.4g, log N_2(3) = %.4f, log N_2(26) = %.4f"
+          % (mine[3][0], min(v[0] for v in mine.values()), lo26, mine[3][2], mine[26][2]))
+
+    norm = lambda t: re.sub(r"\s+", " ", t)
+    nsec = norm(sec)
+    check("NOTES 7.1 contains each of the %d quoted passages" % len(QUOTES),
+          all(norm(q[3]) in nsec for q in QUOTES), "; ".join(q[3][:40] for q in QUOTES if norm(q[3]) not in nsec))
+    pdfs = sorted({q[0] for q in QUOTES})
+    have = [os.path.exists(os.path.join(ROOT, "refs", f)) for f in pdfs]
+    try:
+        subprocess.run(["pdftotext", "-v"], capture_output=True)
+        tool = True
+    except OSError:
+        tool = False
+    if not (all(have) and tool):
+        print("     skipped the quotation check: run refs/fetch.sh and install pdftotext to enable it")
+        return
+    pages = {f: subprocess.run(["pdftotext", os.path.join(ROOT, "refs", f), "-"], capture_output=True, text=True).stdout.split("\f")
+             for f in pdfs}
+    missing = [(f, pg, t[:40]) for f, pg, t, _ in QUOTES if pg > len(pages[f]) or norm(t) not in norm(pages[f][pg - 1])]
+    check("each quoted passage is on the cited page of the fetched PDF", not missing, str(missing) if missing else "")
+
+
 def main():
     recs = json.load(open(os.path.join(ROOT, "data", "records.json")))
     a = {r["k"]: r["a_k"] for r in recs}
@@ -482,6 +607,7 @@ def main():
               and all(v["caseB_count"] == 0 for v in raw.values()), "")
 
     section_g()
+    section_h(open(os.path.join(ROOT, "NOTES.md")).read())
 
     print("\n%s" % ("ALL CHECKS PASSED" if not FAIL else "FAILURES: %s" % FAIL))
     return 1 if FAIL else 0
