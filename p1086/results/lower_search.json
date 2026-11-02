@@ -1,0 +1,1643 @@
+{
+ "strips": [
+  "n=10 box 3x12",
+  "n=10 box 4x9",
+  "n=10 box 7x7",
+  "n=11 box 3x12",
+  "n=11 box 4x9",
+  "n=12 box 3x12",
+  "n=12 box 4x9"
+ ],
+ "anneal_runs": 196,
+ "beam_width": 150,
+ "runs": [
+  {
+   "method": "exhaustive 3x12",
+   "n": 10,
+   "threshold": 48,
+   "subsets": 160311206,
+   "subsets_at_threshold": 15,
+   "best": 48
+  },
+  {
+   "method": "exhaustive 4x9",
+   "n": 10,
+   "threshold": 48,
+   "subsets": 183199587,
+   "subsets_at_threshold": 9,
+   "best": 48
+  },
+  {
+   "method": "exhaustive 7x7",
+   "n": 10,
+   "threshold": 48,
+   "subsets": 5529123446,
+   "subsets_at_threshold": 50,
+   "best": 48
+  },
+  {
+   "method": "exhaustive 3x12",
+   "n": 11,
+   "threshold": 60,
+   "subsets": 405477864,
+   "subsets_at_threshold": 67,
+   "best": 60
+  },
+  {
+   "method": "exhaustive 4x9",
+   "n": 11,
+   "threshold": 60,
+   "subsets": 461239065,
+   "subsets_at_threshold": 33,
+   "best": 60
+  },
+  {
+   "method": "exhaustive 3x12",
+   "n": 12,
+   "threshold": 74,
+   "subsets": 894802870,
+   "subsets_at_threshold": 106,
+   "best": 74
+  },
+  {
+   "method": "exhaustive 4x9",
+   "n": 12,
+   "threshold": 74,
+   "subsets": 1011205156,
+   "subsets_at_threshold": 50,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 10,
+   "best": 44
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 11,
+   "best": 54
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 12,
+   "best": 67
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 12,
+   "best": 74
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 13,
+   "best": 84
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 13,
+   "best": 83
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 13,
+   "best": 91
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 14,
+   "best": 104
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 14,
+   "best": 108
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 15,
+   "best": 121
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 15,
+   "best": 128
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=7",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 16x16 2M D=1 seed=8",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=2 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=7",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 16x16 2M D=3 seed=8",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=4 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=6 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=8 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 16x16 2M D=12 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=7",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 20x20 2M D=1 seed=8",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=2 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=7",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 20x20 2M D=3 seed=8",
+   "n": 16,
+   "best": 142
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=4 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=6 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=8 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=7",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "anneal 20x20 2M D=12 seed=8",
+   "n": 16,
+   "best": 148
+  },
+  {
+   "method": "beam 150",
+   "n": 7,
+   "best": 18
+  },
+  {
+   "method": "beam 150",
+   "n": 8,
+   "best": 28
+  },
+  {
+   "method": "beam 150",
+   "n": 9,
+   "best": 36
+  },
+  {
+   "method": "beam 150",
+   "n": 10,
+   "best": 48
+  },
+  {
+   "method": "beam 150",
+   "n": 11,
+   "best": 60
+  },
+  {
+   "method": "beam 150",
+   "n": 12,
+   "best": 74
+  }
+ ],
+ "best": [
+  {
+   "n": 7,
+   "method": "beam 150",
+   "count": 18,
+   "D": 4,
+   "points": [
+    [
+     -4,
+     2
+    ],
+    [
+     -3,
+     1
+    ],
+    [
+     -2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "previous": 18,
+   "improved": false
+  },
+  {
+   "n": 8,
+   "method": "beam 150",
+   "count": 28,
+   "D": 4,
+   "points": [
+    [
+     -4,
+     2
+    ],
+    [
+     -3,
+     1
+    ],
+    [
+     -2,
+     0
+    ],
+    [
+     -2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "previous": 28,
+   "improved": false
+  },
+  {
+   "n": 9,
+   "method": "beam 150",
+   "count": 36,
+   "D": 4,
+   "points": [
+    [
+     -6,
+     2
+    ],
+    [
+     -4,
+     1
+    ],
+    [
+     -4,
+     2
+    ],
+    [
+     -2,
+     0
+    ],
+    [
+     -2,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "previous": 36,
+   "improved": false
+  },
+  {
+   "n": 10,
+   "method": "exhaustive 3x12",
+   "count": 48,
+   "D": 2,
+   "points": [
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     4
+    ]
+   ],
+   "previous": 48,
+   "improved": false
+  },
+  {
+   "n": 11,
+   "method": "exhaustive 3x12",
+   "count": 60,
+   "D": 2,
+   "points": [
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "previous": 60,
+   "improved": false
+  },
+  {
+   "n": 12,
+   "method": "exhaustive 3x12",
+   "count": 74,
+   "D": 2,
+   "points": [
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "previous": 74,
+   "improved": false
+  },
+  {
+   "n": 13,
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "count": 91,
+   "D": 2,
+   "points": [
+    [
+     11,
+     12
+    ],
+    [
+     9,
+     8
+    ],
+    [
+     11,
+     10
+    ],
+    [
+     10,
+     11
+    ],
+    [
+     9,
+     9
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     11,
+     11
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     13,
+     12
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     12,
+     11
+    ]
+   ],
+   "previous": 91,
+   "improved": false
+  },
+  {
+   "n": 14,
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "count": 108,
+   "D": 2,
+   "points": [
+    [
+     8,
+     1
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     10,
+     3
+    ],
+    [
+     10,
+     5
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     9,
+     4
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     10,
+     4
+    ],
+    [
+     9,
+     0
+    ],
+    [
+     10,
+     6
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     8,
+     3
+    ]
+   ],
+   "previous": 108,
+   "improved": false
+  },
+  {
+   "n": 15,
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "count": 128,
+   "D": 2,
+   "points": [
+    [
+     8,
+     5
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     10,
+     4
+    ],
+    [
+     12,
+     2
+    ],
+    [
+     11,
+     3
+    ],
+    [
+     13,
+     1
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     12,
+     1
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     12,
+     3
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     14,
+     1
+    ],
+    [
+     10,
+     3
+    ],
+    [
+     8,
+     3
+    ]
+   ],
+   "previous": 128,
+   "improved": false
+  },
+  {
+   "n": 16,
+   "method": "anneal 16x16 2M D=2 seed=7",
+   "count": 148,
+   "D": 2,
+   "points": [
+    [
+     11,
+     4
+    ],
+    [
+     10,
+     6
+    ],
+    [
+     9,
+     4
+    ],
+    [
+     10,
+     4
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     5
+    ],
+    [
+     13,
+     10
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     12,
+     7
+    ],
+    [
+     12,
+     9
+    ],
+    [
+     12,
+     6
+    ],
+    [
+     11,
+     6
+    ],
+    [
+     10,
+     3
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     8
+    ]
+   ],
+   "previous": 148,
+   "improved": false
+  }
+ ]
+}

@@ -3,9 +3,10 @@
     python src/g7_exact.py            prints the classification and the value of g(7); exit 0 iff the run is complete
     python src/g7_exact.py --write    also writes results/g7_classes.json (--write-to PATH writes elsewhere)
 
-Everything is exact rational arithmetic. "Edge" means a triangle of doubled area exactly 1 (after an area-preserving
-affine normalisation the common area can always be taken to be 1/2, doubled area 1). The argument has one written
-lemma and three enumeration steps; NOTES.md section 4 gives the proofs.
+Everything is exact rational arithmetic. "Edge" means a triangle of doubled area exactly 1. Normalisation: if the
+common doubled area is D, one affine map of determinant 1/D (for instance (x, y) -> (x / D, y)) first makes it 1;
+after that, equivalence and the canonical form use only affine maps of determinant +-1, which preserve areas. The
+argument has one written lemma and three enumeration steps; NOTES.md section 4 gives the proofs.
 
 Lemma (four points). Four distinct points span at most 4 edges. If they span 4 they form a parallelogram. If they
 span exactly 3, three of them form a triangle of doubled area 3 and the fourth is its centroid.
@@ -21,9 +22,10 @@ Step 2. A 6-point set with at least 11 edges has a 5-subset with at least 6 (3 *
 configuration plus a point on at least 11 - 7 = 4 of its 20 lines. The script checks that no line serves 4 pairs,
 so the sixth point is again an intersection of two distinct lines.
 
-Step 3. A 7-point set with at least 19 edges has a vertex of degree at most floor(57/7) = 8, so a 6-subset with at
-least 11 edges: a Step 2 configuration plus a point on at least 19 - 12 = 7 of its 30 lines. Again no line serves
-that many pairs, so the seventh point is an intersection of two distinct lines.
+Step 3. A 7-point set with e >= 19 edges has a vertex of degree at most floor(3e/7), so a 6-subset with at least
+e - floor(3e/7) >= 19 - 8 = 11 edges (e - floor(3e/7) does not decrease in e): a Step 2 configuration with c edges
+plus a point on at least e - c >= 19 - 12 = 7 of its 30 lines. Again no line serves that many pairs, so the seventh
+point is an intersection of two distinct lines.
 
 The enumeration therefore finds every 7-point set with at least 19 edges up to area-preserving affine maps. If
 there are none, g(7) <= 18, and the stored 7-point configuration with 18 gives g(7) = 18. As controls, Step 1 must

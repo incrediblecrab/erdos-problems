@@ -2,8 +2,8 @@
 
     python src/final_check.py
 
-Needs src/grid_count, src/brute_count and src/small_search built (see README.md), results/raw/ as written by
-src/lattice_table.py, and numpy and sympy. Takes about a minute.
+Needs src/grid_count, src/brute_count, src/small_search and src/box_scan built (see README.md), results/raw/ as
+written by src/lattice_table.py, and numpy, sympy and z3. Takes 3.5 to 7 minutes on a shared machine.
 """
 import hashlib
 import json
@@ -132,6 +132,39 @@ def main():
         check("planted: g7_box_check rejects a classification with one 6-point configuration dropped",
               r.returncode == 1)
 
+        # 3b. g(9) = 36
+        r = run([PY, SRC / "g9_exact.py", "--write-to", tmp / "g9_classes.json"])
+        g9_ok = g7_ok and r.returncode == 0 and "g(9) = 36" in r.stdout
+        check("g9_exact: no 9-point set has 37 triangles of one nonzero area, so g(9) = 36", g9_ok, last(r))
+        stored_g9 = (ROOT / "results" / "g9_classes.json").read_text()
+        check("g9_exact: results/g9_classes.json is what the enumeration writes",
+              g9_ok and (tmp / "g9_classes.json").read_text() == stored_g9)
+        r = run([PY, SRC / "g9_box_check.py"])
+        g9_ok &= r.returncode == 0
+        check("g9_box_check: 6x6 box scans, re-derived extensions and the z3 Type II check agree with g9_classes.json",
+              r.returncode == 0, last(r))
+        source = (SRC / "g9_exact.py").read_text()
+        for name, old, new in (("an averaging step claimed for 36 instead of 37", "(9, 37, 25))", "(9, 36, 25))"),
+                               ("Type II solutions dropped", "sols = sp.solve_poly_system(eqs, *gens)",
+                                "sols = sp.solve_poly_system(eqs, *gens)[:0]"),
+                               ("a Type II solution coordinate perturbed by 1/1000",
+                                "sols = {tuple(sp.sympify(v) for v in sol) for sol in (sols or [])}",
+                                "sols = {tuple(sp.sympify(v) + (sp.Rational(1, 1000) if i == 0 else 0) "
+                                "for i, v in enumerate(sol)) for sol in (sols or [])}")):
+            wrong = SRC / f"_planted_g9_{len(name)}.py"  # in src/ so that its imports resolve
+            try:
+                wrong.write_text(source.replace(old, new, 1))
+                r = run([PY, wrong, "--write-to", tmp / "g9_planted.json"])
+            finally:
+                wrong.unlink()
+            check(f"planted: g9_exact rejects {name}", source.count(old) == 1 and r.returncode == 1)
+        doctored = json.loads(stored_g9)
+        doctored["eight_points_at_least_25"] = doctored["eight_points_at_least_25"][:-1]
+        (tmp / "g9_classes_short.json").write_text(json.dumps(doctored))
+        r = run([PY, SRC / "g9_box_check.py", tmp / "g9_classes_short.json"])
+        check("planted: g9_box_check rejects a classification with one 8-point configuration dropped",
+              r.returncode == 1)
+
         # 4. small-n configurations
         small = json.loads((ROOT / "results" / "small_n.json").read_text())
         r = run([PY, SRC / "recount.py", ROOT / "results" / "small_n.json"])
@@ -141,6 +174,14 @@ def main():
         (tmp / "small_bad.json").write_text(json.dumps(doctored))
         r = run([PY, SRC / "recount.py", tmp / "small_bad.json"])
         check("planted: recount rejects an overstated count", r.returncode == 1)
+        r = run([PY, SRC / "recount.py", ROOT / "results" / "lower_search.json"])
+        check("recount: every configuration kept by lower_search", r.returncode == 0, last(r))
+        searched = json.loads((ROOT / "results" / "lower_search.json").read_text())["best"]
+        doctored = json.loads((ROOT / "results" / "lower_search.json").read_text())
+        doctored["best"][3]["count"] += 1
+        (tmp / "lower_bad.json").write_text(json.dumps(doctored))
+        r = run([PY, SRC / "recount.py", tmp / "lower_bad.json"])
+        check("planted: recount rejects an overstated lower_search count", r.returncode == 1)
 
         # 5. claims.json against what was just recomputed
         from recount import classes
@@ -148,17 +189,26 @@ def main():
         upper = {6: 12, 7: 18 if g7_ok else 20}
         for n in range(8, 17):
             upper[n] = upper[n - 1] * n // (n - 3)
+            if n == 9 and g9_ok:
+                upper[9] = min(upper[9], 36)
         for e in claims["exact"]:
             n, g = e["n"], e["g"]
             ok = best[n]["count"] == g if n in best else (n, g) == (3, 1)
             check(f"claim g({n}) = {g}: lower bound attained by a stored configuration", ok)
             if n >= 7:
-                check(f"claim g({n}) = {g}: upper bound {upper[n]} from g(7) = 18 and averaging", upper[n] == g)
+                check(f"claim g({n}) = {g}: upper bound {upper[n]} from g(7) = 18, g(9) <= 36 and averaging",
+                      upper[n] == g)
         for e in claims["small_n"]:
             n = e["n"]
             recounted = max(classes([tuple(p) for p in best[n]["points"]]).values())
             check(f"claim {e['lower']} <= g({n}) <= {e['upper']}",
                   recounted == e["lower"] and upper[n] == e["upper"] and e["lower"] <= e["upper"])
+        for e in searched:
+            n = e["n"]
+            claimed = next((c["g"] for c in claims["exact"] if c["n"] == n), None)
+            claimed = claimed if claimed is not None else next(c["lower"] for c in claims["small_n"] if c["n"] == n)
+            check(f"lower_search at n = {n}: best {e['count']}, not above the claimed lower bound {claimed}",
+                  e["count"] <= claimed and e["improved"] == (e["count"] > e["previous"]))
         for e in claims["lattice"]:
             h = histogram(ROOT / "results" / "raw" / f"grid_{e['a']}x{e['b']}.txt")
             ok = h.get(e["D"], 0) == e["count"] and max(h.values()) == e["count"] and e["n"] == e["a"] * e["b"]

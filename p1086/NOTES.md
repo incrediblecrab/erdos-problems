@@ -1,6 +1,6 @@
 # Erdős #1086: working notes
 
-The initial computations here were done on September 23, 2026, on an Apple M3 Pro (11 cores) under macOS 27.0, with Apple clang 21.0.0, Python 3.14.7, sympy 1.14.0 and numpy 2.5.3. The $g(7)\le20$ check was added on September 28, 2026. The exact values $g(7)=18$ and $g(8)=28$ were added on October 19, 2026, computed in a 4-core x86-64 Linux container with gcc 13.3.0, Python 3.13.16 and sympy 1.14.0, where the grid histograms were also regenerated and matched the stored SHA-256 hashes. Sources are cited by the tags in [`refs/README.md`](refs/README.md).
+The initial computations here were done on September 23, 2026, on an Apple M3 Pro (11 cores) under macOS 27.0, with Apple clang 21.0.0, Python 3.14.7, sympy 1.14.0 and numpy 2.5.3. The $g(7)\le20$ check was added on September 28, 2026. The exact values $g(7)=18$ and $g(8)=28$ were added on October 19, 2026, computed in a 4-core x86-64 Linux container with gcc 13.3.0, Python 3.13.16 and sympy 1.14.0, where the grid histograms were also regenerated and matched the stored SHA-256 hashes. The exact value $g(9)=36$ and the searches of §5 that go beyond the small boxes were added on November 1, 2026, on the Apple M3 Pro under macOS 27.2, with Apple clang 21.0.0, Python 3.14.7, sympy 1.14.0 and z3 5.1.0. Sources are cited by the tags in [`refs/README.md`](refs/README.md).
 
 **Notation.** The *doubled area* of a triangle $pqr$ is $|\det(q-p,\,r-p)|$, twice its area; for lattice points it is a positive integer. $G_m=\{0,\dots,m-1\}^2$ is the $m\times m$ grid, $n=m^2$, and $T_N(m)$ is the number of triangles of $G_m$ with doubled area $N$. The code and `results/claims.json` write the doubled area as $D$. $\sigma(N)$ is the sum and $d(N)$ the number of divisors of $N$; $\gamma$ is Euler's constant; $\log$ is natural.
 
@@ -68,7 +68,7 @@ $$g(n)\ \ge\ \Bigl(\frac{6e^\gamma}{\pi^2}-o(1)\Bigr)\,n^2\log\log n,\qquad \fra
 
 **Convergence is very slow (measured, §6).** $T/(n^2\log\log n)$ at the best $N$ rises from 0.70 to 0.86 over $m=25,\dots,800$, still well below 1.0828. There are two visible reasons. First, at the best $N$ the count is 5 to 12 % below $\frac6{\pi^2}\frac{\sigma(N)}Nn^2$; in all 41 cells of the fixed-$N$ table with $N\ge2$ and $N/n\le0.1$, $1-\text{ratio}$ lies between $3.3\,N/n$ and $5.9\,N/n$. That is an empirical fit, not proved, and it fails for larger $N/n$. Second, $\sigma(N)/N$ at the best $N$ lags $e^\gamma\log\log n$: at $m=800$ it is 3.838 at $N=5040$, against 4.618.
 
-## 4. $g(5)=7$ and $g(6)=12$
+## 4. Exact values: $g(5)=7$ to $g(9)=36$
 
 **$g(5)=7$, by hand.** *Lower bound:* $R=\{(0,0),(1,0),(0,1),(1,1),(1,-1)\}$ spans 7 triangles of doubled area 1. Its full profile is 7 of doubled area 1, 2 of doubled area 2 and 1 collinear triple.
 
@@ -88,7 +88,7 @@ An affine map takes it to $(0,0),(1,0),(1,1),(0,1)$ with doubled area 1. A fifth
 
 **$g(7)\le20$, the first step** (`src/g7_no21.py`, September 28, 2026). If seven points had 21 triangles of one nonzero area, every six-subset would have exactly 12, since each triangle is contained in four six-subsets and $g(6)=12$. Every five-subset has at most 7; when it has 7, the classification above says its equal-area triple system is $K_5^{(3)}$ with exactly the three triples through one pair missing. Enumerating the resulting 3-uniform hypergraphs on seven vertices leaves two isomorphism classes. For each class and each possible marked equal-area triple, an affine map sends that triple to $(0,0),(1,0),(0,1)$, and the polynomial equations $\det(t)^2=1$ for the other marked triples have Gröbner basis $[1]$ over $\mathbb Q$. Thus no such 21-triangle configuration exists, even over $\mathbb C$. This method does not reach 19 or 20, because the averaging no longer forces every six-subset to be extremal, and it was feared that five-point sets with 6 equal-area triangles form positive-dimensional families. They do not, as the next paragraph shows.
 
-**$g(7)=18$ and $g(8)=28$, computer-assisted** (`src/g7_exact.py`; exact rational arithmetic, under a second; October 19, 2026). The argument is one written lemma and three finite enumerations. Throughout, a *triangle* means one of doubled area exactly 1; an area-preserving affine map (determinant $\pm1$) always makes the common doubled area 1.
+**$g(7)=18$ and $g(8)=28$, computer-assisted** (`src/g7_exact.py`; exact rational arithmetic, under a second; October 19, 2026). The argument is one written lemma and three finite enumerations. Throughout, a *triangle* means one of doubled area exactly 1. If the common doubled area is $D$, one affine map of determinant $1/D$, such as $(x,y)\mapsto(x/D,y)$, first makes it 1; after that, equivalence and the canonical form use only affine maps of determinant $\pm1$, which preserve areas.
 
 *Lemma (four points).* Four distinct points span at most 4 triangles of one nonzero area $N$. If they span 4 they form a parallelogram. If they span exactly 3, three of them form a triangle of area $3N$ and the fourth is its centroid. *Proof.* If three of the points are collinear, the three triangles through the fourth point have areas proportional to the three segments on that line, the longest of which is the sum of the other two, so at most two are equal. Otherwise the four points are either in convex position, where with cyclic order $ABCD$ the two ways of cutting the quadrilateral give $[ABC]+[ACD]=[ABD]+[BCD]$, so three equal areas force the fourth, and four equal areas give $CD\parallel AB$ and $AD\parallel BC$ as in the $g(5)$ proof; or one point $D$ lies inside the triangle $ABC$, where $[ABD]+[BCD]+[CAD]=[ABC]$, so $[ABC]$ cannot equal any of the three, and three equal small triangles mean that $D$ has equal barycentric coordinates, that is, $D$ is the centroid. ∎
 
@@ -96,29 +96,54 @@ An affine map takes it to $(0,0),(1,0),(1,1),(0,1)$ with doubled area 1. A fifth
 
 *Step 2: six points with at least 11.* The five-subsets carry $3\cdot11=33>6\cdot5$ triangles, so one has at least 6 and is one of the four configurations of Step 1. The sixth point lies on at least $11-7=4$ of the 20 lines of that configuration, no line serves 4 pairs, and the intersections are tried. **Result: exactly four configurations**, two with 12 and two with 11. The two with 12 are the $2\times3$ grid, with degree sequence $(5,5,5,5,8,8)$, and the affine regular hexagon $\{\pm u,\pm v,\pm(u-v)\}$, in which every point has degree 6. In the hexagon every five-subset has exactly 6 triangles, which is why `g6_exact.py`, which starts from a five-subset with 7, could not see it; the value $g(6)=12$ it proves is unaffected, and `small_search` found both configurations in the $5\times5$ box without distinguishing them.
 
-*Step 3: seven points with at least 19.* The degrees sum to $57$, so some point has degree at most 8, and the six others span at least 11 triangles: one of the four configurations of Step 2. The seventh point lies on at least $19-12=7$ of its 30 lines, no line serves 7 pairs, and the 411 intersection points give at most 18. **So $g(7)\le18$**, and the $2\times3$ grid plus $(1,2)$ gives 18: $g(7)=18$. Averaging then gives $g(8)\le\lfloor 8\cdot18/5\rfloor=28$, and the $3\times3$ grid minus its centre has 28: $g(8)=28$.
+*Step 3: seven points with at least 19.* If seven points span $e\ge19$ triangles, the degrees sum to $3e$, so some point has degree at most $\lfloor3e/7\rfloor$, and the six others span at least $e-\lfloor3e/7\rfloor\ge19-8=11$, since that quantity does not decrease in $e$: one of the four configurations of Step 2. The seventh point lies on at least $e-12\ge19-12=7$ of its 30 lines, no line serves 7 pairs, and the 411 intersection points give at most 18. **So $g(7)\le18$**, and the $2\times3$ grid plus $(1,2)$ gives 18: $g(7)=18$. Averaging then gives $g(8)\le\lfloor 8\cdot18/5\rfloor=28$, and the $3\times3$ grid minus its centre has 28: $g(8)=28$.
 
 *Cross-checks.* `src/g7_box_check.py` shares no code with `g7_exact.py`. It verifies the lemma on every four-subset of the $7\times7$ box for every area; it scans every five-subset of the $6\times6$ box with at least 6 triangles of one area and every six-subset with at least 11, and finds that each has the area profile, the multiset of all 20 doubled areas in units of the common one, of a configuration in `results/g7_classes.json`, with all four of each kind present and nothing else; and it identifies the two 12-triangle configurations as a $2\times3$ grid and a centrally symmetric hexagon. A box scan can refute the classification but not confirm it, so the proof is the lemma, the three averaging steps and the exact enumeration. The lemma and the averaging steps are written, not machine-checked. The values agree with `g5_certificate.py` and `g6_exact.py`, which use Gröbner bases instead. No table of small values of $g$ was found in the sources read (§5), so whether $g(7)=18$ and $g(8)=28$ are new is not known, and no novelty is claimed.
 
+**$g(9)=36$, computer-assisted** (`src/g9_exact.py`; exact arithmetic, about 10 s; November 1, 2026). The conventions are those of the $g(7)$ argument: a *triangle* has doubled area exactly 1 after the scaling map of determinant $1/D$, and $C(n,t)$ is the set of $n$-point sets with at least $t$ triangles, up to affine maps of determinant $\pm1$. The steps extend Steps 1 to 3 to lower thresholds. The averaging steps and the Type II reduction below are written proofs, not machine-checked; the script checks the arithmetic in them and carries out the enumerations.
+
+*Averaging (written).* If $n$ points span $e$ triangles, the degrees sum to $3e$, so some point has degree at most $\lfloor3e/n\rfloor$, and the other $n-1$ points span at least $e-\lfloor3e/n\rfloor$ triangles. That quantity does not decrease as $e$ grows, and it is $16-6=10$, $25-9=16$ and $37-12=25$ for $(n,e)=(7,16),(8,25),(9,37)$. So every member of $C(7,16)$, $C(8,25)$ and $C(9,37)$ is a member of $C(6,10)$, $C(7,16)$ and $C(8,25)$, respectively, plus one point. If the base has $c$ triangles, the new point lies on at least $t-c$ of its lines. The script checks that no line of any base serves that many pairs, so the new point is the intersection of two distinct lines, as in Steps 1 to 3.
+
+*Step 4: six points with at least 10.* If $e\ge11$, some five-subset has at least 6, since $3e>30$. If $e=10$ and some five-subset has at least 6 (Type I), the sixth point lies on at least $10-c$ lines of a Step 1 configuration, no line serves that many pairs, and the intersections are tried. Otherwise (Type II) every five-subset has at most 5. The five-subset counts sum to $3\cdot10=30$, so each is exactly 5 and every point has degree 5. The script lists the 3-uniform hypergraphs on six vertices with 10 edges and all degrees 5, 7 up to isomorphism. For each, one edge is sent to $(0,0),(1,0),(0,1)$, and the other nine edges give $\det=\pm1$. Of the $7\cdot2^9=3584$ sign systems, 4 have a Gröbner basis over $\mathbb Q$ other than $[1]$. All four are zero-dimensional, and each has exactly one distinct solution, which equals its quotient dimension of 1, so no complex solution is missed. Each solution is rational, satisfies its system exactly on substitution, and has all ten edges confirmed again in rational arithmetic. A solution would be discarded only if a coordinate were provably non-real, and the run stops if realness cannot be decided. Each solution is the affine regular hexagon, which has 12 triangles, more than the 10 that Type II allows, so no six-point set is of Type II. **Result: $C(6,10)$ has 15 configurations:** the four of Step 2 and eleven with exactly 10.
+
+*Steps 5 to 7.* $C(7,16)$ has 19 configurations: 3 with 18, 4 with 17 and 12 with 16. The three with 18 include the $2\times3$ grid plus $(1,2)$, and none has 19, as Step 3 requires. $C(8,25)$ has 6: one with 28, one with 26 and four with 25. The only one with 28 is the $3\times3$ grid minus its centre, so **every eight-point set with 28 triangles of one area is an affine image of the $3\times3$ grid minus its centre.** No intersection point extends any of the six beyond 36, so $C(9,37)$ is empty. **So $g(9)\le36$**, and the stored configuration of §5, the $3\times3$ grid minus its centre plus $(3,0)$, has 36: $g(9)=36$. Averaging then gives $g(10)\le\lfloor36\cdot10/7\rfloor=51$.
+
+*Cross-checks.* `src/g9_box_check.py` shares no code with `g7_exact.py` or `g9_exact.py`, and its box scans use a new C program, `src/box_scan.c`. It makes four checks:
+
+1. It recounts every listed configuration in integer arithmetic.
+2. It scans every 6-subset of the $6\times6$ box with at least 10 triangles of one area, every 7-subset with at least 16, every 8-subset with at least 25 and every 9-subset with at least 37. Every area profile found is listed, and every listed profile is found. Two of the 19 seven-point configurations share a profile, so the scan sees 18 profiles there and cannot tell those two apart. No 9-subset reaches 37.
+3. It repeats Steps 4 (Type I) to 7 from the listed configurations of each previous level with its own integer code. The profiles it reaches equal the listed ones at every level, and it finds no line serving as many pairs as the new point needs.
+4. It asks z3's nonlinear real arithmetic, for each of the 7 Type II hypergraphs, for six distinct real points whose triangles of doubled area 1 are exactly those edges. All 7 are unsatisfiable. As a control, the hexagon's 12-edge hypergraph is satisfiable.
+
+Checks 2 and 4 can refute the classification but not confirm it, and check 3 guards against implementation errors, not against an error in the argument. The result rests on sympy's Gröbner bases and solver, cross-checked by z3 for Type II. It is not a formal proof. No table of small values of $g$ was found in the sources read, so whether $g(9)=36$ is new is not known, and no novelty is claimed.
+
 ## 5. Small $n$
 
-`src/small_table.py` ran in 2 min 18 s. It uses two methods:
+`src/small_table.py` ran in 2 min 18 s on 10 threads. On November 1, 2026 it was rerun on 3 threads in 8 min 2 s, after $g(9)=36$ was added. Every configuration came out identical, and only the upper bounds and the exact flag at $n=9$ changed. It uses two methods:
 
 - `src/small_search` searched exhaustively over every $n$-subset of the $5\times5$ box ($n\le10$) and the $6\times6$ box ($n\le12$).
 - Simulated annealing ran in the $10\times10$ box for $n=4,\dots,16$: 1M iterations, 4 restarts, seeds 1 to 3, and target doubled areas $\{1,2,3,4,6,8,12\}$. A second annealing pass used the $12\times12$ box with 4M iterations and seeds 4 to 6 for $n=11,\dots,16$. That makes 399 annealing runs.
 
-Every run's configuration was recounted by `src/recount.py` before it could be kept. As a positive control, both exhaustive boxes rediscover $g(4)=4$, $g(5)=7$, $g(6)=12$, $g(7)=18$ and $g(8)=28$. Annealing reaches every exhaustive box optimum, and the second pass reproduced every first-pass value without improving any.
+Every run's configuration was recounted by `src/recount.py` before it could be kept. As a positive control, both exhaustive boxes rediscover $g(4)=4$, $g(5)=7$, $g(6)=12$, $g(7)=18$, $g(8)=28$ and $g(9)=36$. Annealing reaches every exhaustive box optimum, and the second pass reproduced every first-pass value without improving any.
 
-The upper bounds come from averaging: each triangle of an $n$-set lies in $n-3$ of its $(n-1)$-subsets, so $g(n)\le\lfloor g(n-1)\,n/(n-3)\rfloor$, started from $g(7)=18$ (§4). At $n=8$ this meets the lower bound, so $g(8)=28$; beyond that the bounds are weak, and $g(9)\in[36,42]$ is the first open value.
+The upper bounds for $n\ge10$ come from averaging: each triangle of an $n$-set lies in $n-3$ of its $(n-1)$-subsets, so $g(n)\le\lfloor g(n-1)\,n/(n-3)\rfloor$, started from $g(9)=36$ (§4). Started from $g(7)=18$ it gives $g(8)\le28$, which meets the lower bound, but only $g(9)\le42$, which is why $g(9)$ needed the classification of §4. Beyond $n=9$ the bounds are weak, and $g(10)\in[48,51]$ is the first open value.
 
 | $n$ | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | lower bound | 18 | 28 | 36 | 48 | 60 | 74 | 91 | 108 | 128 | 148 |
 | its doubled area | 1 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 | found by | both | both | both | both | both | both | anneal | anneal | anneal | anneal |
-| upper bound | 18 | 28 | 42 | 60 | 82 | 109 | 141 | 179 | 223 | 274 |
+| upper bound | 18 | 28 | 36 | 51 | 70 | 93 | 120 | 152 | 190 | 233 |
 
-For $n=7$ the configuration is the $2\times3$ grid plus $(1,2)$; for $n=8$ it is the $3\times3$ grid minus its centre. The rest are in `results/small_n.json`. The exhaustive values are optimal only within their box. An optimal set may need a larger box or non-lattice coordinates, so every lower bound for $n\ge9$ is only that. No published table of small values was found; an OEIS search for 1, 4, 7, 12, 18 returned four unrelated sequences.
+For $n=7$ the configuration is the $2\times3$ grid plus $(1,2)$; for $n=8$ it is the $3\times3$ grid minus its centre. The rest are in `results/small_n.json`. The exhaustive values are optimal only within their box. An optimal set may need a larger box or non-lattice coordinates, so every lower bound for $n\ge10$ is only that; for $n=9$ the box optimum 36 is optimal by §4. No published table of small values was found; an OEIS search for 1, 4, 7, 12, 18 returned four unrelated sequences.
+
+**Searches beyond the small boxes** (`src/lower_search.py`, November 1, 2026; 25 min on 3 threads; `results/lower_search.json`). None of them improves any lower bound in the table. A triangular-lattice or affine-hexagon configuration is an affine image of a subset of $\mathbb Z^2$, and affine maps preserve ratios of areas, so square boxes already contain those configurations. What the new searches add is shape, size and unbounded rational coordinates:
+
+- *Exhaustive strips and a wider box*, with `src/box_scan`, at every doubled area. No 10-subset of the $3\times12$ box, the $4\times9$ box or the $7\times7$ box ($5{,}529{,}123{,}446$ subsets up to translation) has more than 48 triangles of one area. No 11-subset of the $3\times12$ or $4\times9$ box has more than 60, and no 12-subset of either has more than 74.
+- *Annealing in larger boxes.* 196 runs of `src/small_search` in the $16\times16$ and $20\times20$ boxes for $n=10,\dots,16$: 2M iterations, 4 restarts, seeds 7 and 8, and targets $\{1,2,3,4,6,8,12\}$. They reach the table's values and none higher.
+- *A box-free exact beam search.* This starts from the 15 configurations of $C(6,10)$ (§4). At each step it adds every point on two lines of the current set, in exact rationals and with no bound on the coordinates, and keeps the 150 best classes up to area-preserving affine maps. It reaches 18, 28, 36, 48, 60 and 74 at $n=7,\dots,12$ and nothing higher.
+
+Every kept configuration was recounted by `src/recount.py`. These are searches, and they show nothing about optimality for $n\ge10$.
 
 ## 6. Finite lattice data
 
@@ -160,22 +185,27 @@ At every $n$ computed here, $\lfloor\sqrt{\log n}\rfloor=3$, so the [ErPu71] con
 
 ## 7. How the numbers are checked
 
-`src/final_check.py` re-derives every entry of `results/claims.json`, runs 57 checks in about two minutes, and exits 0 only if all pass:
+`src/final_check.py` re-derives every entry of `results/claims.json`, runs 77 checks, and exits 0 only if all pass. On November 1, 2026 it took 3 min 34 s on the shared M3 Pro at a load average between 10 and 17, and 7 min 0 s at a load average near 20; the five runs of `g9_exact.py` and `g9_box_check.py` account for about 75 s of it. The checks:
 
 - `grid_count` must match the independent triple enumeration `src/brute_check.py` bin by bin at 12 sizes. These go up to 30×30 (120,464,616 triangles) and 17×53 (120,727,840).
 - `src/brute_count.c`, a second triple enumeration, written in C and sharing no code or method with `grid_count`, must reproduce the stored 25×25, 50×50 and 100×100 histograms byte for byte.
 - `grid_count` must rebuild five of the histograms to the SHA-256 that `lattice.json` records. `verify_lattice.py` must pass on all 16 runs, which includes checking each raw file against that hash.
-- The $g(5)$ certificate and its control must pass, as must `g6_exact.py`, `g6_brute.py`, `g7_no21.py`, `g7_exact.py` (whose output must equal the stored `results/g7_classes.json`), `g7_box_check.py` and the recount of every small-$n$ configuration.
+- The $g(5)$ certificate and its control must pass, as must `g6_exact.py`, `g6_brute.py`, `g7_no21.py`, `g7_exact.py` (whose output must equal the stored `results/g7_classes.json`), `g7_box_check.py`, `g9_exact.py` (whose output must equal the stored `results/g9_classes.json`), `g9_box_check.py` and the recount of every small-$n$ configuration. Every configuration kept by `lower_search.py` must also recount, and none may exceed the claimed lower bound at its $n$.
 - Each claimed value is then compared with what those steps produced. Theorems A and B are reported as NOT MACHINE-CHECKED.
 
-The gate plants six defects of its own, and each must make the component exit 1:
+The gate plants eleven defects of its own, and each must make the component exit 1:
 
 - 6 extra triangles in one bin, against `brute_check`;
 - 6 extra triangles at $D=12$ in the 25×25 histogram with its hash updated, against `verify_lattice`;
 - a wrong reference configuration, against `g6_exact`;
 - a wrong centroid in a four-point base, against `g7_exact`;
 - a classification with one six-point configuration dropped, against `g7_box_check`;
-- an overstated small-$n$ count, against `recount`.
+- an averaging step claimed for 9-point sets with 36 triangles instead of 37, against `g9_exact`;
+- the Type II solutions dropped, against `g9_exact` (caught by the quotient-dimension test);
+- one Type II solution coordinate perturbed by $1/1000$, against `g9_exact` (caught by substituting each solution back into its system);
+- a classification with one eight-point configuration dropped, against `g9_box_check`;
+- an overstated small-$n$ count, against `recount`;
+- an overstated count in `lower_search.json`, against `recount`.
 
 Separately, before `g7_no21.py` was added, a copy of the directory was given three false claims in `claims.json`: $g(6)=13$, $19\le g(7)$, and one extra triangle at $n=640{,}000$. The same copy had 6 triangles added at $D=7$ in the stored 100×100 histogram. The old gate exited 1, with 44 of 49 checks passing. It named the three claims, the `brute_count` comparison, and `verify_lattice`, which found that file's hash, its total, and its total against A045996 all wrong. The rebuild check passed, correctly: it compares `grid_count`'s output with the recorded hash, not with the file.
 
@@ -186,5 +216,6 @@ Separately, before `g7_no21.py` was added, a copy of the directory was given thr
 - No Lean formalization. formal-conjectures has no statement to target, and none was written.
 - Theorems A and B are informal and unreviewed. The constant has not been checked against the unread literature in §1.
 - The asymptotics of the [ErPu71] strip were not derived.
-- $g(9)$ remains between 36 and 42, and the small-$n$ lower bounds for $n\ge9$ come from searches in small boxes. The four-point lemma and the averaging steps behind $g(7)=18$ are written proofs.
+- The method of §4 stops at $g(9)$. Bounding $g(10)$ below 51 this way needs $C(9,36)$, and $g(10)=48$ would need $C(9,35)$; both need $C(8,24)$, hence $C(7,15)$ and $C(6,9)$, and $C(6,9)$ is infinite: $R=\{(0,0),(1,0),(0,1),(1,1),(1,-1)\}$ together with any point $(2,t)$ has at least 9 triangles of doubled area 1, and exactly 9 unless $(2,t)$ also lies on one of the finitely many other lines of $R$, because the line $x=2$ serves two pairs of $R$ (`g9_exact.py` checks this at 101 values of $t$). Going further needs parametrised families or a different argument.
+- $g(10)$ remains between 48 and 51, and the small-$n$ lower bounds for $n\ge10$ come from searches (§5). The four-point lemma, the averaging steps and the Type II reduction behind $g(7)=18$ and $g(9)=36$ are written proofs.
 - The problem itself remains open.

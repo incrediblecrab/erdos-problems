@@ -11,6 +11,7 @@ results/raw/*
 src/grid_count
 src/brute_count
 src/small_search
+src/box_scan
 
 __pycache__/
 
