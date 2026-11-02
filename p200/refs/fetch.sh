@@ -45,5 +45,14 @@ curl -sL "https://arxiv.org/pdf/2312.10772v5" -o leng_2312.10772.pdf
 curl -sL "https://arxiv.org/pdf/2402.17994v3" -o lss_2402.17994.pdf
 # Teravainen & Wang, the Green-Tao theorem for sparse sets: Theorem 1.1.
 curl -sL "https://arxiv.org/pdf/2603.09281v1" -o teravainen_wang_2603.09281.pdf
+# Le Duc Hieu, k-APs of primes in short intervals beyond 17/30: Theorem 1.1 (p. 1 of v2).
+curl -sL "https://arxiv.org/pdf/2509.04883v2" -o hieu_2509.04883.pdf
+# OpenAI, "Quasipolynomial Bounds for Arithmetic Progressions" (September 23, 2026), unrefereed
+# model output, family 159 of the openai/math release: Theorem 1.1 (p. 4), its inputs (p. 7) and
+# the proof of the inversion (p. 81); and lean/docs/159.md, the scope of its Lean formalisation.
+# Pinned to the openai/math commit read for NOTES.md section 7.1.
+OAI_MATH=4eaee87548250b2682affda7d05d947c05554bae
+curl -sL "https://raw.githubusercontent.com/openai/math/$OAI_MATH/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/paper.pdf" -o openai_159_quasipolynomial.pdf
+curl -sL "https://raw.githubusercontent.com/openai/math/$OAI_MATH/lean/docs/159.md" -o openai_159_lean.md
 
 echo "done; see refs/README.md for what each file supports"

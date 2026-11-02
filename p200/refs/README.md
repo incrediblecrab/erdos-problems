@@ -1,6 +1,6 @@
 # refs/
 
-Primary sources for every external claim in `NOTES.md`. **Nothing here is committed** — the Monthly article, the Green–Tao note and the five arXiv papers of NOTES §7.1 are copyright their authors and publishers, and the OEIS and Luhn pages carry their own terms. Run `sh fetch.sh` to populate this directory locally; `.gitignore` excludes the downloads.
+Primary sources for every external claim in `NOTES.md`. **Nothing here is committed** — the Monthly article, the Green–Tao note, the six arXiv papers and OpenAI's preprint of NOTES §7.1 are copyright their authors and publishers, and the OEIS and Luhn pages carry their own terms. Run `sh fetch.sh` to populate this directory locally; `.gitignore` excludes the downloads.
 
 | File | Supports |
 |---|---|
@@ -17,6 +17,9 @@ Primary sources for every external claim in `NOTES.md`. **Nothing here is commit
 | `leng_2312.10772.pdf` | arXiv v5. Theorem 5 (p. 6), the log-power count, ineffective by Siegel's theorem; Theorem 7 (p. 32), the effective Gowers-norm bound |
 | `lss_2402.17994.pdf` | arXiv v3. Theorem 1.2 (p. 1), constants $O_s(1)$; its restatement of Manners' bound as $\exp\exp(\delta^{-O_s(1)})$ (p. 4) |
 | `teravainen_wang_2603.09281.pdf` | arXiv v1. Theorem 1.1 (p. 2), "for some $c_k>0$" |
+| `hieu_2509.04883.pdf` | arXiv v2. Theorem 1.1 (p. 1), for all "sufficiently large X", constant $\gg_{k,\theta}$ |
+| `openai_159_quasipolynomial.pdf` | OpenAI family 159, from `openai/math` at the commit in `fetch.sh`; unrefereed. Theorem 1.1 and the remark on its constants (p. 4), its Leng–Sah–Sawhney input (p. 7), the inversion's meaning of density (p. 81) |
+| `openai_159_lean.md` | the scope of that preprint's Lean formalisation: the qualitative corollary only |
 
 Two of these must be read from a **render, not the PDF text layer**, which mangles stacked exponents:
 

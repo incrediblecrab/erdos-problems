@@ -335,7 +335,8 @@ def section_g():
     print("     section G took %.0fs" % (time.time() - t0))
 
 
-# Section H: (pdf in refs/, page of that PDF, text as pdftotext prints it, the same passage as NOTES.md section 7.1 prints it)
+# Section H: (source in refs/, page of that PDF, text as pdftotext prints it, the same passage as NOTES.md section 7.1 prints it).
+# A source that is not a PDF is read as one page, its text as is.
 QUOTES = [
     ("tao_teravainen_2107.02158.pdf", 1, "The implied constants will be effective, except when otherwise stated",
      "The implied constants will be effective, except when otherwise stated"),
@@ -366,6 +367,18 @@ QUOTES = [
      "is ineffective (as is standard) due to the use of Siegel’s theorem"),
     ("leng_2312.10772.pdf", 32, "the bounds in Theorem 7 are effective", "the bounds in Theorem 7 are effective"),
     ("teravainen_wang_2603.09281.pdf", 2, "for some ck > 0", "for some $c_k>0$"),
+    ("hieu_2509.04883.pdf", 1, "sufficiently large X and all x ∈ [X, 2X]", "sufficiently large X and all x ∈ [X, 2X]"),
+    ("hieu_2509.04883.pdf", 1, "The proofs in this paper were assisted by GPT-5.", "The proofs in this paper were assisted by GPT-5."),
+    ("openai_159_quasipolynomial.pdf", 4, "For each fixed integer k ≥ 3 there are constants Ck , ck , εk > 0 such that, for every",
+     "For each fixed integer $k\\ge3$ there are constants $C_k,c_k,\\varepsilon_k>0$ such that, for every"),
+    ("openai_159_quasipolynomial.pdf", 4, "The constants may depend on the fixed length k; the exponent is not optimized.",
+     "The constants may depend on the fixed length k; the exponent is not optimized."),
+    ("openai_159_quasipolynomial.pdf", 7, "The stronger quasipolynomial bounds of Leng, Sah and Sawhney are the interval input used here",
+     "The stronger quasipolynomial bounds of Leng, Sah and Sawhney are the interval input used here"),
+    ("openai_159_quasipolynomial.pdf", 81, "a set of density at least α contains the required progression",
+     "a set of density at least α contains the required progression"),
+    ("openai_159_lean.md", 1, "The paper's quantitative upper bound for the largest progression-free subset of $\\{1,\\ldots,N\\}$ is outside this statement.",
+     "The paper's quantitative upper bound for the largest progression-free subset of $\\{1,\\ldots,N\\}$ is outside this statement."),
 ]
 
 
@@ -436,6 +449,28 @@ def section_h(notes):
           "recomputed S_3 = %.6f, min S_k = %.6f, S_26 = %.4g, log N_2(3) = %.4f, log N_2(26) = %.4f"
           % (mine[3][0], min(v[0] for v in mine.values()), lo26, mine[3][2], mine[26][2]))
 
+    # pi(N) >= N/(2 log N) for N >= 3, as the family-159 paragraph uses it: from Mathlib's theta_ge,
+    # theta(n) >= n log 2 - log(n+1) - 2 sqrt(n) log n, once f(n) = n(log 2 - 1/2) - log(n+1) - 2 sqrt(n) log n >= 0,
+    # since pi(n) >= theta(n)/log n. f is convex for n >= 1 (f'' = 1/(n+1)^2 + log(n)/(2 n^1.5) > 0), so f >= 0 from
+    # the first n1 with f(n1) >= 0 and f'(n1) > 0; below n1 the claim is checked by counting primes.
+    f = lambda n: n * (math.log(2) - 0.5) - math.log(n + 1) - 2 * math.sqrt(n) * math.log(n)
+    fp = lambda n: (math.log(2) - 0.5) - 1 / (n + 1) - (math.log(n) + 2) / math.sqrt(n)
+    n1 = next(n for n in range(2, 10 ** 6) if f(n) >= 0 and fp(n) > 0)
+    isp = bytearray([1]) * n1
+    isp[0] = isp[1] = 0
+    for i in range(2, int(n1 ** 0.5) + 1):
+        if isp[i]:
+            isp[i * i::i] = bytearray(len(isp[i * i::i]))
+    pi, fails = 0, []
+    for N in range(2, n1):
+        pi += isp[N]
+        if pi < N / (2 * math.log(N)):
+            fails.append(N)
+    m1 = re.search(r"which holds for \$N\\ge(\d+)\$; a direct count covers \$(\d+)\\le N<(\d+)\$, and only \$N=(\d+)\$ fails", sec)
+    check("pi(N) >= N/(2 log N): theta_ge gives it from N = %d, a count covers 3 <= N < %d, only N = 2 fails, as NOTES 7.1 prints" % (n1, n1),
+          bool(m1) and fails == [2] and m1.groups() == (str(n1), "3", str(n1), "2") and f(n1 - 1) < 0,
+          "printed %s, recomputed n1 = %d, failures %s" % (m1.groups() if m1 else None, n1, fails))
+
     norm = lambda t: re.sub(r"\s+", " ", t)
     nsec = norm(sec)
     check("NOTES 7.1 contains each of the %d quoted passages" % len(QUOTES),
@@ -450,7 +485,8 @@ def section_h(notes):
     if not (all(have) and tool):
         print("     skipped the quotation check: run refs/fetch.sh and install pdftotext to enable it")
         return
-    pages = {f: subprocess.run(["pdftotext", os.path.join(ROOT, "refs", f), "-"], capture_output=True, text=True).stdout.split("\f")
+    pages = {f: (subprocess.run(["pdftotext", os.path.join(ROOT, "refs", f), "-"], capture_output=True, text=True).stdout.split("\f")
+                 if f.endswith(".pdf") else [open(os.path.join(ROOT, "refs", f), encoding="utf-8").read()])
              for f in pdfs}
     missing = [(f, pg, t[:40]) for f, pg, t, _ in QUOTES if pg > len(pages[f]) or norm(t) not in norm(pages[f][pg - 1])]
     check("each quoted passage is on the cited page of the fetched PDF", not missing, str(missing) if missing else "")

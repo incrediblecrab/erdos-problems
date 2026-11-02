@@ -4,7 +4,7 @@ This repository studies Erdős problem 200, the longest arithmetic progression o
 
 **Objective:** establish what is rigorously true, recompute $L(N)$ as far as compute allows, test the standard heuristic against measured counts, and quantify why sieve methods cannot close the gap.
 
-**Inputs:** a local mirror of erdosproblems.com problem 200, OEIS A005115, A113827, A093364 and A133277, Luhn's records page, Granville's *Prime Number Patterns*, the Green–Tao note, and five arXiv papers on quantitative Green–Tao (Tao–Teräväinen, Manners, Leng, Leng–Sah–Sawhney, Teräväinen–Wang). Run `refs/fetch.sh`; none are redistributed here.
+**Inputs:** a local mirror of erdosproblems.com problem 200, OEIS A005115, A113827, A093364 and A133277, Luhn's records page, Granville's *Prime Number Patterns*, the Green–Tao note, six arXiv papers on quantitative Green–Tao (Tao–Teräväinen, Manners, Leng, Leng–Sah–Sawhney, Teräväinen–Wang, Le Duc Hieu), and OpenAI's unrefereed family-159 preprint on quantitative Szemerédi bounds. Run `refs/fetch.sh`; none are redistributed here.
 
 **Files:**
 
