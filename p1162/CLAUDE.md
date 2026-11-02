@@ -7,7 +7,7 @@ This repository studies Erdős problem 1162, the number of subgroups of $S_n$ an
 ## Commands
 
 ```bash
-python3 src/final_check.py      # checks artifacts and every decimal in NOTES.md against fresh computation; exit 0 = pass, about 1 minute
+python3 src/final_check.py      # checks artifacts and every decimal in NOTES.md against fresh computation; exit 0 = pass, about 1 minute idle before the §9.8 census checks were added (not re-timed idle since)
 bash scripts/reproduce.sh       # regenerate every artifact, then the gate
 bash refs/fetch.sh              # sources for the quotation checks; nothing is redistributed
 ```
@@ -16,4 +16,4 @@ bash refs/fetch.sh              # sources for the quotation checks; nothing is r
 
 ## Rules
 
-All logarithms are base 2. `src/final_check.py` recomputes every decimal number in `NOTES.md` except timings and values explicitly marked as first-version, so edit a number in the notes only together with the code that produces it. Each exact computation has an independent check that shares no code with it (`src/verify_elemab.py` for `src/elemab.py`, `src/census8.py` by brute force on permutations); keep that separation when adding results. `data/` and `results/` each have a README listing their files and the script that writes them; regenerate rather than hand-edit. Conjectural asymptotics stay labelled as conjectures.
+All logarithms are base 2. `src/final_check.py` recomputes every decimal number in `NOTES.md` except timings and values explicitly marked as first-version, so edit a number in the notes only together with the code that produces it. Each exact computation has an independent check that shares no code with it (`src/verify_elemab.py` for `src/elemab.py`, `src/census8.py` by brute force on permutations, `src/verify_two_subgroups.py` for `src/two_subgroups.py`); keep that separation when adding results. `data/` and `results/` each have a README listing their files and the script that writes them; regenerate rather than hand-edit. Conjectural asymptotics stay labelled as conjectures.

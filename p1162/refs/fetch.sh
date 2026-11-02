@@ -37,6 +37,11 @@ for id in A005432 A000638 A000085 A006116; do
   curl -sL "https://oeis.org/search?q=id:$id&fmt=text" -o "oeis_$id.txt"
 done
 
+# The OEIS search behind the negative result in NOTES.md section 9.8: the
+# number of 2-subgroups of S_n for n = 1..8.  "No results." on November 1, 2026.
+curl -sL "https://oeis.org/search?q=1%2C2%2C4%2C20%2C76%2C631%2C3417%2C65054&fmt=text" \
+     -o oeis_search_2subgroups.txt
+
 # [GN] GroupNames, transitive groups of degree up to 15.  NOTES.md section
 # 9.1 takes the orders of 8T1-8T35 and the entry for 8T22 from it, and
 # src/final_check.py parses the saved page to check them.  (LMFDB blocks

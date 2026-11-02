@@ -187,6 +187,24 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    block_families.py passes all 62 of its checks   [62 passed]
   ok    block_families.py: a fresh run reproduces data/block_families.json
 
+== two_subgroups.py: every 2-subgroup of S_n, n <= 15 (NOTES.md §9.8) ==
+  ok    two_subgroups.json covers n = 1..15 and records no failed check   [n_max 15]
+  ok    two_subgroups.py --n-max 12 exits 0   [exit 0]
+  ok    two_subgroups.py --n-max 12 passes all 101 of its checks   [101 passed]
+  ok    a fresh run reproduces data/two_subgroups.json for n <= 12
+  ok    every row is the binomial transform of the stored fixed-point-free rows (odd n from even)   [n = 1..15]
+  ok    every fixed-point-free total is the sum over its orbit types   [k = 2..14]
+  ok    one-orbit types equal the transitive 2-groups of census8.py (1, 7, 12945)
+  ok    Frobenius: each order 2^j <= |P| occurs an odd number of times, and order |P| exactly n!/|P| times   [n = 1..15]
+  ok    FC subgroups by order equal block_families.order_distribution (the formula of §9.1), n <= 15
+  ok    elementary abelian subgroups by rank equal elemab.rank_counts, n <= 15
+  ok    no FC subgroup has an orbit longer than 8, n <= 15
+  ok    2-subgroups + |S3(n)| <= f(n) = A005432(n), n <= 15
+  ok    n <= 8: 2-subgroups by order equal census8.json
+  ok    verify_two_subgroups.py ran to n = 15 and matched   [n_max 15]
+  ok    verify_two_subgroups.json equals two_subgroups.json for every n <= 15 (totals, FC, by order)   [n = 1..15]
+  ok    both programs list the same number of subgroups of R for every orbit type they share   [25 types]
+
 == NOTES.md §2: exact counts ==
   ok    NOTES: §2.1 lattice, n = 1..7   [| 1–7 | 1, 2, 6, 30, 156, 1455, 11300 | 1, 2, 4, 11, 19, 56, 96 |]
   ok    NOTES: §2.1 lattice, n = 8   [| 8 | 151221 | 296 |]
@@ -433,6 +451,40 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    NOTES: §9.8 alpha_f for 12 <= n <= 18   [0.557, 0.566]
   ok    NOTES: §9.8 the linear coefficient of §9.4   [-1.96]
 
+== NOTES.md §9.8: the census of all 2-subgroups, n <= 15 ==
+  ok    NOTES: §9 two_subgroups.py check count   [122]
+  ok    NOTES: §9.8 the program's check count   [122]
+  ok    NOTES: §9.8 the longest list is that of (4, 4, 4, 2)   [4,4,4,2]
+  ok    NOTES: §9.8 |R| and the list of (8, 4, 2)   [2048, 69 104]
+  ok    NOTES: §9.8 the list of (4, 4, 4, 2)   [123 864]
+  ok    NOTES: §9.8 (8, 4, 2) is the one orbit type with the largest R, of order 2048
+  ok    NOTES: §9.8 the OEIS search terms are the counts for n <= 8   [1, 2, 4, 20, 76, 631, 3417, 65054]
+  ok    NOTES: §9.8 census row n = 8   [65 054, 0.0484, 0.0208, 0.4302, 0.1100, 0.4598]
+  ok    NOTES: §9.8 census row n = 9   [508 150, 0.0558, 0.0167, 0.2998, 0.1547, 0.5454]
+  ok    NOTES: §9.8 census row n = 10   [11 666 461, 0.0680, 0.0268, 0.3942, 0.0725, 0.5333]
+  ok    NOTES: §9.8 census row n = 11   [110 251 571, 0.0698, 0.0190, 0.2728, 0.1655, 0.5617]
+  ok    NOTES: §9.8 census row n = 12   [4 498 662 367, 0.1480, 0.0628, 0.4246, 0.0672, 0.5082]
+  ok    NOTES: §9.8 census row n = 13   [52 935 128 039, 0.1562, 0.0472, 0.3021, 0.1515, 0.5464]
+  ok    NOTES: §9.8 census row n = 14   [2 557 694 647 600, 0.1649, 0.0746, 0.4525, 0.0583, 0.4891]
+  ok    NOTES: §9.8 census row n = 15   [34 736 519 933 806, 0.1656, 0.0491, 0.2968, 0.1694, 0.5339]
+  ok    NOTES: §9.8 parity: 2-subgroups as a share of f, even then odd n   [39.4, 45.3, 27.3, 30.2]
+  ok    NOTES: §9.8 parity: the non-FC share at each odd n exceeds that at n - 1, n = 9..15
+  ok    NOTES: §9.8 (b): non-FC share of 2-subgroups, even then odd n   [4.8, 6.8, 14.8, 16.5, 5.6, 7.0, 15.6, 16.6]
+  ok    NOTES: §9.8 (b): non-FC share of f, even n   [2.1, 2.7, 6.3, 7.5]
+  ok    NOTES: §9.8 (b): 2-subgroups with two orbits of length >= 4, share of all and non-FC share among them, even n   [24.7, 43.2, 71.8, 86.9, 19.6, 15.8, 20.6, 19.0]
+  ok    NOTES: §9.8 (b): their share of 2-subgroups rises along even n = 8..14   [8050/32527, 5040000/11666461, 3231412800/4498662367, 5556150600/6394236619]
+  ok    NOTES: §9.8 (b): exactly the orbit types with two or more orbits of length >= 4 have non-FC subgroups
+  ok    NOTES: §9.8 (b): the non-FC share rises along even n = 8..14   [1575/32527, 793800/11666461, 665799750/4498662367, 1054350297/6394236619]
+  ok    NOTES: §9.8 (b): the non-FC share rises along odd n = 9..15   [567/10163, 7692300/110251571, 8266207950/52935128039, 2876425501950/17368259966903]
+  ok    NOTES: §9.8 (b): the non-FC share of f rises along even n = 8..14   [150/7201, 56700/2113889, 66579975/1059492536, 9372002640/125594993191]
+  ok    NOTES: §9.8 (a): range of the share outside 2-groups and S3   [46.0, 56.2]
+  ok    NOTES: §9.8 (a): even n   [46.0, 53.3, 50.8, 48.9]
+  ok    NOTES: §9.8 (a): falling along n = 10, 12, 14
+  ok    NOTES: §9.8 (a): outside B and S3 at n = 14, split   [56.4, 48.9, 7.5]
+  ok    NOTES: §9.8 the smallest non-FC share, n = 8..15   [4.8]
+  ok    NOTES: §8/§9.8 the non-FC share at n = 14, after 'the share rises to '   [16.5]
+  ok    NOTES: §8/§9.8 the non-FC share at n = 14, after 'By $n = 14$ the share is '   [16.5]
+
 == NOTES.md §9.9: the double root, redone ==
   ok    NOTES: §9.9 order of the ambient group and of its Frattini subgroup   [which has order $2^{5n/8}$ and a Frattini subgroup of order $2^{n/8}$]
   ok    NOTES: §9.9 the count of FC subgroups of order 2^(nu n)   [$2^{n^2(\nu - 1/8)(5/8 - \nu)}$]
@@ -446,10 +498,10 @@ final_check.py -- re-deriving the numbers in NOTES.md from the artifacts
   ok    NOTES: §10 the stored rows recomputed   [for $n \le 256$ and $n = 512$, 88 of the 119; recomputing the other 31]
 
 == NOTES.md: which decimal numbers were compared ==
-  446 of 465 decimal numbers compared; 9 quoted from first versions, 10 timings, 0 not compared
-  ok    NOTES: every decimal number is compared, or marked as a timing or a first-version value   [465 numbers]
-  ok    NOTES: §10 the number of checks   [381]
+  522 of 543 decimal numbers compared; 9 quoted from first versions, 12 timings, 0 not compared
+  ok    NOTES: every decimal number is compared, or marked as a timing or a first-version value   [543 numbers]
+  ok    NOTES: §10 the number of checks   [429]
 
-381 checks run, 0 failed, 0 skipped
+429 checks run, 0 failed, 0 skipped
 
 Every check that ran passed.

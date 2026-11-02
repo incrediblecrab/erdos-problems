@@ -11,6 +11,7 @@ Artifacts written by the programs in `src/`. `scripts/reproduce.sh` regenerates 
 | `orbit_model.json` | `orbit_model.py` | orbit profiles, pure types, local coefficients and the held-out extrapolation |
 | `sd_precision.json` | `sd_precision.py` | the exact rank sd at $n = 64, 128, 256, 512$ to 30 digits and its error against the closed form, computed at 60 decimal places |
 | `census8.json` | `census8.py` | the 2-subgroups of $S_n$ for $n \le 8$: counts by order, the transitive types, and the Frattini-closed counts. The key `sylow_subgroups` is the number of subgroups of one Sylow 2-subgroup of $S_8$, not the number of Sylow subgroups |
+| `two_subgroups.json` | `two_subgroups.py` | every 2-subgroup of $S_n$ for $n \le 15$: totals, FC and non-FC counts, counts by order and by largest orbit, the fixed-point-free counts, the count for each orbit type with the number of subgroups of $R$ it lists, and the Sylow weights $s_b$ |
 | `block_families.json` | `block_families.py` | the §9 family: $\log_2 B(n)$ for $n \le 512$, its order statistics, $F_8$, $S_3(n)/B(n)$, the comparisons of §9.2 and §9.3, and the fractions of $f(n)$ in §9.8 for $n \le 18$ |
 
 The statistics in `elemab_stats.json` are computed through floating-point logarithms and are much less precise than their doubles (`NOTES.md` §3); `sd_precision.json` has the sd computed exactly.

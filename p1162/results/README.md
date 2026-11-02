@@ -10,6 +10,8 @@ Logs of the stages of `scripts/reproduce.sh`, committed as the record of the run
 | `orbit_model.log` | 6 |
 | `sd_precision.log` | 6b |
 | `census8.log`, `block_families.log` | 6c |
+| `two_subgroups.log` | 6d, `two_subgroups.py` to $n = 15$ |
+| `verify_two_subgroups.log`, `verify_two_subgroups.json` | 6d, `verify_two_subgroups.py --n-max 15 --dedup-max 12`, the independent recount |
 | `final_check.log` | 7, the gate; its last lines give the number of checks run, failed and skipped |
 
 `fetch.log`, from stage 1, is not committed.

@@ -12,6 +12,8 @@ The programs behind `NOTES.md`. `scripts/reproduce.sh` runs them in order, and i
 | `orbit_model.py` | the orbit-structure model of the second-order term, with its held-out extrapolation | §6 |
 | `census8.py` | every 2-subgroup of $S_n$ for $n \le 8$, by brute force on permutations, with the transitive types and the Frattini-closed subgroups; exits 1 if a check fails | §9.1 |
 | `block_families.py` | the Frattini-closed family: $B(n)$ and its order statistics to $n = 512$, the count $F_8(n)$ in the proof of Theorem 9.1, the family $S_3(n)$ for odd $n$, and the comparisons of §9.2, §9.3 and §9.8; exits 1 if a gate fails | §9 |
+| `two_subgroups.py` | every 2-subgroup of $S_n$ for $n \le 15$, Frattini-closed or not: the subgroups of a Sylow 2-subgroup of each orbit-type stabiliser that are transitive on every orbit, weighted by the number of Sylow subgroups containing them, read off as a count of maximal chains; writes `data/two_subgroups.json`; exits 1 if a check fails | §9.8 |
+| `verify_two_subgroups.py` | the same counts on explicit permutations, with the Sylow subgroups tested one by one and, for $n \le 12$, by conjugating and counting distinct subgroups; it reads `data/two_subgroups.json` only to compare the final numbers and writes `results/verify_two_subgroups.json` | §9.8 |
 | `final_check.py` | the gate: checks the artifacts and compares the decimal numbers in `NOTES.md` with fresh values; exit 0 = pass, and `--coverage` lists the numbers it does not compare | §10 |
 
-`final_check.py` imports `asymptotics.py`, `elemab.py`, `block_families.py` and `orbit_model.py`, so a change to any of them changes what it checks.
+`final_check.py` imports `asymptotics.py`, `elemab.py`, `block_families.py` and `orbit_model.py`, so a change to any of them changes what it checks. It reruns `census8.py`, `block_families.py` and `two_subgroups.py --n-max 12`, and reads the stored output of `verify_two_subgroups.py` without rerunning it.

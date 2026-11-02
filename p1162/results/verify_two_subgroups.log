@@ -1,0 +1,65 @@
+== orbit types: subgroups of the Sylow subgroup transitive on every block ==
+  [pass] type (2,): 1 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2,)                   1 listed, c = 1  (0.0s)
+  [pass] type (4,): 7 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4,)                   3 listed, c = 7  (0.0s)
+  [pass] type (2, 2): 2 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2, 2)                 2 listed, c = 2  (0.0s)
+  [pass] type (4, 2): 22 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 2)                10 listed, c = 22  (0.0s)
+  [pass] type (2, 2, 2): 6 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2, 2, 2)              6 listed, c = 6  (0.0s)
+  [pass] type (8,): 12945 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (8,)                  85 listed, c = 12945  (0.9s)
+  [pass] type (4, 4): 460 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 4)                92 listed, c = 460  (0.0s)
+  [pass] type (4, 2, 2): 98 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 2, 2)             46 listed, c = 98  (0.0s)
+  [pass] type (2, 2, 2, 2): 26 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2, 2, 2, 2)          26 listed, c = 26  (0.0s)
+  [pass] type (8, 2): 63240 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (8, 2)               448 listed, c = 63240  (6.4s)
+  [pass] type (4, 4, 2): 2740 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 4, 2)            580 listed, c = 2740  (0.3s)
+  [pass] type (4, 2, 2, 2): 606 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 2, 2, 2)         290 listed, c = 606  (0.1s)
+  [pass] type (2, 2, 2, 2, 2): 158 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2, 2, 2, 2, 2)      158 listed, c = 158  (0.0s)
+  [pass] type (8, 4): 2236080 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (8, 4)              7120 listed, c = 2236080  (625.0s)
+  [pass] type (8, 2, 2): 433080 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (8, 2, 2)           3248 listed, c = 433080  (55.3s)
+  [pass] type (4, 4, 4): 113320 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 4, 4)          10696 listed, c = 113320  (22.5s)
+  [pass] type (4, 4, 2, 2): 22652 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 4, 2, 2)        5004 listed, c = 22652  (3.1s)
+  [pass] type (4, 2, 2, 2, 2): 5162 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (4, 2, 2, 2, 2)     2502 listed, c = 5162  (0.7s)
+  [pass] type (2, 2, 2, 2, 2, 2): 1330 distinct conjugates, by order and FC, = the count weighted by 1/s
+  (2, 2, 2, 2, 2, 2)    1330 listed, c = 1330  (0.2s)
+  (8, 4, 2)          69104 listed, c = 19948560  (38.0s)
+  (8, 2, 2, 2)       32544 listed, c = 4148520  (12.7s)
+  (4, 4, 4, 2)      123864 listed, c = 1226008  (55.5s)
+  (4, 4, 2, 2, 2)    58996 listed, c = 258660  (19.8s)
+  (4, 2, 2, 2, 2, 2)   29498 listed, c = 60326  (7.5s)
+  (2, 2, 2, 2, 2, 2, 2)   15414 listed, c = 15414  (3.0s)
+
+== against two_subgroups.json ==
+  [pass] n=1: 1 2-subgroups, 1 FC, by order, equal two_subgroups.py
+  [pass] n=2: 2 2-subgroups, 2 FC, by order, equal two_subgroups.py
+  [pass] n=3: 4 2-subgroups, 4 FC, by order, equal two_subgroups.py
+  [pass] n=4: 20 2-subgroups, 20 FC, by order, equal two_subgroups.py
+  [pass] n=5: 76 2-subgroups, 76 FC, by order, equal two_subgroups.py
+  [pass] n=6: 631 2-subgroups, 631 FC, by order, equal two_subgroups.py
+  [pass] n=7: 3417 2-subgroups, 3417 FC, by order, equal two_subgroups.py
+  [pass] n=8: 65054 2-subgroups, 61904 FC, by order, equal two_subgroups.py
+  [pass] n=9: 508150 2-subgroups, 479800 FC, by order, equal two_subgroups.py
+  [pass] n=10: 11666461 2-subgroups, 10872661 FC, by order, equal two_subgroups.py
+  [pass] n=11: 110251571 2-subgroups, 102559271 FC, by order, equal two_subgroups.py
+  [pass] n=12: 4498662367 2-subgroups, 3832862617 FC, by order, equal two_subgroups.py
+  [pass] n=13: 52935128039 2-subgroups, 44668920089 FC, by order, equal two_subgroups.py
+  [pass] n=14: 2557694647600 2-subgroups, 2135954528800 FC, by order, equal two_subgroups.py
+  [pass] n=15: 34736519933806 2-subgroups, 28983668929906 FC, by order, equal two_subgroups.py
+
+wrote results/verify_two_subgroups.json  (850.9s)
+all checks passed

@@ -11,6 +11,7 @@ Primary sources for every external claim in `NOTES.md`. **Nothing here is commit
 | `oeis_A006116.txt` | Galois numbers $G_r = \sum_k \binom{r}{k}_2$ |
 | `arxiv_2503.05416.xml` | arXiv API record: v1 only, submitted March 7, 2025, no journal reference |
 | `semanticscholar_citations.json` | citations of 2503.05416 — three at the last fetch, none bearing on the order of a random subgroup (see `NOTES.md` §8); this count grows, so re-fetch before relying on it |
+| `oeis_search_2subgroups.txt` | the OEIS search for 1, 2, 4, 20, 76, 631, 3417, 65054, the number of 2-subgroups of $S_n$ for $n \le 8$; it returned "No results." on November 1, 2026 (`NOTES.md` §9.8). A negative search result, so re-run it before relying on it |
 | `groupnames_T15.html` | [GN]: the orders of the transitive groups 8T1–8T35 and the entry for 8T22 ("Extraspecial group; = D4○D4"), used in `NOTES.md` §9.1 and parsed by `src/final_check.py` |
 
 ## Read the base-2 remark from a render, not the text layer

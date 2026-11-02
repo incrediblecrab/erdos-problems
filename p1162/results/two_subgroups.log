@@ -1,0 +1,178 @@
+== s_b(P): Sylow 2-subgroups of S_b containing a transitive P, by maximal chains in [P_x, P] ==
+  b=2: n_2 = 1, R_b has 2 subgroups, 1 transitive; s values {1: 1}
+  [pass] b=2: sum of n_2/s_b(P) over transitive P <= R_b = 1 = census8 transitive count 1
+  [pass] b=2: n_2 = b!/2^(b-1)
+  b=4: n_2 = 3, R_b has 10 subgroups, 3 transitive; s values {1: 2, 3: 1}
+  [pass] b=4: sum of n_2/s_b(P) over transitive P <= R_b = 7 = census8 transitive count 7
+  [pass] b=4: n_2 = b!/2^(b-1)
+  b=8: n_2 = 315, R_b has 576 subgroups, 85 transitive; s values {1: 28, 3: 21, 5: 20, 7: 14, 21: 2}
+  [pass] b=8: sum of n_2/s_b(P) over transitive P <= R_b = 12945 = census8 transitive count 12945
+  [pass] b=8: n_2 = b!/2^(b-1)
+
+== fixed-point-free 2-subgroups t(k), k <= 15, by orbit type ==
+  [pass] type (2,): every weighted sum is an integer
+  (2,)                   1 subgroups of R listed; c = 1 per partition, x 1 partitions  (0.0s)
+  [pass] type (2, 2): every weighted sum is an integer
+  (2, 2)                 2 subgroups of R listed; c = 2 per partition, x 3 partitions  (0.0s)
+  [pass] type (4,): every weighted sum is an integer
+  (4,)                   3 subgroups of R listed; c = 7 per partition, x 1 partitions  (0.0s)
+  [pass] type (2, 2, 2): every weighted sum is an integer
+  (2, 2, 2)              6 subgroups of R listed; c = 6 per partition, x 15 partitions  (0.0s)
+  [pass] type (4, 2): every weighted sum is an integer
+  (4, 2)                10 subgroups of R listed; c = 22 per partition, x 15 partitions  (0.0s)
+  [pass] type (2, 2, 2, 2): every weighted sum is an integer
+  (2, 2, 2, 2)          26 subgroups of R listed; c = 26 per partition, x 105 partitions  (0.0s)
+  [pass] type (4, 2, 2): every weighted sum is an integer
+  (4, 2, 2)             46 subgroups of R listed; c = 98 per partition, x 210 partitions  (0.0s)
+  [pass] type (4, 4): every weighted sum is an integer
+  (4, 4)                92 subgroups of R listed; c = 460 per partition, x 35 partitions  (0.0s)
+  [pass] type (8,): every weighted sum is an integer
+  (8,)                  85 subgroups of R listed; c = 12945 per partition, x 1 partitions  (0.1s)
+  [pass] type (2, 2, 2, 2, 2): every weighted sum is an integer
+  (2, 2, 2, 2, 2)      158 subgroups of R listed; c = 158 per partition, x 945 partitions  (0.1s)
+  [pass] type (4, 2, 2, 2): every weighted sum is an integer
+  (4, 2, 2, 2)         290 subgroups of R listed; c = 606 per partition, x 3150 partitions  (0.1s)
+  [pass] type (4, 4, 2): every weighted sum is an integer
+  (4, 4, 2)            580 subgroups of R listed; c = 2740 per partition, x 1575 partitions  (0.2s)
+  [pass] type (8, 2): every weighted sum is an integer
+  (8, 2)               448 subgroups of R listed; c = 63240 per partition, x 45 partitions  (0.4s)
+  [pass] type (2, 2, 2, 2, 2, 2): every weighted sum is an integer
+  (2, 2, 2, 2, 2, 2)    1330 subgroups of R listed; c = 1330 per partition, x 10395 partitions  (0.6s)
+  [pass] type (4, 2, 2, 2, 2): every weighted sum is an integer
+  (4, 2, 2, 2, 2)     2502 subgroups of R listed; c = 5162 per partition, x 51975 partitions  (1.6s)
+  [pass] type (4, 4, 2, 2): every weighted sum is an integer
+  (4, 4, 2, 2)        5004 subgroups of R listed; c = 22652 per partition, x 51975 partitions  (3.5s)
+  [pass] type (4, 4, 4): every weighted sum is an integer
+  (4, 4, 4)          10696 subgroups of R listed; c = 113320 per partition, x 5775 partitions  (4.0s)
+  [pass] type (8, 2, 2): every weighted sum is an integer
+  (8, 2, 2)           3248 subgroups of R listed; c = 433080 per partition, x 1485 partitions  (0.4s)
+  [pass] type (8, 4): every weighted sum is an integer
+  (8, 4)              7120 subgroups of R listed; c = 2236080 per partition, x 495 partitions  (0.9s)
+  [pass] type (2, 2, 2, 2, 2, 2, 2): every weighted sum is an integer
+  (2, 2, 2, 2, 2, 2, 2)   15414 subgroups of R listed; c = 15414 per partition, x 135135 partitions  (1.6s)
+  [pass] type (4, 2, 2, 2, 2, 2): every weighted sum is an integer
+  (4, 2, 2, 2, 2, 2)   29498 subgroups of R listed; c = 60326 per partition, x 945945 partitions  (3.6s)
+  [pass] type (4, 4, 2, 2, 2): every weighted sum is an integer
+  (4, 4, 2, 2, 2)    58996 subgroups of R listed; c = 258660 per partition, x 1576575 partitions  (8.4s)
+  [pass] type (4, 4, 4, 2): every weighted sum is an integer
+  (4, 4, 4, 2)      123864 subgroups of R listed; c = 1226008 per partition, x 525525 partitions  (22.8s)
+  [pass] type (8, 2, 2, 2): every weighted sum is an integer
+  (8, 2, 2, 2)       32544 subgroups of R listed; c = 4148520 per partition, x 45045 partitions  (5.2s)
+  [pass] type (8, 4, 2): every weighted sum is an integer
+  (8, 4, 2)          69104 subgroups of R listed; c = 19948560 per partition, x 45045 partitions  (8.3s)
+
+== n <= 8 against the brute force (data/census8.json) and the lattices (src/subgroups.c) ==
+  [pass] n=1: 1 2-subgroups, 1 FC, 1 elementary abelian; all orders equal census8.json
+  [pass] n=1: 2-subgroups by order equal lattice_n1.json
+  [pass] n=2: 2 2-subgroups, 2 FC, 2 elementary abelian; all orders equal census8.json
+  [pass] n=2: 2-subgroups by order equal lattice_n2.json
+  [pass] n=3: 4 2-subgroups, 4 FC, 4 elementary abelian; all orders equal census8.json
+  [pass] n=3: 2-subgroups by order equal lattice_n3.json
+  [pass] n=4: 20 2-subgroups, 20 FC, 14 elementary abelian; all orders equal census8.json
+  [pass] n=4: 2-subgroups by order equal lattice_n4.json
+  [pass] n=5: 76 2-subgroups, 76 FC, 46 elementary abelian; all orders equal census8.json
+  [pass] n=5: 2-subgroups by order equal lattice_n5.json
+  [pass] n=6: 631 2-subgroups, 631 FC, 271 elementary abelian; all orders equal census8.json
+  [pass] n=6: 2-subgroups by order equal lattice_n6.json
+  [pass] n=7: 3417 2-subgroups, 3417 FC, 1317 elementary abelian; all orders equal census8.json
+  [pass] n=7: 2-subgroups by order equal lattice_n7.json
+  [pass] n=8: 65054 2-subgroups, 61904 FC, 12239 elementary abelian; all orders equal census8.json
+  [pass] n=8: 2-subgroups by order equal lattice_n8.json
+
+== every n: Frobenius parity, the Sylow count, elemab.py, block_families.py, A005432 ==
+  [pass] n=1: every order 2^0..2^0 occurs an odd number of times; 1 subgroups of order 2^0 = n!/2^0
+  [pass] n=1: elementary abelian by rank = elemab.rank_counts = [1]
+  [pass] n=1: FC by order = block_families.order_distribution (B(n) = 1)
+  [pass] n=1: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=1: 2-subgroups + |S3(n)| = 1 <= f(n) = 1
+  [pass] n=2: every order 2^0..2^1 occurs an odd number of times; 1 subgroups of order 2^1 = n!/2^1
+  [pass] n=2: elementary abelian by rank = elemab.rank_counts = [1, 1]
+  [pass] n=2: FC by order = block_families.order_distribution (B(n) = 2)
+  [pass] n=2: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=2: 2-subgroups + |S3(n)| = 2 <= f(n) = 2
+  [pass] n=3: every order 2^0..2^1 occurs an odd number of times; 3 subgroups of order 2^1 = n!/2^1
+  [pass] n=3: elementary abelian by rank = elemab.rank_counts = [1, 3]
+  [pass] n=3: FC by order = block_families.order_distribution (B(n) = 4)
+  [pass] n=3: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=3: 2-subgroups + |S3(n)| = 6 <= f(n) = 6
+  [pass] n=4: every order 2^0..2^3 occurs an odd number of times; 3 subgroups of order 2^3 = n!/2^3
+  [pass] n=4: elementary abelian by rank = elemab.rank_counts = [1, 9, 4]
+  [pass] n=4: FC by order = block_families.order_distribution (B(n) = 20)
+  [pass] n=4: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=4: 2-subgroups + |S3(n)| = 28 <= f(n) = 30
+  [pass] n=5: every order 2^0..2^3 occurs an odd number of times; 15 subgroups of order 2^3 = n!/2^3
+  [pass] n=5: elementary abelian by rank = elemab.rank_counts = [1, 25, 20]
+  [pass] n=5: FC by order = block_families.order_distribution (B(n) = 76)
+  [pass] n=5: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=5: 2-subgroups + |S3(n)| = 126 <= f(n) = 156
+  [pass] n=6: every order 2^0..2^4 occurs an odd number of times; 45 subgroups of order 2^4 = n!/2^4
+  [pass] n=6: elementary abelian by rank = elemab.rank_counts = [1, 75, 165, 30]
+  [pass] n=6: FC by order = block_families.order_distribution (B(n) = 631)
+  [pass] n=6: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=6: 2-subgroups + |S3(n)| = 851 <= f(n) = 1455
+  [pass] n=7: every order 2^0..2^4 occurs an odd number of times; 315 subgroups of order 2^4 = n!/2^4
+  [pass] n=7: elementary abelian by rank = elemab.rank_counts = [1, 231, 875, 210]
+  [pass] n=7: FC by order = block_families.order_distribution (B(n) = 3417)
+  [pass] n=7: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=7: 2-subgroups + |S3(n)| = 5972 <= f(n) = 11300
+  [pass] n=8: every order 2^0..2^7 occurs an odd number of times; 315 subgroups of order 2^7 = n!/2^7
+  [pass] n=8: elementary abelian by rank = elemab.rank_counts = [1, 763, 6685, 4440, 350]
+  [pass] n=8: FC by order = block_families.order_distribution (B(n) = 61904)
+  [pass] n=8: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=8: 2-subgroups + |S3(n)| = 81686 <= f(n) = 151221
+  [pass] n=9: every order 2^0..2^7 occurs an odd number of times; 2835 subgroups of order 2^7 = n!/2^7
+  [pass] n=9: elementary abelian by rank = elemab.rank_counts = [1, 2619, 40509, 34920, 3150]
+  [pass] n=9: FC by order = block_families.order_distribution (B(n) = 479800)
+  [pass] n=9: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=9: 2-subgroups + |S3(n)| = 770398 <= f(n) = 1694723
+  [pass] n=10: every order 2^0..2^8 occurs an odd number of times; 14175 subgroups of order 2^8 = n!/2^8
+  [pass] n=10: elementary abelian by rank = elemab.rank_counts = [1, 9495, 330015, 620325, 158220, 5670]
+  [pass] n=10: FC by order = block_families.order_distribution (B(n) = 10872661)
+  [pass] n=10: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=10: 2-subgroups + |S3(n)| = 13812061 <= f(n) = 29594446
+  [pass] n=11: every order 2^0..2^8 occurs an odd number of times; 155925 subgroups of order 2^8 = n!/2^8
+  [pass] n=11: elementary abelian by rank = elemab.rank_counts = [1, 35695, 2284755, 5580135, 1624920, 62370]
+  [pass] n=11: FC by order = block_families.order_distribution (B(n) = 102559271)
+  [pass] n=11: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=11: 2-subgroups + |S3(n)| = 177132836 <= f(n) = 404126228
+  [pass] n=12: every order 2^0..2^10 occurs an odd number of times; 467775 subgroups of order 2^10 = n!/2^10
+  [pass] n=12: elementary abelian by rank = elemab.rank_counts = [1, 140151, 20275695, 100094445, 64090620, 7107210, 120120]
+  [pass] n=12: FC by order = block_families.order_distribution (B(n) = 3832862617)
+  [pass] n=12: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=12: 2-subgroups + |S3(n)| = 5210946027 <= f(n) = 10594925360
+  [pass] n=13: every order 2^0..2^10 occurs an odd number of times; 6081075 subgroups of order 2^10 = n!/2^10
+  [pass] n=13: elementary abelian by rank = elemab.rank_counts = [1, 568503, 158155855, 1023827805, 749883420, 89150490, 1561560]
+  [pass] n=13: FC by order = block_families.order_distribution (B(n) = 44668920089)
+  [pass] n=13: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=13: 2-subgroups + |S3(n)| = 79483407511 <= f(n) = 175238308453
+  [pass] n=14: every order 2^0..2^11 occurs an odd number of times; 42567525 subgroups of order 2^11 = n!/2^11
+  [pass] n=14: elementary abelian by rank = elemab.rank_counts = [1, 2390479, 1525182659, 19342818495, 28507824345, 7592514930, 389939550, 3183180]
+  [pass] n=14: FC by order = block_families.order_distribution (B(n) = 2135954528800)
+  [pass] n=14: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=14: 2-subgroups + |S3(n)| = 2887233057528 <= f(n) = 5651774693595
+  [pass] n=15: every order 2^0..2^11 occurs an odd number of times; 638512875 subgroups of order 2^11 = n!/2^11
+  [pass] n=15: elementary abelian by rank = elemab.rank_counts = [1, 10349535, 13204571835, 222281877675, 376284443535, 107692595010, 5739784050, 47747700]
+  [pass] n=15: FC by order = block_families.order_distribution (B(n) = 28983668929906)
+  [pass] n=15: no FC subgroup has an orbit longer than 8 (none can, n < 16)
+  [pass] n=15: 2-subgroups + |S3(n)| = 54561639689156 <= f(n) = 117053117995400
+
+== the census ==
+   n     2-subgroups              FC        non-FC  non-FC share  2-subgroups/f(n)
+   1               1               1             0      0.000000          1.000000
+   2               2               2             0      0.000000          1.000000
+   3               4               4             0      0.000000          0.666667
+   4              20              20             0      0.000000          0.666667
+   5              76              76             0      0.000000          0.487179
+   6             631             631             0      0.000000          0.433677
+   7            3417            3417             0      0.000000          0.302389
+   8           65054           61904          3150      0.048421          0.430192
+   9          508150          479800         28350      0.055791          0.299843
+  10        11666461        10872661        793800      0.068041          0.394211
+  11       110251571       102559271       7692300      0.069770          0.272815
+  12      4498662367      3832862617     665799750      0.147999          0.424605
+  13     52935128039     44668920089    8266207950      0.156157          0.302075
+  14   2557694647600   2135954528800  421740118800      0.164891          0.452547
+  15  34736519933806  28983668929906  5752851003900      0.165614          0.296759
+
+wrote data/two_subgroups.json  (62.1s)
+all checks passed

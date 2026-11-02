@@ -11,6 +11,7 @@
 #   6. the orbit model              second-order term, incl. the held-out extrapolation
 #   6b. sd precision                the rank sd against its closed form, exact at 60 dp
 #   6c. the section 9 programs      census8.py (2-subgroups of S_n, n <= 8) and block_families.py
+#   6d. all 2-subgroups, n <= 15    two_subgroups.py and its independent recount verify_two_subgroups.py
 #   7. final_check.py               checks the artifacts and the numbers in NOTES.md; exit 0 = pass
 #
 # Needs: cc (C99), curl, a python3 with numpy and mpmath, and poppler's pdftotext for the quotation checks in stage 7.  $PY overrides the interpreter; otherwise ~/.venvs/main/bin/python is used when present and python3 from $PATH otherwise.  Without the downloads those checks report "skip", not "pass" -- final_check.py distinguishes them.
@@ -109,6 +110,14 @@ echo "=== 6c. the section 9 programs ======================================"
 tail -2 results/census8.log
 "$PY" src/block_families.py --n-max "$N_MAX" > results/block_families.log 2>&1
 tail -2 results/block_families.log
+
+echo "=== 6d. every 2-subgroup of S_n, n <= 15 ============================="
+# two_subgroups.py counts them with Sylow weights; verify_two_subgroups.py recounts them on explicit permutations, sharing no code, and compares at the end.  The recount is the slow one (a quarter to half an hour); FAST=1 runs it only to n = 12, with its explicit conjugation to n = 10, and final_check.py reports what that leaves out as skipped.
+"$PY" src/two_subgroups.py > results/two_subgroups.log 2>&1
+tail -2 results/two_subgroups.log
+if [ "$FAST" = "1" ]; then V_MAX=12; DEDUP_MAX=10; else V_MAX=15; DEDUP_MAX=12; fi
+"$PY" -u src/verify_two_subgroups.py --n-max "$V_MAX" --dedup-max "$DEDUP_MAX" > results/verify_two_subgroups.log 2>&1
+tail -2 results/verify_two_subgroups.log
 
 echo "=== 7. final check ==================================================="
 # The gate.  Exit 0 means the artifacts above pass their checks and every decimal number in NOTES.md agrees with a fresh computation, apart from the timings and the first-version values that NOTES.md marks.  It was validated by planting defects (NOTES.md section 10); a clean pass of an unchallenged checker proves nothing.
